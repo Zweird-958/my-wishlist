@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/web",
+  "name": "@my-wishlist/web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@hyper-fetch/react": "^5.7.4",
-    "@monorepo/api": "^1.0.0",
+    "@my-wishlist/api": "^1.0.0",
     "@nextui-org/react": "^2.2.9",
     "@prisma/client": "^5.9.1",
     "framer-motion": "^11.0.3",
@@ -23,7 +23,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@monorepo/types": "^1.0.0",
+    "@my-wishlist/types": "^1.0.0",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.4.17",

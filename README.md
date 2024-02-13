@@ -2,7 +2,7 @@
 
 ### Change name
 
-To change name of the project, replace all `@monorepo` with your project name. I recommend to use `@` in the name of the project.
+To change name of the project, replace all `@my-wishlist` with your project name. I recommend to use `@` in the name of the project.
 
 ### Init project
 

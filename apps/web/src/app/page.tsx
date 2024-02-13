@@ -1,7 +1,6 @@
 import { sendRequest } from "@hyper-fetch/core"
+import { getProducts } from "@my-wishlist/api/routes/products"
 import { Button } from "@nextui-org/react"
-
-import { getProducts } from "@monorepo/api/routes/products"
 
 import ProductList from "@/components/ProductList"
 

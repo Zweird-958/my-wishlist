@@ -3,7 +3,7 @@
   "singleQuote": false,
   "printWidth": 80,
   "tabWidth": 2,
-  "importOrder": ["^@monorepo/(.*)$", "^@/(.*)$", "^[./]"],
+  "importOrder": ["^@my-wishlist/(.*)$", "^@/(.*)$", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "plugins": [

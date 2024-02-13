@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/api",
+  "name": "@my-wishlist/api",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@hyper-fetch/core": "^5.7.4",
-    "@monorepo/types": "^1.0.0",
+    "@my-wishlist/types": "^1.0.0",
     "zod": "^3.22.4"
   }
 }

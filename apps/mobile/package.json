@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/mobile",
+  "name": "@my-wishlist/mobile",
   "main": "expo-router/entry",
   "version": "0.1.0",
   "scripts": {
@@ -12,8 +12,8 @@
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
     "@hyper-fetch/react": "^5.7.4",
-    "@monorepo/api": "^1.0.0",
-    "@monorepo/schemas": "^1.0.0",
+    "@my-wishlist/api": "^1.0.0",
+    "@my-wishlist/schemas": "^1.0.0",
     "@react-navigation/native": "^6.1.10",
     "expo": "^50.0.6",
     "expo-font": "~11.10.2",

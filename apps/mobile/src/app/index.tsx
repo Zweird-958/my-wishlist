@@ -1,9 +1,8 @@
 import { useFetch } from "@hyper-fetch/react"
+import { getProducts } from "@my-wishlist/api/routes/products"
 import { Stack } from "expo-router"
 import { FlatList, Text } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
-
-import { getProducts } from "@monorepo/api/routes/products"
 
 const Index = () => {
   const { data: products } = useFetch(getProducts)

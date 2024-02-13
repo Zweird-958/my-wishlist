@@ -1,6 +1,5 @@
+import type { Method } from "@my-wishlist/types/Api"
 import { NextRequest, NextResponse } from "next/server"
-
-import type { Method } from "@monorepo/types/Api"
 
 import { HTTP_ERRORS } from "@/api/constants"
 import { createContext, send } from "@/api/utils/createContext"

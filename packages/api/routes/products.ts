@@ -1,5 +1,5 @@
-import type { ApiResponse } from "@monorepo/types/Api"
-import type { Product } from "@monorepo/types/Product"
+import type { ApiResponse } from "@my-wishlist/types/Api"
+import type { Product } from "@my-wishlist/types/Product"
 
 import client from "../"
 
