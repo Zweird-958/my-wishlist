@@ -1,6 +1,7 @@
 "use client"
 
 import { useFetch } from "@hyper-fetch/react"
+
 import { getProducts } from "@my-wishlist/api/routes/products"
 
 const Product = () => {
