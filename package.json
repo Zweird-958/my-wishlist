@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "web": "npm run dev -w 'apps/web'",
+    "web:generate": "npm run generate -w 'apps/web'",
     "mobile:ios": "npm run ios -w 'apps/mobile'",
     "mobile:android": "npm run android -w 'apps/mobile'",
     "db:migrate": "npm run migrate -w 'packages/db'",
