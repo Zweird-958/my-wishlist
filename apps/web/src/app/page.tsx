@@ -1,4 +1,5 @@
 import { sendRequest } from "@hyper-fetch/core"
+import { Button } from "@nextui-org/react"
 
 import { getProducts } from "@monorepo/api/routes/products"
 
@@ -8,7 +9,7 @@ const Home = async () => {
   const { data: products } = await sendRequest(getProducts)
 
   if (!products) {
-    return <p>nothin</p>
+    return <Button>nothin</Button>
   }
 
   return (

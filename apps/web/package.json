@@ -12,7 +12,9 @@
   "dependencies": {
     "@hyper-fetch/react": "^5.7.4",
     "@monorepo/api": "^1.0.0",
+    "@nextui-org/react": "^2.2.9",
     "@prisma/client": "^5.9.1",
+    "framer-motion": "^11.0.3",
     "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

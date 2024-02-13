@@ -1,5 +1,6 @@
 "use client"
 
+import { NextUIProvider } from "@nextui-org/react"
 import { ReactNode } from "react"
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
 const Providers = (props: Props) => {
   const { children } = props
 
-  return children
+  return <NextUIProvider>{children}</NextUIProvider>
 }
 
 export default Providers
