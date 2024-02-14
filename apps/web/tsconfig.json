@@ -16,6 +16,7 @@
   },
   "include": [
     "../../tailwind.config.ts",
+    "../../packages/ui/tailwind.config.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",

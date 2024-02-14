@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { ReactNode } from "react"
+import { Toaster } from "react-hot-toast"
 
 import Providers from "@/app/providers"
 
@@ -19,6 +20,11 @@ const RootLayout = (props: Props) => {
   return (
     <html lang="en">
       <body>
+        <Toaster
+          toastOptions={{
+            className: "toast",
+          }}
+        />
         <Providers>{children}</Providers>
       </body>
     </html>

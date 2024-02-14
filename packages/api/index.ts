@@ -2,7 +2,11 @@ import { Client } from "@hyper-fetch/core"
 
 import config from "./config"
 
-const client = new Client({
+type GlobalErrorType = {
+  error: string
+}
+
+const client = new Client<GlobalErrorType>({
   url: config.apiUrl || `${config.vercelUrl}/api`,
 })
 

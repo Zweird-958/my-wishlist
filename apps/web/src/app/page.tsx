@@ -1,24 +1,21 @@
-import { sendRequest } from "@hyper-fetch/core"
+"use client"
+
+import { useFetch } from "@hyper-fetch/react"
 import { Button } from "@nextui-org/react"
 
-import { getProducts } from "@my-wishlist/api/routes/products"
+import { getWishes } from "@my-wishlist/api/routes/wish"
+import WishList from "@my-wishlist/ui/wish/WishList"
 
-import ProductList from "@/components/ProductList"
+const Home = () => {
+  const { data } = useFetch(getWishes)
 
-const Home = async () => {
-  const { data: products } = await sendRequest(getProducts)
-
-  if (!products) {
+  if (!data) {
     return <Button>nothin</Button>
   }
 
   return (
-    <div>
-      <p className="text-primary text-xl">Server</p>
-      {products.result.map(({ id, name }) => (
-        <p key={id}>{name}</p>
-      ))}
-      <ProductList />
+    <div className="px-4 flex justify-center">
+      <WishList wishes={data.result} />
     </div>
   )
 }
