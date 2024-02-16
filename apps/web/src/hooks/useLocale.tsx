@@ -17,16 +17,13 @@ const useLocale = () => {
         return
       }
 
+      await changeLanguage(newLocale)
       setLocale(newLocale)
       const { t: _, ...translations } = await getTranslations(newLocale)
       setTranslations(translations)
     },
     [locale, setLocale, setTranslations],
   )
-  const handleChangeLanguage = async (language: Locale) => {
-    changeLanguage(language)
-    await changeLocale(language)
-  }
 
   useEffect(() => {
     void (async () => {
@@ -36,10 +33,8 @@ const useLocale = () => {
   }, [changeLocale])
 
   return {
-    setLocale,
-    changeLocale,
     t: translationInterpolator,
-    handleChangeLanguage,
+    changeLocale,
     locale,
     ...localeStore,
   }
