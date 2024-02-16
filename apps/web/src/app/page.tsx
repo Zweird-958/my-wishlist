@@ -13,11 +13,7 @@ const Home = () => {
     return <Button>nothin</Button>
   }
 
-  return (
-    <div className="px-4 flex justify-center">
-      <WishList wishes={data.result} />
-    </div>
-  )
+  return <WishList wishes={data.result} />
 }
 
 export default Home

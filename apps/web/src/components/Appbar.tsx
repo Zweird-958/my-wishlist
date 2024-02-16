@@ -7,7 +7,7 @@ import SelectLocale from "@/components/SelectLocale"
 import SelectTheme from "@/components/SelectTheme"
 
 const Appbar = () => (
-  <Navbar maxWidth="full">
+  <Navbar maxWidth="2xl">
     <NavbarBrand as={Link} href="/">
       My Wishlist
     </NavbarBrand>
