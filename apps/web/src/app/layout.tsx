@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import dynamic from "next/dynamic"
 import { ReactNode } from "react"
 import { Toaster } from "react-hot-toast"
 
@@ -9,6 +10,8 @@ import "./globals.css"
 type Props = {
   children: ReactNode
 }
+
+const Appbar = dynamic(() => import("@/components/Appbar"), { ssr: false })
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +28,10 @@ const RootLayout = (props: Props) => {
             className: "toast",
           }}
         />
-        <Providers>{children}</Providers>
+        <Providers>
+          <Appbar />
+          {children}
+        </Providers>
       </body>
     </html>
   )

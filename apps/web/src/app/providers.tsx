@@ -1,6 +1,7 @@
 "use client"
 
 import { NextUIProvider } from "@nextui-org/react"
+import { ThemeProvider } from "next-themes"
 import { ReactNode } from "react"
 
 import client from "@my-wishlist/api"
@@ -20,7 +21,11 @@ const Providers = (props: Props) => {
     }),
   )
 
-  return <NextUIProvider>{children}</NextUIProvider>
+  return (
+    <NextUIProvider>
+      <ThemeProvider>{children}</ThemeProvider>
+    </NextUIProvider>
+  )
 }
 
 export default Providers
