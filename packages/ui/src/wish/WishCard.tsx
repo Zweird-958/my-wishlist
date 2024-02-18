@@ -10,7 +10,7 @@ import {
 } from "@nextui-org/react"
 import { SquarePenIcon, Trash2Icon } from "lucide-react"
 
-import type { Wish } from "@my-wishlist/types/wish"
+import type { Wish } from "@my-wishlist/types/Wish"
 
 type Props = {
   wish: Wish
