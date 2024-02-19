@@ -7,4 +7,7 @@ export default {
     title: "Sign Up",
     button: "Sign up",
   },
+  username: "Username",
+  email: "Email",
+  password: "Password",
 } as const

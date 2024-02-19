@@ -40,9 +40,9 @@ const SignIn = () => {
         zodErrors={zodErrors}
         onSubmit={onSubmit}
         fields={[
-          { name: "username", label: "Username" },
-          { name: "email", label: "Email" },
-          { name: "password", label: "Password", type: "password" },
+          { name: "username", label: forms.username },
+          { name: "email", label: forms.email },
+          { name: "password", label: forms.password, type: "password" },
         ]}
         buttonText={forms.signUp.button}
         isLoading={submitting}
