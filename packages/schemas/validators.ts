@@ -8,3 +8,7 @@ export const passwordValidator = z
   .string()
   .min(1, { message: "required" })
   .min(8, { message: "length" })
+export const usernameValidator = z
+  .string()
+  .min(1, { message: "required" })
+  .min(3, { message: "length" })

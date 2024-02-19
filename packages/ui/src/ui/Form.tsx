@@ -20,18 +20,25 @@ type Field<T extends FieldValues> = {
   type?: InputHTMLAttributes<HTMLInputElement>["type"]
 }
 
-type Props<T extends FieldValues> = {
+export type FormProps<T extends FieldValues> = {
   fields: Field<T>[]
   defaultValues: DefaultValues<T>
   schema: ZodSchema<T>
   buttonText: string
   onSubmit: SubmitHandler<T>
   zodErrors: Record<string, Record<string, string>>
+  isLoading?: boolean
 }
-
-const Form = <T extends FieldValues>(props: Props<T>) => {
-  const { defaultValues, onSubmit, schema, fields, buttonText, zodErrors } =
-    props
+const Form = <T extends FieldValues>(props: FormProps<T>) => {
+  const {
+    defaultValues,
+    onSubmit,
+    schema,
+    fields,
+    buttonText,
+    zodErrors,
+    isLoading,
+  } = props
   const { control, handleSubmit } = useForm<T>({
     defaultValues,
     resolver: zodResolver(schema),
@@ -76,7 +83,7 @@ const Form = <T extends FieldValues>(props: Props<T>) => {
         />
       ))}
 
-      <Button type="submit" color="primary">
+      <Button type="submit" color="primary" isLoading={isLoading}>
         {buttonText}
       </Button>
     </form>

@@ -2,7 +2,11 @@ import { z } from "zod"
 
 import config, { languages } from "@my-wishlist/config"
 
-import { emailValidator, passwordValidator } from "./validators"
+import {
+  emailValidator,
+  passwordValidator,
+  usernameValidator,
+} from "./validators"
 
 export const languageSchema = z.enum(languages)
 export const languageSchemaFallback = languageSchema.catch(
@@ -11,4 +15,7 @@ export const languageSchemaFallback = languageSchema.catch(
 export const signInSchema = z.object({
   email: emailValidator,
   password: passwordValidator,
+})
+export const signUpSchema = signInSchema.extend({
+  username: usernameValidator,
 })

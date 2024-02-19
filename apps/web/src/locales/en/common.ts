@@ -5,4 +5,6 @@ export default {
     dark: "Dark",
     light: "Light",
   },
+  signOut: "Sign out",
+  signIn: "Sign in",
 } as const

@@ -3,4 +3,8 @@ export default {
     title: "Connexion",
     button: "Se connecter",
   },
+  signUp: {
+    title: "Inscription",
+    button: "S'inscrire",
+  },
 } as const

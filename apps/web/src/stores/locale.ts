@@ -3,6 +3,7 @@ import { create } from "zustand"
 import config, { type Locale } from "@my-wishlist/config"
 
 import common from "@/locales/en/common"
+import errors from "@/locales/en/errors"
 import forms from "@/locales/en/forms"
 import zodErrors from "@/locales/en/zodErrors"
 
@@ -17,6 +18,7 @@ const defaultTranslation = {
   common,
   forms,
   zodErrors,
+  errors,
 }
 const useLocaleStore = create<LocaleStore>((set) => ({
   locale: config.defaultLanguage,

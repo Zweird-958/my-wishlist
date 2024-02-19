@@ -14,6 +14,7 @@ type Props = {
 
 const Providers = (props: Props) => {
   const { children } = props
+
   client.onAuth((request) =>
     request.setHeaders({
       ...request.headers,

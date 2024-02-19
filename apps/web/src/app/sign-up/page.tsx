@@ -3,36 +3,32 @@
 import { useSubmit } from "@hyper-fetch/react"
 import { useRouter } from "next/navigation"
 
-import { signIn as signInRequest } from "@my-wishlist/api/routes/user"
-import { signInSchema } from "@my-wishlist/schemas"
-import type { SignInData } from "@my-wishlist/types/User"
+import { signUp as signUpRequest } from "@my-wishlist/api/routes/user"
+import { signUpSchema } from "@my-wishlist/schemas"
+import type { SignUpData } from "@my-wishlist/types/User"
 import AuthForm from "@my-wishlist/ui/forms/AuthForm"
 
 import useHandleError from "@/hooks/useHandleError"
 import useLocale from "@/hooks/useLocale"
-import useSession from "@/hooks/useSession"
 
 const defaultValues = {
+  username: "",
   email: "",
   password: "",
 }
 const SignIn = () => {
   const router = useRouter()
   const { submit, onSubmitSuccess, onSubmitFinished, submitting } =
-    useSubmit(signInRequest)
-  const { signIn } = useSession()
+    useSubmit(signUpRequest)
   const {
-    translations: { forms, zodErrors, errors },
+    translations: { forms, zodErrors },
   } = useLocale()
-  const { handleError } = useHandleError<typeof signInRequest>({
-    401: errors.invalidCredentials,
-  })
-  const onSubmit = (data: SignInData) => {
+  const { handleError } = useHandleError<typeof signUpRequest>()
+  const onSubmit = (data: SignUpData) => {
     submit({ data })
   }
-  onSubmitSuccess(({ response }) => {
-    signIn(response.result)
-    router.push("/")
+  onSubmitSuccess(() => {
+    router.push("/sign-in")
   })
   onSubmitFinished(handleError)
 
@@ -40,16 +36,17 @@ const SignIn = () => {
     <div className="h-screen flex items-center justify-center w-full absolute top-0">
       <AuthForm
         defaultValues={defaultValues}
-        schema={signInSchema}
+        schema={signUpSchema}
         zodErrors={zodErrors}
         onSubmit={onSubmit}
         fields={[
+          { name: "username", label: "Username" },
           { name: "email", label: "Email" },
           { name: "password", label: "Password", type: "password" },
         ]}
-        buttonText={forms.signIn.button}
+        buttonText={forms.signUp.button}
         isLoading={submitting}
-        title={forms.signIn.title}
+        title={forms.signUp.title}
       />
     </div>
   )
