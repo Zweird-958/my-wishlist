@@ -1,19 +1,19 @@
 "use client"
 
-import { useFetch } from "@hyper-fetch/react"
 import { Button } from "@nextui-org/react"
 
-import { getWishes } from "@my-wishlist/api/routes/wish"
 import WishList from "@my-wishlist/ui/wish/WishList"
 
-const Home = () => {
-  const { data } = useFetch(getWishes)
+import useWishlist from "@/hooks/useWishlist"
 
-  if (!data) {
+const Home = () => {
+  const { wishlist } = useWishlist()
+
+  if (!wishlist) {
     return <Button>nothin</Button>
   }
 
-  return <WishList wishes={data.result} />
+  return <WishList wishes={wishlist} />
 }
 
 export default Home
