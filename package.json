@@ -19,7 +19,7 @@
     "typecheck": "npm run typecheck -ws --if-present",
     "mobile:check": "npm run expo-check -w 'apps/mobile'",
     "check": "npm run lint && npm run typecheck && npm run format && npm run mobile:check",
-    "clear": "find . -name 'node_modules' -type d -exec rm -rf {} + && find . -name 'package-lock.json' -type d -exec rm {} + && find . -name '.expo' -type d -exec rm -rf {} ",
+    "clear": "git clean -xdf node_modules apps/web/.next apps/mobile/.expo && rm -f package-lock.json",
     "env-symlink": "ln -sf $PWD/.env ./apps/web && ln -sf $PWD/.env ./apps/mobile && ln -sf $PWD/.env ./packages/db"
   },
   "author": "",
