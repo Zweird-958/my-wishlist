@@ -7,4 +7,6 @@ export default {
   },
   signOut: "Se déconnecter",
   signIn: "Se connecter",
+  signUp: "S'inscrire",
+  home: "Accueil",
 } as const
