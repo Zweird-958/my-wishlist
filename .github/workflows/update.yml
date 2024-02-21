@@ -24,6 +24,10 @@ jobs:
           node-version: 18.x
           cache: npm
 
+      - name: Change directory
+        run: |
+          cd apps/mobile
+
       - name: Setup EAS
         uses: expo/expo-github-action@v8
         with:
@@ -31,8 +35,12 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
           packager: npm
 
+      - name: Change directory
+        run: |
+          cd ../..
+
       - name: Install dependencies
         run: npm install
 
       - name: Publish update
-        run: eas update --branch development
+        run: npm run update development -w "apps/mobile"
