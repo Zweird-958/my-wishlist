@@ -43,4 +43,4 @@ jobs:
         run: npm install
 
       - name: Publish update
-        run: npm run update development -w "apps/mobile"
+        run: npm run update -w "apps/mobile"
