@@ -21,7 +21,7 @@
     "@nextui-org/react": "^2.2.9",
     "@prisma/client": "^5.9.1",
     "cookies-next": "^4.1.1",
-    "framer-motion": "^11.0.3",
+    "framer-motion": "^11.0.5",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.330.0",
     "negotiator": "^0.6.3",
