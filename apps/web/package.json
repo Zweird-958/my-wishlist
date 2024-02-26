@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@my-wishlist/types": "^1.0.0",
-    "@types/jsonwebtoken": "^9.0.5",
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/negotiator": "^0.6.3",
     "@types/react": "^18.2.58",
     "@types/react-dom": "^18.2.19",
