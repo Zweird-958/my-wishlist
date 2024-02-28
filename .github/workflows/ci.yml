@@ -7,10 +7,8 @@ on:
   merge_group:
 
 jobs:
-  deps:
+  lint:
     runs-on: ubuntu-latest
-    outputs:
-      deps-path: ${{ steps.install-deps.outputs.deps-path }}
     steps:
       - uses: actions/checkout@v4
 
@@ -20,26 +18,10 @@ jobs:
           node-version: 18
 
       - name: Install Node.js dependencies
-        id: install-deps
-        run: |
-          npm ci
-          echo "::set-output name=deps-path::$(npm root -g)"
-
-  lint:
-    runs-on: ubuntu-latest
-    needs: deps
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4.0.2
-        with:
-          node-version: 18
+        run: npm ci
 
       - name: Lint
         run: npm run lint && npm run lint -ws --if-present
-        env:
-          NODE_PATH: ${{ needs.deps.outputs.deps-path }}
 
   format:
     runs-on: ubuntu-latest
@@ -51,10 +33,11 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install Node.js dependencies
+        run: npm ci
+
       - name: Format
         run: npm run format
-        env:
-          NODE_PATH: ${{ needs.deps.outputs.deps-path }}
 
   typecheck:
     runs-on: ubuntu-latest
@@ -66,10 +49,11 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install Node.js dependencies
+        run: npm ci
+
       - name: Typecheck
         run: npm run typecheck
-        env:
-          NODE_PATH: ${{ needs.deps.outputs.deps-path }}
 
   expo:
     runs-on: ubuntu-latest
@@ -81,7 +65,8 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install Node.js dependencies
+        run: npm ci
+
       - name: Check expo
         run: npm run mobile:check
-        env:
-          NODE_PATH: ${{ needs.deps.outputs.deps-path }}
