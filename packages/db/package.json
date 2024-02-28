@@ -19,8 +19,8 @@
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
-    "@types/node": "^20.11.19",
-    "prisma": "^5.9.1",
+    "@types/node": "^20.11.20",
+    "prisma": "^5.10.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
@@ -28,6 +28,6 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
-    "@prisma/client": "^5.9.1"
+    "@prisma/client": "^5.10.2"
   }
 }
