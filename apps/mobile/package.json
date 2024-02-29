@@ -15,7 +15,7 @@
     "@hyper-fetch/react": "^5.7.4",
     "@my-wishlist/api": "^1.0.0",
     "@my-wishlist/schemas": "^1.0.0",
-    "@react-navigation/native": "^6.1.10",
+    "@react-navigation/native": "^6.1.14",
     "expo": "~50.0.8",
     "expo-font": "~11.10.3",
     "expo-linking": "~6.2.2",
