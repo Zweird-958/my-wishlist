@@ -10,9 +10,10 @@ import {
   useTranslation as useTranslationOrg,
 } from "react-i18next"
 
-import config, { Locale } from "@my-wishlist/config"
+import config from "@my-wishlist/config"
 
 import webConfig, { type Namespace } from "@/utils/config"
+import getLocale from "@/utils/locale/getLocale"
 
 import { getOptions } from "./settings"
 
@@ -35,13 +36,13 @@ i18next
     preload: runsOnServerSide ? config.languages : [],
   })
 export const useTranslation = (
-  lng: Locale,
   ns: Namespace = webConfig.defaultNamespace,
   options = {},
 ) => {
   const [cookies, setCookie] = useCookies([webConfig.cookieLanguageKey])
   const ret = useTranslationOrg(ns, options)
   const { i18n } = ret
+  const lng = getLocale()
 
   if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
     i18n.changeLanguage(lng)

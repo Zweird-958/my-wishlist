@@ -1,17 +1,33 @@
 "use client"
 
+import { usePathname } from "next/navigation"
+
 import { useTranslation } from "@/app/i18n/client"
+import changeLocale from "@/utils/locale/changeLocale"
 
 const TestClient = () => {
-  const { t } = useTranslation("fr")
+  const { t } = useTranslation()
+  const path = usePathname()
 
   return (
-    <div suppressHydrationWarning>
+    <div>
+      <p>{path}</p>
       <h1>{t("hello", { name: "toi" })}</h1>
       <p>Test</p>
-      {/* <Trans i18nKey="languageSwitcher" t={t}>
-        Switch from <strong>fr</strong> to:{" "}
-      </Trans> */}
+      <button
+        onClick={async () => {
+          await changeLocale("fr")
+        }}
+      >
+        fr
+      </button>
+      <button
+        onClick={async () => {
+          await changeLocale("en")
+        }}
+      >
+        /en
+      </button>
     </div>
   )
 }
