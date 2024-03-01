@@ -34,7 +34,11 @@ i18next
     },
     preload: runsOnServerSide ? config.languages : [],
   })
-export const useTranslation = (lng: Locale, ns: Namespace, options = {}) => {
+export const useTranslation = (
+  lng: Locale,
+  ns: Namespace = webConfig.defaultNamespace,
+  options = {},
+) => {
   const [cookies, setCookie] = useCookies([webConfig.cookieLanguageKey])
   const ret = useTranslationOrg(ns, options)
   const { i18n } = ret

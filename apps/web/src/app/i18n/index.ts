@@ -4,7 +4,7 @@ import { initReactI18next } from "react-i18next/initReactI18next"
 
 import { Locale } from "@my-wishlist/config"
 
-import { Namespace } from "@/utils/config"
+import webConfig, { Namespace } from "@/utils/config"
 
 import { getOptions } from "./settings"
 
@@ -23,7 +23,11 @@ const initI18next = async (lng: Locale, ns: Namespace) => {
   return i18nInstance
 }
 
-export async function useTranslation(lng: Locale, ns: Namespace, options = {}) {
+export async function useTranslation(
+  lng: Locale,
+  ns: Namespace = webConfig.defaultNamespace,
+  options = {},
+) {
   const i18nextInstance = await initI18next(lng, ns)
 
   return {

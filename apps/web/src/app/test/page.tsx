@@ -7,7 +7,7 @@ import config from "@/utils/config"
 
 const Test = async () => {
   const lang = cookies().get(config.cookieLanguageKey)?.value
-  const { t } = await useTranslation(lang as Locale, "common")
+  const { t } = await useTranslation(lang as Locale)
 
   return (
     <div>
