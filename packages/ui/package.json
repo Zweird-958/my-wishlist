@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@my-wishlist/types": "^1.0.0",
-    "@types/react": "^18.2.61",
+    "@types/react": "^18.2.62",
     "typescript": "^5.3.3"
   }
 }
