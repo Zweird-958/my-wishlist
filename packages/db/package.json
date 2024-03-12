@@ -20,7 +20,7 @@
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
     "@types/node": "^20.11.26",
-    "prisma": "^5.10.2",
+    "prisma": "^5.11.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.2"
   },
@@ -28,6 +28,6 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
-    "@prisma/client": "^5.10.2"
+    "@prisma/client": "^5.11.0"
   }
 }

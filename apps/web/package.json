@@ -19,7 +19,7 @@
     "@my-wishlist/schemas": "^1.0.0",
     "@my-wishlist/ui": "^1.0.0",
     "@nextui-org/react": "^2.2.10",
-    "@prisma/client": "^5.10.2",
+    "@prisma/client": "^5.11.0",
     "cookies-next": "^4.1.1",
     "framer-motion": "^11.0.12",
     "jsonwebtoken": "^9.0.2",
