@@ -26,14 +26,24 @@ const getLocale = ({ headers, cookies }: NextRequest) =>
     })
     .parse(cookies.get(webConfig.cookieLanguageKey)?.value)
 export const middleware = (request: NextRequest) => {
-  const response = NextResponse.next()
-  const language = getLocale(request)
-  const languageCookie = response.cookies.get(
-    webConfig.cookieLanguageKey,
-  )?.value
+  const {
+    nextUrl: { pathname },
+    url,
+  } = request
 
-  if (language !== languageCookie) {
-    response.cookies.set(webConfig.cookieLanguageKey, language)
+  if (!sharedConfig.languages.some((lang) => pathname.startsWith(`/${lang}`))) {
+    return NextResponse.redirect(
+      new URL(`/${getLocale(request)}${pathname}`, url),
+    )
+  }
+
+  const langInReferer = sharedConfig.languages.find((lang) =>
+    pathname.startsWith(`/${lang}`),
+  )
+  const response = NextResponse.next()
+
+  if (langInReferer) {
+    response.cookies.set(webConfig.cookieLanguageKey, langInReferer)
   }
 
   return response

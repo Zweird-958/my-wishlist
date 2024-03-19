@@ -9,24 +9,29 @@ import {
   NavbarItem,
   type Selection,
 } from "@nextui-org/react"
+import { usePathname, useRouter } from "next/navigation"
 import { useState } from "react"
 
 import config, { type Locale } from "@my-wishlist/config"
 import Flag from "@my-wishlist/ui/ui/Flag"
 
-import useLocale from "@/hooks/useLocale"
+import { useTranslation } from "@/app/i18n/client"
 
 const SelectLocale = () => {
   const [isLoading, setIsLoading] = useState(false)
-  const { locale, changeLocale } = useLocale()
-  const handleChangeLocale = async (keys: Selection) => {
+  const { locale } = useTranslation()
+  const router = useRouter()
+  const pathname = usePathname()
+  const handleChangeLocale = (keys: Selection) => {
     if (isLoading) {
       return
     }
 
     setIsLoading(true)
     const key = Array.from(keys).join(", ").replaceAll("_", " ") as Locale
-    await changeLocale(key)
+    const regex = new RegExp(`^/(${config.languages.join("|")})`, "u")
+    const pathWithoutLocale = pathname.replace(regex, "")
+    router.push(`/${key}${pathWithoutLocale}`)
     setIsLoading(false)
   }
 
@@ -58,6 +63,7 @@ const SelectLocale = () => {
       >
         {(item) => (
           <DropdownItem
+            href=""
             key={item.key}
             startContent={<Flag language={config.flags[item.key] ?? ""} />}
           >

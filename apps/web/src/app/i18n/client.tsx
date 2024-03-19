@@ -13,7 +13,7 @@ import {
 
 import config, { Locale } from "@my-wishlist/config"
 
-import webConfig from "@/utils/config"
+import webConfig, { Namespace } from "@/utils/config"
 
 import { getOptions } from "./settings"
 
@@ -39,8 +39,8 @@ i18next
     preload: runsOnServerSide ? config.languages : [],
   })
 
-export function useTranslation(ns: string | string[]) {
-  const { lang } = useParams<{ lang: Locale }>()
+export const useTranslation = (...ns: Namespace[]) => {
+  const { locale } = useParams<{ locale: Locale }>()
   const ret = useTranslationOrg(ns)
   const { i18n } = ret
   const [activeLang, setActiveLang] = useState(i18n.resolvedLanguage)
@@ -53,12 +53,12 @@ export function useTranslation(ns: string | string[]) {
     setActiveLang(i18n.resolvedLanguage)
   }, [activeLang, i18n.resolvedLanguage])
   useEffect(() => {
-    void i18n.changeLanguage(lang)
-  }, [lang, i18n])
+    void i18n.changeLanguage(locale)
+  }, [locale, i18n])
 
-  if (runsOnServerSide && i18n.resolvedLanguage !== lang) {
-    void i18n.changeLanguage(lang)
+  if (runsOnServerSide && i18n.resolvedLanguage !== locale) {
+    void i18n.changeLanguage(locale)
   }
 
-  return ret
+  return { ...ret, locale }
 }

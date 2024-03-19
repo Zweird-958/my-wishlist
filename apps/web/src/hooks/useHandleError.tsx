@@ -1,16 +1,16 @@
+"use client"
+
 import type { RequestInstance } from "@hyper-fetch/core"
 import { OnFinishedCallbackType } from "@hyper-fetch/react"
 import toast from "react-hot-toast"
 
-import useLocale from "@/hooks/useLocale"
+import { useTranslation } from "@/app/i18n/client"
 
 const SUCCESS_STATUS = 200
 const useHandleError = <RequestType extends RequestInstance>(
   errorsMap: Record<number, string> = {},
 ) => {
-  const {
-    translations: { errors },
-  } = useLocale()
+  const { t } = useTranslation("errors")
   const handleError: OnFinishedCallbackType<RequestType> = ({
     response: { status },
   }) => {
@@ -20,7 +20,7 @@ const useHandleError = <RequestType extends RequestInstance>(
 
     const error = errorsMap[status]
 
-    toast.error(error ?? errors.somethingWentWrong)
+    toast.error(error ?? t("somethingWentWrong"))
   }
 
   return { handleError }

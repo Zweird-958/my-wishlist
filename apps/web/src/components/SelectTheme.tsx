@@ -12,14 +12,10 @@ import {
 import { MoonIcon, SunIcon } from "lucide-react"
 import { useTheme } from "next-themes"
 
-import useLocale from "@/hooks/useLocale"
+import { useTranslation } from "@/app/i18n/client"
 
 const SelectTheme = () => {
-  const {
-    translations: {
-      common: { theme: themeTrans },
-    },
-  } = useLocale()
+  const { t } = useTranslation()
   const { theme, setTheme, resolvedTheme } = useTheme()
   const handleChangeTheme = (keys: Selection) => {
     const key = Array.from(keys).join(", ").replaceAll("_", " ")
@@ -43,9 +39,9 @@ const SelectTheme = () => {
         aria-label="Select theme"
         onSelectionChange={handleChangeTheme}
       >
-        <DropdownItem key="system">{themeTrans.system}</DropdownItem>
-        <DropdownItem key="dark">{themeTrans.dark}</DropdownItem>
-        <DropdownItem key="light">{themeTrans.light}</DropdownItem>
+        <DropdownItem key="system">{t("theme.system")}</DropdownItem>
+        <DropdownItem key="dark">{t("theme.dark")}</DropdownItem>
+        <DropdownItem key="light">{t("theme.light")}</DropdownItem>
       </DropdownMenu>
     </Dropdown>
   )
