@@ -1,4 +1,5 @@
 import { createInstance } from "i18next"
+import ICU from "i18next-icu"
 import resourcesToBackend from "i18next-resources-to-backend"
 import { cookies } from "next/headers"
 import { initReactI18next } from "react-i18next/initReactI18next"
@@ -16,10 +17,11 @@ const initI18next = async (lng: Locale, ns: Namespace) => {
     .use(
       resourcesToBackend(
         (language: string, namespace: string) =>
-          import(`../../locales/${language}/${namespace}.json`),
+          import(`./locales/${language}/${namespace}.json`),
       ),
     )
-    .init(getOptions(lng, ns))
+    .use(ICU)
+    .init({ ...getOptions(ns), lng })
 
   return i18nInstance
 }
@@ -27,11 +29,11 @@ const initI18next = async (lng: Locale, ns: Namespace) => {
 export const useTranslation = async (
   ns: Namespace = webConfig.defaultNamespace,
 ) => {
-  const lng = cookies().get(webConfig.cookieLanguageKey)?.value as Locale
-  const i18nextInstance = await initI18next(lng, ns)
+  const locale = cookies().get(webConfig.cookieLanguageKey)?.value as Locale
+  const i18nextInstance = await initI18next(locale, ns)
 
   return {
-    t: i18nextInstance.getFixedT(lng, Array.isArray(ns) ? ns[0] : ns),
+    t: i18nextInstance.getFixedT(locale, Array.isArray(ns) ? ns[0] : ns),
     i18n: i18nextInstance,
   }
 }

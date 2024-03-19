@@ -7,7 +7,7 @@ const Test = async () => {
   return (
     <div>
       <h1>{t("hello", { name: "bonjour" })}</h1>
-      <p>{t("test")}</p>
+      <p>{t("message", { count: 10 })}</p>
       <TestClient />
     </div>
   )

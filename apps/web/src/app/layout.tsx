@@ -1,9 +1,13 @@
 import type { Metadata } from "next"
 import dynamic from "next/dynamic"
+import { cookies } from "next/headers"
+import { Locale } from "packages/config"
 import { ReactNode } from "react"
 import { Toaster } from "react-hot-toast"
 
+import { LocaleProvider } from "@/app/i18n/provider"
 import Providers from "@/app/providers"
+import config from "@/utils/config"
 
 import "./globals.css"
 
@@ -28,10 +32,14 @@ const RootLayout = (props: Props) => {
             className: "toast",
           }}
         />
-        <Providers>
-          <Appbar />
-          {children}
-        </Providers>
+        <LocaleProvider
+          locale={cookies().get(config.cookieLanguageKey)?.value as Locale}
+        >
+          <Providers>
+            <Appbar />
+            {children}
+          </Providers>
+        </LocaleProvider>
       </body>
     </html>
   )
