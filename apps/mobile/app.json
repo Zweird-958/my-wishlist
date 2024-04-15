@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.mywishlist.app"
@@ -24,7 +26,9 @@
         "backgroundColor": "#ffffff"
       }
     },
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router"
+    ],
     "experiments": {
       "typedRoutes": true,
       "tsconfigPaths": true
@@ -34,7 +38,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "77a74a01-1964-46d6-bab0-415e864b0f20"
+        "projectId": "7f82272d-389a-4924-8e3b-4e03cc078a4c"
       }
     },
     "runtimeVersion": {
