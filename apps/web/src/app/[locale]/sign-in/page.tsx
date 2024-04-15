@@ -7,6 +7,7 @@ import { signIn as signInRequest } from "@my-wishlist/api/routes/user"
 import { signInSchema } from "@my-wishlist/schemas"
 import type { SignInData } from "@my-wishlist/types/User"
 import AuthForm from "@my-wishlist/ui/forms/AuthForm"
+import Center from "@my-wishlist/ui/ui/Center"
 
 import { useTranslation } from "@/app/i18n/client"
 import useHandleError from "@/hooks/useHandleError"
@@ -35,7 +36,7 @@ const SignIn = () => {
   onSubmitFinished(handleError)
 
   return (
-    <div className="h-screen flex items-center justify-center w-full absolute top-0">
+    <Center>
       <AuthForm
         defaultValues={defaultValues}
         schema={signInSchema}
@@ -49,7 +50,7 @@ const SignIn = () => {
         isLoading={submitting}
         title={t("forms:signIn.title")}
       />
-    </div>
+    </Center>
   )
 }
 
