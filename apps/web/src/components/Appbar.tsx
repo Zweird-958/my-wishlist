@@ -55,11 +55,23 @@ const Appbar = () => {
             </Button>
           </NavbarItem>
         ) : (
-          <NavbarItem className="hidden sm:flex">
-            <Button as={Link} href="/sign-in" color="success">
-              {t("signIn")}
-            </Button>
-          </NavbarItem>
+          <>
+            <NavbarItem className="hidden sm:flex">
+              <Button as={Link} href="/sign-in" color="success">
+                {t("signIn")}
+              </Button>
+            </NavbarItem>
+            <NavbarItem className="hidden sm:flex">
+              <Button
+                as={Link}
+                href="/sign-in"
+                variant="bordered"
+                color="primary"
+              >
+                {t("signUp")}
+              </Button>
+            </NavbarItem>
+          </>
         )}
         <SelectTheme />
         <SelectLocale />
