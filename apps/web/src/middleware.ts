@@ -10,6 +10,7 @@ import webConfig from "@/utils/config"
 export const config = {
   matcher: ["/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)"],
 }
+
 const getLocale = ({ headers, cookies }: NextRequest) =>
   languageSchema
     .catch(() => {
@@ -25,6 +26,7 @@ const getLocale = ({ headers, cookies }: NextRequest) =>
       return languageSchemaFallback.parse(languageMatch)
     })
     .parse(cookies.get(webConfig.cookieLanguageKey)?.value)
+
 export const middleware = (request: NextRequest) => {
   const {
     nextUrl: { pathname },
