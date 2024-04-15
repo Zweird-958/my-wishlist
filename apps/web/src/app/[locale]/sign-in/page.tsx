@@ -8,8 +8,8 @@ import { signInSchema } from "@my-wishlist/schemas"
 import type { SignInData } from "@my-wishlist/types/User"
 import AuthForm from "@my-wishlist/ui/forms/AuthForm"
 
+import { useTranslation } from "@/app/i18n/client"
 import useHandleError from "@/hooks/useHandleError"
-import useLocale from "@/hooks/useLocale"
 import useSession from "@/hooks/useSession"
 
 const defaultValues = {
@@ -21,11 +21,9 @@ const SignIn = () => {
   const { submit, onSubmitSuccess, onSubmitFinished, submitting } =
     useSubmit(signInRequest)
   const { signIn } = useSession()
-  const {
-    translations: { forms, zodErrors, errors },
-  } = useLocale()
+  const { t } = useTranslation("errors", "forms", "zodErrors")
   const { handleError } = useHandleError<typeof signInRequest>({
-    401: errors.invalidCredentials,
+    401: t("errors:invalidCredentials"),
   })
   const onSubmit = (data: SignInData) => {
     submit({ data })
@@ -41,15 +39,15 @@ const SignIn = () => {
       <AuthForm
         defaultValues={defaultValues}
         schema={signInSchema}
-        zodErrors={zodErrors}
+        zodErrors={(field) => (error) => t(`zodErrors:${field}.${error}`)}
         onSubmit={onSubmit}
         fields={[
           { name: "email", label: "Email" },
           { name: "password", label: "Password", type: "password" },
         ]}
-        buttonText={forms.signIn.button}
+        buttonText={t("forms:signIn.button")}
         isLoading={submitting}
-        title={forms.signIn.title}
+        title={t("forms:signIn.title")}
       />
     </div>
   )

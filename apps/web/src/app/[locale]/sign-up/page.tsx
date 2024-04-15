@@ -8,8 +8,8 @@ import { signUpSchema } from "@my-wishlist/schemas"
 import type { SignUpData } from "@my-wishlist/types/User"
 import AuthForm from "@my-wishlist/ui/forms/AuthForm"
 
+import { useTranslation } from "@/app/i18n/client"
 import useHandleError from "@/hooks/useHandleError"
-import useLocale from "@/hooks/useLocale"
 
 const defaultValues = {
   username: "",
@@ -20,9 +20,7 @@ const SignIn = () => {
   const router = useRouter()
   const { submit, onSubmitSuccess, onSubmitFinished, submitting } =
     useSubmit(signUpRequest)
-  const {
-    translations: { forms, zodErrors },
-  } = useLocale()
+  const { t } = useTranslation("forms", "common")
   const { handleError } = useHandleError<typeof signUpRequest>()
   const onSubmit = (data: SignUpData) => {
     submit({ data })
@@ -37,16 +35,16 @@ const SignIn = () => {
       <AuthForm
         defaultValues={defaultValues}
         schema={signUpSchema}
-        zodErrors={zodErrors}
+        zodErrors={(field) => (error) => t(`zodErrors:${field}.${error}`)}
         onSubmit={onSubmit}
         fields={[
-          { name: "username", label: forms.username },
-          { name: "email", label: forms.email },
-          { name: "password", label: forms.password, type: "password" },
+          { name: "username", label: t("username") },
+          { name: "email", label: t("email") },
+          { name: "password", label: t("password"), type: "password" },
         ]}
-        buttonText={forms.signUp.button}
+        buttonText={t("signUp.button")}
         isLoading={submitting}
-        title={forms.signUp.title}
+        title={t("signUp.title")}
       />
     </div>
   )

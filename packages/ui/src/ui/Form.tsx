@@ -26,7 +26,7 @@ export type FormProps<T extends FieldValues> = {
   schema: ZodSchema<T>
   buttonText: string
   onSubmit: SubmitHandler<T>
-  zodErrors: Record<string, Record<string, string>>
+  zodErrors: (field: string) => (error: string) => string
   isLoading?: boolean
 }
 const Form = <T extends FieldValues>(props: FormProps<T>) => {
@@ -50,7 +50,7 @@ const Form = <T extends FieldValues>(props: FormProps<T>) => {
       return null
     }
 
-    const fieldErrors = zodErrors[field.name]
+    const fieldErrors = zodErrors(field.name)
 
     if (!fieldErrors) {
       return null
@@ -60,7 +60,7 @@ const Form = <T extends FieldValues>(props: FormProps<T>) => {
       issue.path.includes(field.name),
     )
 
-    return fieldErrors[error?.message] ?? null
+    return fieldErrors(error?.message) ?? null
   }
 
   return (

@@ -13,22 +13,20 @@ import {
 } from "@nextui-org/react"
 import { useState } from "react"
 
+import { useTranslation } from "@/app/i18n/client"
 import SelectLocale from "@/components/SelectLocale"
 import SelectTheme from "@/components/SelectTheme"
-import useLocale from "@/hooks/useLocale"
 import useSession from "@/hooks/useSession"
 
 const Appbar = () => {
   const { session, signOut } = useSession()
-  const {
-    translations: { common },
-  } = useLocale()
+  const { t } = useTranslation("common")
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuItems = [
-    { label: common.home, href: "/" },
-    { label: common.signIn, href: "/sign-in", hidden: Boolean(session) },
-    { label: common.signUp, href: "/sign-up", hidden: Boolean(session) },
-    { label: common.signOut, onClick: signOut, hidden: !session },
+    { label: t("home"), href: "/" },
+    { label: t("signIn"), href: "/sign-in", hidden: Boolean(session) },
+    { label: t("signUp"), href: "/sign-up", hidden: Boolean(session) },
+    { label: t("signOut"), onClick: signOut, hidden: !session },
   ]
 
   return (
@@ -53,7 +51,7 @@ const Appbar = () => {
         {session ? (
           <NavbarItem className="hidden sm:flex">
             <Button onClick={signOut} color="danger">
-              {common.signOut}
+              {t("signOut")}
             </Button>
           </NavbarItem>
         ) : (
@@ -64,7 +62,7 @@ const Appbar = () => {
               className="text-white"
               color="success"
             >
-              {common.signIn}
+              {t("signIn")}
             </Button>
           </NavbarItem>
         )}
