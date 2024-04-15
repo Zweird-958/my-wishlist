@@ -15,16 +15,16 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@my-wishlist/config": "^1.0.0",
-    "@nextui-org/react": "^2.2.9",
-    "framer-motion": "^11.0.7",
-    "lucide-react": "^0.343.0",
-    "react-hook-form": "^7.50.1",
+    "@nextui-org/react": "^2.2.10",
+    "framer-motion": "^11.0.14",
+    "lucide-react": "^0.358.0",
+    "react-hook-form": "^7.51.0",
     "tailwindcss": "^3.4.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@my-wishlist/types": "^1.0.0",
-    "@types/react": "^18.2.60",
-    "typescript": "^5.3.3"
+    "@types/react": "^18.2.66",
+    "typescript": "^5.4.2"
   }
 }
