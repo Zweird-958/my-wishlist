@@ -13,7 +13,26 @@ const config: Config = {
     "../../packages/ui/src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {},
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      themes: {
+        light: {
+          colors: {
+            success: {
+              foreground: "#FFFFFF",
+            },
+          },
+        },
+        dark: {
+          colors: {
+            success: {
+              foreground: "#FFFFFF",
+            },
+          },
+        },
+      },
+    }),
+  ],
   darkMode: "class",
   presets: [baseConfig, uiConfig],
 }

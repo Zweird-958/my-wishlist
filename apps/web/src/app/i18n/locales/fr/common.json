@@ -8,5 +8,7 @@
   "signOut": "Se déconnecter",
   "signIn": "Se connecter",
   "signUp": "S'inscrire",
-  "home": "Accueil"
+  "home": "Accueil",
+  "notLogged": "Vous n'êtes pas connecté.",
+  "mustLoggedIn": "Vous devez être connecté pour accéder à votre liste d'envies."
 }

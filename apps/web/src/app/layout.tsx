@@ -30,7 +30,7 @@ const RootLayout = (props: Props) => {
         />
         <Providers>
           <Appbar />
-          {children}
+          <main className="flex grow px-4">{children}</main>
         </Providers>
       </body>
     </html>

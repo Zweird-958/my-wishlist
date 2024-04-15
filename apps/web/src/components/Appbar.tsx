@@ -20,7 +20,7 @@ import useSession from "@/hooks/useSession"
 
 const Appbar = () => {
   const { session, signOut } = useSession()
-  const { t } = useTranslation("common")
+  const { t } = useTranslation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuItems = [
     { label: t("home"), href: "/" },
@@ -56,12 +56,7 @@ const Appbar = () => {
           </NavbarItem>
         ) : (
           <NavbarItem className="hidden sm:flex">
-            <Button
-              as={Link}
-              href="/sign-in"
-              className="text-white"
-              color="success"
-            >
+            <Button as={Link} href="/sign-in" color="success">
               {t("signIn")}
             </Button>
           </NavbarItem>

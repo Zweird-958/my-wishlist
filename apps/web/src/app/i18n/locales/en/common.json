@@ -8,5 +8,7 @@
   "signOut": "Sign out",
   "signIn": "Sign in",
   "signUp": "Sign up",
-  "home": "Home"
+  "home": "Home",
+  "notLogged": "You are not logged in.",
+  "mustLoggedIn": "You must be logged to see your wishlist."
 }
