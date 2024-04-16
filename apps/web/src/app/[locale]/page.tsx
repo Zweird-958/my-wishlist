@@ -1,10 +1,9 @@
 "use client"
 
-import { Button } from "@nextui-org/react"
-
 import WishList from "@my-wishlist/ui/wish/WishList"
 
 import AuthWishlist from "@/components/user/AuthWishlist"
+import WishlistEmpty from "@/components/wishlist/WishlistEmpty"
 import useSession from "@/hooks/useSession"
 import useWishlist from "@/hooks/useWishlist"
 
@@ -16,8 +15,8 @@ const Home = () => {
     return <AuthWishlist />
   }
 
-  if (!wishlist) {
-    return <Button>nothin</Button>
+  if (wishlist.length === 0) {
+    return <WishlistEmpty />
   }
 
   return <WishList wishes={wishlist} />
