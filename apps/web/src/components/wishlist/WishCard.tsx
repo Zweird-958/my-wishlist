@@ -13,6 +13,7 @@ import { SquarePenIcon, Trash2Icon } from "lucide-react"
 
 import type { Wish } from "@my-wishlist/types/Wish"
 
+import { useTranslation } from "@/app/i18n/client"
 import EditWishForm from "@/components/wishlist/EditWishForm"
 
 type Props = {
@@ -23,6 +24,7 @@ type Props = {
 const WishCard = ({ wish, canEdit }: Props) => {
   const { image, name, link } = wish
   const { isOpen, onOpenChange } = useDisclosure()
+  const { t } = useTranslation()
 
   return (
     <>
@@ -74,7 +76,7 @@ const WishCard = ({ wish, canEdit }: Props) => {
             color="primary"
             size="sm"
           >
-            Acheter
+            {t("buy")}
           </Button>
         </CardFooter>
       </Card>

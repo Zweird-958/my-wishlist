@@ -12,5 +12,6 @@
   "notLogged": "You are not logged in.",
   "mustLoggedIn": "You must be logged to see your wishlist.",
   "empty": "Your wishlist is empty.",
-  "howToAdd": "To add a product to your wishlist, click on the plus icon."
+  "howToAdd": "To add a product to your wishlist, click on the plus icon.",
+  "buy": "Buy"
 }
