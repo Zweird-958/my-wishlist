@@ -1,20 +1,12 @@
 import { Input, InputProps } from "@nextui-org/react"
-import {
-  Control,
-  Controller,
-  ControllerRenderProps,
-  FieldErrors,
-  FieldValues,
-  Path,
-} from "react-hook-form"
+import { Control, Controller, FieldValues, Path } from "react-hook-form"
+
+import { GetErrorMessage } from "../types/Form"
 
 export type FormProps<TFieldValues extends FieldValues> = {
   name: Path<TFieldValues>
   control: Control<TFieldValues>
-  getErrorMessage: (
-    field: ControllerRenderProps<TFieldValues, Path<TFieldValues>>,
-    error: FieldErrors<TFieldValues>,
-  ) => string
+  getErrorMessage: GetErrorMessage<TFieldValues>
 } & InputProps
 
 const FormField = <TFieldValues extends FieldValues>({

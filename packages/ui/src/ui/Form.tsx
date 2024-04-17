@@ -5,7 +5,6 @@ import { Button, Input } from "@nextui-org/react"
 import { InputHTMLAttributes } from "react"
 import {
   Controller,
-  ControllerRenderProps,
   DefaultValues,
   FieldValues,
   Path,
@@ -13,6 +12,8 @@ import {
   useForm,
 } from "react-hook-form"
 import { ZodSchema } from "zod"
+
+import { GetErrorMessage } from "../types/Form"
 
 type Field<T extends FieldValues> = {
   name: Path<T>
@@ -26,7 +27,7 @@ export type FormProps<T extends FieldValues> = {
   schema: ZodSchema<T>
   buttonText: string
   onSubmit: SubmitHandler<T>
-  zodErrors: (field: string) => (error: string) => string
+  getErrorMessage: GetErrorMessage<T>
   isLoading?: boolean
 }
 const Form = <T extends FieldValues>(props: FormProps<T>) => {
@@ -36,32 +37,13 @@ const Form = <T extends FieldValues>(props: FormProps<T>) => {
     schema,
     fields,
     buttonText,
-    zodErrors,
+    getErrorMessage,
     isLoading,
   } = props
   const { control, handleSubmit } = useForm<T>({
     defaultValues,
     resolver: zodResolver(schema),
   })
-  const getErrorMessage = (field: ControllerRenderProps<T, Path<T>>) => {
-    const result = schema.safeParse({ [field.name]: field.value })
-
-    if (result.success) {
-      return null
-    }
-
-    const fieldErrors = zodErrors(field.name)
-
-    if (!fieldErrors) {
-      return null
-    }
-
-    const [error] = result.error.issues.filter((issue) =>
-      issue.path.includes(field.name),
-    )
-
-    return fieldErrors(error?.message) ?? null
-  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
@@ -75,7 +57,7 @@ const Form = <T extends FieldValues>(props: FormProps<T>) => {
               {...fieldProps}
               {...field}
               size="sm"
-              errorMessage={errors[name] && getErrorMessage(field)}
+              errorMessage={errors[name] && getErrorMessage(field, errors)}
             />
           )}
         />

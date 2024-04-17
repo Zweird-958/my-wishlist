@@ -22,7 +22,8 @@ const SignIn = () => {
   const { submit, onSubmitSuccess, onSubmitFinished, submitting } =
     useSubmit(signUpRequest)
   const { t } = useTranslation("forms", "common")
-  const { handleError } = useHandleError<typeof signUpRequest>()
+  const { handleError, getErrorMessage } =
+    useHandleError<typeof signUpRequest>()
   const onSubmit = (data: SignUpData) => {
     submit({ data })
   }
@@ -36,7 +37,7 @@ const SignIn = () => {
       <AuthForm
         defaultValues={defaultValues}
         schema={signUpSchema}
-        zodErrors={(field) => (error) => t(`zodErrors:${field}.${error}`)}
+        getErrorMessage={getErrorMessage}
         onSubmit={onSubmit}
         fields={[
           { name: "username", label: t("username") },

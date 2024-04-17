@@ -22,10 +22,12 @@ const SignIn = () => {
   const { submit, onSubmitSuccess, onSubmitFinished, submitting } =
     useSubmit(signInRequest)
   const { signIn } = useSession()
-  const { t } = useTranslation("errors", "forms", "zodErrors")
-  const { handleError } = useHandleError<typeof signInRequest>({
-    401: t("errors:invalidCredentials"),
-  })
+  const { t } = useTranslation("errors", "forms")
+  const { handleError, getErrorMessage } = useHandleError<typeof signInRequest>(
+    {
+      401: t("errors:invalidCredentials"),
+    },
+  )
   const onSubmit = (data: SignInData) => {
     submit({ data })
   }
@@ -40,7 +42,7 @@ const SignIn = () => {
       <AuthForm
         defaultValues={defaultValues}
         schema={signInSchema}
-        zodErrors={(field) => (error) => t(`zodErrors:${field}.${error}`)}
+        getErrorMessage={getErrorMessage}
         onSubmit={onSubmit}
         fields={[
           { name: "email", label: "Email" },
