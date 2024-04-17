@@ -19,7 +19,7 @@
     "@my-wishlist/schemas": "^1.0.0",
     "@my-wishlist/ui": "^1.0.0",
     "@nextui-org/react": "^2.2.10",
-    "@prisma/client": "^5.11.0",
+    "@prisma/client": "^5.12.1",
     "cookies-next": "^4.1.1",
     "i18next": "^23.10.0",
     "i18next-browser-languagedetector": "^7.2.1",
