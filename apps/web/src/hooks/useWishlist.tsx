@@ -9,19 +9,15 @@ import useWishlistStore from "@/stores/wishlist"
 const useWishlist = () => {
   const { session } = useSession()
   const { setWishlist, wishlist, ...wishlistStore } = useWishlistStore()
-  const { data } = useFetch(getWishes, { disabled: wishlist.length > 0 })
+  const { data } = useFetch(getWishes, {
+    disabled: wishlist.length > 0 || !session,
+  })
 
   useEffect(() => {
-    if (!session) {
-      setWishlist([])
-
-      return
+    if (wishlist.length === 0 && data && session) {
+      setWishlist(data.result)
     }
-
-    if (data?.result) {
-      setWishlist(data?.result || [])
-    }
-  }, [data?.result, setWishlist, session])
+  }, [setWishlist, session, wishlist.length, data])
 
   return { setWishlist, wishlist, ...wishlistStore }
 }
