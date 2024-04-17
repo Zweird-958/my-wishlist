@@ -12,7 +12,7 @@ const useUploadImage = () => {
     setImage(files?.item(0) || null)
   }
 
-  const ImageComponent = (
+  const SelectImageComponent = (
     <Button as={"div"} color="primary" className="w-full">
       <label htmlFor="image" className="truncate">
         {image ? image.name : t("image")}
@@ -27,7 +27,7 @@ const useUploadImage = () => {
     </Button>
   )
 
-  return { image, ImageComponent }
+  return { image, SelectImageComponent }
 }
 
 export default useUploadImage

@@ -38,7 +38,7 @@ type WishFormProps = {
 const Form = (props: FormProps) => {
   const { onSubmit, wish, isLoading, submitText, onClose } = props
   const { t } = useTranslation("forms")
-  const { ImageComponent, image } = useUploadImage()
+  const { SelectImageComponent, image } = useUploadImage()
   const { control, handleSubmit, setValue, watch } = useForm({
     defaultValues: {
       name: wish?.name ?? "",
@@ -93,7 +93,7 @@ const Form = (props: FormProps) => {
         currency={watch("currency")}
         currencies={currencies?.result || []}
       />
-      {ImageComponent}
+      {SelectImageComponent}
       <WishSelectedImage wish={wish} image={image} />
       <div className="flex justify-between w-full">
         <Button type="button" color="danger" onPress={onClose}>
