@@ -1,3 +1,7 @@
+import { z } from "zod"
+
+import { currencySchema } from "@my-wishlist/schemas"
+
 export type Wish = {
   id: number
   name: string
@@ -12,4 +16,4 @@ export type Wish = {
   priceFormatted: string
 }
 
-export type Currency = "EURO" | "DOLLAR" | "POUND"
+export type Currency = z.infer<typeof currencySchema>

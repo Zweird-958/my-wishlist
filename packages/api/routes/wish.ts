@@ -8,3 +8,9 @@ export const getWishes = client.createRequest<ApiResponse<Wish[]>>()({
   endpoint: "/wish",
   auth: true,
 })
+
+export const createWish = client.createRequest<ApiResponse<Wish>, FormData>()({
+  method: "POST",
+  endpoint: "/wish",
+  auth: true,
+})

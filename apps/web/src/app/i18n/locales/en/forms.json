@@ -10,5 +10,15 @@
   "username": "Username",
   "email": "Email",
   "password": "Password",
-  "home": "Form home"
+  "home": "Form home",
+  "addWish": {
+    "title": "Add to wishlist",
+    "submit": "Create",
+    "cancel": "Cancel",
+    "success": "Wish added successfully"
+  },
+  "name": "Name",
+  "price": "Price",
+  "url": "Link",
+  "image": "Select an image"
 }

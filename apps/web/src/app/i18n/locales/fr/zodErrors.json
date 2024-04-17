@@ -10,5 +10,14 @@
   "username": {
     "required": "Nom d'utilisateur est requis",
     "length": "Votre nom d'utilisateur doit contenir au moins 3 caractères"
+  },
+  "price": {
+    "required": "Prix est requis"
+  },
+  "name": {
+    "required": "Nom est requis"
+  },
+  "url": {
+    "invalid": "URL invalide"
   }
 }

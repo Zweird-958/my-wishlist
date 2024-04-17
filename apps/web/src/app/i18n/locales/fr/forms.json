@@ -9,5 +9,15 @@
   },
   "username": "Nom d'utilisateur",
   "email": "Email",
-  "password": "Mot de passe"
+  "password": "Mot de passe",
+  "addWish": {
+    "title": "Ajouter à la liste d'envie",
+    "submit": "Créer",
+    "cancel": "Annuler",
+    "success": "L'article a été ajouté à votre liste d'envie"
+  },
+  "name": "Nom",
+  "price": "Prix",
+  "url": "Lien",
+  "image": "Sélectionner une image"
 }

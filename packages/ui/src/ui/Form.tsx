@@ -71,14 +71,12 @@ const Form = <T extends FieldValues>(props: FormProps<T>) => {
           name={name}
           control={control}
           render={({ field, formState: { errors } }) => (
-            <div>
-              <Input
-                {...fieldProps}
-                {...field}
-                size="sm"
-                errorMessage={errors[name] && getErrorMessage(field)}
-              />
-            </div>
+            <Input
+              {...fieldProps}
+              {...field}
+              size="sm"
+              errorMessage={errors[name] && getErrorMessage(field)}
+            />
           )}
         />
       ))}

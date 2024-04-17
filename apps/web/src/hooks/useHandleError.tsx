@@ -2,6 +2,12 @@
 
 import type { RequestInstance } from "@hyper-fetch/core"
 import { OnFinishedCallbackType } from "@hyper-fetch/react"
+import {
+  ControllerRenderProps,
+  FieldErrors,
+  FieldValues,
+  Path,
+} from "react-hook-form"
 import toast from "react-hot-toast"
 
 import { useTranslation } from "@/app/i18n/client"
@@ -10,7 +16,7 @@ const SUCCESS_STATUS = 200
 const useHandleError = <RequestType extends RequestInstance>(
   errorsMap: Record<number, string> = {},
 ) => {
-  const { t } = useTranslation("errors")
+  const { t } = useTranslation("errors", "zodErrors")
   const handleError: OnFinishedCallbackType<RequestType> = ({
     response: { status },
   }) => {
@@ -22,8 +28,12 @@ const useHandleError = <RequestType extends RequestInstance>(
 
     toast.error(error ?? t("somethingWentWrong"))
   }
+  const getErrorMessage = <T extends FieldValues>(
+    field: ControllerRenderProps<T, Path<T>>,
+    error: FieldErrors<T>,
+  ) => t(`zodErrors:${field.name}.${error[field.name]?.message}`)
 
-  return { handleError }
+  return { handleError, getErrorMessage }
 }
 
 export default useHandleError
