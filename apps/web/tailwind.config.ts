@@ -21,11 +21,17 @@ const config: Config = {
             success: {
               foreground: "#FFFFFF",
             },
+            warning: {
+              foreground: "#FFFFFF",
+            },
           },
         },
         dark: {
           colors: {
             success: {
+              foreground: "#FFFFFF",
+            },
+            warning: {
               foreground: "#FFFFFF",
             },
           },

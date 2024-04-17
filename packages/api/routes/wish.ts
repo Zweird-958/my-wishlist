@@ -14,3 +14,9 @@ export const createWish = client.createRequest<ApiResponse<Wish>, FormData>()({
   endpoint: "/wish",
   auth: true,
 })
+
+export const updateWish = client.createRequest<ApiResponse<Wish>, FormData>()({
+  method: "PATCH",
+  endpoint: "/wish/:wishId",
+  auth: true,
+})

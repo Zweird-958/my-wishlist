@@ -11,11 +11,18 @@
   "email": "Email",
   "password": "Password",
   "home": "Form home",
-  "addWish": {
-    "title": "Add to wishlist",
-    "submit": "Create",
-    "cancel": "Cancel",
-    "success": "Wish added successfully"
+  "wish": {
+    "add": {
+      "title": "Add to wishlist",
+      "submit": "Create",
+      "success": "Wish added successfully"
+    },
+    "update": {
+      "title": "Update wish",
+      "submit": "Update",
+      "success": "Wish updated successfully"
+    },
+    "cancel": "Cancel"
   },
   "name": "Name",
   "price": "Price",

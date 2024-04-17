@@ -3,10 +3,9 @@
 import { Button, useDisclosure } from "@nextui-org/react"
 import { Plus } from "lucide-react"
 
-import WishList from "@my-wishlist/ui/wish/WishList"
-
 import AuthWishlist from "@/components/user/AuthWishlist"
 import AddWishForm from "@/components/wishlist/AddWishForm"
+import WishList from "@/components/wishlist/WishList"
 import WishlistEmpty from "@/components/wishlist/WishlistEmpty"
 import useSession from "@/hooks/useSession"
 import useWishlist from "@/hooks/useWishlist"

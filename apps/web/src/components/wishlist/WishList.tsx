@@ -1,6 +1,6 @@
 import { Wish } from "@my-wishlist/types/Wish"
 
-import WishCard from "./WishCard"
+import WishCard from "@/components/wishlist/WishCard"
 
 type Props = {
   wishes: Wish[]
@@ -13,7 +13,7 @@ const WishList = (props: Props) => {
     <div className="px-4 flex justify-center py-2 md:px-8">
       <div className="flex flex-wrap gap-4 justify-center">
         {wishes.map((wish) => (
-          <WishCard key={wish.id} wish={wish} />
+          <WishCard key={wish.id} wish={wish} canEdit />
         ))}
       </div>
     </div>

@@ -3,7 +3,6 @@ import { useFetch } from "@hyper-fetch/react"
 import {
   Button,
   ButtonProps,
-  Image,
   Modal,
   ModalBody,
   ModalContent,
@@ -20,28 +19,30 @@ import { Currency, Wish } from "@my-wishlist/types/Wish"
 import { useTranslation } from "@/app/i18n/client"
 import CurrencyDropdown from "@/components/CurrencyDropdown"
 import FormField from "@/components/ui/FormField"
+import WishSelectedImage from "@/components/wishlist/WishSelectedImage"
 import useUploadImage from "@/hooks/useUploadImage"
 import config from "@/utils/config"
 
-type Props = {
-  onSubmit: (data: FormData) => void
+type FormProps = {
   wish?: Wish
-} & Pick<ModalProps, "isOpen" | "onOpenChange"> &
-  Pick<ButtonProps, "isLoading">
+  submitText: string
+  onSubmit: (data: FormData) => void
+} & Pick<ButtonProps, "isLoading"> &
+  Pick<ModalProps, "onClose">
 
-const WishForm = ({
-  isOpen,
-  onOpenChange,
-  onSubmit,
-  wish,
-  isLoading,
-}: Props) => {
+type WishFormProps = {
+  title: string
+} & Pick<ModalProps, "isOpen" | "onOpenChange"> &
+  FormProps
+
+const Form = (props: FormProps) => {
+  const { onSubmit, wish, isLoading, submitText, onClose } = props
   const { t } = useTranslation("forms")
   const { ImageComponent, image } = useUploadImage()
   const { control, handleSubmit, setValue, watch } = useForm({
     defaultValues: {
       name: wish?.name ?? "",
-      price: wish?.price ?? "",
+      price: wish?.price ?? 0,
       currency: wish?.currency ?? config.defaultCurrency,
       url: wish?.link ?? "",
       purchased: wish?.purchased ?? false,
@@ -75,6 +76,41 @@ const WishForm = ({
   })
 
   return (
+    <form
+      onSubmit={handleOnSubmit}
+      className="flex flex-col gap-3 items-center"
+    >
+      <FormField control={control} name="name" label={t("name")} />
+      <FormField
+        control={control}
+        name="price"
+        type="number"
+        label={t("price")}
+      />
+      <FormField control={control} name="url" type="url" label={t("url")} />
+      <CurrencyDropdown
+        onSelectionChange={handleChangeCurrency}
+        currency={watch("currency")}
+        currencies={currencies?.result || []}
+      />
+      {ImageComponent}
+      <WishSelectedImage wish={wish} image={image} />
+      <div className="flex justify-between w-full">
+        <Button type="button" color="danger" onPress={onClose}>
+          {t("wish.cancel")}
+        </Button>
+        <Button type="submit" color="primary" isLoading={isLoading}>
+          {submitText}
+        </Button>
+      </div>
+    </form>
+  )
+}
+
+const WishForm = (props: WishFormProps) => {
+  const { isOpen, onOpenChange, title, ...formProps } = props
+
+  return (
     <Modal
       isOpen={isOpen}
       onOpenChange={onOpenChange}
@@ -84,47 +120,9 @@ const WishForm = ({
       <ModalContent>
         {(onClose) => (
           <>
-            <ModalHeader>{t("addWish.title")}</ModalHeader>
+            <ModalHeader>{title}</ModalHeader>
             <ModalBody>
-              <form
-                onSubmit={handleOnSubmit}
-                className="flex flex-col gap-3 items-center"
-              >
-                <FormField control={control} name="name" label={t("name")} />
-                <FormField
-                  control={control}
-                  name="price"
-                  type="number"
-                  label={t("price")}
-                />
-                <FormField
-                  control={control}
-                  name="url"
-                  type="url"
-                  label={t("url")}
-                />
-                <CurrencyDropdown
-                  onSelectionChange={handleChangeCurrency}
-                  currency={watch("currency")}
-                  currencies={currencies?.result || []}
-                />
-                {ImageComponent}
-                {image && (
-                  <Image
-                    className="h-72 w-72 object-cover"
-                    src={URL.createObjectURL(image)}
-                    alt="wish image"
-                  />
-                )}
-                <div className="flex justify-between w-full">
-                  <Button type="button" color="danger" onPress={onClose}>
-                    {t("addWish.cancel")}
-                  </Button>
-                  <Button type="submit" color="primary" isLoading={isLoading}>
-                    {t("addWish.submit")}
-                  </Button>
-                </div>
-              </form>
+              <Form {...formProps} onClose={onClose} />
             </ModalBody>
           </>
         )}

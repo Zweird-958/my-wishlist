@@ -21,7 +21,7 @@ const AddWishForm = ({ isOpen, onOpenChange }: Props) => {
       onOpenChange(false)
     }
 
-    toast.success(t("addWish.success"))
+    toast.success(t("wish.add.success"))
   })
   const onSubmit = (data: FormData) => {
     submit({ data })
@@ -29,6 +29,8 @@ const AddWishForm = ({ isOpen, onOpenChange }: Props) => {
 
   return (
     <WishForm
+      title={t("wish.add.title")}
+      submitText={t("wish.add.submit")}
       onSubmit={onSubmit}
       isOpen={isOpen}
       onOpenChange={onOpenChange}

@@ -10,11 +10,18 @@
   "username": "Nom d'utilisateur",
   "email": "Email",
   "password": "Mot de passe",
-  "addWish": {
-    "title": "Ajouter à la liste d'envie",
-    "submit": "Créer",
-    "cancel": "Annuler",
-    "success": "L'article a été ajouté à votre liste d'envie"
+  "wish": {
+    "add": {
+      "title": "Ajouter à la liste d'envie",
+      "submit": "Créer",
+      "success": "L'article a été ajouté à votre liste d'envie"
+    },
+    "update": {
+      "title": "Modifier l'article",
+      "submit": "Modifier",
+      "success": "L'article a été modifié"
+    },
+    "cancel": "Annuler"
   },
   "name": "Nom",
   "price": "Prix",
