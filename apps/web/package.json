@@ -21,7 +21,7 @@
     "@nextui-org/react": "^2.3.2",
     "@prisma/client": "^5.12.1",
     "cookies-next": "^4.1.1",
-    "i18next": "^23.10.0",
+    "i18next": "^23.11.2",
     "i18next-browser-languagedetector": "^7.2.1",
     "i18next-icu": "^2.3.0",
     "i18next-resources-to-backend": "^1.2.1",
