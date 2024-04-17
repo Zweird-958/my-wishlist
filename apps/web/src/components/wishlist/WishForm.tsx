@@ -19,6 +19,7 @@ import { Currency, Wish } from "@my-wishlist/types/Wish"
 import { useTranslation } from "@/app/i18n/client"
 import CurrencyDropdown from "@/components/CurrencyDropdown"
 import FormField from "@/components/ui/FormField"
+import SwitchField from "@/components/ui/SwitchField"
 import WishSelectedImage from "@/components/wishlist/WishSelectedImage"
 import useUploadImage from "@/hooks/useUploadImage"
 import config from "@/utils/config"
@@ -34,6 +35,8 @@ type WishFormProps = {
   title: string
 } & Pick<ModalProps, "isOpen" | "onOpenChange"> &
   FormProps
+
+type WishBooleanInput = "purchased" | "isPrivate"
 
 const Form = (props: FormProps) => {
   const { onSubmit, wish, isLoading, submitText, onClose } = props
@@ -74,6 +77,9 @@ const Form = (props: FormProps) => {
 
     onSubmit(formData)
   })
+  const handleSwitch = (field: WishBooleanInput) => (isSelected: boolean) => {
+    setValue(field, isSelected)
+  }
 
   return (
     <form
@@ -95,6 +101,20 @@ const Form = (props: FormProps) => {
       />
       {SelectImageComponent}
       <WishSelectedImage wish={wish} image={image} />
+      {wish && (
+        <>
+          <SwitchField
+            label={t("purchased")}
+            onValueChange={handleSwitch("purchased")}
+            isSelected={watch("purchased")}
+          />
+          <SwitchField
+            label={t("private")}
+            onValueChange={handleSwitch("isPrivate")}
+            isSelected={watch("isPrivate")}
+          />
+        </>
+      )}
       <div className="flex justify-between w-full">
         <Button type="button" color="danger" onPress={onClose}>
           {t("wish.cancel")}

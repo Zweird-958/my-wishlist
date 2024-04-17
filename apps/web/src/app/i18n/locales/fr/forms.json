@@ -26,5 +26,7 @@
   "name": "Nom",
   "price": "Prix",
   "url": "Lien",
-  "image": "Sélectionner une image"
+  "image": "Sélectionner une image",
+  "purchased": "Acheté",
+  "private": "Privé"
 }
