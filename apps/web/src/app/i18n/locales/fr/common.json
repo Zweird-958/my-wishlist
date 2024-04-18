@@ -18,5 +18,10 @@
     "all": "Tous",
     "purchased": "Achetés",
     "notPurchased": "Non achetés"
+  },
+  "sorts": {
+    "date": "Date",
+    "priceAsc": "Prix croissant",
+    "priceDesc": "Prix décroissant"
   }
 }

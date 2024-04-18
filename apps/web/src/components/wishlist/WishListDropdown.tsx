@@ -10,7 +10,6 @@ import {
 } from "@nextui-org/react"
 
 import { useTranslation } from "@/app/i18n/client"
-import { Filter } from "@/utils/config"
 
 type Props<T extends string> = {
   items: {
@@ -19,12 +18,14 @@ type Props<T extends string> = {
   }[]
   onSelectionChange: (key: T) => void
   selectedItem: string
+  translationKey: string
 }
 
-const WishListDropdown = <T extends Filter>({
+const WishListDropdown = <T extends string>({
   items,
   onSelectionChange,
   selectedItem,
+  translationKey,
 }: Props<T>) => {
   const { t } = useTranslation()
   const handleSelectionChange = (keys: Selection) => {
@@ -35,7 +36,9 @@ const WishListDropdown = <T extends Filter>({
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Button variant="bordered">{t(`filters.${selectedItem}`)}</Button>
+        <Button variant="bordered">
+          {t(`${translationKey}.${selectedItem}`)}
+        </Button>
       </DropdownTrigger>
       <DropdownMenu
         items={items}
@@ -45,7 +48,7 @@ const WishListDropdown = <T extends Filter>({
       >
         {(item) => (
           <DropdownItem key={item.key}>
-            {t(`filters.${item.label}`)}
+            {t(`${translationKey}.${item.label}`)}
           </DropdownItem>
         )}
       </DropdownMenu>

@@ -2,7 +2,7 @@ import { create } from "zustand"
 
 import { Wish } from "@my-wishlist/types/Wish"
 
-import { Filter } from "@/utils/config"
+import config, { Filter, Sort } from "@/utils/config"
 
 type WishlistStore = {
   wishlist: Wish[]
@@ -12,6 +12,8 @@ type WishlistStore = {
   updateWish: (wish: Wish) => void
   selectedFilter: Filter
   setSelectedFilter: (filter: Filter) => void
+  selectedSort: Sort
+  setSelectedSort: (sort: Sort) => void
 }
 
 const useWishlistStore = create<WishlistStore>((set) => ({
@@ -29,8 +31,10 @@ const useWishlistStore = create<WishlistStore>((set) => ({
         wish.id === updatedWish.id ? updatedWish : wish,
       ),
     })),
-  selectedFilter: "all",
+  selectedFilter: config.defaultFilter,
   setSelectedFilter: (selectedFilter: Filter) => set({ selectedFilter }),
+  selectedSort: config.defaultSort,
+  setSelectedSort: (selectedSort: Sort) => set({ selectedSort }),
 }))
 
 export default useWishlistStore
