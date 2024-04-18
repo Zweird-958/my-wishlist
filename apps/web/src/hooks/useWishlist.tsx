@@ -1,5 +1,4 @@
 import { useFetch } from "@hyper-fetch/react"
-import { useEffect } from "react"
 
 import { getWishes } from "@my-wishlist/api/routes/wish"
 
@@ -9,17 +8,15 @@ import useWishlistStore from "@/stores/wishlist"
 const useWishlist = () => {
   const { session } = useSession()
   const { setWishlist, wishlist, ...wishlistStore } = useWishlistStore()
-  const { data } = useFetch(getWishes, {
+  const { loading, onSuccess } = useFetch(getWishes, {
     disabled: wishlist.length > 0 || !session,
   })
 
-  useEffect(() => {
-    if (wishlist.length === 0 && data && session) {
-      setWishlist(data.result)
-    }
-  }, [setWishlist, session, wishlist.length, data])
+  onSuccess(({ response: { result } }) => {
+    setWishlist(result)
+  })
 
-  return { setWishlist, wishlist, ...wishlistStore }
+  return { setWishlist, wishlist, ...wishlistStore, isLoading: loading }
 }
 
 export default useWishlist

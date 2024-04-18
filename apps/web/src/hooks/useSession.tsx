@@ -7,7 +7,7 @@ import useSessionStore from "@/stores/session"
 import config from "@/utils/config"
 
 const useSession = () => {
-  const { setSession, ...sessionStore } = useSessionStore()
+  const { setSession, setIsLoading, ...sessionStore } = useSessionStore()
   const signIn = (response: string) => {
     const jwt = response
 
@@ -26,13 +26,16 @@ const useSession = () => {
     const jwt = localStorage.getItem(config.localStorageSessionKey)
 
     if (!jwt) {
+      setIsLoading(false)
+
       return
     }
 
     const { payload } = jsonwebtoken.decode(jwt) as RawJwt
 
     setSession(payload)
-  }, [setSession])
+    setIsLoading(false)
+  }, [setIsLoading, setSession])
 
   return { signIn, signOut, ...sessionStore }
 }
