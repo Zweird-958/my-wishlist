@@ -32,7 +32,7 @@ const WishCard = ({ wish, canEdit }: Props) => {
       {canEdit && (
         <EditWishForm wish={wish} isOpen={isOpen} onOpenChange={onOpenChange} />
       )}
-      <Card isFooterBlurred className="w-80 h-80">
+      <Card isFooterBlurred className="w-wish h-wish">
         <CardHeader className="absolute top-0 z-20 justify-between">
           {canEdit && (
             <>

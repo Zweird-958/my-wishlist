@@ -44,7 +44,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex flex-col max-w-5xl mx-auto">
+      <div className="flex flex-col gap-4 max-w-wish mx-auto">
         <div className="flex justify-between">
           <WishListDropdown
             items={FILTERS.map((filter) => ({ key: filter, label: filter }))}

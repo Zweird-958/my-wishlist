@@ -12,7 +12,19 @@ const config: Config = {
     "../../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "../../packages/ui/src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {},
+  theme: {
+    extend: {
+      width: {
+        wish: "20rem",
+      },
+      height: {
+        wish: "20rem",
+      },
+      maxWidth: {
+        wish: "62rem",
+      },
+    },
+  },
   plugins: [
     nextui({
       themes: {
