@@ -23,7 +23,7 @@ type Props = {
 }
 
 const WishCard = ({ wish, canEdit }: Props) => {
-  const { image, name, link } = wish
+  const { image, name, link, priceFormatted } = wish
   const { isOpen, onOpenChange } = useDisclosure()
   const { t } = useTranslation()
 
@@ -66,7 +66,10 @@ const WishCard = ({ wish, canEdit }: Props) => {
           />
         </div>
         <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-20 justify-between">
-          <p className="text-black text-tiny basis-5/6 line-clamp-2">{name}</p>
+          <div className="text-black text-tiny basis-5/6">
+            <p className="line-clamp-1">{name}</p>
+            <p className="line-clamp-1">{priceFormatted}</p>
+          </div>
           <Button
             as={Link}
             href={link}
