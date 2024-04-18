@@ -1,4 +1,5 @@
 {
   "somethingWentWrong": "Something went wrong",
-  "invalidCredentials": "Invalid credentials"
+  "invalidCredentials": "Invalid credentials",
+  "wishNotFound": "Wish not found"
 }

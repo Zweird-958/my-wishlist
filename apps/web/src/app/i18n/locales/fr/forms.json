@@ -21,6 +21,12 @@
       "submit": "Modifier",
       "success": "L'article a été modifié"
     },
+    "delete": {
+      "confirmation": "Êtes-vous sûr ?",
+      "information": "Cette action est irréversible",
+      "success": "L'article a été supprimé",
+      "submit": "Supprimer"
+    },
     "cancel": "Annuler"
   },
   "name": "Nom",

@@ -9,11 +9,12 @@ import {
   Link,
   useDisclosure,
 } from "@nextui-org/react"
-import { SquarePenIcon, Trash2Icon } from "lucide-react"
+import { SquarePenIcon } from "lucide-react"
 
 import type { Wish } from "@my-wishlist/types/Wish"
 
 import { useTranslation } from "@/app/i18n/client"
+import DeleteWish from "@/components/wishlist/DeleteWish"
 import EditWishForm from "@/components/wishlist/EditWishForm"
 
 type Props = {
@@ -35,9 +36,7 @@ const WishCard = ({ wish, canEdit }: Props) => {
         <CardHeader className="absolute top-0 z-20 justify-between">
           {canEdit && (
             <>
-              <Button isIconOnly size="sm" className="px-2" color="danger">
-                <Trash2Icon />
-              </Button>
+              <DeleteWish wish={wish} />
               <Button
                 isIconOnly
                 size="sm"

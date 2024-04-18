@@ -20,3 +20,9 @@ export const updateWish = client.createRequest<ApiResponse<Wish>, FormData>()({
   endpoint: "/wish/:wishId",
   auth: true,
 })
+
+export const deleteWish = client.createRequest<ApiResponse<Wish>>()({
+  method: "DELETE",
+  endpoint: "/wish/:wishId",
+  auth: true,
+})

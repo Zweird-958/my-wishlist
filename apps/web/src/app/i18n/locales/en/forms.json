@@ -22,6 +22,12 @@
       "submit": "Update",
       "success": "Wish updated successfully"
     },
+    "delete": {
+      "confirmation": "Are you sure ?",
+      "information": "This action is irreversible",
+      "success": "Wish deleted successfully",
+      "submit": "Delete"
+    },
     "cancel": "Cancel"
   },
   "name": "Name",

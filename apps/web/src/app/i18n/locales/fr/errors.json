@@ -1,4 +1,5 @@
 {
   "somethingWentWrong": "Il y a eu une erreur interne. Veuillez réessayer plus tard.",
-  "invalidCredentials": "Identifiants invalides"
+  "invalidCredentials": "Identifiants invalides",
+  "wishNotFound": "Article non trouvé"
 }
