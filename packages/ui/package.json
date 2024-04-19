@@ -16,7 +16,7 @@
     "@hookform/resolvers": "^3.3.4",
     "@my-wishlist/config": "^1.0.0",
     "@nextui-org/react": "^2.3.5",
-    "framer-motion": "^11.1.5",
+    "framer-motion": "^11.1.7",
     "lucide-react": "^0.372.0",
     "react-hook-form": "^7.51.3",
     "tailwindcss": "^3.4.3",
