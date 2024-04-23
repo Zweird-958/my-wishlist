@@ -17,6 +17,6 @@
     "@hyper-fetch/core": "^5.7.4",
     "@my-wishlist/types": "^1.0.0",
     "@my-wishlist/web": "^0.1.0",
-    "zod": "^3.23.0"
+    "zod": "^3.23.3"
   }
 }
