@@ -15,6 +15,6 @@
   },
   "dependencies": {
     "@my-wishlist/schemas": "^1.0.0",
-    "zod": "^3.23.0"
+    "zod": "^3.23.3"
   }
 }
