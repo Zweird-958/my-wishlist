@@ -18,6 +18,10 @@ const Home = () => {
     wishlist,
     wishlistFiltered,
     isLoading: wishlistIsLoading,
+    selectedFilter,
+    setSelectedFilter,
+    selectedSort,
+    setSelectedSort,
   } = useWishlist()
   const { session, isLoading: sessionIsLoading } = useSession()
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
@@ -37,7 +41,12 @@ const Home = () => {
   return (
     <>
       <div className="flex flex-col gap-4 max-w-wish mx-auto">
-        <WishlistOptions />
+        <WishlistOptions
+          selectedFilter={selectedFilter}
+          setSelectedFilter={setSelectedFilter}
+          selectedSort={selectedSort}
+          setSelectedSort={setSelectedSort}
+        />
         <WishList wishes={wishlistFiltered} />
       </div>
       <Button
