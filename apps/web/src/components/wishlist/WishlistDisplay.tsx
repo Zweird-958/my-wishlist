@@ -16,6 +16,7 @@ type Props = {
   setSelectedFilter: (filter: Filter) => void
   selectedSort: Sort
   setSelectedSort: (sort: Sort) => void
+  username?: string
   children?: ReactNode
 }
 
@@ -26,6 +27,7 @@ const WishlistDisplay = ({
   setSelectedFilter,
   selectedSort,
   setSelectedSort,
+  username,
   children,
 }: Props) => {
   if (isLoading) {
@@ -33,7 +35,7 @@ const WishlistDisplay = ({
   }
 
   if (wishlist.length === 0) {
-    return <WishlistEmpty />
+    return <WishlistEmpty username={username} />
   }
 
   return (

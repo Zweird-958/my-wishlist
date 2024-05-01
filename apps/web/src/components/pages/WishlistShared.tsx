@@ -40,6 +40,7 @@ const WishlistShared = () => {
       selectedSort={selectedSort}
       setSelectedSort={setSelectedSort}
       wishlist={wishlist}
+      username={data?.meta.username}
     />
   )
 }

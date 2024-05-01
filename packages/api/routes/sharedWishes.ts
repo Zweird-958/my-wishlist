@@ -13,7 +13,7 @@ export const getWishlistShared = client.createRequest<
 })
 
 export const getWishlistSharedUser = client.createRequest<
-  ApiResponse<Wish[]>
+  ApiResponse<Wish[], { username: string }>
 >()({
   method: "GET",
   endpoint: "/share/wish/:userId",
