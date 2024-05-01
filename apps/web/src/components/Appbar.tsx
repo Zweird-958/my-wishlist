@@ -11,6 +11,7 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react"
+import { Share2 } from "lucide-react"
 import { useState } from "react"
 
 import { useTranslation } from "@/app/i18n/client"
@@ -24,6 +25,7 @@ const Appbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuItems = [
     { label: t("home"), href: "/" },
+    { label: t("wishlistShared"), href: "/share", hidden: !session },
     { label: t("signIn"), href: "/sign-in", hidden: Boolean(session) },
     { label: t("signUp"), href: "/sign-up", hidden: Boolean(session) },
     { label: t("signOut"), onClick: signOut, hidden: !session },
@@ -49,11 +51,24 @@ const Appbar = () => {
 
       <NavbarContent justify="end">
         {session ? (
-          <NavbarItem className="hidden sm:flex">
-            <Button onClick={signOut} color="danger">
-              {t("signOut")}
-            </Button>
-          </NavbarItem>
+          <>
+            <NavbarItem className="hidden sm:flex">
+              <Button onClick={signOut} color="danger">
+                {t("signOut")}
+              </Button>
+            </NavbarItem>
+            <NavbarItem className="hidden sm:flex">
+              <Button
+                as={Link}
+                href="/share"
+                className="p-2"
+                variant="bordered"
+                isIconOnly
+              >
+                <Share2 />
+              </Button>
+            </NavbarItem>
+          </>
         ) : (
           <>
             <NavbarItem className="hidden sm:flex">
@@ -85,7 +100,7 @@ const Appbar = () => {
               ) : (
                 <Link
                   color="foreground"
-                  href={href ?? ""}
+                  href={href}
                   onPress={() => setIsMenuOpen(false)}
                 >
                   {label}
