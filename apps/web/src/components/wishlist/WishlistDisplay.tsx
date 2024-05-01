@@ -38,7 +38,7 @@ const WishlistDisplay = ({
 
   return (
     <>
-      <div className="flex flex-col gap-4 max-w-wish mx-auto">
+      <div className="flex flex-col gap-4 max-w-wish mx-auto w-full">
         <WishlistOptions
           selectedFilter={selectedFilter}
           setSelectedFilter={setSelectedFilter}
