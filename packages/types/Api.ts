@@ -1,6 +1,6 @@
-export type ApiResponse<T> = {
+export type ApiResponse<T, Meta = object> = {
   result: T
-  meta: object
+  meta: Meta
 }
 export type Method = "GET" | "POST" | "PATCH" | "DELETE"
 

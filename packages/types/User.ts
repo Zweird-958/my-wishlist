@@ -5,3 +5,8 @@ export type SignInData = {
 export type SignUpData = {
   username: string
 } & SignInData
+
+export type UserShared = {
+  id: number
+  username: string
+}

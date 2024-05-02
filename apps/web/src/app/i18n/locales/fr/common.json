@@ -12,6 +12,7 @@
   "notLogged": "Vous n'êtes pas connecté.",
   "mustLoggedIn": "Vous devez être connecté pour accéder à votre liste d'envies.",
   "empty": "Votre liste d'envies est vide.",
+  "sharedEmpty": "La liste d'envies de {username} est vide.",
   "howToAdd": "Pour ajouter un article à votre liste d'envies, cliquez sur le bouton avec un plus.",
   "buy": "Acheter",
   "filters": {
@@ -23,5 +24,8 @@
     "date": "Date",
     "priceAsc": "Prix croissant",
     "priceDesc": "Prix décroissant"
-  }
+  },
+  "wishlistShared": "Liste d'envies partagée",
+  "emptyWishlistShared": "Aucune liste d'envies n'a été partagée",
+  "sharedWithYou": "Liste d'envies partagée avec vous"
 }
