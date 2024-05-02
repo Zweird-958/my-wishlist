@@ -1,5 +1,6 @@
-import { UserShared } from "packages/types/User"
 import { create } from "zustand"
+
+import { UserShared } from "@my-wishlist/types/User"
 
 type UsersSharedStore = {
   usersShared: UserShared[]
