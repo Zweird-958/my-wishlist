@@ -19,3 +19,22 @@ export const getWishlistSharedUser = client.createRequest<
   endpoint: "/share/wish/:userId",
   auth: true,
 })
+
+export const getUsersShared = client.createRequest<ApiResponse<UserShared[]>>()(
+  {
+    method: "GET",
+    endpoint: "/share/users",
+    auth: true,
+  },
+)
+
+export const unshareWishlist = client.createRequest<
+  ApiResponse<{
+    message: string
+    user: UserShared
+  }>
+>()({
+  method: "DELETE",
+  endpoint: "/share/wish/:userId",
+  auth: true,
+})

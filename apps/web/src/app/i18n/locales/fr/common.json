@@ -27,5 +27,8 @@
   },
   "wishlistShared": "Liste d'envies partagée",
   "emptyWishlistShared": "Aucune liste d'envies n'a été partagée",
-  "sharedWithYou": "Liste d'envies partagée avec vous"
+  "shared": {
+    "with": "Liste d'envies partagée avec :",
+    "withYou": "Liste d'envies partagée avec vous"
+  }
 }

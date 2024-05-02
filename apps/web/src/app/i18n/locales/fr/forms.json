@@ -34,5 +34,11 @@
   "url": "Lien",
   "image": "Sélectionner une image",
   "purchased": "Acheté",
-  "private": "Privé"
+  "private": "Privé",
+  "unshare": {
+    "title": "Arrêter de partager votre liste d'envies",
+    "information": "Êtes-vous sûr(e) de vouloir arrêter de partager votre liste d'envies avec {username} ?",
+    "cancel": "Annuler",
+    "submit": "Confirmer"
+  }
 }
