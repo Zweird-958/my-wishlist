@@ -12,6 +12,7 @@
   "notLogged": "You are not logged in.",
   "mustLoggedIn": "You must be logged to see your wishlist.",
   "empty": "Your wishlist is empty.",
+  "sharedEmpty": "{username}'s wishlist is empty.",
   "howToAdd": "To add a product to your wishlist, click on the plus icon.",
   "buy": "Buy",
   "filters": {
@@ -23,5 +24,8 @@
     "date": "Date",
     "priceAsc": "Price (asc)",
     "priceDesc": "Price (desc)"
-  }
+  },
+  "wishlistShared": "Wishlist shared",
+  "emptyWishlistShared": "No wishlist are shared",
+  "sharedWithYou": "Wishlist shared with you"
 }

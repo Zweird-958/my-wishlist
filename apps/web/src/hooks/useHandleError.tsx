@@ -14,7 +14,8 @@ import { useTranslation } from "@/app/i18n/client"
 
 const SUCCESS_STATUS = 200
 const useHandleError = <RequestType extends RequestInstance>(
-  errorsMap: Record<number, string> = {},
+  errorsMap?: Record<number, string>,
+  errorsCallback?: Record<number, () => void>,
 ) => {
   const { t } = useTranslation("errors", "zodErrors")
   const handleError: OnFinishedCallbackType<RequestType> = ({
@@ -24,9 +25,10 @@ const useHandleError = <RequestType extends RequestInstance>(
       return
     }
 
-    const error = errorsMap[status]
+    const error = errorsMap?.[status]
 
     toast.error(error ?? t("somethingWentWrong"))
+    errorsCallback?.[status]?.()
   }
   const getErrorMessage = <T extends FieldValues>(
     field: ControllerRenderProps<T, Path<T>>,
