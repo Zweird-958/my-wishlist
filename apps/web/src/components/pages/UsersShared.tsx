@@ -3,10 +3,10 @@
 import { useFetch } from "@hyper-fetch/react"
 import { useDisclosure } from "@nextui-org/react"
 import { ChevronRight, Trash2 } from "lucide-react"
-import { UserShared } from "packages/types/User"
 import { Key, useState } from "react"
 
 import { getWishlistShared } from "@my-wishlist/api/routes/sharedWishes"
+import { UserShared } from "@my-wishlist/types/User"
 
 import { useTranslation } from "@/app/i18n/client"
 import UnshareModal from "@/components/user/UnshareModal"
