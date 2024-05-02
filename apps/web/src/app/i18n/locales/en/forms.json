@@ -35,5 +35,11 @@
   "url": "Link",
   "image": "Select an image",
   "purchased": "Purchased",
-  "private": "Private"
+  "private": "Private",
+  "unshare": {
+    "title": "Stop sharing your wishlist",
+    "information": "Are you sure to stop sharing your wishlist with {username} ?",
+    "cancel": "Cancel",
+    "submit": "Confirm"
+  }
 }

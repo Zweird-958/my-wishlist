@@ -3,11 +3,12 @@
 import {
   Listbox,
   ListboxItem,
+  ListboxProps,
   ListboxSection,
   Spinner,
 } from "@nextui-org/react"
-import { ChevronRight } from "lucide-react"
 import Link from "next/link"
+import { ReactNode } from "react"
 
 import { UserShared } from "@my-wishlist/types/User"
 
@@ -17,9 +18,19 @@ type Props = {
   items: UserShared[]
   isLink?: boolean
   isLoading?: boolean
-}
+  icon: ReactNode
+  title: string
+} & Pick<ListboxProps, "color" | "onAction">
 
-const UsersShared = ({ items, isLink, isLoading }: Props) => {
+const UsersList = ({
+  items,
+  isLink,
+  isLoading,
+  icon,
+  color = "primary",
+  title,
+  onAction,
+}: Props) => {
   const { t } = useTranslation()
   const getListboxItem = () => {
     if (isLoading) {
@@ -37,7 +48,7 @@ const UsersShared = ({ items, isLink, isLoading }: Props) => {
     return items.map((item) =>
       isLink ? (
         <ListboxItem
-          endContent={<ChevronRight />}
+          endContent={icon}
           key={item.id}
           as={Link}
           href={`/share/${item.id}`}
@@ -45,7 +56,7 @@ const UsersShared = ({ items, isLink, isLoading }: Props) => {
           {item.username}
         </ListboxItem>
       ) : (
-        <ListboxItem endContent={<ChevronRight />} key={item.id}>
+        <ListboxItem endContent={icon} key={item.id}>
           {item.username}
         </ListboxItem>
       ),
@@ -53,19 +64,16 @@ const UsersShared = ({ items, isLink, isLoading }: Props) => {
   }
 
   return (
-    <div className="flex flex-col gap-4 h-fit w-full max-w-lg mx-auto">
-      <Listbox
-        aria-label="wishlist shared"
-        color="primary"
-        variant="flat"
-        disabledKeys={["loader", "empty"]}
-      >
-        <ListboxSection title={t("sharedWithYou")}>
-          {getListboxItem()}
-        </ListboxSection>
-      </Listbox>
-    </div>
+    <Listbox
+      aria-label="wishlist shared"
+      color={color}
+      variant="flat"
+      disabledKeys={["loader", "empty"]}
+      onAction={onAction}
+    >
+      <ListboxSection title={title}>{getListboxItem()}</ListboxSection>
+    </Listbox>
   )
 }
 
-export default UsersShared
+export default UsersList
