@@ -25,5 +25,7 @@
     "priceAsc": "Prix croissant",
     "priceDesc": "Prix décroissant"
   },
-  "wishlistShared": "Liste d'envies partagée"
+  "wishlistShared": "Liste d'envies partagée",
+  "emptyWishlistShared": "Aucune liste d'envies n'a été partagée",
+  "sharedWithYou": "Liste d'envies partagée avec vous"
 }

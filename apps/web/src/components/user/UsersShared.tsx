@@ -1,10 +1,17 @@
 "use client"
 
-import { Listbox, ListboxItem, Spinner } from "@nextui-org/react"
+import {
+  Listbox,
+  ListboxItem,
+  ListboxSection,
+  Spinner,
+} from "@nextui-org/react"
 import { ChevronRight } from "lucide-react"
 import Link from "next/link"
 
 import { UserShared } from "@my-wishlist/types/User"
+
+import { useTranslation } from "@/app/i18n/client"
 
 type Props = {
   items: UserShared[]
@@ -13,6 +20,7 @@ type Props = {
 }
 
 const UsersShared = ({ items, isLink, isLoading }: Props) => {
+  const { t } = useTranslation()
   const getListboxItem = () => {
     if (isLoading) {
       return (
@@ -23,7 +31,7 @@ const UsersShared = ({ items, isLink, isLoading }: Props) => {
     }
 
     if (items.length === 0) {
-      return <ListboxItem key="empty">empty</ListboxItem>
+      return <ListboxItem key="empty">{t("emptyWishlistShared")}</ListboxItem>
     }
 
     return items.map((item) =>
@@ -52,7 +60,9 @@ const UsersShared = ({ items, isLink, isLoading }: Props) => {
         variant="flat"
         disabledKeys={["loader", "empty"]}
       >
-        {getListboxItem()}
+        <ListboxSection title={t("sharedWithYou")}>
+          {getListboxItem()}
+        </ListboxSection>
       </Listbox>
     </div>
   )

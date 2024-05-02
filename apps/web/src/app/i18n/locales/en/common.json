@@ -25,5 +25,7 @@
     "priceAsc": "Price (asc)",
     "priceDesc": "Price (desc)"
   },
-  "wishlistShared": "Wishlist shared"
+  "wishlistShared": "Wishlist shared",
+  "emptyWishlistShared": "No wishlist are shared",
+  "sharedWithYou": "Wishlist shared with you"
 }
