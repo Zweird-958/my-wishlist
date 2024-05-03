@@ -40,5 +40,11 @@
     "information": "Êtes-vous sûr(e) de vouloir arrêter de partager votre liste d'envies avec {username} ?",
     "cancel": "Annuler",
     "submit": "Confirmer"
+  },
+  "share": {
+    "title": "Partager votre liste d'envies",
+    "cancel": "Annuler",
+    "submit": "Partager",
+    "success": "Liste d'envies partagée avec {username} !"
   }
 }

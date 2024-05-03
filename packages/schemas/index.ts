@@ -42,3 +42,7 @@ export const addWishSchema = z.object({
   isPrivate: isPrivateSchema,
   purchased: purchasedSchema,
 })
+
+export const shareSchema = z.object({
+  username: z.string().min(1, { message: "required" }),
+})
