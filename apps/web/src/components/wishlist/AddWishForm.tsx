@@ -1,3 +1,5 @@
+"use client"
+
 import { useSubmit } from "@hyper-fetch/react"
 import { ModalProps } from "@nextui-org/react"
 import toast from "react-hot-toast"

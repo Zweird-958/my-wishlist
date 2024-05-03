@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@nextui-org/react"
 import { ChangeEventHandler, useState } from "react"
 

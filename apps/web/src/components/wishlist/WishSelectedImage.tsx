@@ -1,3 +1,5 @@
+"use client"
+
 import { Image, ImageProps } from "@nextui-org/react"
 
 import { Wish } from "@my-wishlist/types/Wish"

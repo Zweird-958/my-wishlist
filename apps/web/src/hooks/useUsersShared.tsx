@@ -1,3 +1,5 @@
+"use client"
+
 import { useFetch } from "@hyper-fetch/react"
 
 import { getUsersShared } from "@my-wishlist/api/routes/sharedWishes"

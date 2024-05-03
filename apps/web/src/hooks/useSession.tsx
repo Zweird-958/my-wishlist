@@ -1,3 +1,5 @@
+"use client"
+
 import jsonwebtoken from "jsonwebtoken"
 import { useEffect } from "react"
 

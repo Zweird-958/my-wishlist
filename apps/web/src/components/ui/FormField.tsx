@@ -1,3 +1,5 @@
+"use client"
+
 import { FieldValues } from "react-hook-form"
 
 import Field, { type FormProps } from "@my-wishlist/ui/ui/FormField"

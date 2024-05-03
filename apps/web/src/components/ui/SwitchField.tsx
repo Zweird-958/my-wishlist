@@ -1,3 +1,5 @@
+"use client"
+
 import { Switch, SwitchProps } from "@nextui-org/react"
 
 type Props = {
