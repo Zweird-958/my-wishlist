@@ -1,8 +1,8 @@
 "use client"
 
-import { Button, useDisclosure } from "@nextui-org/react"
-import { Plus } from "lucide-react"
+import { useDisclosure } from "@nextui-org/react"
 
+import AddButton from "@/components/ui/AddButton"
 import AuthWishlist from "@/components/user/AuthWishlist"
 import AddWishForm from "@/components/wishlist/AddWishForm"
 import WishlistDisplay from "@/components/wishlist/WishlistDisplay"
@@ -34,14 +34,7 @@ const Home = () => {
       selectedSort={selectedSort}
       setSelectedSort={setSelectedSort}
     >
-      <Button
-        className="fixed bottom-6 right-6 z-20"
-        color="primary"
-        isIconOnly
-        onPress={onOpen}
-      >
-        <Plus />
-      </Button>
+      <AddButton onPress={onOpen} color="primary" />
       <AddWishForm isOpen={isOpen} onOpenChange={onOpenChange} />
     </WishlistDisplay>
   )

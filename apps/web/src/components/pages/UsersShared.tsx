@@ -9,9 +9,22 @@ import { getWishlistShared } from "@my-wishlist/api/routes/sharedWishes"
 import { UserShared } from "@my-wishlist/types/User"
 
 import { useTranslation } from "@/app/i18n/client"
+import AddButton from "@/components/ui/AddButton"
+import ShareForm from "@/components/user/ShareForm"
 import UnshareModal from "@/components/user/UnshareModal"
 import UsersList from "@/components/user/UsersList"
 import useUsersShared from "@/hooks/useUsersShared"
+
+const ShareSection = () => {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure()
+
+  return (
+    <>
+      <AddButton onPress={onOpen} color="primary" />
+      <ShareForm isOpen={isOpen} onOpenChange={onOpenChange} />
+    </>
+  )
+}
 
 const UsersShared = () => {
   const { t } = useTranslation()
@@ -54,6 +67,7 @@ const UsersShared = () => {
         onOpenChange={onOpenChange}
         user={userSelected}
       />
+      <ShareSection />
     </div>
   )
 }

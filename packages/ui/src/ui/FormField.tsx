@@ -25,6 +25,7 @@ const FormField = <TFieldValues extends FieldValues>({
         {...field}
         size="md"
         {...props}
+        isInvalid={errors[name] && true}
         errorMessage={errors[name] && getErrorMessage(field, errors)}
       />
     )}

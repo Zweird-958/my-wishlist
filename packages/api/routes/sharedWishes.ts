@@ -38,3 +38,17 @@ export const unshareWishlist = client.createRequest<
   endpoint: "/share/wish/:userId",
   auth: true,
 })
+
+type ShareWishlistResponse = {
+  message: string
+  user: UserShared
+}
+
+export const shareWishlist = client.createRequest<
+  ApiResponse<ShareWishlistResponse>,
+  Pick<UserShared, "username">
+>()({
+  method: "POST",
+  endpoint: "/share/wish",
+  auth: true,
+})
