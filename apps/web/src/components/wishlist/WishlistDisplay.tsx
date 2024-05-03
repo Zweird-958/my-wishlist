@@ -1,3 +1,5 @@
+"use client"
+
 import { ReactNode } from "react"
 
 import { Wish } from "@my-wishlist/types/Wish"

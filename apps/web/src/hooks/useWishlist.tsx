@@ -1,3 +1,5 @@
+"use client"
+
 import { useFetch } from "@hyper-fetch/react"
 
 import { getWishes } from "@my-wishlist/api/routes/wish"

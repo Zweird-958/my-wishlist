@@ -1,3 +1,5 @@
+"use client"
+
 import WishListDropdown from "@/components/wishlist/WishListDropdown"
 import { Filter, Sort } from "@/utils/config"
 

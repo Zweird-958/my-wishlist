@@ -1,3 +1,5 @@
+"use client"
+
 import { useSubmit } from "@hyper-fetch/react"
 import {
   Button,
