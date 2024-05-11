@@ -20,7 +20,7 @@
     "lucide-react": "^0.377.0",
     "react-hook-form": "^7.51.4",
     "tailwindcss": "^3.4.3",
-    "zod": "^3.23.5"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@my-wishlist/types": "^1.0.0",
