@@ -11,7 +11,7 @@
     "update": "eas update --auto"
   },
   "dependencies": {
-    "@expo/vector-icons": "^14.0.1",
+    "@expo/vector-icons": "^14.0.2",
     "@hyper-fetch/react": "^5.7.4",
     "@my-wishlist/api": "^1.0.0",
     "@my-wishlist/schemas": "^1.0.0",
