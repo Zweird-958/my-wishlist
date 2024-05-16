@@ -73,7 +73,7 @@ const WishCard = ({ wish, canEdit }: Props) => {
           <Button
             as={Link}
             href={link}
-            target="_blank"
+            isExternal
             className="text-tiny"
             color="primary"
             size="sm"

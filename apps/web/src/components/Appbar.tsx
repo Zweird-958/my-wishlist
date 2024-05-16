@@ -2,7 +2,6 @@
 
 import {
   Button,
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -17,6 +16,7 @@ import { useState } from "react"
 import { useTranslation } from "@/app/i18n/client"
 import SelectLocale from "@/components/SelectLocale"
 import SelectTheme from "@/components/SelectTheme"
+import Link from "@/components/ui/Link"
 import useSession from "@/hooks/useSession"
 
 const Appbar = () => {
@@ -43,7 +43,7 @@ const Appbar = () => {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <Link href="/" color="foreground">
+          <Link href="/" className="text-foreground">
             My Wishlist
           </Link>
         </NavbarBrand>
@@ -79,7 +79,7 @@ const Appbar = () => {
             <NavbarItem className="hidden sm:flex">
               <Button
                 as={Link}
-                href="/sign-in"
+                href="/sign-up"
                 variant="bordered"
                 color="primary"
               >
@@ -99,9 +99,9 @@ const Appbar = () => {
                 <button onClick={onClick}>{label}</button>
               ) : (
                 <Link
-                  color="foreground"
+                  className="text-foreground"
                   href={href}
-                  onPress={() => setIsMenuOpen(false)}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {label}
                 </Link>

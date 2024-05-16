@@ -6,12 +6,12 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
-  Link,
 } from "@nextui-org/react"
 
 import Center from "@my-wishlist/ui/ui/Center"
 
 import { useTranslation } from "@/app/i18n/client"
+import Link from "@/components/ui/Link"
 
 const AuthWishlist = () => {
   const { t } = useTranslation()
