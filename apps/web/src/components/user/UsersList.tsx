@@ -7,12 +7,12 @@ import {
   ListboxSection,
   Spinner,
 } from "@nextui-org/react"
+import Link from "next/link"
 import { ReactNode } from "react"
 
 import { UserShared } from "@my-wishlist/types/User"
 
 import { useTranslation } from "@/app/i18n/client"
-import Link from "@/components/ui/Link"
 
 type Props = {
   items: UserShared[]
