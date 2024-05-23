@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
-    "@hyper-fetch/core": "^5.7.4",
+    "@hyper-fetch/core": "^5.7.5",
     "@hyper-fetch/react": "^5.7.4",
     "@my-wishlist/api": "^1.0.0",
     "@my-wishlist/config": "^1.0.0",
