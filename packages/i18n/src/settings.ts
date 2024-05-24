@@ -1,11 +1,9 @@
-import config from "@my-wishlist/config"
+import config from "./config"
 
-import i18nConfig from "./config"
-
-export const getOptions = (ns = i18nConfig.defaultNamespace) => ({
+export const getOptions = (ns = config.defaultNamespace) => ({
   supportedLngs: config.languages,
   fallbackLng: config.defaultLanguage,
-  fallbackNS: i18nConfig.defaultNamespace,
-  defaultNS: i18nConfig.defaultNamespace,
+  fallbackNS: config.defaultNamespace,
+  defaultNS: config.defaultNamespace,
   ns,
 })

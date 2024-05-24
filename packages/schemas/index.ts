@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-import config, { languages } from "@my-wishlist/config"
+import { config, languages } from "@my-wishlist/i18n"
 
 import {
   emailValidator,

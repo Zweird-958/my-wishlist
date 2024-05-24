@@ -15,7 +15,6 @@
     "@hyper-fetch/core": "^5.7.5",
     "@hyper-fetch/react": "^5.7.4",
     "@my-wishlist/api": "workspace:*",
-    "@my-wishlist/config": "workspace:*",
     "@my-wishlist/schemas": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
     "@my-wishlist/i18n": "workspace:*",

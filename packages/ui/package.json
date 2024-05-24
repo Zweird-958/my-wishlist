@@ -17,7 +17,6 @@
     "@hookform/resolvers": "^3.4.2",
     "@hyper-fetch/react": "^5.7.5",
     "@my-wishlist/api": "workspace:*",
-    "@my-wishlist/config": "workspace:*",
     "@my-wishlist/i18n": "workspace:*",
     "@my-wishlist/schemas": "workspace:*",
     "@nextui-org/react": "^2.3.6",

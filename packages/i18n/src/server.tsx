@@ -6,10 +6,9 @@ import Negotiator from "negotiator"
 import { cookies as getCookies, headers as getHeaders } from "next/headers"
 import { initReactI18next } from "react-i18next/initReactI18next"
 
-import sharedConfig, { Locale } from "@my-wishlist/config"
 import { languageSchema, languageSchemaFallback } from "@my-wishlist/schemas"
 
-import webConfig, { Namespace } from "./config"
+import config, { Locale, Namespace } from "./config"
 import { getOptions } from "./settings"
 
 const initI18next = async (lng: Locale, ns: Namespace) => {
@@ -39,17 +38,17 @@ export const getLocale = () => {
       }).languages()
       const languageMatch = match(
         languages,
-        sharedConfig.languages,
-        sharedConfig.defaultLanguage,
+        config.languages,
+        config.defaultLanguage,
       )
 
       return languageSchemaFallback.parse(languageMatch)
     })
-    .parse(cookies.get(webConfig.cookieLanguageKey)?.value)
+    .parse(cookies.get(config.cookieLanguageKey)?.value)
 }
 
 export const useTranslation = async (
-  ns: Namespace = webConfig.defaultNamespace,
+  ns: Namespace = config.defaultNamespace,
 ) => {
   const locale = getLocale()
   const i18nextInstance = await initI18next(locale, ns)

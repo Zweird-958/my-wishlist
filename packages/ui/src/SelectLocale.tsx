@@ -11,8 +11,7 @@ import {
 } from "@nextui-org/react"
 import { useState } from "react"
 
-import config, { type Locale } from "@my-wishlist/config"
-import { useTranslation } from "@my-wishlist/i18n"
+import { type Locale, config, useTranslation } from "@my-wishlist/i18n"
 
 import Flag from "./ui/Flag"
 

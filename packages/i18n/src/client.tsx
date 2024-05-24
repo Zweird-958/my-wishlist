@@ -7,9 +7,7 @@ import resourcesToBackend from "i18next-resources-to-backend"
 import { ReactNode, useMemo } from "react"
 import { I18nextProvider as Provider, initReactI18next } from "react-i18next"
 
-import config, { Locale } from "@my-wishlist/config"
-
-import webConfig from "./config"
+import config, { Locale } from "./config"
 import { getOptions } from "./settings"
 
 const runsOnServerSide = typeof window === "undefined"
@@ -28,8 +26,7 @@ i18next
     ...getOptions(),
     detection: {
       caches: ["cookie"],
-      lookupCookie: webConfig.cookieLanguageKey,
-      lookupLocalStorage: webConfig.localStorageLanguageKey,
+      lookupCookie: config.cookieLanguageKey,
     },
 
     preload: runsOnServerSide ? config.languages : [],

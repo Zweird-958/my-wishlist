@@ -1,9 +1,8 @@
 import { useTranslation as useTranslationOrg } from "react-i18next"
 
-import { Locale } from "@my-wishlist/config"
 import { languageSchemaFallback } from "@my-wishlist/schemas"
 
-import config, { Namespace } from "./src/config"
+import config, { Locale, Namespace, languages } from "./src/config"
 
 export const useTranslation = (...ns: Namespace[]) => {
   const { i18n, ...rest } = useTranslationOrg(ns)
@@ -17,4 +16,4 @@ export const useTranslation = (...ns: Namespace[]) => {
   }
 }
 
-export { config }
+export { config, languages, type Locale, type Namespace }
