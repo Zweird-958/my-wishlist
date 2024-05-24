@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "web": "bun run --cwd apps/web dev",
+    "desktop": "bun run --cwd apps/desktop tauri dev",
     "web:generate": "bun run --cwd apps/web generate",
     "mobile:ios": "bun run --cwd apps/mobile ios",
     "mobile:android": "bun run --cwd apps/mobile android",
