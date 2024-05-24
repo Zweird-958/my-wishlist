@@ -20,7 +20,7 @@
     "typecheck": "bun run --filter='**' typecheck",
     "mobile:check": "bun run --cwd apps/mobile expo-check",
     "check": "bun run lint && bun run typecheck && bun run format && bun run mobile:check",
-    "clear": "rm -fr node_modules bun.lockb && bun install",
+    "clear": "find . -type d \\( -name \"node_modules\" -o -name \".next\" \\) -exec rm -rf {} +\\ && rm bun.lockb",
     "env-symlink": "ln -sf $PWD/.env ./apps/web && ln -sf $PWD/.env ./apps/desktop && ln -sf $PWD/.env ./apps/mobile && ln -sf $PWD/.env ./packages/db"
   },
   "author": "",
