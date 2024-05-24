@@ -18,7 +18,7 @@ import Flag from "./ui/Flag"
 
 const SelectLocale = () => {
   const [isLoading, setIsLoading] = useState(false)
-  const { locale, i18n } = useTranslation()
+  const { locale, changeLanguage } = useTranslation()
   const handleChangeLocale = (keys: Selection) => {
     if (isLoading) {
       return
@@ -26,7 +26,7 @@ const SelectLocale = () => {
 
     setIsLoading(true)
     const key = Array.from(keys).join(", ").replaceAll("_", " ") as Locale
-    i18n.changeLanguage(key)
+    changeLanguage(key)
     setIsLoading(false)
   }
 

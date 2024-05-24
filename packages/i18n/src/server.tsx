@@ -1,10 +1,13 @@
+import { match } from "@formatjs/intl-localematcher"
 import { createInstance } from "i18next"
 import ICU from "i18next-icu"
 import resourcesToBackend from "i18next-resources-to-backend"
-import { cookies } from "next/headers"
+import Negotiator from "negotiator"
+import { cookies as getCookies, headers as getHeaders } from "next/headers"
 import { initReactI18next } from "react-i18next/initReactI18next"
 
-import { Locale } from "@my-wishlist/config"
+import sharedConfig, { Locale } from "@my-wishlist/config"
+import { languageSchema, languageSchemaFallback } from "@my-wishlist/schemas"
 
 import webConfig, { Namespace } from "./config"
 import { getOptions } from "./settings"
@@ -25,10 +28,30 @@ const initI18next = async (lng: Locale, ns: Namespace) => {
   return i18nInstance
 }
 
+export const getLocale = () => {
+  const headers = getHeaders()
+  const cookies = getCookies()
+
+  return languageSchema
+    .catch(() => {
+      const languages = new Negotiator({
+        headers: { "accept-language": headers.get("Accept-Language") ?? "" },
+      }).languages()
+      const languageMatch = match(
+        languages,
+        sharedConfig.languages,
+        sharedConfig.defaultLanguage,
+      )
+
+      return languageSchemaFallback.parse(languageMatch)
+    })
+    .parse(cookies.get(webConfig.cookieLanguageKey)?.value)
+}
+
 export const useTranslation = async (
   ns: Namespace = webConfig.defaultNamespace,
 ) => {
-  const locale = cookies().get(webConfig.cookieLanguageKey)?.value as Locale
+  const locale = getLocale()
   const i18nextInstance = await initI18next(locale, ns)
 
   return {

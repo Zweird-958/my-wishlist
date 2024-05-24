@@ -3,6 +3,8 @@ import dynamic from "next/dynamic"
 import { ReactNode } from "react"
 import { Toaster } from "react-hot-toast"
 
+import { I18nProvider, getLocale } from "@my-wishlist/i18n/server"
+
 import "./globals.css"
 import Providers from "./providers"
 
@@ -18,21 +20,24 @@ export const metadata: Metadata = {
 }
 const RootLayout = (props: Props) => {
   const { children } = props
+  const language = getLocale()
 
   return (
-    <html lang="en">
-      <body>
-        <Toaster
-          toastOptions={{
-            className: "toast",
-          }}
-        />
-        <Providers>
-          <Appbar />
-          <main className="flex grow px-4">{children}</main>
-        </Providers>
-      </body>
-    </html>
+    <I18nProvider language={language}>
+      <html lang={language}>
+        <body>
+          <Toaster
+            toastOptions={{
+              className: "toast",
+            }}
+          />
+          <Providers>
+            <Appbar />
+            <main className="flex grow px-4">{children}</main>
+          </Providers>
+        </body>
+      </html>
+    </I18nProvider>
   )
 }
 
