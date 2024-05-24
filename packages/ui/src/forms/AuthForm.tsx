@@ -16,7 +16,6 @@ const AuthForm = <T extends FieldValues>(props: Props<T>) => {
     fields,
     isLoading,
     buttonText,
-    getErrorMessage,
   } = props
 
   return (
@@ -28,7 +27,6 @@ const AuthForm = <T extends FieldValues>(props: Props<T>) => {
         <Form
           defaultValues={defaultValues}
           schema={schema}
-          getErrorMessage={getErrorMessage}
           onSubmit={onSubmit}
           fields={fields}
           buttonText={buttonText}

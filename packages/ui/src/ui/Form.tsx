@@ -1,10 +1,9 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Button, Input } from "@nextui-org/react"
+import { Button } from "@nextui-org/react"
 import { InputHTMLAttributes } from "react"
 import {
-  Controller,
   DefaultValues,
   FieldValues,
   Path,
@@ -13,7 +12,7 @@ import {
 } from "react-hook-form"
 import { ZodSchema } from "zod"
 
-import { GetErrorMessage } from "../types/Form"
+import FormField from "./FormField"
 
 type Field<T extends FieldValues> = {
   name: Path<T>
@@ -27,19 +26,11 @@ export type FormProps<T extends FieldValues> = {
   schema: ZodSchema<T>
   buttonText: string
   onSubmit: SubmitHandler<T>
-  getErrorMessage: GetErrorMessage<T>
   isLoading?: boolean
 }
 const Form = <T extends FieldValues>(props: FormProps<T>) => {
-  const {
-    defaultValues,
-    onSubmit,
-    schema,
-    fields,
-    buttonText,
-    getErrorMessage,
-    isLoading,
-  } = props
+  const { defaultValues, onSubmit, schema, fields, buttonText, isLoading } =
+    props
   const { control, handleSubmit } = useForm<T>({
     defaultValues,
     resolver: zodResolver(schema),
@@ -48,19 +39,7 @@ const Form = <T extends FieldValues>(props: FormProps<T>) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
       {fields.map(({ name, ...fieldProps }) => (
-        <Controller
-          key={name}
-          name={name}
-          control={control}
-          render={({ field, formState: { errors } }) => (
-            <Input
-              {...fieldProps}
-              {...field}
-              size="sm"
-              errorMessage={errors[name] && getErrorMessage(field, errors)}
-            />
-          )}
-        />
+        <FormField key={name} name={name} control={control} {...fieldProps} />
       ))}
 
       <Button type="submit" color="primary" isLoading={isLoading}>

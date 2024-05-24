@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "exports": {
-    "./*": "./src/*.tsx"
+    "./*": "./src/*.tsx",
+    "./config/*": "./src/*.ts"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,16 +15,27 @@
   "license": "ISC",
   "dependencies": {
     "@hookform/resolvers": "^3.4.2",
-    "@my-wishlist/config": "^1.0.0",
+    "@hyper-fetch/react": "^5.7.5",
+    "@my-wishlist/api": "workspace:*",
+    "@my-wishlist/config": "workspace:*",
+    "@my-wishlist/i18n": "workspace:*",
+    "@my-wishlist/schemas": "workspace:*",
     "@nextui-org/react": "^2.3.6",
+    "clsx": "^2.1.1",
     "framer-motion": "^11.2.6",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.379.0",
+    "next": "^14.2.3",
+    "next-themes": "^0.3.0",
+    "react": "^18.3.1",
     "react-hook-form": "^7.51.5",
+    "react-hot-toast": "^2.4.1",
     "tailwindcss": "^3.4.3",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@my-wishlist/types": "^1.0.0",
+    "@my-wishlist/types": "workspace:*",
     "@types/react": "^18.2.79",
     "typescript": "^5.4.5"
   }

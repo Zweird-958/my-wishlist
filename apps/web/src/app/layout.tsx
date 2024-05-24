@@ -3,7 +3,7 @@ import dynamic from "next/dynamic"
 import { ReactNode } from "react"
 import { Toaster } from "react-hot-toast"
 
-import Providers from "@/app/providers"
+import Providers from "@my-wishlist/ui/providers"
 
 import "./globals.css"
 
@@ -11,7 +11,7 @@ type Props = {
   children: ReactNode
 }
 
-const Appbar = dynamic(() => import("@/components/Appbar"), { ssr: false })
+const Appbar = dynamic(() => import("@my-wishlist/ui/Appbar"), { ssr: false })
 
 export const metadata: Metadata = {
   title: "Create Next App",
