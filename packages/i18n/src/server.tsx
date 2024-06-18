@@ -27,14 +27,11 @@ const initI18next = async (lng: Locale, ns: Namespace) => {
   return i18nInstance
 }
 
-export const getLocale = () => {
-  const headers = getHeaders()
-  const cookies = getCookies()
-
-  return languageSchema
+export const parseLocale = (acceptLanguage: string, cookieLang?: string) =>
+  languageSchema
     .catch(() => {
       const languages = new Negotiator({
-        headers: { "accept-language": headers.get("Accept-Language") ?? "" },
+        headers: { "accept-language": acceptLanguage },
       }).languages()
       const languageMatch = match(
         languages,
@@ -44,7 +41,16 @@ export const getLocale = () => {
 
       return languageSchemaFallback.parse(languageMatch)
     })
-    .parse(cookies.get(config.cookieLanguageKey)?.value)
+    .parse(cookieLang)
+
+export const getLocale = () => {
+  const headers = getHeaders()
+  const cookies = getCookies()
+
+  return parseLocale(
+    headers.get("Accept-Language") ?? "",
+    cookies.get(config.cookieLanguageKey)?.value,
+  )
 }
 
 export const useTranslation = async (
