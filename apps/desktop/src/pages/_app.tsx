@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from "next-intl"
 import { ThemeProvider } from "next-themes"
 import type { AppProps } from "next/app"
 import { useRouter } from "next/router"
+import { Toaster } from "react-hot-toast"
 
 import "@/styles/globals.css"
 
@@ -16,6 +17,11 @@ const App = ({ Component, pageProps }: AppProps) => {
       timeZone="Europe/Paris"
     >
       <NextUIProvider>
+        <Toaster
+          toastOptions={{
+            className: "toast",
+          }}
+        />
         <ThemeProvider>
           <Component {...pageProps} />
         </ThemeProvider>
