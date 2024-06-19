@@ -3,8 +3,6 @@
   "extends": [
     "eslint:recommended",
     "prettier",
-    "next/core-web-vitals",
-    "next",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -127,7 +125,6 @@
     "no-throw-literal": "error",
     "no-undef-init": "error",
     "no-undefined": "error",
-    "@next/next/no-html-link-for-pages": ["error", "apps/web/"],
     "no-underscore-dangle": ["error", { "allowFunctionParams": false }],
     "no-unneeded-ternary": ["error", { "defaultAssignment": false }],
     "no-unused-expressions": ["error", { "enforceForJSX": true }],
