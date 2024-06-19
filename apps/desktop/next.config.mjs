@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-import { experimental_taintObjectReference } from "react"
 
 const nextConfig = {
   reactStrictMode: true,

@@ -7,8 +7,8 @@ import {
   CardFooter,
   CardHeader,
 } from "@nextui-org/react"
+import Link from "next/link"
 
-// import Link from "next/link"
 import Center from "../Center"
 
 type Props = {
@@ -25,7 +25,7 @@ const AuthWishlist = ({ header, body, button }: Props) => (
         <p>{body}</p>
       </CardBody>
       <CardFooter className="justify-end">
-        <Button href="/sign-in" color="success">
+        <Button as={Link} href="/sign-in" color="success">
           {button}
         </Button>
       </CardFooter>

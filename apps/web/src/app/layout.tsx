@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
-import dynamic from "next/dynamic"
 import { ReactNode } from "react"
 import { Toaster } from "react-hot-toast"
 
 import { I18nProvider, getLocale } from "@my-wishlist/i18n/server"
+
+import Appbar from "@/components/Appbar"
 
 import "./globals.css"
 import Providers from "./providers"
@@ -11,8 +12,6 @@ import Providers from "./providers"
 type Props = {
   children: ReactNode
 }
-
-const Appbar = dynamic(() => import("@/components/Appbar"), { ssr: false })
 
 export const metadata: Metadata = {
   title: "Create Next App",
