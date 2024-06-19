@@ -1,4 +1,4 @@
-import WishlistShared from "@my-wishlist/ui/pages/WishlistShared"
+import WishlistShared from "@/components/pages/WishlistShared"
 
 const Page = () => <WishlistShared />
 
