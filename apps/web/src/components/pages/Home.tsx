@@ -2,8 +2,10 @@
 
 import { useDisclosure } from "@nextui-org/react"
 
+import { useTranslation } from "@my-wishlist/i18n"
+import AuthWishlist from "@my-wishlist/ui/user/AuthWishlist"
+
 import AddButton from "@/components/ui/AddButton"
-import AuthWishlist from "@/components/user/AuthWishlist"
 import AddWishForm from "@/components/wishlist/AddWishForm"
 import WishlistDisplay from "@/components/wishlist/WishlistDisplay"
 import useSession from "@/hooks/useSession"
@@ -20,9 +22,16 @@ const Home = () => {
   } = useWishlist()
   const { session, isLoading: sessionIsLoading } = useSession()
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
+  const { t } = useTranslation()
 
   if (!session && !sessionIsLoading) {
-    return <AuthWishlist />
+    return (
+      <AuthWishlist
+        header={t("notLogged")}
+        body={t("mustLoggedIn")}
+        button={t("signIn")}
+      />
+    )
   }
 
   return (

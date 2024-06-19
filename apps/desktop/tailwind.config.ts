@@ -1,16 +1,15 @@
-import { nextui } from "@nextui-org/react"
 import type { Config } from "tailwindcss"
+
+import uiConfig from "../../packages/ui/tailwind.config"
 
 const config: Config = {
   content: [
+    ...(uiConfig.content as string[]),
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
-    "../../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "../../packages/ui/src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {},
-  darkMode: "class",
-  plugins: [nextui()],
+  presets: [uiConfig],
 }
 export default config

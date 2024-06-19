@@ -23,7 +23,9 @@ const App = ({ Component, pageProps }: AppProps) => {
           }}
         />
         <ThemeProvider>
-          <Component {...pageProps} />
+          <main className="flex grow px-4">
+            <Component {...pageProps} />
+          </main>
         </ThemeProvider>
       </NextUIProvider>
     </NextIntlClientProvider>
