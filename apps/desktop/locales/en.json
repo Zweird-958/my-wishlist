@@ -1,0 +1,94 @@
+{
+  "errors": {
+    "somethingWentWrong": "Something went wrong",
+    "invalidCredentials": "Invalid credentials",
+    "wishNotFound": "Wish not found",
+    "notAuthorized": "You are not authorized to perform this action"
+  },
+  "common": {
+    "hello": "Hello",
+    "theme": { "system": "System", "dark": "Dark", "light": "Light" },
+    "signOut": "Sign out",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "home": "Home",
+    "notLogged": "You are not logged in.",
+    "mustLoggedIn": "You must be logged to see your wishlist.",
+    "empty": "Your wishlist is empty.",
+    "sharedEmpty": "{username}'s wishlist is empty.",
+    "howToAdd": "To add a product to your wishlist, click on the plus icon.",
+    "buy": "Buy",
+    "filters": {
+      "all": "All",
+      "purchased": "Purchased",
+      "notPurchased": "Not purchased"
+    },
+    "sorts": {
+      "date": "Date",
+      "priceAsc": "Price (asc)",
+      "priceDesc": "Price (desc)"
+    },
+    "wishlistShared": "Wishlist shared",
+    "emptyWishlistShared": "No wishlist are shared",
+    "sharedWithYou": "Wishlist shared with you"
+  },
+  "forms": {
+    "signIn": { "title": "Sign In", "button": "Sign in" },
+    "signUp": { "title": "Sign Up", "button": "Sign up" },
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "home": "Form home",
+    "wish": {
+      "add": {
+        "title": "Add to wishlist",
+        "submit": "Create",
+        "success": "Wish added successfully"
+      },
+      "update": {
+        "title": "Update wish",
+        "submit": "Update",
+        "success": "Wish updated successfully"
+      },
+      "delete": {
+        "confirmation": "Are you sure ?",
+        "information": "This action is irreversible",
+        "success": "Wish deleted successfully",
+        "submit": "Delete"
+      },
+      "cancel": "Cancel"
+    },
+    "name": "Name",
+    "price": "Price",
+    "url": "Link",
+    "image": "Select an image",
+    "purchased": "Purchased",
+    "private": "Private",
+    "unshare": {
+      "title": "Stop sharing your wishlist",
+      "information": "Are you sure to stop sharing your wishlist with {username} ?",
+      "cancel": "Cancel",
+      "submit": "Confirm"
+    },
+    "share": {
+      "title": "Share your wishlist",
+      "cancel": "Cancel",
+      "submit": "Share",
+      "success": "Wishlist shared successfully with {username} !"
+    }
+  },
+  "zodErrors": {
+    "email": { "required": "Email is required", "invalid": "Invalid email" },
+    "password": {
+      "required": "Password is required",
+      "length": "Password must be at least 8 characters"
+    },
+    "username": {
+      "required": "Username is required",
+      "length": "Username must be at least 3 characters"
+    },
+    "price": { "required": "Price is required" },
+    "name": { "required": "Name is required" },
+    "url": { "invalid": "Invalid URL" }
+  }
+}
