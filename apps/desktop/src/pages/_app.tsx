@@ -1,4 +1,6 @@
+import { NextUIProvider } from "@nextui-org/react"
 import { NextIntlClientProvider } from "next-intl"
+import { ThemeProvider } from "next-themes"
 import type { AppProps } from "next/app"
 import { useRouter } from "next/router"
 
@@ -13,7 +15,11 @@ const App = ({ Component, pageProps }: AppProps) => {
       messages={pageProps.messages}
       timeZone="Europe/Paris"
     >
-      <Component {...pageProps} />
+      <NextUIProvider>
+        <ThemeProvider>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </NextUIProvider>
     </NextIntlClientProvider>
   )
 }
