@@ -12,5 +12,5 @@
       }
     ]
   },
-  "include": [".", "../../tailwind.config.ts"]
+  "include": ["."]
 }

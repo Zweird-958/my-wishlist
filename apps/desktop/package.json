@@ -12,8 +12,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.6.0",
+    "@hyper-fetch/react": "^5.7.5",
+    "@my-wishlist/schemas": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
+    "@my-wishlist/api": "workspace:*",
     "@nextui-org/react": "^2.4.2",
+    "@tauri-apps/plugin-store": "^2.0.0-beta.5",
     "eslint-config-next": "^14.2.4",
     "framer-motion": "^11.2.11",
     "next": "^14.2.4",
@@ -21,7 +26,10 @@
     "next-themes": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hot-toast": "^2.4.1"
+    "react-hook-form": "^7.52.0",
+    "react-hot-toast": "^2.4.1",
+    "zod": "^3.23.8",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.0.0-beta.20",

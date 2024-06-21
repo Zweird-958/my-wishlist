@@ -12,6 +12,10 @@
     "resources:default",
     "image:default",
     "menu:default",
-    "tray:default"
+    "tray:default",
+    "store:allow-get",
+    "store:allow-set",
+    "store:allow-save",
+    "store:allow-load"
   ]
 }

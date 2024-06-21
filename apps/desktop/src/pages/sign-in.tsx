@@ -1,33 +1,38 @@
-"use client"
-
 import { useSubmit } from "@hyper-fetch/react"
-import { useRouter } from "next/navigation"
+import { GetStaticPropsContext } from "next"
+import { useTranslations } from "next-intl"
+import { useRouter } from "next/router"
 
 import { signIn as signInRequest } from "@my-wishlist/api/routes/user"
-import { useTranslation } from "@my-wishlist/i18n"
 import { signInSchema } from "@my-wishlist/schemas"
-import type { SignInData } from "@my-wishlist/types/User"
+import { SignInData } from "@my-wishlist/types/User"
+import Center from "@my-wishlist/ui/Center"
 import AuthForm from "@my-wishlist/ui/forms/AuthForm"
 
-import Center from "@/components/ui/Center"
 import useHandleError from "@/hooks/useHandleError"
 import useSession from "@/hooks/useSession"
 
-const defaultValues = {
-  email: "",
-  password: "",
-}
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => ({
+  props: {
+    messages: (await import(`../../locales/${locale}.json`)).default,
+  },
+})
+
 const SignIn = () => {
+  const defaultValues = {
+    email: "",
+    password: "",
+  }
   const router = useRouter()
   const { submit, onSubmitSuccess, onSubmitFinished, submitting } =
     useSubmit(signInRequest)
   const { signIn } = useSession()
-  const { t } = useTranslation("errors", "forms")
-  const { handleError, getErrorMessage } = useHandleError<typeof signInRequest>(
-    {
-      401: t("errors:invalidCredentials"),
-    },
-  )
+  const t = useTranslations()
+  const { handleError, handleErrorMessage } = useHandleError<
+    typeof signInRequest
+  >({
+    401: t("errors.invalidCredentials"),
+  })
   const onSubmit = (data: SignInData) => {
     submit({ data })
   }
@@ -44,13 +49,13 @@ const SignIn = () => {
         schema={signInSchema}
         onSubmit={onSubmit}
         fields={[
-          { name: "email", label: "Email" },
-          { name: "password", label: "Password", type: "password" },
+          { name: "email", label: t("forms.email") },
+          { name: "password", label: t("forms.password"), type: "password" },
         ]}
-        buttonText={t("forms:signIn.button")}
+        buttonText={t("forms.signIn.button")}
         isLoading={submitting}
-        title={t("forms:signIn.title")}
-        handleErrorMessage={getErrorMessage}
+        title={t("forms.signIn.title")}
+        handleErrorMessage={handleErrorMessage}
       />
     </Center>
   )

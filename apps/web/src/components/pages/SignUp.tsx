@@ -7,8 +7,8 @@ import { signUp as signUpRequest } from "@my-wishlist/api/routes/user"
 import { useTranslation } from "@my-wishlist/i18n"
 import { signUpSchema } from "@my-wishlist/schemas"
 import type { SignUpData } from "@my-wishlist/types/User"
+import AuthForm from "@my-wishlist/ui/forms/AuthForm"
 
-import AuthForm from "@/components/forms/AuthForm"
 import Center from "@/components/ui/Center"
 import useHandleError from "@/hooks/useHandleError"
 
@@ -22,7 +22,8 @@ const SignUp = () => {
   const { submit, onSubmitSuccess, onSubmitFinished, submitting } =
     useSubmit(signUpRequest)
   const { t } = useTranslation("forms", "common")
-  const { handleError } = useHandleError<typeof signUpRequest>()
+  const { handleError, getErrorMessage } =
+    useHandleError<typeof signUpRequest>()
   const onSubmit = (data: SignUpData) => {
     submit({ data })
   }
@@ -45,6 +46,7 @@ const SignUp = () => {
         buttonText={t("signUp.button")}
         isLoading={submitting}
         title={t("signUp.title")}
+        handleErrorMessage={getErrorMessage}
       />
     </Center>
   )

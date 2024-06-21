@@ -2,16 +2,16 @@
 
 import { FieldValues } from "react-hook-form"
 
-import useHandleError from "@/hooks/useHandleError"
+import Field, { type FormProps } from "@my-wishlist/ui/Field"
 
-import Field, { type FormProps } from "./Field"
+import useHandleError from "@/hooks/useHandleError"
 
 const FormField = <TFieldValues extends FieldValues>(
   props: Omit<FormProps<TFieldValues>, "getErrorMessage">,
 ) => {
   const { getErrorMessage } = useHandleError()
 
-  return <Field {...props} getErrorMessage={getErrorMessage} />
+  return <Field {...props} handleErrorMessage={getErrorMessage} />
 }
 
 export default FormField
