@@ -5,7 +5,9 @@ import { languageSchemaFallback } from "@my-wishlist/schemas"
 import config, { Locale, Namespace, languages } from "./src/config"
 
 export const useTranslation = (...ns: Namespace[]) => {
-  const { i18n, ...rest } = useTranslationOrg(ns)
+  const { i18n, ...rest } = useTranslationOrg(
+    ns.length > 0 ? ns : config.defaultNamespace,
+  )
   const changeLanguage = (locale: Locale) => i18n.changeLanguage(locale)
 
   return {
