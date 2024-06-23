@@ -1,12 +1,18 @@
-"use client"
+import { setCookie } from "cookies-next"
+import { useTranslations } from "next-intl"
+import { useRouter } from "next/router"
 
-import { useTranslation } from "@my-wishlist/i18n"
+import { Locale } from "@my-wishlist/i18n"
 import AppbarGeneric from "@my-wishlist/ui/Appbar"
 
+import useLocale from "@/hooks/useLocale"
 import useSession from "@/hooks/useSession"
+import config from "@/utils/config"
 
 const Appbar = () => {
-  const { t, locale, changeLanguage } = useTranslation("common")
+  const t = useTranslations("common")
+  const locale = useLocale()
+  const router = useRouter()
   const { session, signOut } = useSession()
   const menuItems = [
     { label: t("home"), href: "/" },
@@ -15,6 +21,10 @@ const Appbar = () => {
     { label: t("signUp"), href: "/sign-up", hidden: Boolean(session) },
     { label: t("signOut"), onClick: signOut, hidden: !session },
   ]
+  const handleChangeLocale = (currentLocale: Locale) => {
+    setCookie(config.languageCookieKey, currentLocale)
+    router.reload()
+  }
 
   return (
     <AppbarGeneric
@@ -28,7 +38,7 @@ const Appbar = () => {
         signUp: t("signUp"),
       }}
       actions={{
-        changeLocale: changeLanguage,
+        changeLocale: handleChangeLocale,
         signOut,
       }}
       menuItems={menuItems}

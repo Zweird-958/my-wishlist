@@ -10,7 +10,6 @@
     "types": ["nativewind/types"]
   },
   "include": [
-    "../../tailwind.config.ts",
     "src",
     "*.ts",
     "index.tsx",

@@ -14,11 +14,12 @@
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
     "@hyper-fetch/react": "^5.7.5",
+    "@my-wishlist/api": "workspace:*",
     "@my-wishlist/schemas": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
-    "@my-wishlist/api": "workspace:*",
     "@nextui-org/react": "^2.4.2",
     "@tauri-apps/plugin-store": "^2.0.0-beta.5",
+    "cookies-next": "^4.2.1",
     "eslint-config-next": "^14.2.4",
     "framer-motion": "^11.2.11",
     "next": "^14.2.4",

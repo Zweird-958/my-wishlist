@@ -1,5 +1,4 @@
 import { useSubmit } from "@hyper-fetch/react"
-import { GetStaticPropsContext } from "next"
 import { useTranslations } from "next-intl"
 import { useRouter } from "next/router"
 
@@ -11,12 +10,6 @@ import AuthForm from "@my-wishlist/ui/forms/AuthForm"
 
 import useHandleError from "@/hooks/useHandleError"
 import useSession from "@/hooks/useSession"
-
-export const getStaticProps = async ({ locale }: GetStaticPropsContext) => ({
-  props: {
-    messages: (await import(`../../locales/${locale}.json`)).default,
-  },
-})
 
 const SignIn = () => {
   const defaultValues = {

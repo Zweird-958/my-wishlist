@@ -5,6 +5,7 @@ const nextConfig = {
   i18n: {
     locales: ["en", "fr"],
     defaultLocale: "en",
+    localeDetection: false,
   },
 
   transpilePackages: ["@my-wishlist/ui"],

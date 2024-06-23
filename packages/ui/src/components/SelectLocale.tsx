@@ -11,13 +11,17 @@ import {
 } from "@nextui-org/react"
 import { useState } from "react"
 
-import { type Locale, config, useTranslation } from "@my-wishlist/i18n"
+import { type Locale, config } from "@my-wishlist/i18n"
 
-import Flag from "./ui/Flag"
+import Flag from "./Flag"
 
-const SelectLocale = () => {
+export type SelectLocaleProps = {
+  changeLocale: (locale: Locale) => void
+  locale: Locale
+}
+
+const SelectLocale = ({ changeLocale, locale }: SelectLocaleProps) => {
   const [isLoading, setIsLoading] = useState(false)
-  const { locale, changeLanguage } = useTranslation()
   const handleChangeLocale = (keys: Selection) => {
     if (isLoading) {
       return
@@ -25,7 +29,7 @@ const SelectLocale = () => {
 
     setIsLoading(true)
     const key = Array.from(keys).join(", ").replaceAll("_", " ") as Locale
-    changeLanguage(key)
+    changeLocale(key)
     setIsLoading(false)
   }
 
