@@ -1,10 +1,10 @@
 {
   "productName": "My Wishlist",
   "version": "0.1.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "com.my-wishlist.dev",
   "build": {
     "frontendDist": "../out",
-    "devUrl": "http://localhost:3003",
+    "devUrl": "http://localhost:3000",
     "beforeDevCommand": "bun run dev",
     "beforeBuildCommand": "bun run build"
   },
