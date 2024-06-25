@@ -1,6 +1,8 @@
+import { locale as osLocale } from "@tauri-apps/plugin-os"
 import { useCallback, useEffect } from "react"
 
 import { Locale } from "@my-wishlist/i18n"
+import { matchLocale } from "@my-wishlist/i18n/utils"
 import { languageSchemaFallback } from "@my-wishlist/schemas"
 
 import useTranslationStore from "@/stores/translation"
@@ -25,7 +27,9 @@ const useTranslation = () => {
 
   useEffect(() => {
     ;(async () => {
-      const storeLocale = await store.get(config.store.localeKey)
+      const storeLocale =
+        (await store.get(config.store.localeKey)) ??
+        matchLocale((await osLocale()) ?? "")
 
       changeLocale(languageSchemaFallback.parse(storeLocale))
     })()

@@ -1,9 +1,8 @@
-import { match } from "@formatjs/intl-localematcher"
 import Negotiator from "negotiator"
 
 import { languageSchema, languageSchemaFallback } from "@my-wishlist/schemas"
 
-import config from "../config"
+import matchLocale from "./matchLocale"
 
 const parseLocale = ({
   acceptLanguage,
@@ -17,13 +16,8 @@ const parseLocale = ({
       const languages = new Negotiator({
         headers: { "accept-language": acceptLanguage ?? "" },
       }).languages()
-      const languageMatch = match(
-        languages,
-        config.languages,
-        config.defaultLanguage,
-      )
 
-      return languageSchemaFallback.parse(languageMatch)
+      return languageSchemaFallback.parse(matchLocale(languages))
     })
     .parse(cookieLanguage)
 
