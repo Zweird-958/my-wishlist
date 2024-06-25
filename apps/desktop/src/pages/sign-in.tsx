@@ -44,7 +44,7 @@ const SignIn = () => {
         schema={signInSchema}
         onSubmit={onSubmit}
         fields={[
-          { name: "email", label: forms.email },
+          { name: "email", label: forms.email, type: "email" },
           { name: "password", label: forms.password, type: "password" },
         ]}
         buttonText={forms.signIn.button}

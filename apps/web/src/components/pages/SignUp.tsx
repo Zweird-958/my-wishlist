@@ -40,7 +40,7 @@ const SignUp = () => {
         onSubmit={onSubmit}
         fields={[
           { name: "username", label: t("username") },
-          { name: "email", label: t("email") },
+          { name: "email", label: t("email"), type: "email" },
           { name: "password", label: t("password"), type: "password" },
         ]}
         buttonText={t("signUp.button")}
