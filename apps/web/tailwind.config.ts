@@ -4,9 +4,10 @@ import uiConfig from "../../packages/ui/tailwind.config"
 
 const config: Config = {
   content: [
+    ...(uiConfig.content as string[]),
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    ...(uiConfig.content as string[]),
+    "../../packages/ui/src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   presets: [uiConfig],
 }
