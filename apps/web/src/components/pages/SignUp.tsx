@@ -7,9 +7,9 @@ import { signUp as signUpRequest } from "@my-wishlist/api/routes/user"
 import { useTranslation } from "@my-wishlist/i18n"
 import { signUpSchema } from "@my-wishlist/schemas"
 import type { SignUpData } from "@my-wishlist/types/User"
+import Center from "@my-wishlist/ui/Center"
 import AuthForm from "@my-wishlist/ui/forms/AuthForm"
 
-import Center from "@/components/ui/Center"
 import useHandleError from "@/hooks/useHandleError"
 
 const defaultValues = {
