@@ -11,6 +11,7 @@ import {
 } from "@nextui-org/react"
 import { MoonIcon, SunIcon } from "lucide-react"
 import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
 
 export type SelectThemeProps = {
   translations: {
@@ -23,17 +24,22 @@ export type SelectThemeProps = {
 const SelectTheme = ({
   translations: { system, dark, light },
 }: SelectThemeProps) => {
+  const [isLoading, setIsLoading] = useState(true)
   const { theme, setTheme, resolvedTheme } = useTheme()
   const handleChangeTheme = (keys: Selection) => {
     const key = Array.from(keys).join(", ").replaceAll("_", " ")
     setTheme(key)
   }
 
+  useEffect(() => {
+    setIsLoading(!resolvedTheme)
+  }, [resolvedTheme])
+
   return (
     <Dropdown>
       <NavbarItem>
         <DropdownTrigger>
-          <Button isIconOnly variant="bordered" isLoading={!resolvedTheme}>
+          <Button isIconOnly variant="bordered" isLoading={isLoading}>
             {resolvedTheme === "light" ? <SunIcon /> : <MoonIcon />}
           </Button>
         </DropdownTrigger>
