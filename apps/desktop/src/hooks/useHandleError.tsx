@@ -2,7 +2,6 @@
 
 import type { RequestInstance } from "@hyper-fetch/core"
 import { OnFinishedCallbackType } from "@hyper-fetch/react"
-import { useTranslations } from "next-intl"
 import {
   ControllerRenderProps,
   FieldErrors,
@@ -11,12 +10,14 @@ import {
 } from "react-hook-form"
 import toast from "react-hot-toast"
 
+import useTranslation from "@/hooks/useTranslation"
+
 const SUCCESS_STATUS = 200
 const useHandleError = <RequestType extends RequestInstance>(
   errorsMap?: Record<number, string>,
   errorsCallback?: Record<number, () => void>,
 ) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
   const handleError: OnFinishedCallbackType<RequestType> = ({
     response: { status },
   }) => {
@@ -26,7 +27,7 @@ const useHandleError = <RequestType extends RequestInstance>(
 
     const error = errorsMap?.[status]
 
-    toast.error(error ?? t("errors.somethingWentWrong"))
+    toast.error(error ?? t.errors.somethingWentWrong)
     errorsCallback?.[status]?.()
   }
   const handleErrorMessage = <T extends FieldValues>(
@@ -34,7 +35,7 @@ const useHandleError = <RequestType extends RequestInstance>(
     error: FieldErrors<T>,
   ) =>
     // @ts-expect-error - This is a hack to get the error message from the zod error
-    t(`zodErrors.${field.name}.${error[field.name]?.message}`)
+    t.zodErrors[field.name][error[field.name]?.message]
 
   return { handleError, handleErrorMessage }
 }

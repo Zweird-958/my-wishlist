@@ -1,5 +1,4 @@
 import { useSubmit } from "@hyper-fetch/react"
-import { useTranslations } from "next-intl"
 import { useRouter } from "next/router"
 
 import { signIn as signInRequest } from "@my-wishlist/api/routes/user"
@@ -10,6 +9,7 @@ import AuthForm from "@my-wishlist/ui/forms/AuthForm"
 
 import useHandleError from "@/hooks/useHandleError"
 import useSession from "@/hooks/useSession"
+import useTranslation from "@/hooks/useTranslation"
 
 const SignIn = () => {
   const defaultValues = {
@@ -20,11 +20,13 @@ const SignIn = () => {
   const { submit, onSubmitSuccess, onSubmitFinished, submitting } =
     useSubmit(signInRequest)
   const { signIn } = useSession()
-  const t = useTranslations()
+  const {
+    t: { errors, forms },
+  } = useTranslation()
   const { handleError, handleErrorMessage } = useHandleError<
     typeof signInRequest
   >({
-    401: t("errors.invalidCredentials"),
+    401: errors.invalidCredentials,
   })
   const onSubmit = (data: SignInData) => {
     submit({ data })
@@ -42,12 +44,12 @@ const SignIn = () => {
         schema={signInSchema}
         onSubmit={onSubmit}
         fields={[
-          { name: "email", label: t("forms.email") },
-          { name: "password", label: t("forms.password"), type: "password" },
+          { name: "email", label: forms.email },
+          { name: "password", label: forms.password, type: "password" },
         ]}
-        buttonText={t("forms.signIn.button")}
+        buttonText={forms.signIn.button}
         isLoading={submitting}
-        title={t("forms.signIn.title")}
+        title={forms.signIn.title}
         handleErrorMessage={handleErrorMessage}
       />
     </Center>

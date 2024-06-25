@@ -1,15 +1,17 @@
-import { useTranslations } from "next-intl"
-
 import AuthWishlist from "@my-wishlist/ui/user/AuthWishlist"
 
+import useTranslation from "@/hooks/useTranslation"
+
 const Home = () => {
-  const t = useTranslations("common")
+  const {
+    t: { common },
+  } = useTranslation()
 
   return (
     <AuthWishlist
-      header={t("notLogged")}
-      body={t("mustLoggedIn")}
-      button={t("signIn")}
+      header={common.notLogged}
+      body={common.mustLoggedIn}
+      button={common.signIn}
     />
   )
 }

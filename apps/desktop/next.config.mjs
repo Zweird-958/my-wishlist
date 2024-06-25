@@ -2,12 +2,7 @@
 
 const nextConfig = {
   reactStrictMode: true,
-  i18n: {
-    locales: ["en", "fr"],
-    defaultLocale: "en",
-    localeDetection: false,
-  },
-
+  output: "export",
   transpilePackages: ["@my-wishlist/ui"],
 }
 

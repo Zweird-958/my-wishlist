@@ -1,6 +1,5 @@
 "use client"
 
-import { Store } from "@tauri-apps/plugin-store"
 import jsonwebtoken from "jsonwebtoken"
 import { useEffect } from "react"
 
@@ -8,8 +7,7 @@ import { RawJwt } from "@my-wishlist/types/Api"
 
 import useSessionStore from "@/stores/session"
 import config from "@/utils/config"
-
-const store = new Store("store.bin")
+import store from "@/utils/store"
 
 const useSession = () => {
   const { setSession, setIsLoading, ...sessionStore } = useSessionStore()
