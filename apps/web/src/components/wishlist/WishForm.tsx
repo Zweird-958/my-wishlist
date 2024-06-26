@@ -18,9 +18,9 @@ import { getCurrencies } from "@my-wishlist/api/routes/currencies"
 import { useTranslation } from "@my-wishlist/i18n"
 import { addWishSchema } from "@my-wishlist/schemas"
 import { Currency, Wish } from "@my-wishlist/types/Wish"
+import Field from "@my-wishlist/ui/Field"
 
 import CurrencyDropdown from "@/components/CurrencyDropdown"
-import FormField from "@/components/ui/FormField"
 import SwitchField from "@/components/ui/SwitchField"
 import WishSelectedImage from "@/components/wishlist/WishSelectedImage"
 import useUploadImage from "@/hooks/useUploadImage"
@@ -88,14 +88,9 @@ const Form = (props: FormProps) => {
       onSubmit={handleOnSubmit}
       className="flex flex-col gap-3 items-center"
     >
-      <FormField control={control} name="name" label={t("name")} />
-      <FormField
-        control={control}
-        name="price"
-        type="number"
-        label={t("price")}
-      />
-      <FormField control={control} name="url" type="url" label={t("url")} />
+      <Field control={control} name="name" label={t("name")} />
+      <Field control={control} name="price" type="number" label={t("price")} />
+      <Field control={control} name="url" type="url" label={t("url")} />
       <CurrencyDropdown
         onSelectionChange={handleChangeCurrency}
         currency={watch("currency")}

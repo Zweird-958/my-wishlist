@@ -22,8 +22,7 @@ const SignUp = () => {
   const { submit, onSubmitSuccess, onSubmitFinished, submitting } =
     useSubmit(signUpRequest)
   const { t } = useTranslation("forms", "common")
-  const { handleError, getErrorMessage } =
-    useHandleError<typeof signUpRequest>()
+  const { handleError } = useHandleError<typeof signUpRequest>()
   const onSubmit = (data: SignUpData) => {
     submit({ data })
   }
@@ -46,7 +45,6 @@ const SignUp = () => {
         buttonText={t("signUp.button")}
         isLoading={submitting}
         title={t("signUp.title")}
-        handleErrorMessage={getErrorMessage}
       />
     </Center>
   )

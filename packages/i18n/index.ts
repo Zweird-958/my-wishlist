@@ -1,21 +1,4 @@
-import { useTranslation as useTranslationOrg } from "react-i18next"
-
-import { languageSchemaFallback } from "@my-wishlist/schemas"
-
-import config, { Locale, Namespace, languages } from "./src/config"
-
-export const useTranslation = (...ns: Namespace[]) => {
-  const { i18n, ...rest } = useTranslationOrg(
-    ns.length > 0 ? ns : config.defaultNamespace,
-  )
-  const changeLanguage = (locale: Locale) => i18n.changeLanguage(locale)
-
-  return {
-    i18n,
-    locale: languageSchemaFallback.parse(i18n.resolvedLanguage),
-    changeLanguage,
-    ...rest,
-  }
-}
-
-export { config, languages, type Locale, type Namespace }
+export * from "./config"
+export * from "./src/client"
+export * from "./src/provider"
+export * from "./src/useTranslation"

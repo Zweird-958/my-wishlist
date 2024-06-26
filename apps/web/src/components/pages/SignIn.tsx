@@ -23,11 +23,9 @@ const SignIn = () => {
     useSubmit(signInRequest)
   const { signIn } = useSession()
   const { t } = useTranslation("errors", "forms")
-  const { handleError, getErrorMessage } = useHandleError<typeof signInRequest>(
-    {
-      401: t("errors:invalidCredentials"),
-    },
-  )
+  const { handleError } = useHandleError<typeof signInRequest>({
+    401: t("errors:invalidCredentials"),
+  })
   const onSubmit = (data: SignInData) => {
     submit({ data })
   }
@@ -50,7 +48,6 @@ const SignIn = () => {
         buttonText={t("forms:signIn.button")}
         isLoading={submitting}
         title={t("forms:signIn.title")}
-        handleErrorMessage={getErrorMessage}
       />
     </Center>
   )

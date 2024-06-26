@@ -1,6 +1,6 @@
 import { Image } from "@nextui-org/react"
 
-import { config } from "@my-wishlist/i18n"
+import { config } from "@my-wishlist/i18n/config"
 
 type Props = {
   language: string

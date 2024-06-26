@@ -10,7 +10,6 @@ import {
 } from "react-hook-form"
 import { ZodSchema } from "zod"
 
-import { HandleErrorMessage } from "../../types/Form"
 import Field from "../Field"
 
 type Field<T extends FieldValues> = {
@@ -30,7 +29,6 @@ type FormProps<T extends FieldValues> = {
 
 type Props<T extends FieldValues> = {
   title: string
-  handleErrorMessage: HandleErrorMessage<T>
 } & FormProps<T>
 
 const AuthForm = <T extends FieldValues>({
@@ -41,7 +39,6 @@ const AuthForm = <T extends FieldValues>({
   fields,
   isLoading,
   buttonText,
-  handleErrorMessage,
 }: Props<T>) => {
   const { control, handleSubmit } = useForm<T>({
     defaultValues,
@@ -56,13 +53,7 @@ const AuthForm = <T extends FieldValues>({
       <CardBody>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
           {fields.map(({ name, ...fieldProps }) => (
-            <Field
-              key={name}
-              name={name}
-              control={control}
-              handleErrorMessage={handleErrorMessage}
-              {...fieldProps}
-            />
+            <Field key={name} name={name} control={control} {...fieldProps} />
           ))}
 
           <Button type="submit" color="primary" isLoading={isLoading}>

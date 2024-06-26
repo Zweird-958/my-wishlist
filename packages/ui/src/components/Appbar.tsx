@@ -14,10 +14,11 @@ import { Share2 } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
+import { useTranslation } from "@my-wishlist/i18n/utils"
 import { JwtPayload } from "@my-wishlist/types/Api"
 
 import SelectLocale, { SelectLocaleProps } from "./SelectLocale"
-import SelectTheme, { SelectThemeProps } from "./SelectTheme"
+import SelectTheme from "./SelectTheme"
 
 type MenuItem = {
   label: string
@@ -33,22 +34,11 @@ type Props = {
     signOut: () => void
     changeLocale: SelectLocaleProps["changeLocale"]
   }
-  translations: {
-    signOut: string
-    signIn: string
-    signUp: string
-  }
-} & Pick<SelectLocaleProps, "locale"> &
-  Pick<SelectThemeProps, "translations">
+}
 
-const Appbar = ({
-  menuItems,
-  session,
-  actions,
-  translations: { signIn, signUp, signOut, ...translations },
-  locale,
-}: Props) => {
+const Appbar = ({ menuItems, session, actions }: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { t, locale } = useTranslation()
 
   return (
     <Navbar
@@ -73,7 +63,7 @@ const Appbar = ({
           <>
             <NavbarItem className="hidden sm:flex">
               <Button onClick={actions.signOut} color="danger">
-                {signOut}
+                {t("signOut")}
               </Button>
             </NavbarItem>
             <NavbarItem className="hidden sm:flex">
@@ -92,7 +82,7 @@ const Appbar = ({
           <>
             <NavbarItem className="hidden sm:flex">
               <Button as={Link} href="/sign-in" color="success">
-                {signIn}
+                {t("signIn")}
               </Button>
             </NavbarItem>
             <NavbarItem className="hidden sm:flex">
@@ -102,12 +92,12 @@ const Appbar = ({
                 variant="bordered"
                 color="primary"
               >
-                {signUp}
+                {t("signUp")}
               </Button>
             </NavbarItem>
           </>
         )}
-        <SelectTheme translations={translations} />
+        <SelectTheme />
         <SelectLocale locale={locale} changeLocale={actions.changeLocale} />
       </NavbarContent>
       <NavbarMenu>

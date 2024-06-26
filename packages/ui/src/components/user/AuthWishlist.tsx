@@ -9,28 +9,28 @@ import {
 } from "@nextui-org/react"
 import Link from "next/link"
 
+import { useTranslation } from "@my-wishlist/i18n/utils"
+
 import Center from "../Center"
 
-type Props = {
-  header: string
-  body: string
-  button: string
-}
+const AuthWishlist = () => {
+  const { t } = useTranslation()
 
-const AuthWishlist = ({ header, body, button }: Props) => (
-  <Center>
-    <Card className="max-w-lg w-full">
-      <CardHeader>{header}</CardHeader>
-      <CardBody>
-        <p>{body}</p>
-      </CardBody>
-      <CardFooter className="justify-end">
-        <Button as={Link} href="/sign-in" color="success">
-          {button}
-        </Button>
-      </CardFooter>
-    </Card>
-  </Center>
-)
+  return (
+    <Center>
+      <Card className="max-w-lg w-full">
+        <CardHeader>{t("notLogged")}</CardHeader>
+        <CardBody>
+          <p>{t("mustLoggedIn")}</p>
+        </CardBody>
+        <CardFooter className="justify-end">
+          <Button as={Link} href="/sign-in" color="success">
+            {t("signIn")}
+          </Button>
+        </CardFooter>
+      </Card>
+    </Center>
+  )
+}
 
 export default AuthWishlist

@@ -12,7 +12,7 @@ import {
 } from "react-hook-form"
 import { ZodSchema } from "zod"
 
-import FormField from "./FormField"
+import Field from "@my-wishlist/ui/Field"
 
 type Field<T extends FieldValues> = {
   name: Path<T>
@@ -39,7 +39,7 @@ const Form = <T extends FieldValues>(props: FormProps<T>) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
       {fields.map(({ name, ...fieldProps }) => (
-        <FormField key={name} name={name} control={control} {...fieldProps} />
+        <Field key={name} name={name} control={control} {...fieldProps} />
       ))}
 
       <Button type="submit" color="primary" isLoading={isLoading}>

@@ -13,17 +13,10 @@ import { MoonIcon, SunIcon } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 
-export type SelectThemeProps = {
-  translations: {
-    system: string
-    dark: string
-    light: string
-  }
-}
+import { useTranslation } from "@my-wishlist/i18n/utils"
 
-const SelectTheme = ({
-  translations: { system, dark, light },
-}: SelectThemeProps) => {
+const SelectTheme = () => {
+  const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(true)
   const { theme, setTheme, resolvedTheme } = useTheme()
   const handleChangeTheme = (keys: Selection) => {
@@ -52,9 +45,9 @@ const SelectTheme = ({
         aria-label="Select theme"
         onSelectionChange={handleChangeTheme}
       >
-        <DropdownItem key="system">{system}</DropdownItem>
-        <DropdownItem key="dark">{dark}</DropdownItem>
-        <DropdownItem key="light">{light}</DropdownItem>
+        <DropdownItem key="system">{t("theme.system")}</DropdownItem>
+        <DropdownItem key="dark">{t("theme.dark")}</DropdownItem>
+        <DropdownItem key="light">{t("theme.light")}</DropdownItem>
       </DropdownMenu>
     </Dropdown>
   )

@@ -6,7 +6,7 @@ import AppbarGeneric from "@my-wishlist/ui/Appbar"
 import useSession from "@/hooks/useSession"
 
 const Appbar = () => {
-  const { t, locale, changeLanguage } = useTranslation("common")
+  const { t, changeLanguage } = useTranslation()
   const { session, signOut } = useSession()
   const menuItems = [
     { label: t("home"), href: "/" },
@@ -18,15 +18,6 @@ const Appbar = () => {
 
   return (
     <AppbarGeneric
-      locale={locale}
-      translations={{
-        dark: t("theme.dark"),
-        light: t("theme.light"),
-        system: t("theme.system"),
-        signIn: t("signIn"),
-        signOut: t("signOut"),
-        signUp: t("signUp"),
-      }}
       actions={{
         changeLocale: changeLanguage,
         signOut,
