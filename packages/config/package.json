@@ -1,0 +1,20 @@
+{
+  "name": "@my-wishlist/config",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@my-wishlist/schemas": "^1.0.0",
+    "zod": "^3.23.8"
+  }
+}

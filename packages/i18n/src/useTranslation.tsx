@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 import { useTranslation as useTranslationOrg } from "react-i18next"
 
 import { languageSchemaFallback } from "@my-wishlist/schemas"

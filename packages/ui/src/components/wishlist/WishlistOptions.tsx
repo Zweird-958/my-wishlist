@@ -1,7 +1,8 @@
 "use client"
 
-import WishListDropdown from "@/components/wishlist/WishListDropdown"
-import { Filter, Sort } from "@/utils/config"
+import { Filter, Sort } from "@my-wishlist/config"
+
+import WishListDropdown from "./WishListDropdown"
 
 const FILTERS: Filter[] = ["all", "purchased", "notPurchased"]
 const SORTS: Sort[] = ["date", "priceAsc", "priceDesc"]

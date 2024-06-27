@@ -3,9 +3,9 @@
 import { Card, CardBody, CardHeader } from "@nextui-org/react"
 import clsx from "clsx"
 
-import { useTranslation } from "@my-wishlist/i18n"
+import { useTranslation } from "@my-wishlist/i18n/utils"
 
-import Center from "@/components/ui/Center"
+import Center from "../Center"
 
 type Props = {
   username?: string

@@ -5,11 +5,11 @@ import { useParams, useRouter } from "next/navigation"
 import { useMemo, useState } from "react"
 
 import { getWishlistSharedUser } from "@my-wishlist/api/routes/sharedWishes"
+import config, { Filter, Sort } from "@my-wishlist/config"
 import { useTranslation } from "@my-wishlist/i18n"
+import WishlistDisplay from "@my-wishlist/ui/wishlist/WishlistDisplay"
 
-import WishlistDisplay from "@/components/wishlist/WishlistDisplay"
 import useHandleError from "@/hooks/useHandleError"
-import config, { Filter, Sort } from "@/utils/config"
 
 const WishlistShared = () => {
   const { t } = useTranslation("errors")
@@ -41,6 +41,7 @@ const WishlistShared = () => {
       setSelectedSort={setSelectedSort}
       wishlist={wishlist}
       username={data?.meta.username}
+      session={null}
     />
   )
 }

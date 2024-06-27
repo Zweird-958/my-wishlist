@@ -1,7 +1,6 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useFetch } from "@hyper-fetch/react"
 import {
   Button,
   ButtonProps,
@@ -14,17 +13,17 @@ import {
 } from "@nextui-org/react"
 import { useForm } from "react-hook-form"
 
-import { getCurrencies } from "@my-wishlist/api/routes/currencies"
+import config from "@my-wishlist/config"
 import { useTranslation } from "@my-wishlist/i18n"
 import { addWishSchema } from "@my-wishlist/schemas"
 import { Currency, Wish } from "@my-wishlist/types/Wish"
-import Field from "@my-wishlist/ui/Field"
 
-import CurrencyDropdown from "@/components/CurrencyDropdown"
-import SwitchField from "@/components/ui/SwitchField"
-import WishSelectedImage from "@/components/wishlist/WishSelectedImage"
-import useUploadImage from "@/hooks/useUploadImage"
-import config from "@/utils/config"
+import useCurrencies from "../../hooks/useCurrencies"
+import useUploadImage from "../../hooks/useUploadImage"
+import CurrencyDropdown from "../CurrencyDropdown"
+import Field from "../Field"
+import SwitchField from "../SwitchField"
+import WishSelectedImage from "./WishSelectedImage"
 
 type FormProps = {
   wish?: Wish
@@ -55,7 +54,7 @@ const Form = (props: FormProps) => {
     },
     resolver: zodResolver(addWishSchema),
   })
-  const { data: currencies } = useFetch(getCurrencies)
+  const { currencies } = useCurrencies()
 
   const handleChangeCurrency = (keys: Selection) => {
     const currency = Array.from(keys)
@@ -94,7 +93,7 @@ const Form = (props: FormProps) => {
       <CurrencyDropdown
         onSelectionChange={handleChangeCurrency}
         currency={watch("currency")}
-        currencies={currencies?.result || []}
+        currencies={currencies}
       />
       {SelectImageComponent}
       <WishSelectedImage wish={wish} image={image} />

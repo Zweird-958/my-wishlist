@@ -12,19 +12,21 @@ import { useState } from "react"
 import toast from "react-hot-toast"
 
 import { deleteWish } from "@my-wishlist/api/routes/wish"
-import { useTranslation } from "@my-wishlist/i18n"
+import { useTranslation } from "@my-wishlist/i18n/utils"
 import { Wish } from "@my-wishlist/types/Wish"
 
-import useHandleError from "@/hooks/useHandleError"
-import useWishlist from "@/hooks/useWishlist"
+import useHandleError from "../../hooks/useHandleError"
+import useWishlist from "../../hooks/useWishlist"
+import { SessionProps } from "../../types/session"
 
 type Props = {
   wish: Wish
-}
+} & SessionProps
 
-const DeleteWish = ({ wish }: Props) => {
-  const { removeWish } = useWishlist()
-  const { t } = useTranslation("forms", "errors")
+const DeleteWish = ({ wish, session }: Props) => {
+  const { removeWish } = useWishlist(session)
+
+  const { t } = useTranslation("forms")
   const { handleError } = useHandleError({ 404: t("errors:wishNotFound") })
 
   const [isOpen, setIsOpen] = useState(false)

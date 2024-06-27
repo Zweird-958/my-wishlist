@@ -2,14 +2,15 @@
 
 import { ReactNode } from "react"
 
+import { Filter, Sort } from "@my-wishlist/config"
 import { Wish } from "@my-wishlist/types/Wish"
 
-import LoadingScreen from "@/components/ui/LoadingScreen"
-import WishList from "@/components/wishlist/WishList"
-import WishlistEmpty from "@/components/wishlist/WishlistEmpty"
-import WishlistOptions from "@/components/wishlist/WishlistOptions"
-import { Filter, Sort } from "@/utils/config"
-import filterWishlist from "@/utils/filterWishlist"
+import { SessionProps } from "../../types/session"
+import filterWishlist from "../../utils/filterWishlist"
+import LoadingScreen from "../LoadingScreen"
+import WishList from "./WishList"
+import WishlistEmpty from "./WishlistEmpty"
+import WishlistOptions from "./WishlistOptions"
 
 type Props = {
   isLoading?: boolean
@@ -20,7 +21,7 @@ type Props = {
   setSelectedSort: (sort: Sort) => void
   username?: string
   children?: ReactNode
-}
+} & SessionProps
 
 const WishlistDisplay = ({
   isLoading,
@@ -31,6 +32,7 @@ const WishlistDisplay = ({
   setSelectedSort,
   username,
   children,
+  session,
 }: Props) => {
   if (isLoading) {
     return <LoadingScreen />
@@ -51,6 +53,7 @@ const WishlistDisplay = ({
         />
         <WishList
           wishes={filterWishlist(wishlist, selectedFilter, selectedSort)}
+          session={session}
         />
       </div>
       {children}

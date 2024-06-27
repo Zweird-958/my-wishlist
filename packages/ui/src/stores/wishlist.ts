@@ -1,8 +1,7 @@
 import { create } from "zustand"
 
+import config, { Filter, Sort } from "@my-wishlist/config"
 import { Wish } from "@my-wishlist/types/Wish"
-
-import config, { Filter, Sort } from "@/utils/config"
 
 type WishlistStore = {
   wishlist: Wish[]

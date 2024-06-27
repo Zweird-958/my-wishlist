@@ -9,7 +9,7 @@ import {
   Selection,
 } from "@nextui-org/react"
 
-import { useTranslation } from "@my-wishlist/i18n"
+import { useTranslation } from "@my-wishlist/i18n/utils"
 
 type Props<T extends string> = {
   items: {

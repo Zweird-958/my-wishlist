@@ -6,12 +6,8 @@ import { useEffect, useState } from "react"
 import { Toaster } from "react-hot-toast"
 
 import client from "@my-wishlist/api"
-import {
-  I18nProvider,
-  config as i18nConfig,
-  useTranslation,
-} from "@my-wishlist/i18n/desktop"
-import { matchLocale } from "@my-wishlist/i18n/utils"
+import { I18nProvider, config as i18nConfig } from "@my-wishlist/i18n/desktop"
+import { matchLocale, useTranslation } from "@my-wishlist/i18n/utils"
 import { languageSchemaFallback } from "@my-wishlist/schemas"
 
 import Appbar from "@/components/Appbar"

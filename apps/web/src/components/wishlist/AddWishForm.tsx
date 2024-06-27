@@ -6,8 +6,8 @@ import toast from "react-hot-toast"
 
 import { createWish } from "@my-wishlist/api/routes/wish"
 import { useTranslation } from "@my-wishlist/i18n"
+import WishForm from "@my-wishlist/ui/wishlist/WishForm"
 
-import WishForm from "@/components/wishlist/WishForm"
 import useHandleError from "@/hooks/useHandleError"
 import useWishlist from "@/hooks/useWishlist"
 
