@@ -27,8 +27,8 @@
     "expo-updates": "~0.24.12",
     "expo-web-browser": "~12.8.2",
     "nativewind": "^4.0.36",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-native": "0.73.6",
     "react-native-gesture-handler": "~2.14.1",
     "react-native-reanimated": "~3.6.2",
@@ -39,17 +39,17 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.6",
-    "@types/react": "~18.2.45",
+    "@types/react": "~18.3.3",
     "expo-doctor": "^1.6.0",
-    "react-test-renderer": "18.2.0",
+    "react-test-renderer": "18.3.1",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
   },
   "overrides": {
-    "react-refresh": "~0.14.0"
+    "react-refresh": "~0.14.2"
   },
   "resolutions": {
-    "react-refresh": "~0.14.0"
+    "react-refresh": "~0.14.2"
   },
   "private": true
 }
