@@ -41,7 +41,6 @@ const WishlistShared = () => {
       setSelectedSort={setSelectedSort}
       wishlist={wishlist}
       username={data?.meta.username}
-      session={null}
     />
   )
 }

@@ -8,7 +8,7 @@ import {
   Path,
 } from "react-hook-form"
 
-import { useTranslation } from "@my-wishlist/i18n/utils"
+import { useTranslation } from "../components/AppContext"
 
 export type FormProps<TFieldValues extends FieldValues> = {
   name: Path<TFieldValues>

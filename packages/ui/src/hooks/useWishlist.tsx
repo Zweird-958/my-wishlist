@@ -3,11 +3,12 @@
 import { useFetch } from "@hyper-fetch/react"
 
 import { getWishes } from "@my-wishlist/api/routes/wish"
-import { JwtPayload } from "@my-wishlist/types/Api"
 
+import { useSession } from "../components/AppContext"
 import useWishlistStore from "../stores/wishlist"
 
-const useWishlist = (session: JwtPayload | null) => {
+const useWishlist = () => {
+  const { session } = useSession()
   const {
     setWishlist,
     wishlist,

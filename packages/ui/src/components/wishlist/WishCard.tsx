@@ -10,19 +10,18 @@ import {
 } from "@nextui-org/react"
 import { SquarePenIcon } from "lucide-react"
 
-import { useTranslation } from "@my-wishlist/i18n/utils"
 import type { Wish } from "@my-wishlist/types/Wish"
 
-import { SessionProps } from "../../types/session"
+import { useTranslation } from "../AppContext"
 import DeleteWish from "./DeleteWish"
 
 type Props = {
   wish: Wish
   canEdit?: boolean
   onEditButton: (wish: Wish) => void
-} & SessionProps
+}
 
-const WishCard = ({ wish, canEdit, session, onEditButton }: Props) => {
+const WishCard = ({ wish, canEdit, onEditButton }: Props) => {
   const { image, name, link, priceFormatted } = wish
   const { t } = useTranslation()
   const handleEdit = () => onEditButton(wish)
@@ -32,7 +31,7 @@ const WishCard = ({ wish, canEdit, session, onEditButton }: Props) => {
       <CardHeader className="absolute top-0 z-20 justify-between">
         {canEdit && (
           <>
-            <DeleteWish session={session} wish={wish} />
+            <DeleteWish wish={wish} />
             <Button
               isIconOnly
               size="sm"

@@ -23,3 +23,5 @@ export const useTranslation = (...ns: Namespace[]) => {
     ...rest,
   }
 }
+
+export type UseTranslation = ReturnType<typeof useTranslation>

@@ -3,7 +3,7 @@
 import { Button } from "@nextui-org/react"
 import { ChangeEventHandler, useState } from "react"
 
-import { useTranslation } from "@my-wishlist/i18n/utils"
+import { useTranslation } from "../components/AppContext"
 
 const useUploadImage = () => {
   const [image, setImage] = useState<File | null>(null)

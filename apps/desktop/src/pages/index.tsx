@@ -14,7 +14,7 @@ const Home = () => {
     setSelectedFilter,
     selectedSort,
     setSelectedSort,
-  } = useWishlist(session)
+  } = useWishlist()
   // NECESSARY TO LOAD NAMESPACES
   const { t: _ } = useTranslation("forms", "zodErrors", "errors")
 
@@ -30,7 +30,6 @@ const Home = () => {
       setSelectedFilter={setSelectedFilter}
       selectedSort={selectedSort}
       setSelectedSort={setSelectedSort}
-      session={session}
     />
   )
 }

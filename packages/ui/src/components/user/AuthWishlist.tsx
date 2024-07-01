@@ -9,8 +9,7 @@ import {
 } from "@nextui-org/react"
 import Link from "next/link"
 
-import { useTranslation } from "@my-wishlist/i18n/utils"
-
+import { useTranslation } from "../AppContext"
 import Center from "../Center"
 
 const AuthWishlist = () => {

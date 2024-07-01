@@ -1,13 +1,20 @@
-"use client"
-
+import { locale as osLocale } from "@tauri-apps/plugin-os"
+import { Store } from "@tauri-apps/plugin-store"
 import i18next from "i18next"
 import ICU from "i18next-icu"
 import resourcesToBackend from "i18next-resources-to-backend"
-import { ReactNode, useMemo } from "react"
+import { ReactNode, useEffect, useMemo } from "react"
 import { I18nextProvider as Provider, initReactI18next } from "react-i18next"
 
-import config, { Locale } from "./config"
+import { config as desktopConfig } from "@my-wishlist/config/desktop"
+import { languageSchemaFallback } from "@my-wishlist/schemas"
+
+import config, { Locale, Namespace } from "./config"
 import { getOptions } from "./settings"
+import { useTranslation as useTranslationGeneric } from "./useTranslation"
+import matchLocale from "./utils/matchLocale"
+
+const store = new Store(desktopConfig.store.name)
 
 const runsOnServerSide = typeof window === "undefined"
 
@@ -40,4 +47,23 @@ export const I18nProvider = ({
   return <Provider i18n={i18next}>{children}</Provider>
 }
 
-export * from "./useTranslation"
+export const getLocale = async () =>
+  languageSchemaFallback.parse(
+    (await store.get(desktopConfig.store.sessionKey)) ??
+      matchLocale((await osLocale()) ?? ""),
+  )
+
+export const useTranslation = (...ns: Namespace[]) => {
+  const { changeLanguage, ...rest } = useTranslationGeneric(...ns)
+
+  useEffect(() => {
+    ;(async () => {
+      changeLanguage(await getLocale())
+    })()
+  }, [changeLanguage])
+
+  return {
+    changeLanguage,
+    ...rest,
+  }
+}

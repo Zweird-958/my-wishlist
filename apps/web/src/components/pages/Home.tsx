@@ -4,10 +4,10 @@ import { useDisclosure } from "@nextui-org/react"
 
 import useWishlist from "@my-wishlist/ui/hooks/useWishlist"
 import AuthWishlist from "@my-wishlist/ui/user/AuthWishlist"
+import AddWishForm from "@my-wishlist/ui/wishlist/AddWishForm"
 import WishlistDisplay from "@my-wishlist/ui/wishlist/WishlistDisplay"
 
 import AddButton from "@/components/ui/AddButton"
-import AddWishForm from "@/components/wishlist/AddWishForm"
 import useSession from "@/hooks/useSession"
 
 const Home = () => {
@@ -19,7 +19,7 @@ const Home = () => {
     setSelectedFilter,
     selectedSort,
     setSelectedSort,
-  } = useWishlist(session)
+  } = useWishlist()
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
   if (!session && !sessionIsLoading) {
@@ -34,7 +34,6 @@ const Home = () => {
       setSelectedFilter={setSelectedFilter}
       selectedSort={selectedSort}
       setSelectedSort={setSelectedSort}
-      session={session}
     >
       <AddButton onPress={onOpen} color="primary" />
       <AddWishForm isOpen={isOpen} onOpenChange={onOpenChange} />

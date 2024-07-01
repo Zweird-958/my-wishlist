@@ -4,14 +4,14 @@ import type { RequestInstance } from "@hyper-fetch/core"
 import { OnFinishedCallbackType } from "@hyper-fetch/react"
 import toast from "react-hot-toast"
 
-import { useTranslation } from "@my-wishlist/i18n/utils"
+import { useTranslation } from "../components/AppContext"
 
 const SUCCESS_STATUS = 200
 const useHandleError = <RequestType extends RequestInstance>(
   errorsMap?: Record<number, string>,
   errorsCallback?: Record<number, () => void>,
 ) => {
-  // const { t } = useTranslation("errors", "zodErrors")
+  const { t } = useTranslation("errors", "zodErrors")
   const handleError: OnFinishedCallbackType<RequestType> = ({
     response: { status },
   }) => {
@@ -21,7 +21,7 @@ const useHandleError = <RequestType extends RequestInstance>(
 
     const error = errorsMap?.[status]
 
-    // toast.error(error ?? t("somethingWentWrong"))
+    toast.error(error ?? t("somethingWentWrong"))
     errorsCallback?.[status]?.()
   }
 

@@ -1,16 +1,17 @@
-import { NextUIProvider } from "@nextui-org/react"
-import { locale as osLocale } from "@tauri-apps/plugin-os"
-import { ThemeProvider } from "next-themes"
 import type { AppProps } from "next/app"
 import { useEffect, useState } from "react"
 import { Toaster } from "react-hot-toast"
 
 import client from "@my-wishlist/api"
-import { I18nProvider, config as i18nConfig } from "@my-wishlist/i18n/desktop"
-import { matchLocale, useTranslation } from "@my-wishlist/i18n/utils"
-import { languageSchemaFallback } from "@my-wishlist/schemas"
+import {
+  I18nProvider,
+  getLocale,
+  config as i18nConfig,
+} from "@my-wishlist/i18n/desktop"
+import { useTranslation } from "@my-wishlist/i18n/utils"
 
 import Appbar from "@/components/Appbar"
+import Providers from "@/components/providers"
 import "@/styles/globals.css"
 import config from "@/utils/config"
 import store from "@/utils/store"
@@ -28,10 +29,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   useEffect(() => {
     ;(async () => {
-      const storeLocale = languageSchemaFallback.parse(
-        (await store.get(config.store.localeKey)) ??
-          matchLocale((await osLocale()) ?? ""),
-      )
+      const storeLocale = await getLocale()
 
       changeLanguage(storeLocale)
       setLocale(storeLocale)
@@ -40,19 +38,17 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <I18nProvider language={locale}>
-      <NextUIProvider>
+      <Providers>
         <Toaster
           toastOptions={{
             className: "toast",
           }}
         />
-        <ThemeProvider>
-          <Appbar />
-          <main className="flex grow px-4">
-            <Component {...pageProps} />
-          </main>
-        </ThemeProvider>
-      </NextUIProvider>
+        <Appbar />
+        <main className="flex grow px-4">
+          <Component {...pageProps} />
+        </main>
+      </Providers>
     </I18nProvider>
   )
 }

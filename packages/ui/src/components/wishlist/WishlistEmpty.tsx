@@ -3,8 +3,7 @@
 import { Card, CardBody, CardHeader } from "@nextui-org/react"
 import clsx from "clsx"
 
-import { useTranslation } from "@my-wishlist/i18n/utils"
-
+import { useTranslation } from "../AppContext"
 import Center from "../Center"
 
 type Props = {

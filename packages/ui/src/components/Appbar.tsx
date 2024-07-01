@@ -14,31 +14,27 @@ import { Share2 } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
-import { useTranslation } from "@my-wishlist/i18n/utils"
-import { JwtPayload } from "@my-wishlist/types/Api"
-
+import { useSession, useTranslation } from "../components/AppContext"
 import SelectLocale, { SelectLocaleProps } from "./SelectLocale"
 import SelectTheme from "./SelectTheme"
 
-type MenuItem = {
-  label: string
-  href?: string
-  hidden?: boolean
-  onClick?: () => void
-}
-
 type Props = {
-  menuItems: MenuItem[]
-  session: JwtPayload | null
   actions: {
-    signOut: () => void
     changeLocale: SelectLocaleProps["changeLocale"]
   }
 }
 
-const Appbar = ({ menuItems, session, actions }: Props) => {
+const Appbar = ({ actions }: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { t, locale } = useTranslation()
+  const { session, signOut } = useSession()
+  const menuItems = [
+    { label: t("home"), href: "/" },
+    { label: t("wishlistShared"), href: "/share", hidden: !session },
+    { label: t("signIn"), href: "/sign-in", hidden: Boolean(session) },
+    { label: t("signUp"), href: "/sign-up", hidden: Boolean(session) },
+    { label: t("signOut"), onClick: signOut, hidden: !session },
+  ]
 
   return (
     <Navbar
@@ -62,7 +58,7 @@ const Appbar = ({ menuItems, session, actions }: Props) => {
         {session ? (
           <>
             <NavbarItem className="hidden sm:flex">
-              <Button onClick={actions.signOut} color="danger">
+              <Button onClick={signOut} color="danger">
                 {t("signOut")}
               </Button>
             </NavbarItem>

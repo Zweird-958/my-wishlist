@@ -6,10 +6,10 @@ import toast from "react-hot-toast"
 
 import { createWish } from "@my-wishlist/api/routes/wish"
 import { useTranslation } from "@my-wishlist/i18n"
-import useWishlist from "@my-wishlist/ui/hooks/useWishlist"
-import WishForm from "@my-wishlist/ui/wishlist/WishForm"
 
-import useHandleError from "@/hooks/useHandleError"
+import useHandleError from "../../hooks/useHandleError"
+import useWishlist from "../../hooks/useWishlist"
+import WishForm from "./WishForm"
 
 type Props = Pick<ModalProps, "isOpen" | "onOpenChange">
 
