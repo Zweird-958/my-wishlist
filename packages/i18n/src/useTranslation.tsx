@@ -12,7 +12,9 @@ export const useTranslation = (...ns: Namespace[]) => {
     ns.length > 0 ? ns : config.defaultNamespace,
   )
   const changeLanguage = useCallback(
-    (locale: Locale) => i18n.changeLanguage(locale),
+    (locale: Locale) => {
+      i18n.changeLanguage(locale)
+    },
     [i18n],
   )
 

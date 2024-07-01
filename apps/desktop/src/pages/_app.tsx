@@ -9,8 +9,8 @@ import {
   config as i18nConfig,
 } from "@my-wishlist/i18n/desktop"
 import { useTranslation } from "@my-wishlist/i18n/utils"
+import Appbar from "@my-wishlist/ui/Appbar"
 
-import Appbar from "@/components/Appbar"
 import Providers from "@/components/providers"
 import "@/styles/globals.css"
 import config from "@/utils/config"

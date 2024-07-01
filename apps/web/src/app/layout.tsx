@@ -4,8 +4,7 @@ import { Toaster } from "react-hot-toast"
 
 import { I18nProvider } from "@my-wishlist/i18n"
 import { getLocale } from "@my-wishlist/i18n/server"
-
-import Appbar from "@/components/Appbar"
+import Appbar from "@my-wishlist/ui/Appbar"
 
 import "./globals.css"
 import Providers from "./providers"

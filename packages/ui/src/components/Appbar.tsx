@@ -15,18 +15,12 @@ import Link from "next/link"
 import { useState } from "react"
 
 import { useSession, useTranslation } from "../components/AppContext"
-import SelectLocale, { SelectLocaleProps } from "./SelectLocale"
+import SelectLocale from "./SelectLocale"
 import SelectTheme from "./SelectTheme"
 
-type Props = {
-  actions: {
-    changeLocale: SelectLocaleProps["changeLocale"]
-  }
-}
-
-const Appbar = ({ actions }: Props) => {
+const Appbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { t, locale } = useTranslation()
+  const { t, locale, changeLanguage } = useTranslation()
   const { session, signOut } = useSession()
   const menuItems = [
     { label: t("home"), href: "/" },
@@ -94,7 +88,7 @@ const Appbar = ({ actions }: Props) => {
           </>
         )}
         <SelectTheme />
-        <SelectLocale locale={locale} changeLocale={actions.changeLocale} />
+        <SelectLocale locale={locale} changeLocale={changeLanguage} />
       </NavbarContent>
       <NavbarMenu>
         {menuItems.map(

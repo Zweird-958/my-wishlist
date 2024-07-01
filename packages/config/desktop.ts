@@ -2,14 +2,14 @@ import { z } from "zod"
 
 const schema = z.object({
   store: z.object({
-    sessionKey: z.string(),
+    localeKey: z.string(),
     name: z.string(),
   }),
 })
 
 export const config = schema.parse({
   store: {
-    sessionKey: "my-wishlist-session",
+    localeKey: "my-wishlist-locale",
     name: "store.bin",
   },
 })

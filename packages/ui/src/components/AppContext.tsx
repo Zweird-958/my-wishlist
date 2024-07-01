@@ -1,11 +1,16 @@
 import { ReactNode, createContext, useContext } from "react"
 
 import { Namespace } from "@my-wishlist/i18n"
-import { UseTranslation } from "@my-wishlist/i18n/utils"
+import type {
+  UseTranslationDesktop,
+  UseTranslationWeb,
+} from "@my-wishlist/i18n/types"
 import { JwtPayload } from "@my-wishlist/types/Api"
 
 type Context = {
-  useTranslation: (...ns: Namespace[]) => UseTranslation
+  useTranslation: (
+    ...ns: Namespace[]
+  ) => UseTranslationWeb | UseTranslationDesktop
   useSession: () => {
     session: JwtPayload | null
     isLoading: boolean
