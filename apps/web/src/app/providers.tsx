@@ -6,7 +6,10 @@ import { useRouter } from "next/navigation"
 import { ReactNode } from "react"
 
 import client from "@my-wishlist/api"
+import { useTranslation } from "@my-wishlist/i18n"
+import { AppProvider } from "@my-wishlist/ui/AppContext"
 
+import useSession from "@/hooks/useSession"
 import config from "@/utils/config"
 
 type Props = {
@@ -25,9 +28,11 @@ const Providers = (props: Props) => {
   )
 
   return (
-    <NextUIProvider navigate={router.push}>
-      <ThemeProvider>{children}</ThemeProvider>
-    </NextUIProvider>
+    <AppProvider useTranslation={useTranslation} useSession={useSession}>
+      <NextUIProvider navigate={router.push}>
+        <ThemeProvider>{children}</ThemeProvider>
+      </NextUIProvider>
+    </AppProvider>
   )
 }
 
