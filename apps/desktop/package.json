@@ -1,0 +1,40 @@
+{
+  "name": "@my-wishlist/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "generate": "prisma generate --schema=../../packages/db/prisma/schema.prisma",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hyper-fetch/react": "^5.7.5",
+    "@my-wishlist/api": "workspace:*",
+    "@my-wishlist/config": "workspace:*",
+    "@my-wishlist/ui": "workspace:*",
+    "@nextui-org/react": "^2.4.2",
+    "@tauri-apps/plugin-store": "^2.0.0-beta.5",
+    "eslint-config-next": "^14.2.4",
+    "framer-motion": "^11.2.11",
+    "next": "^14.2.4",
+    "next-themes": "^0.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
+    "zod": "^3.23.8",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0-beta.20",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

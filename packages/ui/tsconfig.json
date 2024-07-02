@@ -3,6 +3,7 @@
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "preserve",
+    "moduleResolution": "node",
     "baseUrl": "./",
     "incremental": true,
     "plugins": [
@@ -11,5 +12,5 @@
       }
     ]
   },
-  "include": [".", "../../tailwind.config.ts"]
+  "include": ["."]
 }

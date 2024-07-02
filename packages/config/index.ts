@@ -1,27 +1,20 @@
 import { z } from "zod"
 
-export const languages = ["en", "fr"] as const
+import { currencySchema } from "@my-wishlist/schemas"
+
 const schema = z.object({
-  defaultLanguage: z.enum(languages).default("en"),
-  languages: z.array(z.enum(languages)),
-  flagUrl: z.function().args(z.string()).returns(z.string()),
-  flags: z.record(z.enum(languages), z.string()),
-  languagesLabel: z.record(z.enum(languages), z.string()),
+  defaultCurrency: currencySchema,
+  defaultFilter: z.enum(["all", "purchased", "notPurchased"]),
+  defaultSort: z.enum(["date", "priceAsc", "priceDesc"]),
 })
 
-export type Locale = z.infer<typeof schema>["defaultLanguage"]
+export type Filter = z.infer<typeof schema>["defaultFilter"]
+export type Sort = z.infer<typeof schema>["defaultSort"]
+
 const config = schema.parse({
-  defaultLanguage: "en",
-  languages,
-  flagUrl: (lang: string) => `https://flagsapi.com/${lang}/flat/64.png`,
-  flags: {
-    en: "US",
-    fr: "FR",
-  },
-  languagesLabel: {
-    en: "English",
-    fr: "Français",
-  },
+  defaultCurrency: "DOLLAR",
+  defaultFilter: "notPurchased",
+  defaultSort: "date",
 })
 
 export default config

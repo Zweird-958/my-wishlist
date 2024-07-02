@@ -101,3 +101,7 @@ dist/
 
 # Databse
 data/
+
+# Desktop
+
+apps/desktop/src-tauri/target/

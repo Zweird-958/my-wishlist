@@ -2,9 +2,11 @@
   "name": "monorepo",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "web": "bun run --cwd apps/web dev",
+    "desktop": "bun run --cwd apps/desktop tauri dev",
     "web:generate": "bun run --cwd apps/web generate",
     "mobile:ios": "bun run --cwd apps/mobile ios",
     "mobile:android": "bun run --cwd apps/mobile android",
@@ -19,8 +21,8 @@
     "typecheck": "bun run --filter='**' typecheck",
     "mobile:check": "bun run --cwd apps/mobile expo-check",
     "check": "bun run lint && bun run typecheck && bun run format && bun run mobile:check",
-    "clear": "rm -fr node_modules bun.lockb && bun install",
-    "env-symlink": "ln -sf $PWD/.env ./apps/web && ln -sf $PWD/.env ./apps/mobile && ln -sf $PWD/.env ./packages/db"
+    "clear": "find . -type d \\( -name \"node_modules\" -o -name \".next\" \\) -exec rm -rf {} +\\ && rm bun.lockb",
+    "env-symlink": "ln -sf $PWD/.env ./apps/web && ln -sf $PWD/.env ./apps/desktop && ln -sf $PWD/.env ./apps/mobile && ln -sf $PWD/.env ./packages/db"
   },
   "author": "",
   "license": "ISC",
@@ -29,7 +31,7 @@
     "@types/node": "^20.12.12",
     "@typescript-eslint/eslint-plugin": "^7.10.0",
     "@typescript-eslint/parser": "^7.10.0",
-    "eslint": "^9.6.0",
+    "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
