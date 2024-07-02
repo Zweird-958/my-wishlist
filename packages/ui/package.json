@@ -20,6 +20,7 @@
     "zustand": "^4.5.4"
   },
   "devDependencies": {
+    "@hyper-fetch/core": "^5.7.5",
     "@my-wishlist/types": "workspace:*",
     "@types/react": "^18.2.79",
     "typescript": "^5.4.5"
