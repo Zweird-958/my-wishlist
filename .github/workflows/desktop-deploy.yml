@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1
-      
+
       - name: Install stable toolchain
         uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
@@ -46,6 +46,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y webkit2gtk-4.0
+
+      - name: setup .env
+        run: |
+          echo "NEXT_PUBLIC_API_URL=${{ secrets.TAURI_API_URL }}" >> apps/desktop/.env
+          bun run 
 
       - name: Install x86_64-apple-darwin for mac and build Tauri binaries
         if: matrix.os == 'macos-latest'
