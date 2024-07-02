@@ -1,11 +1,5 @@
-import { useParams } from "next/navigation"
+import WishlistShared from "@/components/WishlistShared"
 
-import WishlistShared from "@my-wishlist/ui/pages/WishlistShared"
-
-const Page = () => {
-  const { userId } = useParams<{ userId: string }>()
-
-  return <WishlistShared userId={userId} />
-}
+const Page = () => <WishlistShared />
 
 export default Page
