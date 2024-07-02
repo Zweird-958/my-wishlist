@@ -1,7 +1,7 @@
 "use client"
 
 import { useFetch } from "@hyper-fetch/react"
-import { useParams, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { useMemo, useState } from "react"
 
 import { getWishlistSharedUser } from "@my-wishlist/api/routes/sharedWishes"
@@ -11,10 +11,13 @@ import useHandleError from "../../hooks/useHandleError"
 import { useTranslation } from "../AppContext"
 import WishlistDisplay from "../wishlist/WishlistDisplay"
 
-const WishlistShared = () => {
+type Props = {
+  userId: string
+}
+
+const WishlistShared = ({ userId }: Props) => {
   const { t } = useTranslation("errors")
   const router = useRouter()
-  const { userId } = useParams<{ userId: string }>()
   const { data, onFinished, loading, error } = useFetch(
     getWishlistSharedUser.setParams({ userId }),
   )
