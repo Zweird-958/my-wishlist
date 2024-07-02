@@ -1,14 +1,13 @@
 "use client"
 
 import { useFetch } from "@hyper-fetch/react"
-import { useRouter } from "next/navigation"
 import { useMemo, useState } from "react"
 
 import { getWishlistSharedUser } from "@my-wishlist/api/routes/sharedWishes"
 import config, { Filter, Sort } from "@my-wishlist/config"
 
 import useHandleError from "../../hooks/useHandleError"
-import { useTranslation } from "../AppContext"
+import { useRouter, useTranslation } from "../AppContext"
 import WishlistDisplay from "../wishlist/WishlistDisplay"
 
 type Props = {

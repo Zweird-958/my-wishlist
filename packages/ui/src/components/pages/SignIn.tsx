@@ -1,14 +1,13 @@
 "use client"
 
 import { useSubmit } from "@hyper-fetch/react"
-import { useRouter } from "next/navigation"
 
 import { signIn as signInRequest } from "@my-wishlist/api/routes/user"
 import { signInSchema } from "@my-wishlist/schemas"
 import type { SignInData } from "@my-wishlist/types/User"
 
 import useHandleError from "../../hooks/useHandleError"
-import { useSession, useTranslation } from "../AppContext"
+import { useRouter, useSession, useTranslation } from "../AppContext"
 import Center from "../Center"
 import AuthForm from "../forms/AuthForm"
 

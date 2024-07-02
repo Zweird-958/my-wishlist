@@ -28,7 +28,11 @@ const Providers = (props: Props) => {
   )
 
   return (
-    <AppProvider useTranslation={useTranslation} useSession={useSession}>
+    <AppProvider
+      useTranslation={useTranslation}
+      useSession={useSession}
+      useRouter={useRouter}
+    >
       <NextUIProvider navigate={router.push}>
         <ThemeProvider>{children}</ThemeProvider>
       </NextUIProvider>
