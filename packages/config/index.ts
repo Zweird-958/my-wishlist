@@ -13,7 +13,7 @@ export type Sort = z.infer<typeof schema>["defaultSort"]
 
 const config = schema.parse({
   defaultCurrency: "DOLLAR",
-  defaultFilter: "all",
+  defaultFilter: "notPurchased",
   defaultSort: "date",
 })
 
