@@ -1,12 +1,8 @@
-name: Tauri Workflow Release Process
+name: desktop-deploy
 
 on:
-  workflow_dispatch:
-    inputs:
-      app-slug:
-        type: string
-        description: Slug of the application
-        required: true
+  push:
+    branches: ["main", "release/**"]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
