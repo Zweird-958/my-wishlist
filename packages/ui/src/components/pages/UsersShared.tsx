@@ -6,11 +6,11 @@ import { ChevronRight, Trash2 } from "lucide-react"
 import { Key, useState } from "react"
 
 import { getWishlistShared } from "@my-wishlist/api/routes/sharedWishes"
-import { useTranslation } from "@my-wishlist/i18n"
 import { UserShared } from "@my-wishlist/types/User"
 
 import useUsersShared from "../../hooks/useUsersShared"
 import AddButton from "../AddButton"
+import { useTranslation } from "../AppContext"
 import ShareForm from "../user/ShareForm"
 import UnshareModal from "../user/UnshareModal"
 import UsersList from "../user/UsersList"

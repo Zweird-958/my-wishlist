@@ -15,11 +15,11 @@ import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
 import { shareWishlist } from "@my-wishlist/api/routes/sharedWishes"
-import { useTranslation } from "@my-wishlist/i18n"
 import { shareSchema } from "@my-wishlist/schemas"
 
 import useHandleError from "../../hooks/useHandleError"
 import useUsersShared from "../../hooks/useUsersShared"
+import { useTranslation } from "../AppContext"
 import Field from "../Field"
 
 type FormProps = Pick<Required<ModalProps>, "onOpenChange" | "onClose">

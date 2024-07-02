@@ -5,10 +5,10 @@ import { ModalProps } from "@nextui-org/react"
 import toast from "react-hot-toast"
 
 import { createWish } from "@my-wishlist/api/routes/wish"
-import { useTranslation } from "@my-wishlist/i18n"
 
 import useHandleError from "../../hooks/useHandleError"
 import useWishlist from "../../hooks/useWishlist"
+import { useTranslation } from "../AppContext"
 import WishForm from "./WishForm"
 
 type Props = Pick<ModalProps, "isOpen" | "onOpenChange">

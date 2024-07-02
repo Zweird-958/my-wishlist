@@ -14,12 +14,12 @@ import {
 import { useForm } from "react-hook-form"
 
 import config from "@my-wishlist/config"
-import { useTranslation } from "@my-wishlist/i18n"
 import { addWishSchema } from "@my-wishlist/schemas"
 import { Currency, Wish } from "@my-wishlist/types/Wish"
 
 import useCurrencies from "../../hooks/useCurrencies"
 import useUploadImage from "../../hooks/useUploadImage"
+import { useTranslation } from "../AppContext"
 import CurrencyDropdown from "../CurrencyDropdown"
 import Field from "../Field"
 import SwitchField from "../SwitchField"

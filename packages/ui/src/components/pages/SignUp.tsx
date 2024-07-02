@@ -4,11 +4,11 @@ import { useSubmit } from "@hyper-fetch/react"
 import { useRouter } from "next/navigation"
 
 import { signUp as signUpRequest } from "@my-wishlist/api/routes/user"
-import { useTranslation } from "@my-wishlist/i18n"
 import { signUpSchema } from "@my-wishlist/schemas"
 import type { SignUpData } from "@my-wishlist/types/User"
 
 import useHandleError from "../../hooks/useHandleError"
+import { useTranslation } from "../AppContext"
 import Center from "../Center"
 import AuthForm from "../forms/AuthForm"
 

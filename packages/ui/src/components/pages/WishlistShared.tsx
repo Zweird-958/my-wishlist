@@ -6,9 +6,9 @@ import { useMemo, useState } from "react"
 
 import { getWishlistSharedUser } from "@my-wishlist/api/routes/sharedWishes"
 import config, { Filter, Sort } from "@my-wishlist/config"
-import { useTranslation } from "@my-wishlist/i18n"
 
 import useHandleError from "../../hooks/useHandleError"
+import { useTranslation } from "../AppContext"
 import WishlistDisplay from "../wishlist/WishlistDisplay"
 
 const WishlistShared = () => {

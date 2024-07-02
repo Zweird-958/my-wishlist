@@ -10,8 +10,9 @@ import {
 import Link from "next/link"
 import { ReactNode } from "react"
 
-import { useTranslation } from "@my-wishlist/i18n"
 import { UserShared } from "@my-wishlist/types/User"
+
+import { useTranslation } from "../AppContext"
 
 type Props = {
   items: UserShared[]
