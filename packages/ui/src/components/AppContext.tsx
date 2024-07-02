@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useContext } from "react"
 
-import { Namespace } from "@my-wishlist/i18n"
+import { Namespace } from "@my-wishlist/i18n/config"
 import type {
   UseTranslationDesktop,
   UseTranslationWeb,
