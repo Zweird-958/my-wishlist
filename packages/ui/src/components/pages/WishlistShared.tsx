@@ -7,9 +7,9 @@ import { useMemo, useState } from "react"
 import { getWishlistSharedUser } from "@my-wishlist/api/routes/sharedWishes"
 import config, { Filter, Sort } from "@my-wishlist/config"
 import { useTranslation } from "@my-wishlist/i18n"
-import WishlistDisplay from "@my-wishlist/ui/wishlist/WishlistDisplay"
 
-import useHandleError from "@/hooks/useHandleError"
+import useHandleError from "../../hooks/useHandleError"
+import WishlistDisplay from "../wishlist/WishlistDisplay"
 
 const WishlistShared = () => {
   const { t } = useTranslation("errors")

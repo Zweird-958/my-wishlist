@@ -1,3 +1,3 @@
-import SignIn from "@/components/pages/SignIn"
+import SignIn from "@my-wishlist/ui/pages/SignIn"
 
 export default SignIn

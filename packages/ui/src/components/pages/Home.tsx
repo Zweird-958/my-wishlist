@@ -2,13 +2,12 @@
 
 import { useDisclosure } from "@nextui-org/react"
 
-import useWishlist from "@my-wishlist/ui/hooks/useWishlist"
-import AuthWishlist from "@my-wishlist/ui/user/AuthWishlist"
-import AddWishForm from "@my-wishlist/ui/wishlist/AddWishForm"
-import WishlistDisplay from "@my-wishlist/ui/wishlist/WishlistDisplay"
-
-import AddButton from "@/components/ui/AddButton"
-import useSession from "@/hooks/useSession"
+import useWishlist from "../../hooks/useWishlist"
+import AddButton from "../AddButton"
+import { useSession } from "../AppContext"
+import AuthWishlist from "../user/AuthWishlist"
+import AddWishForm from "../wishlist/AddWishForm"
+import WishlistDisplay from "../wishlist/WishlistDisplay"
 
 const Home = () => {
   const { session, isLoading: sessionIsLoading } = useSession()

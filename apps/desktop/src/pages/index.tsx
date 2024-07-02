@@ -1,37 +1,11 @@
 import { useTranslation } from "@my-wishlist/i18n/utils"
-import useWishlist from "@my-wishlist/ui/hooks/useWishlist"
-import AuthWishlist from "@my-wishlist/ui/user/AuthWishlist"
-import WishlistDisplay from "@my-wishlist/ui/wishlist/WishlistDisplay"
+import Home from "@my-wishlist/ui/pages/Home"
 
-import useSession from "@/hooks/useSession"
-
-const Home = () => {
-  const { session, isLoading: sessionIsLoading } = useSession()
-  const {
-    wishlist,
-    isLoading: wishlistIsLoading,
-    selectedFilter,
-    setSelectedFilter,
-    selectedSort,
-    setSelectedSort,
-  } = useWishlist()
+const HomePage = () => {
   // NECESSARY TO LOAD NAMESPACES
   const { t: _ } = useTranslation("forms", "zodErrors", "errors")
 
-  if (!session && !sessionIsLoading) {
-    return <AuthWishlist />
-  }
-
-  return (
-    <WishlistDisplay
-      isLoading={sessionIsLoading || wishlistIsLoading}
-      wishlist={wishlist}
-      selectedFilter={selectedFilter}
-      setSelectedFilter={setSelectedFilter}
-      selectedSort={selectedSort}
-      setSelectedSort={setSelectedSort}
-    />
-  )
+  return <Home />
 }
 
-export default Home
+export default HomePage

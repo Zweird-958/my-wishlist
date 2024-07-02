@@ -17,10 +17,10 @@ import toast from "react-hot-toast"
 import { shareWishlist } from "@my-wishlist/api/routes/sharedWishes"
 import { useTranslation } from "@my-wishlist/i18n"
 import { shareSchema } from "@my-wishlist/schemas"
-import Field from "@my-wishlist/ui/Field"
 
-import useHandleError from "@/hooks/useHandleError"
-import useUsersShared from "@/hooks/useUsersShared"
+import useHandleError from "../../hooks/useHandleError"
+import useUsersShared from "../../hooks/useUsersShared"
+import Field from "../Field"
 
 type FormProps = Pick<Required<ModalProps>, "onOpenChange" | "onClose">
 type ShareFormProps = Pick<Required<ModalProps>, "isOpen" | "onOpenChange">

@@ -1,4 +1,4 @@
-import Home from "@/components/pages/Home"
+import Home from "@my-wishlist/ui/pages/Home"
 
 const HomePage = () => <Home />
 

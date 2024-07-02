@@ -9,11 +9,11 @@ import { getWishlistShared } from "@my-wishlist/api/routes/sharedWishes"
 import { useTranslation } from "@my-wishlist/i18n"
 import { UserShared } from "@my-wishlist/types/User"
 
-import AddButton from "@/components/ui/AddButton"
-import ShareForm from "@/components/user/ShareForm"
-import UnshareModal from "@/components/user/UnshareModal"
-import UsersList from "@/components/user/UsersList"
-import useUsersShared from "@/hooks/useUsersShared"
+import useUsersShared from "../../hooks/useUsersShared"
+import AddButton from "../AddButton"
+import ShareForm from "../user/ShareForm"
+import UnshareModal from "../user/UnshareModal"
+import UsersList from "../user/UsersList"
 
 const ShareSection = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure()

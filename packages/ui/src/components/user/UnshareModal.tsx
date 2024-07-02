@@ -15,8 +15,8 @@ import { unshareWishlist } from "@my-wishlist/api/routes/sharedWishes"
 import { useTranslation } from "@my-wishlist/i18n"
 import { UserShared } from "@my-wishlist/types/User"
 
-import useHandleError from "@/hooks/useHandleError"
-import useUsersShared from "@/hooks/useUsersShared"
+import useHandleError from "../../hooks/useHandleError"
+import useUsersShared from "../../hooks/useUsersShared"
 
 type Props = {
   user: UserShared | null

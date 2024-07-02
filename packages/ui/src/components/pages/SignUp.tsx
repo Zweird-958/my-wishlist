@@ -7,10 +7,10 @@ import { signUp as signUpRequest } from "@my-wishlist/api/routes/user"
 import { useTranslation } from "@my-wishlist/i18n"
 import { signUpSchema } from "@my-wishlist/schemas"
 import type { SignUpData } from "@my-wishlist/types/User"
-import Center from "@my-wishlist/ui/Center"
-import AuthForm from "@my-wishlist/ui/forms/AuthForm"
 
-import useHandleError from "@/hooks/useHandleError"
+import useHandleError from "../../hooks/useHandleError"
+import Center from "../Center"
+import AuthForm from "../forms/AuthForm"
 
 const defaultValues = {
   username: "",
