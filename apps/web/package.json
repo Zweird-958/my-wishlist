@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@hyper-fetch/react": "^5.7.4",
+    "@hyper-fetch/react": "^5.7.5",
     "@my-wishlist/api": "workspace:*",
     "@my-wishlist/i18n": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
