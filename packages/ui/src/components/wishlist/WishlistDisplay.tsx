@@ -19,6 +19,7 @@ type Props = {
   selectedSort: Sort
   setSelectedSort: (sort: Sort) => void
   username?: string
+  canEdit?: boolean
   children?: ReactNode
 }
 
@@ -30,6 +31,7 @@ const WishlistDisplay = ({
   selectedSort,
   setSelectedSort,
   username,
+  canEdit,
   children,
 }: Props) => {
   if (isLoading) {
@@ -51,6 +53,7 @@ const WishlistDisplay = ({
         />
         <WishList
           wishes={filterWishlist(wishlist, selectedFilter, selectedSort)}
+          canEdit={canEdit}
         />
       </div>
       {children}

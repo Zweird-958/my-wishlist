@@ -8,10 +8,10 @@ import WishCard from "./WishCard"
 
 type Props = {
   wishes: Wish[]
+  canEdit?: boolean
 }
 
-const WishList = (props: Props) => {
-  const { wishes } = props
+const WishList = ({ wishes, canEdit }: Props) => {
   const { isOpen, onOpenChange } = useDisclosure()
   const [selectedWish, setSelectedWish] = useState<Wish | null>(null)
   const handleEdit = (wish: Wish) => {
@@ -33,7 +33,7 @@ const WishList = (props: Props) => {
           <WishCard
             key={wish.id}
             wish={wish}
-            canEdit
+            canEdit={canEdit}
             onEditButton={handleEdit}
           />
         ))}

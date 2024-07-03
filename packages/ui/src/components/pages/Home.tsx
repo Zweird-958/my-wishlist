@@ -33,6 +33,7 @@ const Home = () => {
       setSelectedFilter={setSelectedFilter}
       selectedSort={selectedSort}
       setSelectedSort={setSelectedSort}
+      canEdit
     >
       <AddButton onPress={onOpen} color="primary" />
       <AddWishForm isOpen={isOpen} onOpenChange={onOpenChange} />
