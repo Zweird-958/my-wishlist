@@ -1,11 +1,11 @@
 "use client"
 
 import { useEffect } from "react"
-import useQuery from "src/hooks/useQuery"
 
 import { UserShared } from "@my-wishlist/types/User"
 
 import useUsersSharedStore from "../stores/usersShared"
+import useQuery from "./useQuery"
 
 const useUsersShared = () => {
   const { usersShared, setUsersShared, ...usersSharedStore } =
