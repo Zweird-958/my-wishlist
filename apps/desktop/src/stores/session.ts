@@ -7,12 +7,16 @@ type SessionStore = {
   setSession: (session: JwtPayload | null) => void
   isLoading: boolean
   setIsLoading: (isLoading: boolean) => void
+  token: string | null
+  setToken: (token: string | null) => void
 }
 const useSessionStore = create<SessionStore>((set) => ({
   session: null,
-  setSession: (session: JwtPayload | null) => set({ session }),
+  setSession: (session) => set({ session }),
   isLoading: true,
-  setIsLoading: (isLoading: boolean) => set({ isLoading }),
+  setIsLoading: (isLoading) => set({ isLoading }),
+  token: null,
+  setToken: (token) => set({ token }),
 }))
 
 export default useSessionStore

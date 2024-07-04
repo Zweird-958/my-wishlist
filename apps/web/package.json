@@ -11,12 +11,11 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@hyper-fetch/react": "^5.7.4",
-    "@my-wishlist/api": "workspace:*",
     "@my-wishlist/i18n": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
     "@nextui-org/react": "^2.3.6",
     "@prisma/client": "^5.14.0",
+    "@tanstack/react-query": "^5.49.2",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.12",
     "jsonwebtoken": "^9.0.2",

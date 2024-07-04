@@ -1,20 +1,33 @@
 "use client"
 
-import type { RequestInstance } from "@hyper-fetch/core"
-import { OnFinishedCallbackType } from "@hyper-fetch/react"
+import { AxiosError } from "axios"
 import toast from "react-hot-toast"
+
+import { ApiError } from "@my-wishlist/types/Api"
 
 import { useTranslation } from "../components/AppContext"
 
+export type ErrorsMap = Record<number, string>
+export type ErrorsCallback = Record<number, () => void>
+
+export type HandleErrorParams = {
+  errorsMap?: ErrorsMap
+  errorsCallback?: ErrorsCallback
+}
+
 const SUCCESS_STATUS = 200
-const useHandleError = <RequestType extends RequestInstance>(
-  errorsMap?: Record<number, string>,
-  errorsCallback?: Record<number, () => void>,
+const useHandleError = (
+  errorsMap?: ErrorsMap,
+  errorsCallback?: ErrorsCallback,
 ) => {
   const { t } = useTranslation("errors", "zodErrors")
-  const handleError: OnFinishedCallbackType<RequestType> = ({
-    response: { status },
-  }) => {
+  const handleError = ({ response }: AxiosError<ApiError>) => {
+    if (!response) {
+      return
+    }
+
+    const { status } = response
+
     if (status === SUCCESS_STATUS || !status) {
       return
     }

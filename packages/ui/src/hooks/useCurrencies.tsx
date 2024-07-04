@@ -1,25 +1,31 @@
 "use client"
 
-import { useFetch } from "@hyper-fetch/react"
+import { useEffect } from "react"
 
-import { getCurrencies } from "@my-wishlist/api/routes/currencies"
+import { Currency } from "@my-wishlist/types/Wish"
 
 import useCurrenciesStore from "../stores/currencies"
+import useQuery from "./useQuery"
 
 const useCurrencies = () => {
   const { currencies, setCurrencies } = useCurrenciesStore()
-  const { loading, onSuccess } = useFetch(getCurrencies, {
-    disabled: currencies.length > 0,
+  const { data, isLoading } = useQuery<Currency[]>({
+    method: "get",
+    path: "/currency",
+    enabled: currencies.length === 0,
+    queryKey: ["currencies"],
   })
 
-  onSuccess(({ response: { result } }) => {
-    setCurrencies(result)
-  })
+  useEffect(() => {
+    if (data?.result && currencies.length === 0) {
+      setCurrencies(data.result)
+    }
+  }, [currencies.length, data?.result, setCurrencies])
 
   return {
     currencies,
     setCurrencies,
-    isLoading: loading,
+    isLoading,
   }
 }
 

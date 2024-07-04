@@ -1,25 +1,31 @@
 "use client"
 
-import { useFetch } from "@hyper-fetch/react"
+import { useEffect } from "react"
+import useQuery from "src/hooks/useQuery"
 
-import { getUsersShared } from "@my-wishlist/api/routes/sharedWishes"
+import { UserShared } from "@my-wishlist/types/User"
 
 import useUsersSharedStore from "../stores/usersShared"
 
 const useUsersShared = () => {
   const { usersShared, setUsersShared, ...usersSharedStore } =
     useUsersSharedStore()
-  const { data, loading, error, onSuccess } = useFetch(getUsersShared, {
-    disabled: usersShared.length > 0,
+  const { data, isLoading, error } = useQuery<UserShared[]>({
+    method: "get",
+    path: "/share/users",
+    enabled: usersShared.length === 0,
+    queryKey: ["usersShared"],
   })
 
-  onSuccess(({ response: { result } }) => {
-    setUsersShared(result)
-  })
+  useEffect(() => {
+    if (data?.result && usersShared.length === 0) {
+      setUsersShared(data.result)
+    }
+  }, [usersShared.length, data?.result, setUsersShared])
 
   return {
     usersShared,
-    isLoading: loading || (!data && !error),
+    isLoading: isLoading || (!data && !error),
     ...usersSharedStore,
   }
 }

@@ -1,38 +1,34 @@
 "use client"
 
-import { useSubmit } from "@hyper-fetch/react"
 import { ModalProps } from "@nextui-org/react"
 import toast from "react-hot-toast"
 
-import { updateWish as updateWishRoute } from "@my-wishlist/api/routes/wish"
 import { Wish } from "@my-wishlist/types/Wish"
 
-import useHandleError from "../../hooks/useHandleError"
+import useMutation from "../../hooks/useMutation"
 import useWishlist from "../../hooks/useWishlist"
 import { useTranslation } from "../AppContext"
 import WishForm from "./WishForm"
 
 type Props = {
   wish: Wish
-} & Pick<ModalProps, "isOpen" | "onOpenChange">
+} & Required<Pick<ModalProps, "isOpen" | "onOpenChange">>
 
 const EditWishForm = ({ isOpen, onOpenChange, wish }: Props) => {
   const { t } = useTranslation("forms")
-  const { handleError } = useHandleError<typeof updateWishRoute>()
   const { updateWish } = useWishlist()
-  const { submit, onSubmitSuccess, onSubmitFinished, submitting } =
-    useSubmit(updateWishRoute)
-  onSubmitFinished(handleError)
-  onSubmitSuccess(({ response: { result } }) => {
-    if (onOpenChange) {
+  const { mutate, isPending } = useMutation<Wish, FormData>({
+    method: "patch",
+    path: `/wish/${wish.id}`,
+    mutationKey: ["updateWish", wish.id],
+    onSuccess: ({ result }) => {
       onOpenChange(false)
-    }
-
-    toast.success(t("wish.update.success"))
-    updateWish(result)
+      toast.success(t("wish.update.success"))
+      updateWish(result)
+    },
   })
   const onSubmit = (data: FormData) => {
-    submit({ data, params: { wishId: wish.id } })
+    mutate(data)
   }
 
   return (
@@ -42,7 +38,7 @@ const EditWishForm = ({ isOpen, onOpenChange, wish }: Props) => {
       onSubmit={onSubmit}
       isOpen={isOpen}
       onOpenChange={onOpenChange}
-      isLoading={submitting}
+      isLoading={isPending}
       wish={wish}
     />
   )

@@ -31,7 +31,7 @@ const WishList = ({ wishes, canEdit }: Props) => {
         )}
         {wishes.map((wish) => (
           <WishCard
-            key={wish.id}
+            key={`wish-${wish.id}`}
             wish={wish}
             canEdit={canEdit}
             onEditButton={handleEdit}

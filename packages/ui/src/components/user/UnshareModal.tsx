@@ -1,6 +1,5 @@
 "use client"
 
-import { useSubmit } from "@hyper-fetch/react"
 import {
   Button,
   Modal,
@@ -11,10 +10,9 @@ import {
   ModalProps,
 } from "@nextui-org/react"
 
-import { unshareWishlist } from "@my-wishlist/api/routes/sharedWishes"
 import { UserShared } from "@my-wishlist/types/User"
 
-import useHandleError from "../../hooks/useHandleError"
+import useMutation from "../../hooks/useMutation"
 import useUsersShared from "../../hooks/useUsersShared"
 import { useTranslation } from "../AppContext"
 
@@ -24,30 +22,28 @@ type Props = {
 
 const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
   const { t } = useTranslation("forms")
-  const { handleError } = useHandleError()
   const { removeUser } = useUsersShared()
-  const { submit, onSubmitFinished, onSubmitSuccess, submitting } =
-    useSubmit(unshareWishlist)
+  const { mutate, isPending } = useMutation({
+    method: "delete",
+    path: `/user/${user?.id}`,
+    onSuccess: () => {
+      onOpenChange(false)
+
+      if (!user) {
+        return
+      }
+
+      removeUser(user?.id)
+    },
+  })
 
   const handleSubmit = () => {
     if (!user) {
       return
     }
 
-    submit({ params: { userId: user.id } })
+    mutate()
   }
-
-  onSubmitFinished(handleError)
-
-  onSubmitSuccess(() => {
-    onOpenChange(false)
-
-    if (!user) {
-      return
-    }
-
-    removeUser(user.id)
-  })
 
   return (
     <Modal
@@ -70,7 +66,7 @@ const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
               <Button
                 color="primary"
                 onPress={handleSubmit}
-                isLoading={submitting}
+                isLoading={isPending}
               >
                 {t("unshare.submit")}
               </Button>
