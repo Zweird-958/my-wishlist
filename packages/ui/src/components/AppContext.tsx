@@ -18,6 +18,7 @@ type Context = {
     isLoading: boolean
     signIn: (response: string) => void
     signOut: () => void
+    token: string | null
   }
   useRouter: () => NextRouter | AppRouterInstance
 }

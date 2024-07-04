@@ -1,12 +1,9 @@
 "use client"
 
-import { useSubmit } from "@hyper-fetch/react"
-
-import { signUp as signUpRequest } from "@my-wishlist/api/routes/user"
 import { signUpSchema } from "@my-wishlist/schemas"
 import type { SignUpData } from "@my-wishlist/types/User"
 
-import useHandleError from "../../hooks/useHandleError"
+import useMutation from "../../hooks/useMutation"
 import { useRouter, useTranslation } from "../AppContext"
 import Center from "../Center"
 import AuthForm from "../forms/AuthForm"
@@ -18,17 +15,17 @@ const defaultValues = {
 }
 const SignUp = () => {
   const router = useRouter()
-  const { submit, onSubmitSuccess, onSubmitFinished, submitting } =
-    useSubmit(signUpRequest)
-  const { t } = useTranslation("forms", "common")
-  const { handleError } = useHandleError<typeof signUpRequest>()
-  const onSubmit = (data: SignUpData) => {
-    submit({ data })
-  }
-  onSubmitSuccess(() => {
-    router.push("/sign-in")
+  const { mutate, isPending } = useMutation<string, SignUpData>({
+    method: "post",
+    path: "/sign-up",
+    onSuccess: () => {
+      router.push("/sign-in")
+    },
   })
-  onSubmitFinished(handleError)
+  const { t } = useTranslation("forms", "common")
+  const onSubmit = (data: SignUpData) => {
+    mutate(data)
+  }
 
   return (
     <Center>
@@ -42,7 +39,7 @@ const SignUp = () => {
           { name: "password", label: t("password"), type: "password" },
         ]}
         buttonText={t("signUp.button")}
-        isLoading={submitting}
+        isLoading={isPending}
         title={t("signUp.title")}
       />
     </Center>

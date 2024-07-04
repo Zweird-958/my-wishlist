@@ -9,7 +9,8 @@ import useSessionStore from "@/stores/session"
 import config from "@/utils/config"
 
 const useSession = () => {
-  const { setSession, setIsLoading, ...sessionStore } = useSessionStore()
+  const { setSession, setIsLoading, setToken, ...sessionStore } =
+    useSessionStore()
   const signIn = (response: string) => {
     const jwt = response
 
@@ -17,6 +18,7 @@ const useSession = () => {
 
     const { payload } = jsonwebtoken.decode(jwt) as RawJwt
 
+    setToken(jwt)
     setSession(payload)
   }
   const signOut = () => {
@@ -35,9 +37,10 @@ const useSession = () => {
 
     const { payload } = jsonwebtoken.decode(jwt) as RawJwt
 
+    setToken(jwt)
     setSession(payload)
     setIsLoading(false)
-  }, [setIsLoading, setSession])
+  }, [setIsLoading, setSession, setToken])
 
   return { signIn, signOut, ...sessionStore }
 }

@@ -1,7 +1,6 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useSubmit } from "@hyper-fetch/react"
 import {
   Button,
   Modal,
@@ -14,10 +13,13 @@ import {
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
-import { shareWishlist } from "@my-wishlist/api/routes/sharedWishes"
 import { shareSchema } from "@my-wishlist/schemas"
+import {
+  ShareWishlistInput,
+  ShareWishlistResponse,
+} from "@my-wishlist/types/Api"
 
-import useHandleError from "../../hooks/useHandleError"
+import useMutation from "../../hooks/useMutation"
 import useUsersShared from "../../hooks/useUsersShared"
 import { useTranslation } from "../AppContext"
 import Field from "../Field"
@@ -28,25 +30,27 @@ type ShareFormProps = Pick<Required<ModalProps>, "isOpen" | "onOpenChange">
 const Form = ({ onOpenChange, onClose }: FormProps) => {
   const { t } = useTranslation("forms")
   const { addUser } = useUsersShared()
-  const { handleError } = useHandleError()
   const { control, handleSubmit } = useForm({
     defaultValues: {
       username: "",
     },
     resolver: zodResolver(shareSchema),
   })
+  const { mutate, isPending } = useMutation<
+    ShareWishlistResponse,
+    ShareWishlistInput
+  >({
+    method: "post",
+    path: "/share/wish",
+    onSuccess: ({ result: { user } }) => {
+      addUser(user)
+      toast.success(t("share.success", { username: user.username }))
+      onOpenChange(false)
+    },
+  })
   const handleOnSubmit = handleSubmit((data) => {
-    submit({ data })
+    mutate(data)
   })
-  const { submit, submitting, onSubmitSuccess, onSubmitFinished } =
-    useSubmit(shareWishlist)
-
-  onSubmitSuccess(({ response: { result } }) => {
-    addUser(result.user)
-    toast.success(t("share.success", { username: result.user.username }))
-    onOpenChange(false)
-  })
-  onSubmitFinished(handleError)
 
   return (
     <form onSubmit={handleOnSubmit}>
@@ -57,7 +61,7 @@ const Form = ({ onOpenChange, onClose }: FormProps) => {
         <Button onPress={onClose} color="danger">
           {t("share.cancel")}
         </Button>
-        <Button type="submit" isLoading={submitting} color="primary">
+        <Button type="submit" isLoading={isPending} color="primary">
           {t("share.submit")}
         </Button>
       </ModalFooter>

@@ -1,13 +1,12 @@
 "use client"
 
-import { useFetch } from "@hyper-fetch/react"
 import { useDisclosure } from "@nextui-org/react"
 import { ChevronRight, Trash2 } from "lucide-react"
 import { Key, useState } from "react"
 
-import { getWishlistShared } from "@my-wishlist/api/routes/sharedWishes"
 import { UserShared } from "@my-wishlist/types/User"
 
+import useQuery from "../../hooks/useQuery"
 import useUsersShared from "../../hooks/useUsersShared"
 import AddButton from "../AddButton"
 import { useTranslation } from "../AppContext"
@@ -30,9 +29,13 @@ const UsersShared = () => {
   const { t } = useTranslation()
   const {
     data: wishlistShared,
-    loading: sharedLoading,
+    isLoading: sharedLoading,
     error: sharedError,
-  } = useFetch(getWishlistShared)
+  } = useQuery<UserShared[]>({
+    method: "get",
+    path: "/share/wish",
+    queryKey: ["shared"],
+  })
   const { usersShared, isLoading: usersLoading } = useUsersShared()
   const [userSelected, setUserSelected] = useState<UserShared | null>(null)
   const { isOpen, onOpen, onOpenChange } = useDisclosure()

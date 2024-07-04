@@ -1,12 +1,20 @@
-import { useFetch } from "@hyper-fetch/react"
+import { useQuery } from "@tanstack/react-query"
+import axios from "axios"
 import { Stack } from "expo-router"
 import { FlatList, Text } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
-import { getProducts } from "@my-wishlist/api/routes/products"
+import { ApiResponse } from "@my-wishlist/types/Api"
+import type { Product } from "@my-wishlist/types/Product"
 
 const Index = () => {
-  const { data: products } = useFetch(getProducts)
+  const {
+    data: { result },
+  } = useQuery<ApiResponse<Product[]>>({
+    queryFn: () => axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`),
+    queryKey: ["products"],
+    initialData: { result: [] } as unknown as ApiResponse<Product[]>,
+  })
 
   return (
     <SafeAreaView>
@@ -16,7 +24,7 @@ const Index = () => {
       </Text>
 
       <FlatList
-        data={products?.result}
+        data={result}
         renderItem={({ item }) => <Text>{item.name}</Text>}
       />
     </SafeAreaView>

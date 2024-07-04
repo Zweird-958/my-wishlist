@@ -1,6 +1,5 @@
 "use client"
 
-import { useSubmit } from "@hyper-fetch/react"
 import {
   Button,
   Popover,
@@ -11,10 +10,10 @@ import { Trash2Icon } from "lucide-react"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
-import { deleteWish } from "@my-wishlist/api/routes/wish"
+import { DeleteWishInput, DeleteWishResponse } from "@my-wishlist/types/Api"
 import { Wish } from "@my-wishlist/types/Wish"
 
-import useHandleError from "../../hooks/useHandleError"
+import useMutation from "../../hooks/useMutation"
 import useWishlist from "../../hooks/useWishlist"
 import { useTranslation } from "../AppContext"
 
@@ -24,25 +23,28 @@ type Props = {
 
 const DeleteWish = ({ wish }: Props) => {
   const { removeWish } = useWishlist()
-
   const { t } = useTranslation("forms")
-  const { handleError } = useHandleError({ 404: t("errors:wishNotFound") })
 
   const [isOpen, setIsOpen] = useState(false)
   const handleOpen = (open: boolean) => setIsOpen(open)
   const close = () => handleOpen(false)
 
-  const { submit, submitting, onSubmitFinished, onSubmitSuccess } =
-    useSubmit(deleteWish)
-  const onSubmit = () => {
-    submit({ params: { wishId: wish.id } })
-  }
-  onSubmitFinished(handleError)
-  onSubmitSuccess(() => {
-    close()
-    toast.success(t("forms:wish.delete.success"))
-    removeWish(wish)
+  const { mutate, isPending } = useMutation<
+    DeleteWishResponse,
+    DeleteWishInput
+  >({
+    method: "delete",
+    path: ({ wishId }) => `/wish/${wishId}`,
+    errorsMap: { 404: t("errors:wishNotFound") },
+    onSuccess: () => {
+      close()
+      toast.success(t("forms:wish.delete.success"))
+      removeWish(wish)
+    },
   })
+  const onSubmit = () => {
+    mutate({ wishId: wish.id })
+  }
 
   return (
     <Popover
@@ -69,7 +71,7 @@ const DeleteWish = ({ wish }: Props) => {
             size="sm"
             variant="bordered"
             onPress={onSubmit}
-            isLoading={submitting}
+            isLoading={isPending}
           >
             {t("forms:wish.delete.submit")}
           </Button>

@@ -1,31 +1,25 @@
 "use client"
 
 import { NextUIProvider } from "@nextui-org/react"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ThemeProvider } from "next-themes"
 import { useRouter } from "next/navigation"
 import { ReactNode } from "react"
 
-import client from "@my-wishlist/api"
 import { useTranslation } from "@my-wishlist/i18n"
 import { AppProvider } from "@my-wishlist/ui/AppContext"
 
 import useSession from "@/hooks/useSession"
-import config from "@/utils/config"
 
 type Props = {
   children: ReactNode
 }
 
+const queryClient = new QueryClient()
+
 const Providers = (props: Props) => {
   const { children } = props
   const router = useRouter()
-
-  client.onAuth((request) =>
-    request.setHeaders({
-      ...request.headers,
-      Authorization: localStorage.getItem(config.localStorageSessionKey) ?? "",
-    }),
-  )
 
   return (
     <AppProvider
@@ -33,9 +27,11 @@ const Providers = (props: Props) => {
       useSession={useSession}
       useRouter={useRouter}
     >
-      <NextUIProvider navigate={router.push}>
-        <ThemeProvider>{children}</ThemeProvider>
-      </NextUIProvider>
+      <QueryClientProvider client={queryClient}>
+        <NextUIProvider navigate={router.push}>
+          <ThemeProvider>{children}</ThemeProvider>
+        </NextUIProvider>
+      </QueryClientProvider>
     </AppProvider>
   )
 }
