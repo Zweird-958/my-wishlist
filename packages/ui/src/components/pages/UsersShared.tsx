@@ -3,10 +3,10 @@
 import { useDisclosure } from "@nextui-org/react"
 import { ChevronRight, Trash2 } from "lucide-react"
 import { Key, useState } from "react"
-import useQuery from "src/hooks/useQuery"
 
 import { UserShared } from "@my-wishlist/types/User"
 
+import useQuery from "../../hooks/useQuery"
 import useUsersShared from "../../hooks/useUsersShared"
 import AddButton from "../AddButton"
 import { useTranslation } from "../AppContext"
