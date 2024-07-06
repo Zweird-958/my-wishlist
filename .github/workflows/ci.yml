@@ -8,7 +8,7 @@ on:
 
 jobs:
   check:
-    runs-on: upnpmtu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
