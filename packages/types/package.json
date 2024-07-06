@@ -14,7 +14,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@my-wishlist/schemas": "^1.0.0",
+    "@my-wishlist/schemas": "workspace:*",
     "zod": "^3.23.8"
   }
 }

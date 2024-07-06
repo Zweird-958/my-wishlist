@@ -11,8 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "zod": "^3.23.8",
-    "@my-wishlist/i18n": "workspace:*"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "typescript": "^5.4.5"

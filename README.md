@@ -8,23 +8,23 @@ To change name of the project, replace all `@my-wishlist` with your project name
 
 ```bash
 # Install dependencies
-bun i
+pnpm i
 
 cp .env.example .env
 
 # Symlink env
-bun run env-symlink
+pnpm run env-symlink
 ```
 
 ### Start project
 
 ```bash
 # Web
-bun run web
+pnpm run web
 
 # iOS (macOS only)
-bun run mobile:ios
+pnpm run mobile:ios
 
 # Android
-bun run mobile:android
+pnpm run mobile:android
 ```
