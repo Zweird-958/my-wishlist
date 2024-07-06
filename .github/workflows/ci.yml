@@ -7,7 +7,7 @@ on:
   merge_group:
 
 jobs:
-  check:
+  format:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,17 +15,38 @@ jobs:
       - name: Setup
         uses: ./.github/setup
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Format
+        run: pnpm run format
+
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/setup
+
+      - name: Format
+        run: pnpm run typecheck
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/setup
 
       - name: Lint
         run: pnpm run lint
 
-      - name: Format
-        run: pnpm run format
+  mobile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-      - name: Typecheck
-        run: pnpm run typecheck
+      - name: Setup
+        uses: ./.github/setup
 
       - name: Check expo
         run: pnpm run mobile:check
