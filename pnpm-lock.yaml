@@ -57,7 +57,7 @@ importers:
         specifier: ^5.49.2
         version: 5.50.1(react@18.2.0)
       '@tauri-apps/plugin-store':
-        specifier: ^2.0.0-beta.5
+        specifier: ^2.0.0-beta.6
         version: 2.0.0-beta.6
       eslint-config-next:
         specifier: ^14.2.4

@@ -17,7 +17,7 @@
     "@my-wishlist/ui": "workspace:*",
     "@nextui-org/react": "^2.4.2",
     "@tanstack/react-query": "^5.49.2",
-    "@tauri-apps/plugin-store": "^2.0.0-beta.5",
+    "@tauri-apps/plugin-store": "^2.0.0-beta.6",
     "eslint-config-next": "^14.2.4",
     "framer-motion": "^11.2.13",
     "jsonwebtoken": "^9.0.2",
