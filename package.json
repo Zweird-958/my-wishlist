@@ -6,8 +6,9 @@
   "packageManager": "pnpm@9.4.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "web": "pnpm --F \"@my-wishlist/web\" dev ktop tauri dev",
+    "web": "pnpm --F \"@my-wishlist/web\" dev",
     "web:generate": "pnpm --F \"@my-wishlist/web\" generate",
+    "desktop": "pnpm --F \"@my-wishlist/desktop\" tauri dev",
     "mobile:ios": "pnpm --F \"@my-wishlist/mobile\" ios",
     "mobile:android": "pnpm --F \"@my-wishlist/mobile\" android",
     "db:migrate": "pnpm --F \"@my-wishlist/db\" migrate",
