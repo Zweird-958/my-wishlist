@@ -27,7 +27,7 @@ jobs:
         uses: ./.github/setup
 
       - name: Format
-        run: pnpm run typecheck
+        run: pnpm run db:generate && pnpm run typecheck
 
   lint:
     runs-on: ubuntu-latest

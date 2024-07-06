@@ -19,7 +19,7 @@
     "format": "prettier -c .",
     "format:fix": "prettier -w .",
     "mobile:check": "pnpm --F \"@my-wishlist/mobile\" expo-check",
-    "typecheck": "pnpm run db:generate && turbo typecheck",
+    "typecheck": "turbo typecheck",
     "check": "pnpm run lint && pnpm run typecheck && pnpm run format && pnpm run mobile:check",
     "clear": "find . -type d \\( -name \"node_modules\" -o -name \".next\" -name \".expo\" -name \".turbo\" \\) -exec rm -rf {} +\\ && rm pnpm-lock.yaml",
     "env-symlink": "ln -sf $PWD/.env ./apps/web && ln -sf $PWD/.env ./apps/desktop && ln -sf $PWD/.env ./apps/mobile && ln -sf $PWD/.env ./packages/db"
