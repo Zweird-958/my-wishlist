@@ -6,7 +6,7 @@ import {
 } from "@tanstack/react-query"
 import { AxiosError, AxiosRequestConfig } from "axios"
 
-import { ApiError, ApiResponse, Method } from "@my-wishlist/types/Api"
+import { ApiError, ApiResponse, Method } from "@my-wishlist/types"
 
 import { useSession } from "../components/AppContext"
 import api from "../utils/api"

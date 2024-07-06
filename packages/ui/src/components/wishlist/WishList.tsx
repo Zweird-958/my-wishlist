@@ -1,7 +1,7 @@
 import { useDisclosure } from "@nextui-org/react"
 import { useState } from "react"
 
-import { Wish } from "@my-wishlist/types/Wish"
+import { Wish } from "@my-wishlist/types"
 
 import EditWishForm from "./EditWishForm"
 import WishCard from "./WishCard"

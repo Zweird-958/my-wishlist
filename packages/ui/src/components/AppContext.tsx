@@ -7,7 +7,7 @@ import type {
   UseTranslationDesktop,
   UseTranslationWeb,
 } from "@my-wishlist/i18n/types"
-import { JwtPayload } from "@my-wishlist/types/Api"
+import { JwtPayload } from "@my-wishlist/types"
 
 type Context = {
   useTranslation: (

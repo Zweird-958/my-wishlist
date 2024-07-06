@@ -3,7 +3,7 @@
 import { ModalProps } from "@nextui-org/react"
 import toast from "react-hot-toast"
 
-import { Wish } from "@my-wishlist/types/Wish"
+import { Wish } from "@my-wishlist/types"
 
 import useMutation from "../../hooks/useMutation"
 import useWishlist from "../../hooks/useWishlist"

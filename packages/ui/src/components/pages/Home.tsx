@@ -3,7 +3,7 @@
 import { useDisclosure } from "@nextui-org/react"
 import { useEffect } from "react"
 
-import { Wish } from "@my-wishlist/types/Wish"
+import { Wish } from "@my-wishlist/types"
 
 import useQuery from "../../hooks/useQuery"
 import useWishlist from "../../hooks/useWishlist"

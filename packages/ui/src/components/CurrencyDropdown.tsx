@@ -9,7 +9,7 @@ import {
   DropdownTrigger,
 } from "@nextui-org/react"
 
-import { Currency } from "@my-wishlist/types/Wish"
+import { Currency } from "@my-wishlist/types"
 
 type Props = {
   currency: Currency

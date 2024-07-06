@@ -3,7 +3,7 @@
 import { AxiosError } from "axios"
 import toast from "react-hot-toast"
 
-import { ApiError } from "@my-wishlist/types/Api"
+import { ApiError } from "@my-wishlist/types"
 
 import { useTranslation } from "../components/AppContext"
 

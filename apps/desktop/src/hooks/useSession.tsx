@@ -3,7 +3,7 @@
 import jsonwebtoken from "jsonwebtoken"
 import { useEffect } from "react"
 
-import { RawJwt } from "@my-wishlist/types/Api"
+import { RawJwt } from "@my-wishlist/types"
 
 import useSessionStore from "@/stores/session"
 import config from "@/utils/config"

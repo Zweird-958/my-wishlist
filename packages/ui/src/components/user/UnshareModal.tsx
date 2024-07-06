@@ -10,7 +10,7 @@ import {
   ModalProps,
 } from "@nextui-org/react"
 
-import { UserShared } from "@my-wishlist/types/User"
+import { UserShared } from "@my-wishlist/types"
 
 import useMutation from "../../hooks/useMutation"
 import useUsersShared from "../../hooks/useUsersShared"

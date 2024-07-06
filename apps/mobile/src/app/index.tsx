@@ -4,8 +4,7 @@ import { Stack } from "expo-router"
 import { FlatList, Text } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
-import { ApiResponse } from "@my-wishlist/types/Api"
-import type { Product } from "@my-wishlist/types/Product"
+import type { ApiResponse, Product } from "@my-wishlist/types"
 
 const Index = () => {
   const {
