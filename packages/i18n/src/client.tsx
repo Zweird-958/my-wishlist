@@ -5,7 +5,7 @@ import LanguageDetector from "i18next-browser-languagedetector"
 import ICU from "i18next-icu"
 import resourcesToBackend from "i18next-resources-to-backend"
 import { ReactNode, useMemo } from "react"
-import { I18nextProvider as Provider, initReactI18next } from "react-i18next"
+import { I18nextProvider, initReactI18next } from "react-i18next"
 
 import config, { Locale } from "./config"
 import { getOptions } from "./settings"
@@ -43,5 +43,5 @@ export const I18nProvider = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return <Provider i18n={i18next}>{children}</Provider>
+  return <I18nextProvider i18n={i18next}>{children}</I18nextProvider>
 }

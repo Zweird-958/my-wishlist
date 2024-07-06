@@ -1,7 +1,6 @@
 import Negotiator from "negotiator"
 
-import { languageSchema, languageSchemaFallback } from "@my-wishlist/schemas"
-
+import { languageSchema, languageSchemaFallback } from "../schemas"
 import matchLocale from "./matchLocale"
 
 const parseLocale = ({

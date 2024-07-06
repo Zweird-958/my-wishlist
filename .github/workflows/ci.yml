@@ -8,22 +8,26 @@ on:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: upnpmtu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
 
       - name: Lint
-        run: bun run lint && bun run --filter='**' lint
+        run: pnpm run lint
 
       - name: Format
-        run: bun run format
+        run: pnpm run format
 
       - name: Typecheck
-        run: bun run typecheck
+        run: pnpm run typecheck
 
       - name: Check expo
-        run: bun run mobile:check
+        run: pnpm run mobile:check

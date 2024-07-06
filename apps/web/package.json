@@ -30,9 +30,9 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@my-wishlist/types": "^1.0.0",
+    "@my-wishlist/types": "workspace:*",
     "@types/jsonwebtoken": "^9.0.6",
-    "@types/react": "^18.2.79",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.2.25",
     "autoprefixer": "^10.4.19",
     "eslint-config-next": "^14.2.4",

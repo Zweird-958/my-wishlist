@@ -1,17 +1,10 @@
 import { z } from "zod"
 
-import { config, languages } from "@my-wishlist/i18n/config"
-
 import {
   emailValidator,
   passwordValidator,
   usernameValidator,
 } from "./validators"
-
-export const languageSchema = z.enum(languages)
-export const languageSchemaFallback = languageSchema.catch(
-  config.defaultLanguage,
-)
 
 export const signInSchema = z.object({
   email: emailValidator,
