@@ -12,7 +12,7 @@
     "length": "Username must be at least 3 characters"
   },
   "price": {
-    "required": "Price is required"
+    "minimum": "Price must be superior to 0"
   },
   "name": {
     "required": "Name is required"
