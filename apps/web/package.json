@@ -17,7 +17,7 @@
     "@prisma/client": "^5.14.0",
     "@tanstack/react-query": "^5.49.2",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.2.12",
+    "framer-motion": "^11.2.13",
     "jsonwebtoken": "^9.0.2",
     "next": "14.2.4",
     "next-themes": "^0.3.0",
