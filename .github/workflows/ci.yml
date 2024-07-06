@@ -28,7 +28,7 @@ jobs:
 
       - name: Format
         run: pnpm run typecheck
-  
+
   lint:
     runs-on: ubuntu-latest
     steps:
