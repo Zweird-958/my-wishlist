@@ -6,8 +6,8 @@ import {
   I18nProvider,
   getLocale,
   config as i18nConfig,
+  useTranslation,
 } from "@my-wishlist/i18n/desktop"
-import { useTranslation } from "@my-wishlist/i18n/utils"
 import Appbar from "@my-wishlist/ui/Appbar"
 
 import Providers from "@/components/providers"
