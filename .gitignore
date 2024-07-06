@@ -105,3 +105,5 @@ data/
 # Desktop
 
 apps/desktop/src-tauri/target/
+
+.turbo
