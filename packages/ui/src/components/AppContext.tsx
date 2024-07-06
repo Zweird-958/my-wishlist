@@ -31,7 +31,9 @@ const AppContext = createContext<Context>({} as Context)
 
 export const useAppContext = () => useContext(AppContext)
 export const useSession = () => useAppContext().useSession()
-export const useTranslation = (...ns: Namespace[]) =>
+export const useTranslation: (
+  ...ns: Namespace[]
+) => UseTranslationWeb | UseTranslationDesktop = (...ns) =>
   useAppContext().useTranslation(...ns)
 export const useRouter = () => useAppContext().useRouter()
 export const AppProvider = ({ children, ...props }: Props) => (
