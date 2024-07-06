@@ -142,7 +142,7 @@ importers:
         specifier: ^1.7.2
         version: 1.7.2
       expo:
-        specifier: ~51.0.17
+        specifier: ~51.0.18
         version: 51.0.18(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))
       expo-font:
         specifier: ~12.0.7
@@ -160,7 +160,7 @@ importers:
         specifier: ~1.12.1
         version: 1.12.1
       expo-system-ui:
-        specifier: ~3.0.6
+        specifier: ~3.0.7
         version: 3.0.7(expo@51.0.18(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7)))
       expo-updates:
         specifier: ~0.25.18
@@ -8190,7 +8190,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.24.7
       '@expo/code-signing-certificates': 0.0.5
-      '@expo/config': 9.0.1
+      '@expo/config': 9.0.2
       '@expo/config-plugins': 8.0.7
       '@expo/devcert': 1.1.2
       '@expo/env': 0.3.0
@@ -8399,7 +8399,7 @@ snapshots:
       '@babel/generator': 7.24.7
       '@babel/parser': 7.24.7
       '@babel/types': 7.24.7
-      '@expo/config': 9.0.1
+      '@expo/config': 9.0.2
       '@expo/env': 0.3.0
       '@expo/json-file': 8.3.3
       '@expo/spawn-async': 1.7.2
@@ -8466,7 +8466,7 @@ snapshots:
 
   '@expo/prebuild-config@7.0.7(expo-modules-autolinking@1.11.1)':
     dependencies:
-      '@expo/config': 9.0.1
+      '@expo/config': 9.0.2
       '@expo/config-plugins': 8.0.7
       '@expo/config-types': 51.0.2
       '@expo/image-utils': 0.5.1
