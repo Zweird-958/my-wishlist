@@ -2,11 +2,11 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 import { NextRouter } from "next/router"
 import { ReactNode, createContext, useContext } from "react"
 
-import { Namespace } from "@my-wishlist/i18n/config"
 import type {
+  Namespace,
   UseTranslationDesktop,
   UseTranslationWeb,
-} from "@my-wishlist/i18n/types"
+} from "@my-wishlist/i18n/config"
 import { JwtPayload } from "@my-wishlist/types"
 
 type Context = {
