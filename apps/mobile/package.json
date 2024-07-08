@@ -14,7 +14,7 @@
     "@expo/vector-icons": "^14.0.2",
     "@my-wishlist/schemas": "workspace:*",
     "@react-navigation/native": "^6.1.17",
-    "@tanstack/react-query": "^5.49.2",
+    "@tanstack/react-query": "^5.50.1",
     "ajv": "^8.16.0",
     "axios": "^1.7.2",
     "expo": "~51.0.18",
