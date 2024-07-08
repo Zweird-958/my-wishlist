@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "../../.eslintrc.json",
+    "plugin:@tanstack/eslint-plugin-query/recommended"
+  ],
+  "plugins": ["@tanstack/query"]
+}
