@@ -57,7 +57,7 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2(@types/react@18.3.3)(framer-motion@11.2.13(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3)))
       '@tanstack/react-query':
-        specifier: ^5.49.2
+        specifier: ^5.50.1
         version: 5.50.1(react@18.2.0)
       '@tauri-apps/plugin-store':
         specifier: ^2.0.0-beta.6
@@ -133,7 +133,7 @@ importers:
         specifier: ^6.1.17
         version: 6.1.17(react-native@0.74.3(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       '@tanstack/react-query':
-        specifier: ^5.49.2
+        specifier: ^5.50.1
         version: 5.50.1(react@18.2.0)
       ajv:
         specifier: ^8.16.0
@@ -239,7 +239,7 @@ importers:
         specifier: ^5.14.0
         version: 5.16.1(prisma@5.16.1)
       '@tanstack/react-query':
-        specifier: ^5.49.2
+        specifier: ^5.50.1
         version: 5.50.1(react@18.2.0)
       clsx:
         specifier: ^2.1.1
@@ -437,7 +437,7 @@ importers:
         specifier: ^2.3.6
         version: 2.4.2(@types/react@18.3.3)(framer-motion@11.2.13(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3)))
       '@tanstack/react-query':
-        specifier: ^5.49.2
+        specifier: ^5.50.1
         version: 5.50.1(react@18.2.0)
       axios:
         specifier: ^1.7.2
@@ -483,7 +483,7 @@ importers:
         specifier: workspace:*
         version: link:../types
       '@tanstack/eslint-plugin-query':
-        specifier: ^5.50.0
+        specifier: ^5.50.1
         version: 5.50.1(eslint@8.57.0)(typescript@5.5.3)
       '@types/react':
         specifier: ^18.3.3

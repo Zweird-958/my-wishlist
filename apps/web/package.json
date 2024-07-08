@@ -15,7 +15,7 @@
     "@my-wishlist/ui": "workspace:*",
     "@nextui-org/react": "^2.3.6",
     "@prisma/client": "^5.14.0",
-    "@tanstack/react-query": "^5.49.2",
+    "@tanstack/react-query": "^5.50.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.13",
     "jsonwebtoken": "^9.0.2",
