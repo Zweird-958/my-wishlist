@@ -422,7 +422,7 @@ importers:
   packages/ui:
     dependencies:
       '@hookform/resolvers':
-        specifier: ^3.6.0
+        specifier: ^3.9.0
         version: 3.9.0(react-hook-form@7.52.1(react@18.2.0))
       '@my-wishlist/config':
         specifier: workspace:*
