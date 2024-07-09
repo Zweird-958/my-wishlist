@@ -236,7 +236,7 @@ importers:
         specifier: ^2.3.6
         version: 2.4.2(@types/react@18.3.3)(framer-motion@11.2.13(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3)))
       '@prisma/client':
-        specifier: ^5.14.0
+        specifier: ^5.16.1
         version: 5.16.1(prisma@5.16.1)
       '@tanstack/react-query':
         specifier: ^5.50.1
@@ -300,7 +300,7 @@ importers:
         specifier: ^8.4.39
         version: 8.4.39
       prisma:
-        specifier: ^5.14.0
+        specifier: ^5.16.1
         version: 5.16.1
       tailwindcss:
         specifier: ^3.4.4
@@ -325,7 +325,7 @@ importers:
         specifier: ^5.16.1
         version: 5.16.1(prisma@5.16.1)
       prisma:
-        specifier: ^5.14.0
+        specifier: ^5.16.1
         version: 5.16.1
     devDependencies:
       '@faker-js/faker':
