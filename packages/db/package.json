@@ -27,9 +27,9 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
-    "@prisma/client": "^5.16.1"
+    "@prisma/client": "^5.16.2"
   },
   "peerDependencies": {
-    "prisma": "^5.16.1"
+    "prisma": "^5.16.2"
   }
 }
