@@ -30,6 +30,6 @@
     "@prisma/client": "^5.16.1"
   },
   "peerDependencies": {
-    "prisma": "^5.14.0"
+    "prisma": "^5.16.1"
   }
 }
