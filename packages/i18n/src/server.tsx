@@ -35,7 +35,7 @@ export const getLocale = () => {
 }
 
 export const useTranslation: (ns?: Namespace) => Promise<{
-  t: TFunction<any, undefined>
+  t: TFunction<Namespace, undefined>
   i18n: i18n
 }> = async (ns: Namespace = config.defaultNamespace) => {
   const locale = getLocale()
