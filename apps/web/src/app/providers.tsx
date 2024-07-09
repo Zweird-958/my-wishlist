@@ -1,13 +1,16 @@
 "use client"
 
-import { NextUIProvider } from "@nextui-org/react"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { ThemeProvider } from "next-themes"
 import { useRouter } from "next/navigation"
 import { ReactNode } from "react"
 
 import { useTranslation } from "@my-wishlist/i18n"
-import { AppProvider } from "@my-wishlist/ui/AppContext"
+import {
+  AppProvider,
+  NextUIProvider,
+  QueryClient,
+  QueryClientProvider,
+  ThemeProvider,
+} from "@my-wishlist/ui/providers"
 
 import useSession from "@/hooks/useSession"
 

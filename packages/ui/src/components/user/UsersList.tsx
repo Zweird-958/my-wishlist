@@ -10,7 +10,7 @@ import {
 import Link from "next/link"
 import { ReactNode } from "react"
 
-import { UserShared } from "@my-wishlist/types/User"
+import { UserShared } from "@my-wishlist/types"
 
 import { useTranslation } from "../AppContext"
 

@@ -3,7 +3,7 @@
 import { ReactNode } from "react"
 
 import { Filter, Sort } from "@my-wishlist/config"
-import { Wish } from "@my-wishlist/types/Wish"
+import { Wish } from "@my-wishlist/types"
 
 import filterWishlist from "../../utils/filterWishlist"
 import LoadingScreen from "../LoadingScreen"

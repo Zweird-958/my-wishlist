@@ -10,7 +10,7 @@ import {
 } from "@nextui-org/react"
 import { SquarePenIcon } from "lucide-react"
 
-import type { Wish } from "@my-wishlist/types/Wish"
+import type { Wish } from "@my-wishlist/types"
 
 import { useTranslation } from "../AppContext"
 import DeleteWish from "./DeleteWish"

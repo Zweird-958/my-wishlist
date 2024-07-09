@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form"
 
 import config from "@my-wishlist/config"
 import { addWishSchema } from "@my-wishlist/schemas"
-import { Currency, Wish } from "@my-wishlist/types/Wish"
+import { Currency, Wish } from "@my-wishlist/types"
 
 import useCurrencies from "../../hooks/useCurrencies"
 import useUploadImage from "../../hooks/useUploadImage"

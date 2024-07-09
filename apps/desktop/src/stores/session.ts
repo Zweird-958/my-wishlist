@@ -1,6 +1,6 @@
 import { create } from "zustand"
 
-import { JwtPayload } from "@my-wishlist/types/Api"
+import { JwtPayload } from "@my-wishlist/types"
 
 type SessionStore = {
   session: JwtPayload | null

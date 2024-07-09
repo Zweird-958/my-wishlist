@@ -1,9 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "../../",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["apps/mobile/src/*"]
+      "@/*": ["src/*"]
     },
     "jsx": "react-native",
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",

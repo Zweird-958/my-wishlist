@@ -1,4 +1,4 @@
-import { useTranslation } from "@my-wishlist/i18n/utils"
+import { useTranslation } from "@my-wishlist/i18n/desktop"
 import Home from "@my-wishlist/ui/pages/Home"
 
 const HomePage = () => {

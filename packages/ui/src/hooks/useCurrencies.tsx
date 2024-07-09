@@ -2,7 +2,7 @@
 
 import { useEffect } from "react"
 
-import { Currency } from "@my-wishlist/types/Wish"
+import { Currency } from "@my-wishlist/types"
 
 import useCurrenciesStore from "../stores/currencies"
 import useQuery from "./useQuery"

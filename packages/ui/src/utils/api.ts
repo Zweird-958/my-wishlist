@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios"
 
-import { ApiResponse, Method } from "@my-wishlist/types/Api"
+import { ApiResponse, Method } from "@my-wishlist/types"
 
 import config from "./config"
 

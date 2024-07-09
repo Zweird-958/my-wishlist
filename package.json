@@ -2,12 +2,12 @@
   "name": "my-wishlist",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
-  "packageManager": "pnpm@9.4.0",
+  "packageManager": "pnpm@9.5.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "web": "pnpm --F \"@my-wishlist/web\" dev ktop tauri dev",
+    "web": "pnpm --F \"@my-wishlist/web\" dev",
     "web:generate": "pnpm --F \"@my-wishlist/web\" generate",
+    "desktop": "pnpm --F \"@my-wishlist/desktop\" tauri dev",
     "mobile:ios": "pnpm --F \"@my-wishlist/mobile\" ios",
     "mobile:android": "pnpm --F \"@my-wishlist/mobile\" android",
     "db:migrate": "pnpm --F \"@my-wishlist/db\" migrate",
@@ -19,7 +19,7 @@
     "format": "prettier -c .",
     "format:fix": "prettier -w .",
     "mobile:check": "pnpm --F \"@my-wishlist/mobile\" expo-check",
-    "typecheck": "pnpm run db:generate && turbo typecheck",
+    "typecheck": "turbo typecheck",
     "check": "pnpm run lint && pnpm run typecheck && pnpm run format && pnpm run mobile:check",
     "clear": "find . -type d \\( -name \"node_modules\" -o -name \".next\" -name \".expo\" -name \".turbo\" \\) -exec rm -rf {} +\\ && rm pnpm-lock.yaml",
     "env-symlink": "ln -sf $PWD/.env ./apps/web && ln -sf $PWD/.env ./apps/desktop && ln -sf $PWD/.env ./apps/mobile && ln -sf $PWD/.env ./packages/db"
@@ -29,15 +29,15 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20.14.10",
-    "@typescript-eslint/eslint-plugin": "^7.16.0",
-    "@typescript-eslint/parser": "^7.16.0",
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "@typescript-eslint/parser": "^7.10.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.4",
     "turbo": "^2.0.6",
-    "typescript": "^5.4.5"
+    "typescript": "catalog:"
   },
   "keywords": [],
   "workspaces": [

@@ -1,7 +1,7 @@
 "use client"
 
 import { signUpSchema } from "@my-wishlist/schemas"
-import type { SignUpData } from "@my-wishlist/types/User"
+import type { SignUpData } from "@my-wishlist/types"
 
 import useMutation from "../../hooks/useMutation"
 import { useRouter, useTranslation } from "../AppContext"
