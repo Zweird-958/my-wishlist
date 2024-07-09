@@ -4,14 +4,14 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "../../",
+    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["apps/web/src/*"]
+      "@/*": ["src/*"]
     }
   },
   "include": [
