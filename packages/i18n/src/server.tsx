@@ -1,4 +1,4 @@
-import { createInstance } from "i18next"
+import { type TFunction, createInstance, type i18n } from "i18next"
 import ICU from "i18next-icu"
 import resourcesToBackend from "i18next-resources-to-backend"
 import { cookies as getCookies, headers as getHeaders } from "next/headers"
@@ -34,9 +34,10 @@ export const getLocale = () => {
   })
 }
 
-export const useTranslation = async (
-  ns: Namespace = config.defaultNamespace,
-) => {
+export const useTranslation: (ns?: Namespace) => Promise<{
+  t: TFunction<any, undefined>
+  i18n: i18n
+}> = async (ns: Namespace = config.defaultNamespace) => {
   const locale = getLocale()
   const i18nextInstance = await initI18next(locale, ns)
 
