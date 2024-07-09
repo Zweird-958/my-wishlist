@@ -130,7 +130,7 @@ importers:
         specifier: ^6.1.17
         version: 6.1.17(react-native@0.74.3(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       '@tanstack/react-query':
-        specifier: ^5.49.2
+        specifier: ^5.50.1
         version: 5.50.1(react@18.2.0)
       axios:
         specifier: ^1.7.2
@@ -203,7 +203,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/types
       '@tanstack/eslint-plugin-query':
-        specifier: ^5.50.0
+        specifier: ^5.50.1
         version: 5.50.1(eslint@8.57.0)(typescript@5.3.3)
       '@types/node':
         specifier: ^20.14.10
@@ -474,7 +474,7 @@ importers:
         specifier: workspace:*
         version: link:../types
       '@tanstack/eslint-plugin-query':
-        specifier: ^5.50.0
+        specifier: ^5.50.1
         version: 5.50.1(eslint@8.57.0)(typescript@5.3.3)
       typescript:
         specifier: 'catalog:'
@@ -12169,16 +12169,6 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-module-utils@2.8.1(@typescript-eslint/parser@7.16.0(eslint@8.57.0)(typescript@5.3.3))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0):
-    dependencies:
-      debug: 3.2.7
-    optionalDependencies:
-      '@typescript-eslint/parser': 7.16.0(eslint@8.57.0)(typescript@5.3.3)
-      eslint: 8.57.0
-      eslint-import-resolver-node: 0.3.9
-    transitivePeerDependencies:
-      - supports-color
-
   eslint-module-utils@2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.3.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.3.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       debug: 3.2.7
@@ -12200,7 +12190,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.16.0(eslint@8.57.0)(typescript@5.3.3))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.3.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.3.3))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0))(eslint@8.57.0)
       hasown: 2.0.2
       is-core-module: 2.14.0
       is-glob: 4.0.3
