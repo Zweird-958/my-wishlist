@@ -38,7 +38,7 @@ jobs:
         uses: ./.github/setup
 
       - name: Lint
-        run: pnpm run lint
+        run: pnpm run db:generate && pnpm run lint
 
   mobile:
     runs-on: ubuntu-latest
