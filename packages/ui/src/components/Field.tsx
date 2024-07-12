@@ -24,7 +24,7 @@ const Field = <TFieldValues extends FieldValues>({
   const handleErrorMessage = (
     field: ControllerRenderProps<TFieldValues, Path<TFieldValues>>,
     error: FieldErrors<TFieldValues>,
-  ) => t(`${field.name}.${error[field.name]?.message}`)
+  ) => t(`${field.name}.${error[field.name]?.message?.toString()}`)
 
   return (
     <Controller

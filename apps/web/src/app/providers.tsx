@@ -31,7 +31,7 @@ const Providers = (props: Props) => {
       useRouter={useRouter}
     >
       <QueryClientProvider client={queryClient}>
-        <NextUIProvider navigate={router.push}>
+        <NextUIProvider navigate={(path) => router.push(path)}>
           <ThemeProvider>{children}</ThemeProvider>
         </NextUIProvider>
       </QueryClientProvider>

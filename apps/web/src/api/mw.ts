@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server"
 import type { Method } from "@my-wishlist/types"
 
 import { HTTP_ERRORS } from "@/api/constants"
-import { createContext, send } from "@/api/utils/createContext"
+import { createContext, type send } from "@/api/utils/createContext"
 import { HttpPublicError, PublicError } from "@/api/utils/errors"
 
 type ApiContext = ReturnType<typeof createContext>

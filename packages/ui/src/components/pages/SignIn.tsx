@@ -23,7 +23,7 @@ const SignIn = () => {
     },
     onSuccess: ({ result }) => {
       signIn(result)
-      router.push("/")
+      void router.push("/")
     },
   })
   const { signIn } = useSession()

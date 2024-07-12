@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { ReactNode } from "react"
+import type { ReactNode } from "react"
 import { Toaster } from "react-hot-toast"
 
 import { I18nProvider } from "@my-wishlist/i18n"

@@ -12,7 +12,7 @@ export const useTranslation = (...ns: Namespace[]) => {
   )
   const changeLanguage = useCallback(
     (locale: Locale) => {
-      i18n.changeLanguage(locale)
+      void i18n.changeLanguage(locale)
     },
     [i18n],
   )

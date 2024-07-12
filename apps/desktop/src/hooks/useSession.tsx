@@ -31,7 +31,7 @@ const useSession = () => {
   }
 
   useEffect(() => {
-    ;(async () => {
+    void (async () => {
       const jwt = await store.get<string | null>(config.store.sessionKey)
 
       if (!jwt) {

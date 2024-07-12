@@ -4,6 +4,10 @@
     "typecheck": {
       "dependsOn": ["^typecheck"]
     },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "env": ["NEXT_PUBLIC_API_URL"]
+    },
     "dev": {
       "persistent": true,
       "cache": false

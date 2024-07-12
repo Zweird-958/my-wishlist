@@ -2,12 +2,13 @@
   "name": "@my-wishlist/desktop",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "tauri": "tauri",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint",
     "generate": "prisma generate --schema=../../packages/db/prisma/schema.prisma",
     "typecheck": "tsc --noEmit"
   },
@@ -16,7 +17,6 @@
     "@my-wishlist/i18n": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
     "@tauri-apps/plugin-store": "^2.0.0-beta.6",
-    "eslint-config-next": "^14.2.4",
     "jsonwebtoken": "^9.0.2",
     "next": "^14.2.4",
     "react": "^18.3.1",
@@ -26,12 +26,15 @@
     "zustand": "^4.5.4"
   },
   "devDependencies": {
+    "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/types": "workspace:*",
     "@tauri-apps/cli": "^2.0.0-beta.21",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.19",
+    "eslint": "catalog:",
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.4",
     "typescript": "catalog:"

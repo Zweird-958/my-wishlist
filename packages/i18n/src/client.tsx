@@ -12,7 +12,7 @@ import { getOptions } from "./settings"
 
 const runsOnServerSide = typeof window === "undefined"
 
-i18next
+void i18next
   .use(initReactI18next)
   .use(LanguageDetector)
   .use(
@@ -39,7 +39,7 @@ export const I18nProvider = ({
   language: Locale
 }) => {
   useMemo(() => {
-    i18next.changeLanguage(language)
+    void i18next.changeLanguage(language)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

@@ -19,7 +19,7 @@ const SignUp = () => {
     method: "post",
     path: "/sign-up",
     onSuccess: () => {
-      router.push("/sign-in")
+      void router.push("/sign-in")
     },
   })
   const { t } = useTranslation("forms", "common")

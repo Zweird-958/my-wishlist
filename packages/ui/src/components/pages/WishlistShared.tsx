@@ -19,7 +19,7 @@ const WishlistShared = ({ userId }: Props) => {
   const router = useRouter()
   const { handleError } = useHandleError(
     { 401: t("notAuthorized") },
-    { 401: () => router.push("/share") },
+    { 401: () => void router.push("/share") },
   )
   const { data, error, isLoading } = useQuery<Wish[], { username: string }>({
     method: "get",

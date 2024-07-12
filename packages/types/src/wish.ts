@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-import { currencySchema } from "@my-wishlist/schemas"
+import type { currencySchema } from "@my-wishlist/schemas"
 
 export type Wish = {
   id: number

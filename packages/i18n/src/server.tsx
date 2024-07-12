@@ -34,7 +34,7 @@ export const getLocale = () => {
   })
 }
 
-export const useTranslation: (ns?: Namespace) => Promise<{
+export const useTranslation: (...ns: Namespace[]) => Promise<{
   t: TFunction<Namespace, undefined>
   i18n: i18n
 }> = async (ns: Namespace = config.defaultNamespace) => {
@@ -42,7 +42,10 @@ export const useTranslation: (ns?: Namespace) => Promise<{
   const i18nextInstance = await initI18next(locale, ns)
 
   return {
-    t: i18nextInstance.getFixedT(locale, Array.isArray(ns) ? ns[0] : ns),
+    t: i18nextInstance.getFixedT(
+      locale,
+      (Array.isArray(ns) ? ns[0] : ns) as Namespace,
+    ),
     i18n: i18nextInstance,
   }
 }

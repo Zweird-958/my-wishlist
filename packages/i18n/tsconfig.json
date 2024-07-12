@@ -1,14 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["es2022", "dom", "dom.iterable"],
     "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
-  },
-  "include": ["."]
+    "baseUrl": ".",
+    "plugins": [{ "name": "next" }]
+  }
 }

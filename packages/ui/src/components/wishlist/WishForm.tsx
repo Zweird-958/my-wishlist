@@ -39,6 +39,7 @@ type WishFormProps = {
 
 type WishBooleanInput = "purchased" | "isPrivate"
 
+// eslint-disable-next-line complexity
 const Form = (props: FormProps) => {
   const { onSubmit, wish, isLoading, submitText, onClose } = props
   const { t } = useTranslation("forms")
