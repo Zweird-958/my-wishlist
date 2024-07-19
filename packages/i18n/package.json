@@ -34,7 +34,6 @@
   },
   "peerDependencies": {
     "@types/react": "catalog:nextjs",
-    "next": "^14.2.4",
     "react": "catalog:nextjs",
     "react-dom": "catalog:nextjs"
   }
