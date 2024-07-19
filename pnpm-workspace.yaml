@@ -6,3 +6,11 @@ packages:
 catalog:
   typescript: 5.3.3
   eslint: 9.6.0
+
+catalogs:
+  nextjs:
+    react-dom: ^18.2.0
+    react: ^18.2.0
+    "@types/react": ^18.2.0
+    "@types/node": ^20.14.10
+    "@types/react-dom": ^18.2.0

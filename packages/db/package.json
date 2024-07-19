@@ -21,7 +21,7 @@
   "devDependencies": {
     "@my-wishlist/eslint": "workspace:*",
     "@faker-js/faker": "^8.4.1",
-    "@types/node": "^20.14.10",
+    "@types/node": "catalog:nextjs",
     "eslint": "catalog:",
     "ts-node": "^10.9.2",
     "typescript": "catalog:"
