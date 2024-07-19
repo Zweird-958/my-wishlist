@@ -1,5 +1,3 @@
-import Home from "@my-wishlist/ui/pages/Home"
-
-const HomePage = () => <Home />
+const HomePage = () => <p>test</p>
 
 export default HomePage
