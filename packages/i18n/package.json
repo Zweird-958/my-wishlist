@@ -35,7 +35,6 @@
   "peerDependencies": {
     "@types/react": "catalog:nextjs",
     "react": "catalog:nextjs",
-    "react-dom": "catalog:nextjs",
-    "next": "catalog:nextjs"
+    "react-dom": "catalog:nextjs"
   }
 }

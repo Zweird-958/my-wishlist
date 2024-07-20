@@ -392,9 +392,6 @@ importers:
       negotiator:
         specifier: ^0.6.3
         version: 0.6.3
-      next:
-        specifier: catalog:nextjs
-        version: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: catalog:nextjs
         version: 18.3.1
