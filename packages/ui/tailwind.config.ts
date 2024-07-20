@@ -1,27 +1,15 @@
 import { nextui } from "@nextui-org/react"
 import type { Config } from "tailwindcss"
 
-const config: Config = {
+import baseConfig from "@my-wishlist/tailwind"
+
+const config = {
   content: [
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    ...baseConfig.content,
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "../../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
-  theme: {
-    extend: {
-      width: {
-        wish: "20rem",
-      },
-      height: {
-        wish: "20rem",
-      },
-      maxWidth: {
-        wish: "62rem",
-      },
-    },
-  },
+  presets: [baseConfig],
   plugins: [
     nextui({
       themes: {
@@ -49,5 +37,6 @@ const config: Config = {
     }),
   ],
   darkMode: "class",
-}
+} satisfies Config
+
 export default config

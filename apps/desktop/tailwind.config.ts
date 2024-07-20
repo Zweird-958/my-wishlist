@@ -1,15 +1,13 @@
 import type { Config } from "tailwindcss"
 
-import uiConfig from "../../packages/ui/tailwind.config"
+import uiConfig from "@my-wishlist/ui/tailwind"
 
-const config: Config = {
+const config = {
   content: [
-    ...(uiConfig.content as string[]),
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    ...uiConfig.content,
     "../../packages/ui/src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   presets: [uiConfig],
-}
+} satisfies Config
+
 export default config
