@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.51.1",
+    "@my-wishlist/typescript": "workspace:*",
     "eslint": "catalog:",
     "typescript": "catalog:"
   }

@@ -20,6 +20,7 @@
   "license": "ISC",
   "devDependencies": {
     "@my-wishlist/eslint": "workspace:*",
+    "@my-wishlist/typescript": "workspace:*",
     "@faker-js/faker": "^8.4.1",
     "@types/node": "catalog:nextjs",
     "eslint": "catalog:",

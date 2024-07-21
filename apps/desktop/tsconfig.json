@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "@my-wishlist/typescript/base.json",
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "preserve",
@@ -15,8 +15,6 @@
     }
   },
   "include": [
-    "../../tailwind.config.ts",
-    "../../packages/ui/tailwind.config.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",

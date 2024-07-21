@@ -1,9 +1,11 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "@my-wishlist/typescript/internal-package.json",
   "compilerOptions": {
     "lib": ["es2022", "dom", "dom.iterable"],
     "jsx": "preserve",
     "baseUrl": ".",
     "plugins": [{ "name": "next" }]
-  }
+  },
+  "include": ["*.ts", "*.tsx", "src"],
+  "exclude": ["node_modules"]
 }

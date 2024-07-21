@@ -1,8 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
-  },
+  "extends": "@my-wishlist/typescript/base",
   "include": ["."],
   "exclude": ["node_modules"]
 }

@@ -1,7 +1,8 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "@my-wishlist/typescript/internal-package.json",
   "compilerOptions": {
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
   },
-  "include": ["."]
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
 }

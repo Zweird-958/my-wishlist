@@ -19,6 +19,7 @@
   "devDependencies": {
     "eslint": "catalog:",
     "@my-wishlist/eslint": "workspace:*",
+    "@my-wishlist/typescript": "workspace:*",
     "typescript": "catalog:"
   }
 }

@@ -1,7 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    /** Base Options */
     "esModuleInterop": true,
     "skipLibCheck": true,
     "target": "ES2022",
@@ -11,26 +10,16 @@
     "moduleDetection": "force",
     "isolatedModules": true,
 
-    /** Keep TSC performant in monorepos */
     "incremental": true,
     "disableSourceOfProjectReferenceRedirect": true,
 
-    /** Strictness */
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "checkJs": true,
 
-    /** Transpile using Bundler (not tsc) */
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "noEmit": true
   },
-  "exclude": [
-    "node_modules",
-    "build",
-    "dist",
-    ".next",
-    ".expo",
-    "**/eslint.config.js"
-  ]
+  "exclude": ["node_modules", "build", "dist", ".next", ".expo"]
 }
