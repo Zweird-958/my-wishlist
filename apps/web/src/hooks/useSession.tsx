@@ -35,11 +35,14 @@ const useSession = () => {
       return
     }
 
-    const { payload } = jsonwebtoken.decode(jwt) as RawJwt
+    try {
+      const { payload } = jsonwebtoken.decode(jwt) as RawJwt
 
-    setToken(jwt)
-    setSession(payload)
-    setIsLoading(false)
+      setToken(jwt)
+      setSession(payload)
+    } finally {
+      setIsLoading(false)
+    }
   }, [setIsLoading, setSession, setToken])
 
   return { signIn, signOut, ...sessionStore }

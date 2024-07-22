@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.12.0",
-    "@my-wishlist/i18n": "workspace:*",
-    "@my-wishlist/typescript": "workspace:*",
+    "@hono/zod-validator": "^0.2.2",
     "@my-wishlist/db": "workspace:*",
+    "@my-wishlist/i18n": "workspace:*",
+    "@my-wishlist/schemas": "workspace:*",
+    "@my-wishlist/typescript": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
     "@prisma/client": "^5.16.2",
     "clsx": "^2.1.1",

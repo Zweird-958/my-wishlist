@@ -3,6 +3,7 @@ import { Hono } from "hono"
 import { handle } from "hono/vercel"
 
 import { ERROR_RESPONSES } from "@/api/constants"
+import signApp from "@/api/routes/signRoutes"
 import wishApp from "@/api/routes/wishesRoutes"
 
 const prisma = new PrismaClient()
@@ -43,6 +44,7 @@ app.use((ctx, next) => {
 })
 
 app.route("/wish", wishApp)
+app.route("", signApp)
 
 export const GET = handle(app)
 export const POST = handle(app)

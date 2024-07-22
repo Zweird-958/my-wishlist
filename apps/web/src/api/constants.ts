@@ -8,4 +8,5 @@ export const HTTP_ERRORS = {
 export const ERROR_RESPONSES = {
   500: { message: "Something went wrong.", code: 500 },
   403: { message: "Forbidden.", code: 403 },
+  invalidCredentials: { message: "Invalid credentials.", code: 401 },
 } satisfies Record<string, { message: string; code: StatusCode }>
