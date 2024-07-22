@@ -10,9 +10,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product {
-  id        String   @id @default(uuid()) @db.Uuid
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+model User {
+  id             Int    @id @default(autoincrement())
+  email          String @unique
+  username       String @unique
+  passwordHash   String
+  wishlist       Wish[]
+  wishlistShared User[] @relation("WishlistShared")
+  sharedWith     User[] @relation("WishlistShared")
+}
+
+model Wish {
+  id        Int      @id @default(autoincrement())
   name      String
+  image     String?
+  link      String?
+  price     Float
+  currency  Currency @default(value: DOLLAR)
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int
+  purchased Boolean  @default(value: false)
+  createdAt DateTime @default(now())
+  isPrivate Boolean  @default(value: false)
+}
+
+enum Currency {
+  DOLLAR
+  EURO
+  POUND
 }
