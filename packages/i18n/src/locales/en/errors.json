@@ -2,5 +2,6 @@
   "somethingWentWrong": "Something went wrong",
   "invalidCredentials": "Invalid credentials",
   "wishNotFound": "Wish not found",
-  "notAuthorized": "You are not authorized to perform this action"
+  "notAuthorized": "You are not authorized to perform this action",
+  "usernameExists": "This username is already taken"
 }

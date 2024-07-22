@@ -3,7 +3,7 @@ import { Hono } from "hono"
 import jsonwebtoken from "jsonwebtoken"
 
 import { hashPassword } from "@my-wishlist/db"
-import { signInSchema } from "@my-wishlist/schemas"
+import { signInSchema, signUpSchema } from "@my-wishlist/schemas"
 
 import config from "@/api/utils/config"
 
@@ -39,6 +39,52 @@ app.post(
       .toString()
 
     return send(sessionToken)
+  },
+)
+
+app.post(
+  "/sign-up",
+  zValidator("json", signUpSchema),
+  async ({ req, var: { send, fail, db } }) => {
+    const { email, username, password } = req.valid("json")
+
+    try {
+      const existingUsername = await db.user.findFirst({
+        where: {
+          OR: [
+            {
+              username: {
+                equals: username,
+                mode: "insensitive",
+              },
+            },
+          ],
+        },
+      })
+
+      if (existingUsername) {
+        return fail("usernameExists")
+      }
+
+      if (await db.user.findFirst({ where: { email } })) {
+        return send(true)
+      }
+
+      await db.user.create({
+        data: {
+          email,
+          passwordHash: hashPassword(password),
+          username,
+        },
+      })
+
+      return send(true)
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error(err)
+
+      return fail(500)
+    }
   },
 )
 
