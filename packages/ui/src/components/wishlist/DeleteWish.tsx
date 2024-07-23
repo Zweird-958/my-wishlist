@@ -10,7 +10,11 @@ import { Trash2Icon } from "lucide-react"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
-import { type DeleteWishInput, type DeleteWishResponse, type Wish } from "@my-wishlist/types"
+import {
+  type DeleteWishInput,
+  type DeleteWishResponse,
+  type Wish,
+} from "@my-wishlist/types"
 
 import useMutation from "../../hooks/useMutation"
 import useWishlist from "../../hooks/useWishlist"
