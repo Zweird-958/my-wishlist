@@ -1,5 +1,5 @@
-import { Filter, Sort } from "@my-wishlist/config"
-import { Wish } from "@my-wishlist/types"
+import type { Filter, Sort } from "@my-wishlist/config"
+import type { Wish } from "@my-wishlist/types"
 
 const filterWishlist = (
   wishlist: Wish[],

@@ -4,7 +4,7 @@ import resourcesToBackend from "i18next-resources-to-backend"
 import { cookies as getCookies, headers as getHeaders } from "next/headers"
 import { initReactI18next } from "react-i18next/initReactI18next"
 
-import config, { Locale, Namespace } from "./config"
+import config, { type Locale, type Namespace } from "./config"
 import { getOptions } from "./settings"
 import parseLocale from "./utils/parseLocale"
 

@@ -3,7 +3,7 @@
 import { useCallback } from "react"
 import { useTranslation as useTranslationOrg } from "react-i18next"
 
-import config, { Locale, Namespace } from "./config"
+import config, { type Locale, type Namespace } from "./config"
 import { languageSchemaFallback } from "./schemas"
 
 export const useTranslation = (...ns: Namespace[]) => {

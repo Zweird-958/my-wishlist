@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@nextui-org/react"
-import { ChangeEventHandler, useState } from "react"
+import { type ChangeEventHandler, useState } from "react"
 
 import { useTranslation } from "../components/AppContext"
 

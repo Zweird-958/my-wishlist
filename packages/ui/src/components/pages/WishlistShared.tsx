@@ -2,8 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react"
 
-import config, { Filter, Sort } from "@my-wishlist/config"
-import { Wish } from "@my-wishlist/types"
+import config, { type Filter, type Sort } from "@my-wishlist/config"
+import type { Wish } from "@my-wishlist/types"
 
 import useHandleError from "../../hooks/useHandleError"
 import useQuery from "../../hooks/useQuery"

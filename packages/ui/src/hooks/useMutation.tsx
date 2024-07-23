@@ -1,16 +1,16 @@
 import {
-  QueryClient,
-  UseMutationOptions,
-  UseMutationResult,
+  type QueryClient,
+  type UseMutationOptions,
+  type UseMutationResult,
   useMutation as useMutationGeneric,
 } from "@tanstack/react-query"
-import { AxiosError, AxiosRequestConfig } from "axios"
+import type { AxiosError, AxiosRequestConfig } from "axios"
 
-import { ApiError, ApiResponse, Method } from "@my-wishlist/types"
+import type { ApiError, ApiResponse, Method } from "@my-wishlist/types"
 
 import { useSession } from "../components/AppContext"
 import api from "../utils/api"
-import useHandleError, { HandleErrorParams } from "./useHandleError"
+import useHandleError, { type HandleErrorParams } from "./useHandleError"
 
 type CustomUseMutationOptions<TData, TError, TVariables, TContext> = Omit<
   UseMutationOptions<TData, TError, TVariables, TContext>,

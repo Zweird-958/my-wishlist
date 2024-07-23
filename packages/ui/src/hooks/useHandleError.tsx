@@ -1,9 +1,9 @@
 "use client"
 
-import { AxiosError } from "axios"
+import type { AxiosError } from "axios"
 import toast from "react-hot-toast"
 
-import { ApiError } from "@my-wishlist/types"
+import type { ApiError } from "@my-wishlist/types"
 
 import { useTranslation } from "../components/AppContext"
 

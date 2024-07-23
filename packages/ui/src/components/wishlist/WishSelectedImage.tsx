@@ -1,8 +1,8 @@
 "use client"
 
-import { Image, ImageProps } from "@nextui-org/react"
+import { Image, type ImageProps } from "@nextui-org/react"
 
-import { Wish } from "@my-wishlist/types"
+import type { Wish } from "@my-wishlist/types"
 
 type Props = {
   wish?: Wish

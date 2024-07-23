@@ -5,11 +5,11 @@ import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
-  DropdownMenuProps,
+  type DropdownMenuProps,
   DropdownTrigger,
 } from "@nextui-org/react"
 
-import { Currency } from "@my-wishlist/types"
+import type { Currency } from "@my-wishlist/types"
 
 type Props = {
   currency: Currency
