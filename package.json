@@ -15,7 +15,7 @@
     "db:generate": "pnpm --F \"@my-wishlist/db\" generate",
     "db:seed": "pnpm --F \"@my-wishlist/db\" seed",
     "lint": "turbo lint",
-    "lint:fix": "eslint . --fix",
+    "lint:fix": "turbo lint -- --fix",
     "format": "prettier -c .",
     "format:fix": "prettier -w .",
     "mobile:check": "pnpm --F \"@my-wishlist/mobile\" expo-check",
