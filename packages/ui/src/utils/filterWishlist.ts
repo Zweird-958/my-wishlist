@@ -30,11 +30,7 @@ const filterWishlist = (
         return wishA.price - wishB.price
       }
 
-      if (selectedSort === "priceDesc") {
-        return wishB.price - wishA.price
-      }
-
-      return 0
+      return wishB.price - wishA.price
     })
 
 export default filterWishlist

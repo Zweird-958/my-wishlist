@@ -19,7 +19,7 @@ const WishSelectedImage = ({ wish, image }: Props) => {
   }
 
   if (wish?.image) {
-    return <WishImage src={wish?.image} alt={wish.name} />
+    return <WishImage src={wish.image} alt={wish.name} />
   }
 
   return null

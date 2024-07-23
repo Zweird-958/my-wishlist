@@ -36,7 +36,7 @@ const Home = () => {
       return
     }
 
-    setWishlist(data?.result || [])
+    setWishlist(data.result)
   }, [data?.result, session, setWishlist, wishlist.length])
 
   if (!session && !sessionIsLoading) {

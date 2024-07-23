@@ -33,7 +33,7 @@ const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
         return
       }
 
-      removeUser(user?.id)
+      removeUser(user.id)
     },
   })
 
