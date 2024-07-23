@@ -6,7 +6,7 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  Selection,
+  type Selection,
 } from "@nextui-org/react"
 
 import { useTranslation } from "../AppContext"

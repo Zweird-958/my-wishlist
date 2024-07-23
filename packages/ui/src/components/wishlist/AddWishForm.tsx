@@ -1,9 +1,9 @@
 "use client"
 
-import { ModalProps } from "@nextui-org/react"
+import type { ModalProps } from "@nextui-org/react"
 import toast from "react-hot-toast"
 
-import { Wish } from "@my-wishlist/types"
+import type { Wish } from "@my-wishlist/types"
 
 import useMutation from "../../hooks/useMutation"
 import useWishlist from "../../hooks/useWishlist"

@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { ReactNode } from "react"
+import type { ReactNode } from "react"
 
 import { useTranslation } from "@my-wishlist/i18n"
 import {

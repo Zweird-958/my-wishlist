@@ -2,7 +2,7 @@
 
 import { useEffect } from "react"
 
-import { UserShared } from "@my-wishlist/types"
+import type { UserShared } from "@my-wishlist/types"
 
 import useUsersSharedStore from "../stores/usersShared"
 import useQuery from "./useQuery"

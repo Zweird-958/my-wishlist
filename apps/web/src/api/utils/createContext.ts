@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client"
-import { NextRequest, NextResponse } from "next/server"
+import { type NextRequest, NextResponse } from "next/server"
 
 export const send = (
   result: unknown,

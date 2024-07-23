@@ -1,5 +1,5 @@
-import { UserShared } from "./user"
-import { Wish } from "./wish"
+import type { UserShared } from "./user"
+import type { Wish } from "./wish"
 
 export type ApiResponse<T, Meta = object> = {
   result: T

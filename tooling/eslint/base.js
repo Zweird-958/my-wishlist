@@ -231,22 +231,16 @@ export default tseslint.config(
         2,
         { checksVoidReturn: { attributes: false } },
       ],
-      // "@typescript-eslint/consistent-type-imports": [
-      //   "warn",
-      //   { prefer: "type-imports", fixStyle: "separate-type-imports" },
-      // ],
-      // "@typescript-eslint/no-misused-promises": [
-      //   2,
-      //   { checksVoidReturn: { attributes: false } },
-      // ],
-      // "@typescript-eslint/no-unnecessary-condition": [
-      //   "error",
-      //   {
-      //     allowConstantLoopConditions: true,
-      //   },
-      // ],
-      // "@typescript-eslint/no-non-null-assertion": "error",
-      // "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+      "@typescript-eslint/consistent-type-imports": [
+        "warn",
+        { prefer: "type-imports", fixStyle: "inline-type-imports" },
+      ],
+      "@typescript-eslint/no-unnecessary-condition": [
+        "error",
+        {
+          allowConstantLoopConditions: true,
+        },
+      ],
     },
   },
   {

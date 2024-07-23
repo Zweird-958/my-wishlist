@@ -4,10 +4,10 @@ import i18next from "i18next"
 import LanguageDetector from "i18next-browser-languagedetector"
 import ICU from "i18next-icu"
 import resourcesToBackend from "i18next-resources-to-backend"
-import { ReactNode, useMemo } from "react"
+import { type ReactNode, useMemo } from "react"
 import { I18nextProvider, initReactI18next } from "react-i18next"
 
-import config, { Locale } from "./config"
+import config, { type Locale } from "./config"
 import { getOptions } from "./settings"
 
 const runsOnServerSide = typeof window === "undefined"

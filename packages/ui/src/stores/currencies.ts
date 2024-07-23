@@ -1,6 +1,6 @@
 import { create } from "zustand"
 
-import { Currency } from "@my-wishlist/types"
+import type { Currency } from "@my-wishlist/types"
 
 type CurrencyStore = {
   currencies: Currency[]

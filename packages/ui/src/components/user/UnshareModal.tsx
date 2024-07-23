@@ -7,10 +7,10 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalProps,
+  type ModalProps,
 } from "@nextui-org/react"
 
-import { UserShared } from "@my-wishlist/types"
+import type { UserShared } from "@my-wishlist/types"
 
 import useMutation from "../../hooks/useMutation"
 import useUsersShared from "../../hooks/useUsersShared"
@@ -33,7 +33,7 @@ const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
         return
       }
 
-      removeUser(user?.id)
+      removeUser(user.id)
     },
   })
 

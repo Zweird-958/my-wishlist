@@ -2,9 +2,9 @@
 
 import { useDisclosure } from "@nextui-org/react"
 import { ChevronRight, Trash2 } from "lucide-react"
-import { Key, useState } from "react"
+import { type Key, useState } from "react"
 
-import { UserShared } from "@my-wishlist/types"
+import type { UserShared } from "@my-wishlist/types"
 
 import useQuery from "../../hooks/useQuery"
 import useUsersShared from "../../hooks/useUsersShared"
