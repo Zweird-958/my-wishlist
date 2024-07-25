@@ -3,5 +3,6 @@
   "invalidCredentials": "Invalid credentials",
   "wishNotFound": "Wish not found",
   "notAuthorized": "You are not authorized to perform this action",
-  "usernameExists": "This username is already taken"
+  "usernameExists": "This username is already taken",
+  "userNotFound": "User not found"
 }

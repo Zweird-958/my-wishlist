@@ -3,5 +3,6 @@
   "invalidCredentials": "Identifiants invalides",
   "wishNotFound": "Article non trouvé",
   "notAuthorized": "Vous n'êtes pas autorisé à effectuer cette action",
-  "usernameExists": "Ce nom d'utilisateur est déjà pris"
+  "usernameExists": "Ce nom d'utilisateur est déjà pris",
+  "userNotFound": "Utilisateur non trouvé"
 }
