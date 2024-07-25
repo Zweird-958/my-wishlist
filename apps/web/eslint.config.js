@@ -6,6 +6,17 @@ import reactConfig from "@my-wishlist/eslint/react"
 export default [
   {
     ignores: [".next"],
+    overrides: [
+      {
+        files: ["./src/api/routes/*.ts"],
+        rules: {
+          "max-lines": [
+            "error",
+            { max: 300, skipBlankLines: true, skipComments: true },
+          ],
+        },
+      },
+    ],
   },
   ...baseConfig,
   ...reactConfig,
