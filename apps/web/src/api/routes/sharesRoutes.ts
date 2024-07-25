@@ -72,14 +72,14 @@ app.post(
   },
 )
 
-const schema = z.object({
+const userParamsSchema = z.object({
   userId: z.coerce.number(),
 })
 
 app.get(
   "/wish/:userId",
   auth,
-  zValidator("param", schema),
+  zValidator("param", userParamsSchema),
   async ({ req, var: { user: authedUser, send, fail, db } }) => {
     const { userId } = req.valid("param")
 
@@ -108,5 +108,24 @@ app.get(
     return send(user.wishlist.map(formatWish), { username: user.username })
   },
 )
+
+app.get("/wish", auth, async ({ var: { user, send, db } }) => {
+  const userWithShared = await db.user.findFirst({
+    where: {
+      id: user.id,
+    },
+    include: {
+      wishlistShared: true,
+    },
+  })
+
+  if (!userWithShared) {
+    return send([])
+  }
+
+  return send(
+    userWithShared.wishlistShared.map(({ id, username }) => ({ id, username })),
+  )
+})
 
 export default app
