@@ -1,5 +1,10 @@
 import { z } from "zod"
 
+export const stringBooleanSchema = z
+  .boolean()
+  .or(z.literal(""))
+  .or(z.enum(["true", "false"]).transform((v) => v === "true"))
+
 export const nameSchema = z.string().min(1, { message: "required" })
 export const urlSchema = z
   .string()
@@ -7,14 +12,23 @@ export const urlSchema = z
   .or(z.literal(""))
 export const priceSchema = z.coerce.number().min(0.01, { message: "minimum" })
 export const currencySchema = z.enum(["DOLLAR", "EURO", "POUND"])
-export const isPrivateSchema = z.coerce.boolean().default(false)
-export const purchasedSchema = z.coerce.boolean().default(false)
+export const isPrivateSchema = stringBooleanSchema
+export const purchasedSchema = stringBooleanSchema
 
 export const addWishSchema = z.object({
   name: nameSchema,
   url: urlSchema,
   price: priceSchema,
   currency: currencySchema,
-  isPrivate: isPrivateSchema,
-  purchased: purchasedSchema,
+  isPrivate: isPrivateSchema.default(false),
+  purchased: purchasedSchema.default(false),
+})
+
+export const editWishSchema = z.object({
+  name: nameSchema.optional(),
+  url: urlSchema.optional(),
+  price: priceSchema.optional(),
+  currency: currencySchema.optional(),
+  isPrivate: isPrivateSchema.optional(),
+  purchased: purchasedSchema.optional(),
 })
