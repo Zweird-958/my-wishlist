@@ -12,4 +12,7 @@ export const ERROR_RESPONSES = {
   invalidCredentials: { message: "Invalid credentials.", code: 401 },
   usernameExists: { message: "Username already exists.", code: 409 },
   wishNotFound: { message: "Wish not found.", code: 404 },
+  addHimSelf: { message: "You can't add yourself.", code: 400 },
+  userNotFound: { message: "User not found.", code: 404 },
+  alreadyShared: { message: "Already shared.", code: 400 },
 } satisfies Record<string, { message: string; code: StatusCode }>

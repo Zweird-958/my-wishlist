@@ -5,6 +5,7 @@ import { handle } from "hono/vercel"
 import { JsonWebTokenError } from "jsonwebtoken"
 
 import { ERROR_RESPONSES } from "@/api/constants"
+import shareApp from "@/api/routes/sharesRoutes"
 import signApp from "@/api/routes/signRoutes"
 import wishApp from "@/api/routes/wishesRoutes"
 
@@ -59,6 +60,7 @@ app.use((ctx, next) => {
 
 app.route("/wish", wishApp)
 app.route("", signApp)
+app.route("/share", shareApp)
 
 app.onError((error, { var: { fail } }) => {
   // eslint-disable-next-line no-console
