@@ -7,6 +7,10 @@ import { shareSchema } from "@my-wishlist/schemas"
 import auth from "@/api/middlewares/auth"
 import formatWish from "@/api/utils/formatWish"
 
+const userParamsSchema = z.object({
+  userId: z.coerce.number(),
+})
+
 const app = new Hono()
 
 app.post(
@@ -72,10 +76,6 @@ app.post(
   },
 )
 
-const userParamsSchema = z.object({
-  userId: z.coerce.number(),
-})
-
 app.get(
   "/wish/:userId",
   auth,
@@ -127,5 +127,57 @@ app.get("/wish", auth, async ({ var: { user, send, db } }) => {
     userWithShared.wishlistShared.map(({ id, username }) => ({ id, username })),
   )
 })
+
+app.delete(
+  "/wish/:userId",
+  auth,
+  zValidator("param", userParamsSchema),
+  async ({ req, var: { user, send, fail, db } }) => {
+    const { userId } = req.valid("param")
+
+    const userWithAccess = await db.user.findFirst({
+      where: {
+        id: userId,
+        wishlistShared: {
+          some: {
+            id: user.id,
+          },
+        },
+      },
+    })
+
+    if (!userWithAccess) {
+      return fail("userNotFound")
+    }
+
+    await db.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        wishlistShared: {
+          disconnect: {
+            id: user.id,
+          },
+        },
+      },
+    })
+
+    await db.user.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        sharedWith: {
+          disconnect: {
+            id: userId,
+          },
+        },
+      },
+    })
+
+    return send(true)
+  },
+)
 
 export default app
