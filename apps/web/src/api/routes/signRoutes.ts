@@ -48,43 +48,36 @@ app.post(
   async ({ req, var: { send, fail, db } }) => {
     const { email, username, password } = req.valid("json")
 
-    try {
-      const existingUsername = await db.user.findFirst({
-        where: {
-          OR: [
-            {
-              username: {
-                equals: username,
-                mode: "insensitive",
-              },
+    const existingUsername = await db.user.findFirst({
+      where: {
+        OR: [
+          {
+            username: {
+              equals: username,
+              mode: "insensitive",
             },
-          ],
-        },
-      })
+          },
+        ],
+      },
+    })
 
-      if (existingUsername) {
-        return fail("usernameExists")
-      }
-
-      if (await db.user.findFirst({ where: { email } })) {
-        return send(true)
-      }
-
-      await db.user.create({
-        data: {
-          email,
-          passwordHash: hashPassword(password),
-          username,
-        },
-      })
-
-      return send(true)
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.error(err)
-
-      return fail(500)
+    if (existingUsername) {
+      return fail("usernameExists")
     }
+
+    if (await db.user.findFirst({ where: { email } })) {
+      return send(true)
+    }
+
+    await db.user.create({
+      data: {
+        email,
+        passwordHash: hashPassword(password),
+        username,
+      },
+    })
+
+    return send(true)
   },
 )
 

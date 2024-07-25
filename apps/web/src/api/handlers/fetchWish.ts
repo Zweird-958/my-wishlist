@@ -25,25 +25,19 @@ const fetchWish = factory.createHandlers(
 
     const { wishId } = req.valid("param")
 
-    try {
-      const wish = await db.wish.findUnique({
-        where: {
-          id: parseInt(wishId, 10),
-        },
-      })
+    const wish = await db.wish.findUnique({
+      where: {
+        id: parseInt(wishId, 10),
+      },
+    })
 
-      if (!wish || wish.userId !== user.id) {
-        return fail("wishNotFound")
-      }
-
-      set("wish", wish)
-      await next()
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error)
+    if (!wish || wish.userId !== user.id) {
+      return fail("wishNotFound")
     }
 
-    return fail(500)
+    set("wish", wish)
+
+    return next()
   },
 )
 

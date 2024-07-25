@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client"
 import { Hono, type TypedResponse } from "hono"
 import type { StatusCode } from "hono/utils/http-status"
 import { handle } from "hono/vercel"
+import { JsonWebTokenError } from "jsonwebtoken"
 
 import { ERROR_RESPONSES } from "@/api/constants"
 import signApp from "@/api/routes/signRoutes"
@@ -62,6 +63,10 @@ app.route("", signApp)
 app.onError((error, { var: { fail } }) => {
   // eslint-disable-next-line no-console
   console.error(error)
+
+  if (error instanceof JsonWebTokenError) {
+    return fail(403)
+  }
 
   return fail(500)
 })

@@ -20,32 +20,24 @@ const auth = createMiddleware<Env>(
       return fail(403)
     }
 
-    try {
-      const { payload } = jsonwebtoken.verify(
-        authorization,
-        config.security.jwt.secret,
-      ) as RawJwt
+    const { payload } = jsonwebtoken.verify(
+      authorization,
+      config.security.jwt.secret,
+    ) as RawJwt
 
-      const user = await db.user.findUnique({
-        where: {
-          id: payload.userId,
-        },
-      })
+    const user = await db.user.findUnique({
+      where: {
+        id: payload.userId,
+      },
+    })
 
-      if (!user) {
-        return fail(403)
-      }
-
-      set("user", user)
-
-      await next()
-    } catch (err) {
-      if (err instanceof jsonwebtoken.JsonWebTokenError) {
-        return fail(403)
-      }
+    if (!user) {
+      return fail(403)
     }
 
-    return fail(500)
+    set("user", user)
+
+    return next()
   },
 )
 
