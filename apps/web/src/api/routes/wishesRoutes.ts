@@ -50,4 +50,8 @@ app.delete(
   },
 )
 
+app.get("/:wishId", auth, ...fetchWish, ({ var: { send, wish } }) =>
+  send(formatWish(wish)),
+)
+
 export default app
