@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client"
-import { Hono } from "hono"
+import { Hono, type TypedResponse } from "hono"
+import type { StatusCode } from "hono/utils/http-status"
 import { handle } from "hono/vercel"
 
 import { ERROR_RESPONSES } from "@/api/constants"
@@ -14,19 +15,31 @@ export const config = {
   },
 }
 
+const contextVariables = {
+  db: prisma,
+}
+
+type ContextVariables = typeof contextVariables
+
 declare module "hono" {
-  interface ContextVariableMap {
-    db: typeof prisma
-    send: (data: unknown, meta?: unknown) => void
-    fail: (errorName: keyof typeof ERROR_RESPONSES) => void
+  interface ContextVariableMap extends ContextVariables {
+    send: (
+      data: unknown,
+      meta?: object,
+    ) => Response &
+      TypedResponse<{ result: unknown; meta: object }, StatusCode, "json">
+    fail: (
+      errorName: keyof typeof ERROR_RESPONSES,
+    ) => Response &
+      TypedResponse<
+        { error: (typeof ERROR_RESPONSES)[typeof errorName]["message"] },
+        StatusCode,
+        "json"
+      >
   }
 }
 
 const app = new Hono().basePath("/api")
-
-const contextVariables = {
-  db: prisma,
-}
 
 app.use((ctx, next) => {
   Object.entries(contextVariables).forEach(([name, value]) => {
@@ -48,3 +61,4 @@ app.route("", signApp)
 
 export const GET = handle(app)
 export const POST = handle(app)
+export const DELETE = handle(app)
