@@ -1,9 +1,11 @@
 import { zValidator } from "@hono/zod-validator"
 import { Hono } from "hono"
+import { z } from "zod"
 
 import { shareSchema } from "@my-wishlist/schemas"
 
 import auth from "@/api/middlewares/auth"
+import formatWish from "@/api/utils/formatWish"
 
 const app = new Hono()
 
@@ -67,6 +69,43 @@ app.post(
     })
 
     return send(true)
+  },
+)
+
+const schema = z.object({
+  userId: z.coerce.number(),
+})
+
+app.get(
+  "/wish/:userId",
+  auth,
+  zValidator("param", schema),
+  async ({ req, var: { user: authedUser, send, fail, db } }) => {
+    const { userId } = req.valid("param")
+
+    const user = await db.user.findUnique({
+      where: {
+        id: userId,
+        sharedWith: {
+          some: {
+            id: authedUser.id,
+          },
+        },
+      },
+      include: {
+        wishlist: {
+          where: {
+            isPrivate: false,
+          },
+        },
+      },
+    })
+
+    if (!user) {
+      return fail("userNotFound")
+    }
+
+    return send(user.wishlist.map(formatWish), { username: user.username })
   },
 )
 
