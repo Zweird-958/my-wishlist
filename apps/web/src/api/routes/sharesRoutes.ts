@@ -5,6 +5,7 @@ import { z } from "zod"
 import { shareSchema } from "@my-wishlist/schemas"
 
 import auth from "@/api/middlewares/auth"
+import formatUser from "@/api/utils/formatUser"
 import formatWish from "@/api/utils/formatWish"
 
 const userParamsSchema = z.object({
@@ -123,9 +124,7 @@ app.get("/wish", auth, async ({ var: { user, send, db } }) => {
     return send([])
   }
 
-  return send(
-    userWithShared.wishlistShared.map(({ id, username }) => ({ id, username })),
-  )
+  return send(userWithShared.wishlistShared.map(formatUser))
 })
 
 app.delete(
@@ -179,5 +178,20 @@ app.delete(
     return send(true)
   },
 )
+
+app.get("/users", auth, async ({ var: { user, send, db } }) => {
+  const userWithShared = await db.user.findFirst({
+    where: {
+      id: user.id,
+    },
+    include: { sharedWith: true },
+  })
+
+  if (!userWithShared) {
+    return send([])
+  }
+
+  return send(userWithShared.sharedWith.map(formatUser))
+})
 
 export default app
