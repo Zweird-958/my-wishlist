@@ -59,6 +59,13 @@ app.use((ctx, next) => {
 app.route("/wish", wishApp)
 app.route("", signApp)
 
+app.onError((error, { var: { fail } }) => {
+  // eslint-disable-next-line no-console
+  console.error(error)
+
+  return fail(500)
+})
+
 export const GET = handle(app)
 export const POST = handle(app)
 export const DELETE = handle(app)

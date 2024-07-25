@@ -7,8 +7,9 @@ export const urlSchema = z
   .or(z.literal(""))
 export const priceSchema = z.coerce.number().min(0.01, { message: "minimum" })
 export const currencySchema = z.enum(["DOLLAR", "EURO", "POUND"])
-export const isPrivateSchema = z.boolean()
-export const purchasedSchema = z.boolean()
+export const isPrivateSchema = z.coerce.boolean().default(false)
+export const purchasedSchema = z.coerce.boolean().default(false)
+
 export const addWishSchema = z.object({
   name: nameSchema,
   url: urlSchema,
