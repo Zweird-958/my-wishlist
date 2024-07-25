@@ -1,8 +1,8 @@
-import { User } from "@prisma/client"
+import type { User } from "@prisma/client"
 import { createMiddleware } from "hono/factory"
 import jsonwebtoken from "jsonwebtoken"
 
-import { RawJwt } from "@my-wishlist/types"
+import type { RawJwt } from "@my-wishlist/types"
 
 import config from "@/api/utils/config"
 

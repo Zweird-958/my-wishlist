@@ -1,4 +1,4 @@
-import { Wish } from "@prisma/client"
+import type { Wish } from "@prisma/client"
 
 import formatCurrency from "@/api/utils/formatCurrency"
 

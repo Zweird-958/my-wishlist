@@ -1,4 +1,4 @@
-import { Currency } from "@my-wishlist/types"
+import type { Currency } from "@my-wishlist/types"
 
 const currencySymbols = {
   DOLLAR: "USD",
