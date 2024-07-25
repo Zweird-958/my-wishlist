@@ -6,6 +6,7 @@ import { addWishSchema } from "@my-wishlist/schemas"
 import fetchWish from "@/api/handlers/fetchWish"
 import uploadFile from "@/api/handlers/uploadFile"
 import auth from "@/api/middlewares/auth"
+import deleteFile from "@/api/utils/deleteFile"
 import formatWish from "@/api/utils/formatWish"
 
 const app = new Hono()
@@ -35,6 +36,10 @@ app.delete(
         id: wish.id,
       },
     })
+
+    if (wish.image) {
+      await deleteFile(wish.image)
+    }
 
     return send(formatWish(wish))
   },
