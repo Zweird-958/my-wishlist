@@ -2,7 +2,6 @@ import { z } from "zod"
 
 export const stringBooleanSchema = z
   .boolean()
-  .or(z.literal(""))
   .or(z.enum(["true", "false"]).transform((v) => v === "true"))
 
 export const nameSchema = z.string().min(1, { message: "required" })
@@ -20,8 +19,12 @@ export const addWishSchema = z.object({
   url: urlSchema,
   price: priceSchema,
   currency: currencySchema,
-  isPrivate: isPrivateSchema.default(false),
-  purchased: purchasedSchema.default(false),
+  isPrivate: isPrivateSchema
+    .or(z.literal("").transform(() => false))
+    .default(false),
+  purchased: purchasedSchema
+    .or(z.literal("").transform(() => false))
+    .default(false),
 })
 
 export const editWishSchema = z.object({
@@ -29,6 +32,6 @@ export const editWishSchema = z.object({
   url: urlSchema.optional(),
   price: priceSchema.optional(),
   currency: currencySchema.optional(),
-  isPrivate: isPrivateSchema.optional(),
-  purchased: purchasedSchema.optional(),
+  isPrivate: isPrivateSchema.or(z.literal("")).optional(),
+  purchased: purchasedSchema.or(z.literal("")).optional(),
 })
