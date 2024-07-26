@@ -42,7 +42,7 @@ const Form = ({ onOpenChange, onClose }: FormProps) => {
   >({
     method: "post",
     path: "/share/wish",
-    onSuccess: ({ result: { user } }) => {
+    onSuccess: ({ result: user }) => {
       addUser(user)
       toast.success(t("share.success", { username: user.username }))
       onOpenChange(false)
