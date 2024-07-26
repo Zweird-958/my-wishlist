@@ -12,9 +12,10 @@ import {
   type Selection,
 } from "@nextui-org/react"
 import { useForm } from "react-hook-form"
+import { z } from "zod"
 
 import config from "@my-wishlist/config"
-import { addWishSchema } from "@my-wishlist/schemas"
+import { addWishSchema, currencySchema } from "@my-wishlist/schemas"
 import type { Currency, Wish } from "@my-wishlist/types"
 
 import useCurrencies from "../../hooks/useCurrencies"
@@ -39,20 +40,21 @@ type WishFormProps = {
 
 type WishBooleanInput = "purchased" | "isPrivate"
 
-// eslint-disable-next-line complexity
+const formSchema = z.object({
+  name: z.string().default(""),
+  price: z.number().default(0),
+  currency: currencySchema.default(config.defaultCurrency),
+  url: z.string().default(""),
+  purchased: z.boolean().default(false),
+  isPrivate: z.boolean().default(false),
+})
+
 const Form = (props: FormProps) => {
   const { onSubmit, wish, isLoading, submitText, onClose } = props
   const { t } = useTranslation("forms")
   const { SelectImageComponent, image } = useUploadImage()
   const { control, handleSubmit, setValue, watch } = useForm({
-    defaultValues: {
-      name: wish?.name ?? "",
-      price: wish?.price ?? 0,
-      currency: wish?.currency ?? config.defaultCurrency,
-      url: wish?.link ?? "",
-      purchased: wish?.purchased ?? false,
-      isPrivate: wish?.isPrivate ?? false,
-    },
+    defaultValues: formSchema.parse({ ...wish }),
     resolver: zodResolver(addWishSchema),
   })
   const { currencies } = useCurrencies()
