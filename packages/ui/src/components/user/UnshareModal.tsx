@@ -25,7 +25,7 @@ const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
   const { removeUser } = useUsersShared()
   const { mutate, isPending } = useMutation({
     method: "delete",
-    path: `/user/${user?.id}`,
+    path: `/share/wish/${user?.id}`,
     onSuccess: () => {
       onOpenChange(false)
 
