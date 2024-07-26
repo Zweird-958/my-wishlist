@@ -73,7 +73,7 @@ app.post(
       },
     })
 
-    return send(true)
+    return send(formatUser(userWithAccess))
   },
 )
 
