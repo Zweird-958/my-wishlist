@@ -27,5 +27,8 @@
   },
   "wishlistShared": "Wishlist shared",
   "emptyWishlistShared": "No wishlist are shared",
-  "sharedWithYou": "Wishlist shared with you"
+  "shared": {
+    "with": "Wishlist shared with :",
+    "withYou": "Wishlist shared with you"
+  }
 }
