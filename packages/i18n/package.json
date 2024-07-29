@@ -34,9 +34,9 @@
     "typescript": "catalog:"
   },
   "peerDependencies": {
-    "@types/react": "catalog:nextjs",
-    "react": "catalog:nextjs",
-    "react-dom": "catalog:nextjs",
-    "next": "catalog:nextjs"
+    "@types/react": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "next": "catalog:"
   }
 }

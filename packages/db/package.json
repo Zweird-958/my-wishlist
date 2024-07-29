@@ -22,7 +22,7 @@
     "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",
     "@faker-js/faker": "^8.4.1",
-    "@types/node": "catalog:nextjs",
+    "@types/node": "catalog:",
     "eslint": "catalog:",
     "ts-node": "^10.9.2",
     "typescript": "catalog:"
