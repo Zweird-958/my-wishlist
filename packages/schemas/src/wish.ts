@@ -35,3 +35,11 @@ export const editWishSchema = z.object({
   isPrivate: isPrivateSchema.or(z.literal("")).optional(),
   purchased: purchasedSchema.or(z.literal("")).optional(),
 })
+
+export const wishFormSchema = z.object({
+  name: z.string().default(""),
+  price: z.number().default(0),
+  url: z.string().default(""),
+  purchased: z.boolean().default(false),
+  isPrivate: z.boolean().default(false),
+})
