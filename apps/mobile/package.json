@@ -8,7 +8,6 @@
     "ios": "expo start --ios",
     "typecheck": "tsc --noEmit",
     "expo-check": "expo-doctor",
-    "update": "eas update --auto",
     "lint": "eslint"
   },
   "dependencies": {

@@ -1,9 +1,13 @@
-name: update
+name: Build mobile app
 on:
   pull_request:
     branches: ["main"]
   push:
     branches: ["main"]
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
 
 jobs:
   update:
@@ -37,10 +41,7 @@ jobs:
         run: |
           cd ../..
 
-      - name: Install dependencies
-        run: pnpm install
-
       - name: Publish update
         run: |
           cd apps/mobile
-          pnpm run
+          eas build --profile preview --platform android
