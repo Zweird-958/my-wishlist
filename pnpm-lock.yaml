@@ -6,21 +6,9 @@ settings:
 
 catalogs:
   default:
-    '@types/node':
-      specifier: 20.14.10
-      version: 20.14.10
-    '@types/react':
-      specifier: 18.3.3
-      version: 18.3.3
-    '@types/react-dom':
-      specifier: 18.3.0
-      version: 18.3.0
     eslint:
       specifier: ^9.7.0
       version: 9.8.0
-    next:
-      specifier: 14.2.5
-      version: 14.2.5
     react:
       specifier: 18.3.1
       version: 18.3.1
@@ -226,9 +214,6 @@ importers:
       eslint:
         specifier: 'catalog:'
         version: 9.8.0
-      expo-doctor:
-        specifier: ^1.9.0
-        version: 1.9.0
       tailwindcss:
         specifier: 'catalog:'
         version: 3.4.7(ts-node@10.9.2(@types/node@22.0.0)(typescript@5.3.3))
@@ -4157,10 +4142,6 @@ packages:
     resolution: {integrity: sha512-9tNY3OVO0jfiMzl7ngb6IOyR5VFzNoN5OOazUWoeGfmMqVB5kltTemRvKraK9JRbBKIw+SOYLEmF0sEqgFZ6OQ==}
     peerDependencies:
       expo: '*'
-
-  expo-doctor@1.9.0:
-    resolution: {integrity: sha512-mCkOqkQS2s55p4pKWPWtiwe15ZBUYOPuKrBSJzZieey5cjsc2msrCW8W8nfNz/rWx89usEQtCYFPzJtifZX+sw==}
-    hasBin: true
 
   expo-eas-client@0.12.0:
     resolution: {integrity: sha512-Jkww9Cwpv0z7DdLYiRX0r4fqBEcI9cKqTn7cHx63S09JaZ2rcwEE4zYHgrXwjahO+tU2VW8zqH+AJl6RhhW4zA==}
@@ -12477,8 +12458,6 @@ snapshots:
       expo: 51.0.22(@babel/core@7.24.9)(@babel/preset-env@7.25.0(@babel/core@7.24.9))
     transitivePeerDependencies:
       - supports-color
-
-  expo-doctor@1.9.0: {}
 
   expo-eas-client@0.12.0: {}
 

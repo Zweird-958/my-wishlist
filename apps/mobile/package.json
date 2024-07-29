@@ -7,7 +7,6 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "typecheck": "tsc --noEmit",
-    "expo-check": "expo-doctor",
     "lint": "eslint"
   },
   "dependencies": {
@@ -38,15 +37,14 @@
     "react-native-web": "~0.19.12"
   },
   "devDependencies": {
-    "@my-wishlist/eslint": "workspace:*",
     "@babel/core": "^7.24.9",
     "@babel/runtime": "^7.25.0",
+    "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/types": "workspace:*",
     "@tanstack/eslint-plugin-query": "^5.51.15",
     "@types/node": "^22.0.0",
     "@types/react": "~18.3.3",
     "eslint": "catalog:",
-    "expo-doctor": "^1.9.0",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
   },
