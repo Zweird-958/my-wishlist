@@ -22,6 +22,7 @@ const contextVariables = {
 type ContextVariables = typeof contextVariables
 
 declare module "hono" {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface ContextVariableMap extends ContextVariables {
     send: (
       data: unknown,

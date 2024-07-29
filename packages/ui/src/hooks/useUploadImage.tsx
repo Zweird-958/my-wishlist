@@ -11,7 +11,7 @@ const useUploadImage = () => {
 
   const handleFileUpload: ChangeEventHandler<HTMLInputElement> = (event) => {
     const { files } = event.target
-    setImage(files?.item(0) || null)
+    setImage(files?.item(0) ?? null)
   }
 
   const SelectImage = () => (
