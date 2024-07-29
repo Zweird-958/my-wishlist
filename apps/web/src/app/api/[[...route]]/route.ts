@@ -5,7 +5,7 @@ import type { StatusCode } from "hono/utils/http-status"
 import { handle } from "hono/vercel"
 import { JsonWebTokenError } from "jsonwebtoken"
 
-import { Locale, languageSchemaFallback } from "@my-wishlist/i18n"
+import { type Locale, languageSchemaFallback } from "@my-wishlist/i18n"
 
 import { ERROR_RESPONSES } from "@/api/constants"
 import currencyApp from "@/api/routes/currencyRoutes"
