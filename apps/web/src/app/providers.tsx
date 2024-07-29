@@ -12,7 +12,10 @@ import {
   ThemeProvider,
 } from "@my-wishlist/ui/providers"
 
-import useSession from "@/hooks/useSession"
+import {
+  SessionProvider,
+  useSession,
+} from "@/components/contexts/SessionContext"
 
 type Props = {
   children: ReactNode
@@ -25,17 +28,19 @@ const Providers = (props: Props) => {
   const router = useRouter()
 
   return (
-    <AppProvider
-      useTranslation={useTranslation}
-      useSession={useSession}
-      useRouter={useRouter}
-    >
-      <QueryClientProvider client={queryClient}>
-        <NextUIProvider navigate={(path) => router.push(path)}>
-          <ThemeProvider>{children}</ThemeProvider>
-        </NextUIProvider>
-      </QueryClientProvider>
-    </AppProvider>
+    <SessionProvider>
+      <AppProvider
+        useTranslation={useTranslation}
+        useSession={useSession}
+        useRouter={useRouter}
+      >
+        <QueryClientProvider client={queryClient}>
+          <NextUIProvider navigate={(path) => router.push(path)}>
+            <ThemeProvider>{children}</ThemeProvider>
+          </NextUIProvider>
+        </QueryClientProvider>
+      </AppProvider>
+    </SessionProvider>
   )
 }
 

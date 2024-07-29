@@ -7,19 +7,13 @@ import type {
   UseTranslationDesktop,
   UseTranslationWeb,
 } from "@my-wishlist/i18n/config"
-import type { JwtPayload } from "@my-wishlist/types"
+import type { SessionContext } from "@my-wishlist/types"
 
 type Context = {
   useTranslation: (
     ...ns: Namespace[]
   ) => UseTranslationWeb | UseTranslationDesktop
-  useSession: () => {
-    session: JwtPayload | null
-    isLoading: boolean
-    signIn: (response: string) => void
-    signOut: () => void
-    token: string | null
-  }
+  useSession: () => SessionContext
   useRouter: () => NextRouter | AppRouterInstance
 }
 

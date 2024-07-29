@@ -1,17 +1,28 @@
 "use client"
 
 import jsonwebtoken from "jsonwebtoken"
-import { useEffect } from "react"
+import {
+  type ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 
-import type { RawJwt } from "@my-wishlist/types"
+import type { JwtPayload, RawJwt, SessionContext } from "@my-wishlist/types"
 
-import useSessionStore from "@/stores/session"
 import config from "@/utils/config"
 import store from "@/utils/store"
 
-const useSession = () => {
-  const { setSession, setIsLoading, setToken, ...sessionStore } =
-    useSessionStore()
+const SessionContext = createContext<SessionContext>({} as SessionContext)
+
+export const useSession = () => useContext(SessionContext)
+
+export const SessionProvider = ({ children }: { children: ReactNode }) => {
+  const [session, setSession] = useState<JwtPayload | null>(null)
+  const [token, setToken] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
+
   const signIn = async (response: string) => {
     const jwt = response
 
@@ -48,7 +59,11 @@ const useSession = () => {
     })()
   }, [setIsLoading, setSession, setToken])
 
-  return { signIn, signOut, ...sessionStore }
+  return (
+    <SessionContext.Provider
+      value={{ session, token, isLoading, signIn, signOut }}
+    >
+      {children}
+    </SessionContext.Provider>
+  )
 }
-
-export default useSession
