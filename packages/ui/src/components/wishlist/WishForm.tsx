@@ -53,7 +53,7 @@ const Form = (props: FormProps) => {
   const { currencies, setCurrencies } = useCurrencies()
   const { onSubmit, wish, isLoading, submitText, onClose } = props
   const { t } = useTranslation("forms")
-  const { SelectImageComponent, image } = useUploadImage()
+  const { SelectImage, image } = useUploadImage()
   const { control, handleSubmit, setValue, watch } = useForm({
     defaultValues: formSchema.parse({ ...wish }),
     resolver: zodResolver(addWishSchema),
@@ -113,7 +113,7 @@ const Form = (props: FormProps) => {
         currency={watch("currency")}
         currencies={currencies}
       />
-      {SelectImageComponent}
+      <SelectImage />
       <WishSelectedImage wish={wish} image={image} />
       {wish && (
         <>
