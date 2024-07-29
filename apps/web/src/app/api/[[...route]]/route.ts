@@ -1,8 +1,11 @@
 import { PrismaClient } from "@prisma/client"
 import { Hono, type TypedResponse } from "hono"
+import { getCookie } from "hono/cookie"
 import type { StatusCode } from "hono/utils/http-status"
 import { handle } from "hono/vercel"
 import { JsonWebTokenError } from "jsonwebtoken"
+
+import { Locale, languageSchemaFallback } from "@my-wishlist/i18n"
 
 import { ERROR_RESPONSES } from "@/api/constants"
 import currencyApp from "@/api/routes/currencyRoutes"
@@ -39,6 +42,7 @@ declare module "hono" {
         StatusCode,
         "json"
       >
+    lang: Locale
   }
 }
 
@@ -54,6 +58,10 @@ app.use((ctx, next) => {
       { error: ERROR_RESPONSES[errorName].message },
       ERROR_RESPONSES[errorName].code,
     ),
+  )
+  ctx.set(
+    "lang",
+    languageSchemaFallback.parse(getCookie(ctx, "my-wishlist-language")),
   )
 
   return next()

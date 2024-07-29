@@ -11,7 +11,7 @@ import formatWish from "@/api/utils/formatWish"
 
 const app = new Hono()
 
-app.get("/", auth, async ({ var: { db, user, send } }) => {
+app.get("/", auth, async ({ var: { db, user, send, lang } }) => {
   const wishes = await db.wish.findMany({
     where: {
       userId: user.id,
@@ -21,7 +21,7 @@ app.get("/", auth, async ({ var: { db, user, send } }) => {
     },
   })
 
-  const wishesFormatted = wishes.map((wish) => formatWish(wish))
+  const wishesFormatted = wishes.map((wish) => formatWish(wish, lang))
 
   return send(wishesFormatted)
 })
@@ -30,7 +30,7 @@ app.delete(
   "/:wishId",
   auth,
   ...fetchWish,
-  async ({ var: { send, wish, db } }) => {
+  async ({ var: { send, wish, db, lang } }) => {
     await db.wish.delete({
       where: {
         id: wish.id,
@@ -41,12 +41,12 @@ app.delete(
       await deleteFile(wish.image)
     }
 
-    return send(formatWish(wish))
+    return send(formatWish(wish, lang))
   },
 )
 
-app.get("/:wishId", auth, ...fetchWish, ({ var: { send, wish } }) =>
-  send(formatWish(wish)),
+app.get("/:wishId", auth, ...fetchWish, ({ var: { send, wish, lang } }) =>
+  send(formatWish(wish, lang)),
 )
 
 app.post(
@@ -54,7 +54,7 @@ app.post(
   auth,
   ...uploadFile,
   zValidator("form", addWishSchema),
-  async ({ req, var: { user, db, send, image } }) => {
+  async ({ req, var: { user, db, send, image, lang } }) => {
     const { name, price, url, currency, isPrivate } = req.valid("form")
 
     const wish = await db.wish.create({
@@ -69,7 +69,7 @@ app.post(
       },
     })
 
-    return send(formatWish(wish))
+    return send(formatWish(wish, lang))
   },
 )
 
@@ -79,7 +79,7 @@ app.patch(
   ...fetchWish,
   ...uploadFile,
   zValidator("form", editWishSchema),
-  async ({ req, var: { wish, db, send, image } }) => {
+  async ({ req, var: { wish, db, send, image, lang } }) => {
     const { name, price, url, currency, isPrivate, purchased } =
       req.valid("form")
 
@@ -98,7 +98,7 @@ app.patch(
       },
     })
 
-    return send(formatWish(updatedWish))
+    return send(formatWish(updatedWish, lang))
   },
 )
 
