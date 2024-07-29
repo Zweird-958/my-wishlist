@@ -81,7 +81,7 @@ app.get(
   "/wish/:userId",
   auth,
   zValidator("param", userParamsSchema),
-  async ({ req, var: { user: authedUser, send, fail, db } }) => {
+  async ({ req, var: { user: authedUser, send, fail, db, lang } }) => {
     const { userId } = req.valid("param")
 
     const user = await db.user.findUnique({
@@ -106,7 +106,10 @@ app.get(
       return fail("userNotFound")
     }
 
-    return send(user.wishlist.map(formatWish), { username: user.username })
+    return send(
+      user.wishlist.map((wish) => formatWish(wish, lang)),
+      { username: user.username },
+    )
   },
 )
 
