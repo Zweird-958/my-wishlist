@@ -22,7 +22,7 @@ const SignIn = () => {
       401: t("errors:invalidCredentials"),
     },
     onSuccess: ({ result }) => {
-      signIn(result)
+      void signIn(result)
       void router.push("/")
     },
   })
