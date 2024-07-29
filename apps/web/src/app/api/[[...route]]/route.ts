@@ -15,12 +15,6 @@ import wishApp from "@/api/routes/wishesRoutes"
 
 const prisma = new PrismaClient()
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-}
-
 const contextVariables = {
   db: prisma,
 }
