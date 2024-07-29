@@ -4,9 +4,12 @@ import reactConfig from "@my-wishlist/eslint/react"
 
 /** @type {import('typescript-eslint').Config} */
 export default [
+  ...baseConfig,
+  ...reactConfig,
+  ...nextConfig,
   {
     ignores: [".next"],
-    files: ["./src/api/routes/*.ts"],
+    files: ["src/api/routes/**/*.ts"],
     rules: {
       "max-lines": [
         "error",
@@ -14,7 +17,4 @@ export default [
       ],
     },
   },
-  ...baseConfig,
-  ...reactConfig,
-  ...nextConfig,
 ]
