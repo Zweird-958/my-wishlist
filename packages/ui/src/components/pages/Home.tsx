@@ -3,7 +3,7 @@
 import { useDisclosure } from "@nextui-org/react"
 import { useEffect } from "react"
 
-import { Wish } from "@my-wishlist/types"
+import type { Wish } from "@my-wishlist/types"
 
 import useQuery from "../../hooks/useQuery"
 import useWishlist from "../../hooks/useWishlist"
@@ -36,7 +36,7 @@ const Home = () => {
       return
     }
 
-    setWishlist(data?.result || [])
+    setWishlist(data.result)
   }, [data?.result, session, setWishlist, wishlist.length])
 
   if (!session && !sessionIsLoading) {

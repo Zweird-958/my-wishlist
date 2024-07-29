@@ -3,7 +3,7 @@
 import jsonwebtoken from "jsonwebtoken"
 import { useEffect } from "react"
 
-import { RawJwt } from "@my-wishlist/types"
+import type { RawJwt } from "@my-wishlist/types"
 
 import useSessionStore from "@/stores/session"
 import config from "@/utils/config"
@@ -31,7 +31,7 @@ const useSession = () => {
   }
 
   useEffect(() => {
-    ;(async () => {
+    void (async () => {
       const jwt = await store.get<string | null>(config.store.sessionKey)
 
       if (!jwt) {

@@ -1,11 +1,11 @@
-import { Input, InputProps } from "@nextui-org/react"
+import { Input, type InputProps } from "@nextui-org/react"
 import {
-  Control,
+  type Control,
   Controller,
-  ControllerRenderProps,
-  FieldErrors,
-  FieldValues,
-  Path,
+  type ControllerRenderProps,
+  type FieldErrors,
+  type FieldValues,
+  type Path,
 } from "react-hook-form"
 
 import { useTranslation } from "../components/AppContext"
@@ -24,7 +24,7 @@ const Field = <TFieldValues extends FieldValues>({
   const handleErrorMessage = (
     field: ControllerRenderProps<TFieldValues, Path<TFieldValues>>,
     error: FieldErrors<TFieldValues>,
-  ) => t(`${field.name}.${error[field.name]?.message}`)
+  ) => t(`${field.name}.${error[field.name]?.message?.toString()}`)
 
   return (
     <Controller

@@ -1,6 +1,6 @@
 "use client"
 
-import { Switch, SwitchProps } from "@nextui-org/react"
+import { Switch, type SwitchProps } from "@nextui-org/react"
 
 type Props = {
   label: string

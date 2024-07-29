@@ -1,14 +1,14 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button, Card, CardBody, CardHeader } from "@nextui-org/react"
-import { InputHTMLAttributes } from "react"
+import type { InputHTMLAttributes } from "react"
 import {
-  DefaultValues,
-  FieldValues,
-  Path,
-  SubmitHandler,
+  type DefaultValues,
+  type FieldValues,
+  type Path,
+  type SubmitHandler,
   useForm,
 } from "react-hook-form"
-import { ZodSchema } from "zod"
+import type { ZodSchema } from "zod"
 
 import Field from "../Field"
 

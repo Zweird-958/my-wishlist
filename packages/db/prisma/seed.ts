@@ -4,7 +4,7 @@ import { PrismaClient } from "@prisma/client"
 const prisma = new PrismaClient()
 const main = async () => {
   await Promise.all(
-    [...new Array(10)].map(async () => {
+    [...new Array<unknown>(10)].map(async () => {
       await prisma.product.create({
         data: {
           name: faker.commerce.productName(),

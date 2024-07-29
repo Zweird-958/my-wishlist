@@ -1,5 +1,5 @@
-import { Filter, Sort } from "@my-wishlist/config"
-import { Wish } from "@my-wishlist/types"
+import type { Filter, Sort } from "@my-wishlist/config"
+import type { Wish } from "@my-wishlist/types"
 
 const filterWishlist = (
   wishlist: Wish[],
@@ -30,11 +30,7 @@ const filterWishlist = (
         return wishA.price - wishB.price
       }
 
-      if (selectedSort === "priceDesc") {
-        return wishB.price - wishA.price
-      }
-
-      return 0
+      return wishB.price - wishA.price
     })
 
 export default filterWishlist

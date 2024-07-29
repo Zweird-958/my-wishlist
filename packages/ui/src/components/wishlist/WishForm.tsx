@@ -3,19 +3,19 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import {
   Button,
-  ButtonProps,
+  type ButtonProps,
   Modal,
   ModalBody,
   ModalContent,
   ModalHeader,
-  ModalProps,
+  type ModalProps,
   type Selection,
 } from "@nextui-org/react"
 import { useForm } from "react-hook-form"
 
 import config from "@my-wishlist/config"
 import { addWishSchema } from "@my-wishlist/schemas"
-import { Currency, Wish } from "@my-wishlist/types"
+import type { Currency, Wish } from "@my-wishlist/types"
 
 import useCurrencies from "../../hooks/useCurrencies"
 import useUploadImage from "../../hooks/useUploadImage"
@@ -39,6 +39,7 @@ type WishFormProps = {
 
 type WishBooleanInput = "purchased" | "isPrivate"
 
+// eslint-disable-next-line complexity
 const Form = (props: FormProps) => {
   const { onSubmit, wish, isLoading, submitText, onClose } = props
   const { t } = useTranslation("forms")

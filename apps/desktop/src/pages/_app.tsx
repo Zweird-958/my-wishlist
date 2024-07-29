@@ -18,10 +18,10 @@ const App = ({ Component, pageProps }: AppProps) => {
   const [locale, setLocale] = useState(i18nConfig.defaultLanguage)
 
   useEffect(() => {
-    ;(async () => {
+    void (async () => {
       const storeLocale = await getLocale()
 
-      changeLanguage(storeLocale)
+      void changeLanguage(storeLocale)
       setLocale(storeLocale)
     })()
   }, [changeLanguage])

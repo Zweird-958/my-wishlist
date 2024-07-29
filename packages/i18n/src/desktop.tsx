@@ -3,12 +3,12 @@ import { Store } from "@tauri-apps/plugin-store"
 import i18next from "i18next"
 import ICU from "i18next-icu"
 import resourcesToBackend from "i18next-resources-to-backend"
-import { ReactNode, useCallback, useEffect, useMemo } from "react"
+import { type ReactNode, useCallback, useEffect, useMemo } from "react"
 import { I18nextProvider as Provider, initReactI18next } from "react-i18next"
 
 import { config as desktopConfig } from "@my-wishlist/config/desktop"
 
-import config, { Locale, Namespace } from "./config"
+import config, { type Locale, type Namespace } from "./config"
 import { languageSchemaFallback } from "./schemas"
 import { getOptions } from "./settings"
 import { useTranslation as useTranslationGeneric } from "./useTranslation"
@@ -18,7 +18,7 @@ const store = new Store(desktopConfig.store.name)
 
 const runsOnServerSide = typeof window === "undefined"
 
-i18next
+void i18next
   .use(initReactI18next)
   .use(
     resourcesToBackend(
@@ -40,7 +40,7 @@ export const I18nProvider = ({
   language: Locale
 }) => {
   useMemo(() => {
-    i18next.changeLanguage(language)
+    void i18next.changeLanguage(language)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -58,7 +58,7 @@ export const useTranslation = (...ns: Namespace[]) => {
 
   const changeLanguage = useCallback(
     async (newLocale: Locale) => {
-      i18n.changeLanguage(newLocale)
+      void i18n.changeLanguage(newLocale)
       await store.set(desktopConfig.store.localeKey, newLocale)
       await store.save()
     },
@@ -66,8 +66,8 @@ export const useTranslation = (...ns: Namespace[]) => {
   )
 
   useEffect(() => {
-    ;(async () => {
-      i18n.changeLanguage(await getLocale())
+    void (async () => {
+      void i18n.changeLanguage(await getLocale())
     })()
   }, [i18n])
 

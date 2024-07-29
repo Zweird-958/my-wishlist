@@ -2,12 +2,14 @@
   "name": "@my-wishlist/ui",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "exports": {
     "./*": "./src/components/*.tsx",
-    "./hooks/*": "./src/hooks/*.tsx"
+    "./tailwind": "./tailwind.config.ts"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint"
   },
   "keywords": [],
   "author": "",
@@ -26,20 +28,24 @@
     "next-themes": "^0.3.0",
     "react-hook-form": "^7.52.1",
     "react-hot-toast": "^2.4.1",
-    "tailwindcss": "^3.4.4",
+    "tailwindcss": "catalog:",
     "zod": "^3.23.8",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
+    "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/types": "workspace:*",
-    "@tanstack/eslint-plugin-query": "^5.50.1",
+    "@my-wishlist/typescript": "workspace:*",
+    "@my-wishlist/tailwind": "workspace:*",
+    "eslint": "catalog:",
     "typescript": "catalog:"
   },
   "peerDependencies": {
-    "@types/node": "^20.14.10",
-    "@types/react": "^18.3.3",
-    "next": "^14.2.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "next": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
   }
 }

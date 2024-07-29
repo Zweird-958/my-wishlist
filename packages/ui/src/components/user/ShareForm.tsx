@@ -8,13 +8,16 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalProps,
+  type ModalProps,
 } from "@nextui-org/react"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
 import { shareSchema } from "@my-wishlist/schemas"
-import { ShareWishlistInput, ShareWishlistResponse } from "@my-wishlist/types"
+import type {
+  ShareWishlistInput,
+  ShareWishlistResponse,
+} from "@my-wishlist/types"
 
 import useMutation from "../../hooks/useMutation"
 import useUsersShared from "../../hooks/useUsersShared"

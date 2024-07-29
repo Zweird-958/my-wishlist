@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { ReactNode } from "react"
+import type { ReactNode } from "react"
 
 import { useTranslation } from "@my-wishlist/i18n"
 import {
@@ -31,7 +31,7 @@ const Providers = (props: Props) => {
       useRouter={useRouter}
     >
       <QueryClientProvider client={queryClient}>
-        <NextUIProvider navigate={router.push}>
+        <NextUIProvider navigate={(path) => router.push(path)}>
           <ThemeProvider>{children}</ThemeProvider>
         </NextUIProvider>
       </QueryClientProvider>

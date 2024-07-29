@@ -3,14 +3,14 @@
 import {
   Listbox,
   ListboxItem,
-  ListboxProps,
+  type ListboxProps,
   ListboxSection,
   Spinner,
 } from "@nextui-org/react"
 import Link from "next/link"
-import { ReactNode } from "react"
+import type { ReactNode } from "react"
 
-import { UserShared } from "@my-wishlist/types"
+import type { UserShared } from "@my-wishlist/types"
 
 import { useTranslation } from "../AppContext"
 

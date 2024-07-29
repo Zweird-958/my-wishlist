@@ -1,0 +1,7 @@
+{
+  "name": "@my-wishlist/typescript",
+  "version": "1.0.0",
+  "files": [
+    "*.json"
+  ]
+}

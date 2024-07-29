@@ -1,6 +1,6 @@
 "use client"
 
-import { Filter, Sort } from "@my-wishlist/config"
+import type { Filter, Sort } from "@my-wishlist/config"
 
 import WishListDropdown from "./WishListDropdown"
 

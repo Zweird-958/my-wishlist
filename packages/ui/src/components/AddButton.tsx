@@ -1,6 +1,6 @@
 "use client"
 
-import { Button, ButtonProps } from "@nextui-org/react"
+import { Button, type ButtonProps } from "@nextui-org/react"
 import { Plus } from "lucide-react"
 
 type Props = Pick<Required<ButtonProps>, "onPress"> & Pick<ButtonProps, "color">

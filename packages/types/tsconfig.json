@@ -1,4 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
-  "include": ["."]
+  "extends": "@my-wishlist/typescript/internal-package.json",
+  "include": ["*.ts", "src"],
+  "exclude": ["node_modules"]
 }

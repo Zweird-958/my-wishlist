@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint",
     "typecheck": "tsc --noEmit"
   },
   "keywords": [],
@@ -25,12 +27,16 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@my-wishlist/eslint": "workspace:*",
+    "@my-wishlist/typescript": "workspace:*",
     "@types/negotiator": "^0.6.3",
+    "eslint": "catalog:",
     "typescript": "catalog:"
   },
   "peerDependencies": {
-    "react": "^18.3.1",
-    "@types/react": "^18.3.3",
-    "next": "^14.2.4"
+    "@types/react": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "next": "catalog:"
   }
 }

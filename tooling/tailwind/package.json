@@ -1,0 +1,25 @@
+{
+  "name": "@my-wishlist/tailwind",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "base.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "tailwindcss": "catalog:"
+  },
+  "devDependencies": {
+    "eslint": "catalog:",
+    "@my-wishlist/eslint": "workspace:*",
+    "@my-wishlist/typescript": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

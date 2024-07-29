@@ -1,13 +1,13 @@
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
-import { NextRouter } from "next/router"
-import { ReactNode, createContext, useContext } from "react"
+import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
+import type { NextRouter } from "next/router"
+import { type ReactNode, createContext, useContext } from "react"
 
 import type {
   Namespace,
   UseTranslationDesktop,
   UseTranslationWeb,
 } from "@my-wishlist/i18n/config"
-import { JwtPayload } from "@my-wishlist/types"
+import type { JwtPayload } from "@my-wishlist/types"
 
 type Context = {
   useTranslation: (
