@@ -49,7 +49,7 @@ const UsersShared = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 h-fit w-full max-w-lg mx-auto">
+    <div className="mx-auto flex h-fit w-full max-w-lg flex-col gap-4">
       <UsersList
         items={wishlistShared?.result ?? []}
         isLink
@@ -60,7 +60,7 @@ const UsersShared = () => {
       <UsersList
         items={usersShared}
         isLoading={usersLoading}
-        icon={<Trash2 className="w-4 h-4" />}
+        icon={<Trash2 className="h-4 w-4" />}
         color="danger"
         title={t("shared.with")}
         onAction={handleOnAction}

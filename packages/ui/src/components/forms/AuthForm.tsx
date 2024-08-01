@@ -46,9 +46,9 @@ const AuthForm = <T extends FieldValues>({
   })
 
   return (
-    <Card className="max-w-96 w-full py-4 px-2">
+    <Card className="w-full max-w-96 px-2 py-4">
       <CardHeader>
-        <h1 className="text-center w-full text-lg">{title}</h1>
+        <h1 className="w-full text-center text-lg">{title}</h1>
       </CardHeader>
       <CardBody>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">

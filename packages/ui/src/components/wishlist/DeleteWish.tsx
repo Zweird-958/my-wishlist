@@ -63,10 +63,10 @@ const DeleteWish = ({ wish }: Props) => {
           <Trash2Icon />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="gap-2 items-start py-2 text-tiny">
+      <PopoverContent className="text-tiny items-start gap-2 py-2">
         <p className="text-left">{t("forms:wish.delete.confirmation")}</p>
         <p>{t("forms:wish.delete.information")}</p>
-        <div className="flex justify-between w-full min-w-52">
+        <div className="flex w-full min-w-52 justify-between">
           <Button size="sm" onPress={close}>
             {t("forms:wish.cancel")}
           </Button>

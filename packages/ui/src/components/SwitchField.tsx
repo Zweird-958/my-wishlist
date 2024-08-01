@@ -7,7 +7,7 @@ type Props = {
 } & Pick<SwitchProps, "onValueChange" | "isSelected">
 
 const SwitchField = ({ onValueChange, isSelected, label }: Props) => (
-  <div className="flex justify-between w-full items-center">
+  <div className="flex w-full items-center justify-between">
     <label>{label}</label>
     <Switch onValueChange={onValueChange} isSelected={isSelected} />
   </div>

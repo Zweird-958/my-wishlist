@@ -44,24 +44,24 @@ const WishCard = ({ wish, canEdit, onEditButton }: Props) => {
           </>
         )}
       </CardHeader>
-      <div className="flex justify-center items-center h-full w-full">
+      <div className="flex h-full w-full items-center justify-center">
         <Image
           isBlurred
           alt="Card background"
-          className="h-96 w-full object-cover z-10"
+          className="z-10 h-96 w-full object-cover"
           radius="none"
           src={image}
         />
         <Image
           removeWrapper
           alt="Card background"
-          className="h-96 w-full z-0 absolute blur-lg"
+          className="absolute z-0 h-96 w-full blur-lg"
           radius="none"
           src={image}
         />
       </div>
-      <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-20 justify-between">
-        <div className="text-black text-tiny basis-5/6">
+      <CardFooter className="border-t-1 absolute bottom-0 z-20 justify-between border-zinc-100/50 bg-white/30">
+        <div className="text-tiny basis-5/6 text-black">
           <p className="line-clamp-1">{name}</p>
           <p className="line-clamp-1">{priceFormatted}</p>
         </div>

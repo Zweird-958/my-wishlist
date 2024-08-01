@@ -15,7 +15,7 @@ const WishlistEmpty = ({ username }: Props) => {
 
   return (
     <Center>
-      <Card className="max-w-lg w-full">
+      <Card className="w-full max-w-lg">
         <CardHeader className={clsx({ "justify-center py-4": username })}>
           {username ? t("sharedEmpty", { username }) : t("empty")}
         </CardHeader>

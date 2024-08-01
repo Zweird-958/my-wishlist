@@ -103,7 +103,7 @@ const Form = (props: FormProps) => {
   return (
     <form
       onSubmit={handleOnSubmit}
-      className="flex flex-col gap-3 items-center"
+      className="flex flex-col items-center gap-3"
     >
       <Field control={control} name="name" label={t("name")} />
       <Field control={control} name="price" type="number" label={t("price")} />
@@ -129,7 +129,7 @@ const Form = (props: FormProps) => {
           />
         </>
       )}
-      <div className="flex justify-between w-full">
+      <div className="flex w-full justify-between">
         <Button type="button" color="danger" onPress={onClose}>
           {t("wish.cancel")}
         </Button>
@@ -149,7 +149,7 @@ const WishForm = (props: WishFormProps) => {
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       placement="center"
-      className="h-fit max-w-lg w-full"
+      className="h-fit w-full max-w-lg"
     >
       <ModalContent>
         {(onClose) => (
