@@ -42,7 +42,7 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.3.3)
       prettier:
-        specifier: ^3.3.2
+        specifier: ^3.3.3
         version: 3.3.3
       prettier-plugin-tailwindcss:
         specifier: ^0.5.14
