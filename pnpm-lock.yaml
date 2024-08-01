@@ -573,7 +573,7 @@ importers:
   tooling/eslint:
     dependencies:
       '@eslint/js':
-        specifier: ^9.6.0
+        specifier: ^9.8.0
         version: 9.8.0
       '@next/eslint-plugin-next':
         specifier: ^14.2.5
