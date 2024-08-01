@@ -53,7 +53,7 @@ const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       placement="center"
-      className="h-fit max-w-lg w-full"
+      className="h-fit w-full max-w-lg"
     >
       <ModalContent>
         {(onClose) => (

@@ -77,7 +77,7 @@ const ShareForm = ({ isOpen, onOpenChange }: ShareFormProps) => {
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       placement="center"
-      className="h-fit max-w-lg w-full"
+      className="h-fit w-full max-w-lg"
     >
       <ModalContent>
         {(onClose) => (

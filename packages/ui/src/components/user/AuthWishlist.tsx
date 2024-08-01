@@ -17,7 +17,7 @@ const AuthWishlist = () => {
 
   return (
     <Center>
-      <Card className="max-w-lg w-full">
+      <Card className="w-full max-w-lg">
         <CardHeader>{t("notLogged")}</CardHeader>
         <CardBody>
           <p>{t("mustLoggedIn")}</p>

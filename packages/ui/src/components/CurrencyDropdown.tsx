@@ -23,7 +23,7 @@ const CurrencyDropdown = ({
 }: Props) => (
   <Dropdown>
     <DropdownTrigger>
-      <Button variant="bordered" size="lg" className="capitalize w-full">
+      <Button variant="bordered" size="lg" className="w-full capitalize">
         {currency}
       </Button>
     </DropdownTrigger>
