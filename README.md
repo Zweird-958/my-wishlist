@@ -29,14 +29,6 @@ pnpm run mobile:ios
 pnpm run mobile:android
 ```
 
-### Intialize Bucket
-
-```bash
-mc alias set local http://localhost:9000 $MINIO_ROOT_USER $MINIO_ROOT_PASSWORD
-
-mc mb local/$MINIO_DEFAULT_BUCKET
-```
-
 ### Initialize the S3 bucket
 
 ```bash
