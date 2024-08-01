@@ -386,7 +386,7 @@ importers:
         specifier: workspace:*
         version: link:../schemas
       '@tauri-apps/plugin-os':
-        specifier: ^2.0.0-beta.6
+        specifier: ^2.0.0-beta.8
         version: 2.0.0-beta.8
       '@tauri-apps/plugin-store':
         specifier: ^2.0.0-beta.6
@@ -573,7 +573,7 @@ importers:
   tooling/eslint:
     dependencies:
       '@eslint/js':
-        specifier: ^9.6.0
+        specifier: ^9.8.0
         version: 9.8.0
       '@next/eslint-plugin-next':
         specifier: ^14.2.5
