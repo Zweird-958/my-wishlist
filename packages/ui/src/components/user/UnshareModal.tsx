@@ -21,11 +21,11 @@ type Props = {
 } & Pick<Required<ModalProps>, "isOpen" | "onOpenChange">
 
 const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
-  const { t } = useTranslation("forms")
+  const { t } = useTranslation("forms", "errors")
   const { removeUser } = useUsersShared()
   const { mutate, isPending } = useMutation({
     method: "delete",
-    path: `/user/${user?.id}`,
+    path: `/share/wish/${user?.id}`,
     onSuccess: () => {
       onOpenChange(false)
 
@@ -34,6 +34,9 @@ const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
       }
 
       removeUser(user.id)
+    },
+    errorsMap: {
+      404: t("errors:userNotFound"),
     },
   })
 

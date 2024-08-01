@@ -1,7 +1,7 @@
 import baseConfig from "@my-wishlist/eslint/base"
 import reactConfig from "@my-wishlist/eslint/react"
 
-/** @type {import('typescript-eslint').Config} */
+/** @type {import('@my-wishlist/eslint').Config} */
 export default [
   {
     ignores: [".expo"],

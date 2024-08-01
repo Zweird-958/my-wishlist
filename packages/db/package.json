@@ -2,10 +2,7 @@
   "name": "@my-wishlist/db",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
-  "exports": {
-    ".": "./src/index.ts"
-  },
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint",
@@ -19,9 +16,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",
-    "@faker-js/faker": "^8.4.1",
     "@types/node": "catalog:",
     "eslint": "catalog:",
     "ts-node": "^10.9.2",
@@ -31,7 +28,8 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
-    "@prisma/client": "^5.16.2"
+    "@prisma/client": "^5.16.2",
+    "zod": "^3.23.8"
   },
   "peerDependencies": {
     "prisma": "^5.16.2"

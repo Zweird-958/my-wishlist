@@ -11,10 +11,10 @@ const useUploadImage = () => {
 
   const handleFileUpload: ChangeEventHandler<HTMLInputElement> = (event) => {
     const { files } = event.target
-    setImage(files?.item(0) || null)
+    setImage(files?.item(0) ?? null)
   }
 
-  const SelectImageComponent = (
+  const SelectImage = () => (
     <Button as={"div"} color="primary" className="w-full">
       <label htmlFor="image" className="truncate">
         {image ? image.name : t("image")}
@@ -29,7 +29,7 @@ const useUploadImage = () => {
     </Button>
   )
 
-  return { image, SelectImageComponent }
+  return { image, SelectImage }
 }
 
 export default useUploadImage

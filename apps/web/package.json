@@ -12,11 +12,17 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.617.0",
+    "@hono/node-server": "^1.12.0",
+    "@hono/zod-validator": "^0.2.2",
+    "@my-wishlist/db": "workspace:*",
     "@my-wishlist/i18n": "workspace:*",
-    "@my-wishlist/ui": "workspace:*",
+    "@my-wishlist/schemas": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",
+    "@my-wishlist/ui": "workspace:*",
     "@prisma/client": "^5.16.2",
     "clsx": "^2.1.1",
+    "hono": "^4.5.1",
     "jsonwebtoken": "^9.0.2",
     "next": "catalog:",
     "react": "catalog:",

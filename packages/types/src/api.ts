@@ -20,10 +20,7 @@ export type RawJwt = {
   payload: JwtPayload
 }
 
-export type ShareWishlistResponse = {
-  message: string
-  user: UserShared
-}
+export type ShareWishlistResponse = UserShared
 export type ShareWishlistInput = Pick<UserShared, "username">
 
 export type DeleteWishResponse = Wish

@@ -1,4 +1,4 @@
 import baseConfig from "@my-wishlist/eslint/base"
 
-/** @type {import('typescript-eslint').Config} */
+/** @type {import('@my-wishlist/eslint').Config} */
 export default [...baseConfig]

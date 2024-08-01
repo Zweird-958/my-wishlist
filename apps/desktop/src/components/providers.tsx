@@ -10,22 +10,27 @@ import {
   ThemeProvider,
 } from "@my-wishlist/ui/providers"
 
-import useSession from "@/hooks/useSession"
+import {
+  SessionProvider,
+  useSession,
+} from "@/components/contexts/SessionContext"
 
 const queryClient = new QueryClient()
 
 const Providers = ({ children }: { children: ReactNode }) => (
-  <AppProvider
-    useTranslation={useTranslation}
-    useSession={useSession}
-    useRouter={useRouter}
-  >
-    <QueryClientProvider client={queryClient}>
-      <NextUIProvider>
-        <ThemeProvider>{children}</ThemeProvider>
-      </NextUIProvider>
-    </QueryClientProvider>
-  </AppProvider>
+  <SessionProvider>
+    <AppProvider
+      useTranslation={useTranslation}
+      useSession={useSession}
+      useRouter={useRouter}
+    >
+      <QueryClientProvider client={queryClient}>
+        <NextUIProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </NextUIProvider>
+      </QueryClientProvider>
+    </AppProvider>
+  </SessionProvider>
 )
 
 export default Providers

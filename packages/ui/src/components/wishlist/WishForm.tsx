@@ -11,13 +11,19 @@ import {
   type ModalProps,
   type Selection,
 } from "@nextui-org/react"
+import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 
 import config from "@my-wishlist/config"
-import { addWishSchema } from "@my-wishlist/schemas"
+import {
+  addWishSchema,
+  currencySchema,
+  wishFormSchema,
+} from "@my-wishlist/schemas"
 import type { Currency, Wish } from "@my-wishlist/types"
 
 import useCurrencies from "../../hooks/useCurrencies"
+import useQuery from "../../hooks/useQuery"
 import useUploadImage from "../../hooks/useUploadImage"
 import { useTranslation } from "../AppContext"
 import CurrencyDropdown from "../CurrencyDropdown"
@@ -39,23 +45,32 @@ type WishFormProps = {
 
 type WishBooleanInput = "purchased" | "isPrivate"
 
-// eslint-disable-next-line complexity
+const formSchema = wishFormSchema.extend({
+  currency: currencySchema.default(config.defaultCurrency),
+})
+
 const Form = (props: FormProps) => {
+  const { currencies, setCurrencies } = useCurrencies()
   const { onSubmit, wish, isLoading, submitText, onClose } = props
   const { t } = useTranslation("forms")
-  const { SelectImageComponent, image } = useUploadImage()
+  const { SelectImage, image } = useUploadImage()
   const { control, handleSubmit, setValue, watch } = useForm({
-    defaultValues: {
-      name: wish?.name ?? "",
-      price: wish?.price ?? 0,
-      currency: wish?.currency ?? config.defaultCurrency,
-      url: wish?.link ?? "",
-      purchased: wish?.purchased ?? false,
-      isPrivate: wish?.isPrivate ?? false,
-    },
+    defaultValues: formSchema.parse({ ...wish }),
     resolver: zodResolver(addWishSchema),
   })
-  const { currencies } = useCurrencies()
+
+  const { data } = useQuery<Currency[]>({
+    method: "get",
+    path: "/currency",
+    enabled: currencies.length === 0,
+    queryKey: ["currencies"],
+  })
+
+  useEffect(() => {
+    if (data) {
+      setCurrencies(data.result)
+    }
+  }, [data, setCurrencies])
 
   const handleChangeCurrency = (keys: Selection) => {
     const currency = Array.from(keys)
@@ -64,21 +79,23 @@ const Form = (props: FormProps) => {
     setValue("currency", currency)
   }
 
-  const handleOnSubmit = handleSubmit((data) => {
-    const formData = new FormData()
-    formData.append("name", data.name)
-    formData.append("currency", data.currency)
-    formData.append("price", data.price.toString())
-    formData.append("url", data.url)
-    formData.append("purchased", data.purchased.toString())
-    formData.append("isPrivate", data.isPrivate.toString())
+  const handleOnSubmit = handleSubmit(
+    ({ name, currency, price, url, purchased, isPrivate }) => {
+      const formData = new FormData()
+      formData.append("name", name)
+      formData.append("currency", currency)
+      formData.append("price", price.toString())
+      formData.append("url", url)
+      formData.append("purchased", purchased.toString())
+      formData.append("isPrivate", isPrivate.toString())
 
-    if (image) {
-      formData.append("image", image)
-    }
+      if (image) {
+        formData.append("image", image)
+      }
 
-    onSubmit(formData)
-  })
+      onSubmit(formData)
+    },
+  )
   const handleSwitch = (field: WishBooleanInput) => (isSelected: boolean) => {
     setValue(field, isSelected)
   }
@@ -96,7 +113,7 @@ const Form = (props: FormProps) => {
         currency={watch("currency")}
         currencies={currencies}
       />
-      {SelectImageComponent}
+      <SelectImage />
       <WishSelectedImage wish={wish} image={image} />
       {wish && (
         <>

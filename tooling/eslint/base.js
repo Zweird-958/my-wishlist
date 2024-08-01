@@ -17,7 +17,7 @@ export default tseslint.config(
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
-      // ...tseslint.configs.stylisticTypeChecked,
+      ...tseslint.configs.stylisticTypeChecked,
     ],
     rules: {
       ...turboPlugin.configs.recommended.rules,
@@ -241,6 +241,7 @@ export default tseslint.config(
           allowConstantLoopConditions: true,
         },
       ],
+      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     },
   },
   {

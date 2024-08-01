@@ -15,14 +15,16 @@ const defaultValues = {
 }
 const SignUp = () => {
   const router = useRouter()
+  const { t } = useTranslation("forms", "common", "errors")
+
   const { mutate, isPending } = useMutation<string, SignUpData>({
     method: "post",
     path: "/sign-up",
     onSuccess: () => {
       void router.push("/sign-in")
     },
+    errorsMap: { 409: t("errors:usernameExists") },
   })
-  const { t } = useTranslation("forms", "common")
   const onSubmit = (data: SignUpData) => {
     mutate(data)
   }
