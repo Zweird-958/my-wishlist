@@ -21,7 +21,7 @@ const WishList = ({ wishes, canEdit }: Props) => {
 
   return (
     <div className="flex justify-center">
-      <div className="flex flex-wrap justify-center gap-4 ">
+      <div className="flex flex-wrap justify-center gap-4">
         {selectedWish && (
           <EditWishForm
             wish={selectedWish}
