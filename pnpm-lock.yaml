@@ -386,7 +386,7 @@ importers:
         specifier: workspace:*
         version: link:../schemas
       '@tauri-apps/plugin-os':
-        specifier: ^2.0.0-beta.6
+        specifier: ^2.0.0-beta.8
         version: 2.0.0-beta.8
       '@tauri-apps/plugin-store':
         specifier: ^2.0.0-beta.6
