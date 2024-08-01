@@ -203,7 +203,7 @@ importers:
         version: 0.19.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@babel/core':
-        specifier: ^7.24.9
+        specifier: ^7.25.2
         version: 7.25.2
       '@babel/runtime':
         specifier: ^7.25.0
@@ -8156,7 +8156,7 @@ snapshots:
 
   '@babel/generator@7.17.7':
     dependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.25.2
       jsesc: 2.5.2
       source-map: 0.5.7
 
