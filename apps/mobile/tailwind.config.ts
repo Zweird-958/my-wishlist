@@ -1,11 +1,12 @@
-// @ts-expect-error - no types
-import nativewind from "nativewind/preset"
 import type { Config } from "tailwindcss"
 
-const config: Config = {
+module.exports = {
   content: ["./src/**/*.{ts,tsx}"],
-  theme: {},
-  presets: [nativewind],
-}
-
-export default config
+  theme: {
+    extend: {
+      borderRadius: {
+        md: "12px",
+      },
+    },
+  },
+} satisfies Config
