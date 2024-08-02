@@ -1,10 +1,13 @@
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
-import { Stack } from "expo-router"
-import { FlatList, Text } from "react-native"
+import { Link, Stack } from "expo-router"
+import { Animated, FlatList, Pressable, Text, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
 import type { ApiResponse, Product } from "@my-wishlist/types"
+
+import { Button } from "@/components/ui/Button"
+import tw from "@/utils/tw"
 
 const Index = () => {
   const {
@@ -26,6 +29,12 @@ const Index = () => {
         data={result}
         renderItem={({ item }) => <Text>{item.name}</Text>}
       />
+
+      <View style={tw.style("px-20")}>
+        <Button>
+          <Text style={{ color: "red" }}>Test</Text>
+        </Button>
+      </View>
     </SafeAreaView>
   )
 }

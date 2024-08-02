@@ -1,10 +1,13 @@
 import { Stack } from "expo-router"
+import { GestureHandlerRootView } from "react-native-gesture-handler"
 
 import Providers from "@/app/providers"
 
 const RootLayout = () => (
   <Providers>
-    <Stack />
+    <GestureHandlerRootView>
+      <Stack />
+    </GestureHandlerRootView>
   </Providers>
 )
 
