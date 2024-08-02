@@ -1,38 +1,29 @@
-import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
-import { Link, Stack } from "expo-router"
-import { Animated, FlatList, Pressable, Text, View } from "react-native"
+import { Stack } from "expo-router"
+import { Text, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
-import type { ApiResponse, Product } from "@my-wishlist/types"
-
+import { useTheme } from "@/components/contexts/ThemeContext"
 import { Button } from "@/components/ui/Button"
-import tw from "@/utils/tw"
 
 const Index = () => {
-  const {
-    data: { result },
-  } = useQuery<ApiResponse<Product[]>>({
-    queryFn: () => axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products`),
-    queryKey: ["products"],
-    initialData: { result: [] } as unknown as ApiResponse<Product[]>,
-  })
+  const { tw } = useTheme()
 
   return (
     <SafeAreaView>
       <Stack.Screen options={{ title: "Home Page" }} />
-      <Text className="text-primary text-center text-5xl font-bold">
-        Monorepo
-      </Text>
 
-      <FlatList
-        data={result}
-        renderItem={({ item }) => <Text>{item.name}</Text>}
-      />
-
-      <View style={tw.style("px-20")}>
-        <Button>
-          <Text style={{ color: "red" }}>Test</Text>
+      <View style={tw.style("px-20 gap-4")}>
+        <Button radius="small">
+          <Text style={{ color: "blue" }}>Test</Text>
+        </Button>
+        <Button radius="medium" color="success">
+          <Text style={{ color: "blue" }}>Test</Text>
+        </Button>
+        <Button radius="large" color="danger">
+          <Text style={{ color: "blue" }}>Test</Text>
+        </Button>
+        <Button radius="full">
+          <Text style={{ color: "blue" }}>Test</Text>
         </Button>
       </View>
     </SafeAreaView>

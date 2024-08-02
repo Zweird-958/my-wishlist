@@ -1,3 +1,4 @@
+import { type VariantProps, cva } from "class-variance-authority"
 import {
   type ComponentPropsWithoutRef,
   type ElementRef,
@@ -12,16 +13,39 @@ import Animated, {
 } from "react-native-reanimated"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
-import tw from "@/utils/tw"
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
-type ButtonProps = ComponentPropsWithoutRef<typeof Pressable>
+const buttonVariants = cva("flex flex-row justify-center items-center p-3", {
+  variants: {
+    radius: {
+      small: "rounded-sm",
+      medium: "rounded-md",
+      large: "rounded-lg",
+      full: "rounded-full",
+    },
+    color: {
+      primary: "bg-primary",
+      success: "bg-success",
+      danger: "bg-danger",
+    },
+  },
+  defaultVariants: {
+    radius: "medium",
+    color: "primary",
+  },
+})
+
+type Variant = "primary" | "danger"
+type ButtonProps = {
+  variant?: Variant
+} & ComponentPropsWithoutRef<typeof Pressable> &
+  VariantProps<typeof buttonVariants>
 
 export const Button = forwardRef<ElementRef<typeof Pressable>, ButtonProps>(
-  ({ style, ...props }, ref) => {
+  ({ style, color, radius, ...props }, ref) => {
     const scaleDownAnimation = useSharedValue(1)
-    const { theme } = useTheme()
+    const { tw } = useTheme()
 
     const scaleHandler = Gesture.LongPress()
       .onBegin(() => {
@@ -40,10 +64,7 @@ export const Button = forwardRef<ElementRef<typeof Pressable>, ButtonProps>(
         <AnimatedPressable
           style={[
             animatedStyle,
-            tw.style(
-              "flex flex-row justify-center items-center p-3 rounded-md",
-            ),
-            { backgroundColor: theme.foreground },
+            tw.style(buttonVariants({ radius, color })),
             style,
           ]}
           ref={ref}
