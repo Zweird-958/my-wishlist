@@ -36,10 +36,7 @@ const buttonVariants = cva("flex flex-row justify-center items-center p-3", {
   },
 })
 
-type Variant = "primary" | "danger"
-type ButtonProps = {
-  variant?: Variant
-} & ComponentPropsWithoutRef<typeof Pressable> &
+type ButtonProps = ComponentPropsWithoutRef<typeof Pressable> &
   VariantProps<typeof buttonVariants>
 
 export const Button = forwardRef<ElementRef<typeof Pressable>, ButtonProps>(
