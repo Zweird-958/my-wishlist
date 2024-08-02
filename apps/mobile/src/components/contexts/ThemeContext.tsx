@@ -1,33 +1,42 @@
-import { ThemeProvider as RNThemeProvider } from "@react-navigation/native"
+import {
+  ThemeProvider as RNThemeProvider,
+  type Theme,
+} from "@react-navigation/native"
 import { type ReactNode, createContext, useContext } from "react"
 import { useColorScheme } from "react-native"
+import { create } from "twrnc"
 
-import { DarkTheme, LightTheme } from "@/constants/themes"
-import type { Theme } from "@/types/theme"
+import {
+  DarkTheme,
+  LightTheme,
+  darkConfig,
+  lightConfig,
+} from "@/constants/themes"
 
 type Context = {
-  theme: Theme
+  theme: Theme["colors"]
+  tw: ReturnType<typeof create>
 }
 
 const ThemeContext = createContext<Context>({} as Context)
 
-type NewType = {
-  darkTheme?: Theme
-  lightTheme?: Theme
+type Props = {
+  darkTheme?: Theme["colors"]
+  lightTheme?: Theme["colors"]
   children: ReactNode
 }
-
-type Props = NewType
 
 export const ThemeProvider = ({
   darkTheme = DarkTheme,
   lightTheme = LightTheme,
   children,
 }: Props) => {
-  const theme = useColorScheme() === "dark" ? darkTheme : lightTheme
+  const colorScheme = useColorScheme()
+  const theme = colorScheme === "dark" ? darkTheme : lightTheme
+  const tw = colorScheme === "dark" ? create(darkConfig) : create(lightConfig)
 
   return (
-    <ThemeContext.Provider value={{ theme }}>
+    <ThemeContext.Provider value={{ theme, tw }}>
       <RNThemeProvider value={{ dark: true, colors: { ...theme } }}>
         {children}
       </RNThemeProvider>
