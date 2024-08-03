@@ -17,7 +17,7 @@
     "@my-wishlist/i18n": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",
-    "@tauri-apps/plugin-store": "^2.0.0-beta.8",
+    "@tauri-apps/plugin-store": "^2.0.0-rc.0",
     "jsonwebtoken": "^9.0.2",
     "next": "catalog:",
     "react": "catalog:",
