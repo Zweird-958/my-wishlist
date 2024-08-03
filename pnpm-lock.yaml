@@ -69,8 +69,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       '@tauri-apps/plugin-store':
-        specifier: ^2.0.0-beta.8
-        version: 2.0.0-beta.8
+        specifier: ^2.0.0-rc.0
+        version: 2.0.0-rc.0
       jsonwebtoken:
         specifier: ^9.0.2
         version: 9.0.2
@@ -389,8 +389,8 @@ importers:
         specifier: ^2.0.0-rc.0
         version: 2.0.0-rc.0
       '@tauri-apps/plugin-store':
-        specifier: ^2.0.0-beta.8
-        version: 2.0.0-beta.8
+        specifier: ^2.0.0-rc.0
+        version: 2.0.0-rc.0
       '@types/react':
         specifier: 'catalog:'
         version: 18.3.3
@@ -3415,10 +3415,6 @@ packages:
     peerDependencies:
       react: ^18.0.0
 
-  '@tauri-apps/api@2.0.0-beta.16':
-    resolution: {integrity: sha512-YGjkR9HxS/YyIoqoXDkk8o9Yy5NW6u9YxzeqEodwwOUoeS0nac6mzLTW3VYIuSelHmyUQCgbyENVY6e5CJXA4Q==}
-    engines: {node: '>= 18.18', npm: '>= 6.6.0', yarn: '>= 1.19.1'}
-
   '@tauri-apps/api@2.0.0-rc.0':
     resolution: {integrity: sha512-v454Qs3REHc3Za59U+/eSmBsdmF+3NE5+76+lFDaitVqN4ZglDHENDaMARYKGJVZuxiSkzyqG0SeG7lLQjVkPA==}
     engines: {node: '>= 18.18', npm: '>= 6.6.0', yarn: '>= 1.19.1'}
@@ -3491,8 +3487,8 @@ packages:
   '@tauri-apps/plugin-os@2.0.0-rc.0':
     resolution: {integrity: sha512-OWAl8mooKnGykSD4iog8WRqcnOSx0gGmTJBlEExHdFeIuOHg0Ezvd+WiVLhT9LBg7go3ibNWRWpe/ZG7YEp4Vw==}
 
-  '@tauri-apps/plugin-store@2.0.0-beta.8':
-    resolution: {integrity: sha512-GXTEUT0O6Kg5lo6bpC1tuler4DZimeCF9C0ciN+aZft8PmApyKOaNU3aXmiplrzEytbQ96BdsFTSrsCnlpO6Cw==}
+  '@tauri-apps/plugin-store@2.0.0-rc.0':
+    resolution: {integrity: sha512-KqiEzq6EdRwxrl0/FwyNLwumDBM91xTchdu2a8vfkNub30GuP9z7RskP9ifVRI1gbxfa5TUDi0hKFk/SP7TANQ==}
 
   '@trivago/prettier-plugin-sort-imports@4.3.0':
     resolution: {integrity: sha512-r3n0onD3BTOVUNPhR4lhVK4/pABGpbA7bW3eumZnYdKaHkf1qEC+Mag6DPbGNuuh0eG8AaYj+YqmVHSiGslaTQ==}
@@ -12450,8 +12446,6 @@ snapshots:
       '@tanstack/query-core': 5.51.21
       react: 18.3.1
 
-  '@tauri-apps/api@2.0.0-beta.16': {}
-
   '@tauri-apps/api@2.0.0-rc.0': {}
 
   '@tauri-apps/cli-darwin-arm64@2.0.0-rc.0':
@@ -12501,9 +12495,9 @@ snapshots:
     dependencies:
       '@tauri-apps/api': 2.0.0-rc.0
 
-  '@tauri-apps/plugin-store@2.0.0-beta.8':
+  '@tauri-apps/plugin-store@2.0.0-rc.0':
     dependencies:
-      '@tauri-apps/api': 2.0.0-beta.16
+      '@tauri-apps/api': 2.0.0-rc.0
 
   '@trivago/prettier-plugin-sort-imports@4.3.0(prettier@3.3.3)':
     dependencies:
