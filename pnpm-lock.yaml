@@ -260,7 +260,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       '@prisma/client':
-        specifier: ^5.16.2
+        specifier: ^5.17.0
         version: 5.17.0(prisma@5.17.0)
       clsx:
         specifier: ^2.1.1
@@ -312,7 +312,7 @@ importers:
         specifier: 'catalog:'
         version: 9.8.0
       prisma:
-        specifier: ^5.16.2
+        specifier: ^5.17.0
         version: 5.17.0
       tailwindcss:
         specifier: 'catalog:'
@@ -343,10 +343,10 @@ importers:
   packages/db:
     dependencies:
       '@prisma/client':
-        specifier: ^5.16.2
+        specifier: ^5.17.0
         version: 5.17.0(prisma@5.17.0)
       prisma:
-        specifier: ^5.16.2
+        specifier: ^5.17.0
         version: 5.17.0
       zod:
         specifier: ^3.23.8
