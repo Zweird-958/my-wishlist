@@ -613,7 +613,7 @@ importers:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.40)
       postcss:
-        specifier: ^8.4.39
+        specifier: ^8.4.40
         version: 8.4.40
       tailwindcss:
         specifier: 'catalog:'
