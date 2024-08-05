@@ -10,11 +10,18 @@ export default {
         lg: "16px",
       },
       colors: {
-        primary: "#ff6347",
+        primary: {
+          DEFAULT: "#ff6347",
+          foreground: "white",
+        },
         success: "#32CD32",
-        danger: "#FF4136",
+        danger: {
+          DEFAULT: "#FF4136",
+          foreground: "white",
+        },
         foreground: "black",
         background: "white",
+        card: "#d4d4d8",
       },
     },
   },
