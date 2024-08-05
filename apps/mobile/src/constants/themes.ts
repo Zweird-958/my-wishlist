@@ -5,18 +5,18 @@ import baseConfig from "../../tailwind.config"
 
 export const DarkTheme: Theme["colors"] = {
   primary: "#ff6347",
-  background: "black",
+  background: "#000000",
   card: "#3f3f46",
-  text: "white",
+  text: "#FFF",
   border: "#ff6347",
   notification: "#ff6347",
 }
 
 export const LightTheme: Theme["colors"] = {
   primary: "#ff6347",
-  background: "white",
+  background: "#FFF",
   card: "#d4d4d8",
-  text: "black",
+  text: "#000000",
   border: "#ff6347",
   notification: "#ff6347",
 }
@@ -26,8 +26,8 @@ export const darkConfig = {
   theme: {
     extend: {
       colors: {
-        foreground: "white",
-        background: "black",
+        foreground: "#FFF",
+        background: "#000000",
         card: "#3f3f46",
       },
     },

@@ -12,15 +12,18 @@ export default {
       colors: {
         primary: {
           DEFAULT: "#ff6347",
-          foreground: "white",
+          foreground: "#FFF",
         },
-        success: "#32CD32",
+        success: {
+          DEFAULT: "#32CD32",
+          foreground: "#FFF",
+        },
         danger: {
           DEFAULT: "#FF4136",
-          foreground: "white",
+          foreground: "#FFF",
         },
-        foreground: "black",
-        background: "white",
+        foreground: "#000000",
+        background: "#FFF",
         card: "#d4d4d8",
       },
     },
