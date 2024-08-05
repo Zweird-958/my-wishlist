@@ -66,10 +66,12 @@ const useInput = ({
   ...props
 }: UseInputProps) => {
   const { tw } = useTheme()
+  const inputRef = useDOMRef(ref)
 
-  const parsedColor: typeof color = errorMessage ? "danger" : color
-  const inputColor = tw.color(inputColors({ color: parsedColor }))
-  const inputFocusedColor = tw.color(inputColors({ focused: parsedColor }))
+  const inputColor = tw.color(inputColors({ color }))
+  const inputFocusedColor = tw.color(inputColors({ focused: color }))
+  const errorColor = tw.color(inputColors({ color: "danger" }))
+  const errorFocusedColor = tw.color(inputColors({ focused: "danger" }))
 
   const [isFocused, setIsFocused] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
@@ -123,9 +125,18 @@ const useInput = ({
     return {
       backgroundColor,
     }
-  })
+  }, [inputColor, inputFocusedColor, progress])
+  const animatedErrorStyle = useAnimatedStyle(() => {
+    const backgroundColor = interpolateColor(progress.value, [0, 1], [
+      errorColor,
+      errorFocusedColor,
+    ] as string[])
 
-  const inputRef = useDOMRef(ref)
+    return {
+      backgroundColor,
+    }
+  }, [errorColor, errorFocusedColor, progress])
+
   const handleFocusPressable = () => inputRef.current?.focus()
 
   return {
@@ -134,9 +145,12 @@ const useInput = ({
     isPassword,
     onFocus: handleOnFocus,
     onEndEditing: handleOnEndEditing,
-    placeholderTextColor: tw.color(inputColors({ placeholder: parsedColor })),
+    placeholderTextColor: tw.color(
+      inputColors({ placeholder: errorMessage ? "danger" : color }),
+    ),
     secureTextEntry: isPassword && !showPassword,
-    animatedStyle,
+    animatedStyle: errorMessage ? animatedErrorStyle : animatedStyle,
+    onBlur: handleOnEndEditing,
     handleShowPassword,
     showPassword,
     errorMessage,
