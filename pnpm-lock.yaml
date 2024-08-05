@@ -48,7 +48,7 @@ importers:
         specifier: ^0.6.5
         version: 0.6.5(@trivago/prettier-plugin-sort-imports@4.3.0(prettier@3.3.3))(prettier@3.3.3)
       turbo:
-        specifier: ^2.0.6
+        specifier: ^2.0.11
         version: 2.0.11
       typescript:
         specifier: 'catalog:'
@@ -585,7 +585,7 @@ importers:
         specifier: beta
         version: 5.1.0-beta-26f2496093-20240514(eslint@9.8.0)
       eslint-plugin-turbo:
-        specifier: ^2.0.6
+        specifier: ^2.0.11
         version: 2.0.11(eslint@9.8.0)
       globals:
         specifier: ^15.9.0
