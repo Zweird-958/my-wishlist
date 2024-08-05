@@ -29,7 +29,7 @@ const Input = forwardRef<TextInput, InputProps>((props, ref) => {
   } = useInput({ ...props, ref })
 
   return (
-    <View style={tw.style("gap-1")} ref={containerRef}>
+    <View style={tw.style("gap-1 w-full")} ref={containerRef}>
       <AnimatedPressable onPress={handleFocusPressable}>
         <Animated.View
           style={[
