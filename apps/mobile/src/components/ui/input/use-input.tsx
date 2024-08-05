@@ -29,16 +29,19 @@ const inputColors = cva("", {
       card: "card",
       primary: "primary",
       danger: "danger",
+      success: "success",
     },
     focused: {
       card: "card/80",
       primary: "primary/80",
       danger: "danger/80",
+      success: "success/80",
     },
     placeholder: {
       card: "foreground",
       primary: "primary-foreground",
       danger: "danger-foreground",
+      success: "success-foreground",
     },
   },
 })
