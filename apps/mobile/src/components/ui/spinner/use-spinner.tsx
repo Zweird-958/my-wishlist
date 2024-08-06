@@ -20,7 +20,7 @@ import { useTheme } from "@/components/contexts/ThemeContext"
 const DURATION = 1000
 
 const spinnerVariants = cva(
-  "absolute w-full h-full rounded-full border-solid border-t-transparent border-l-transparent border-r-transparent border-2",
+  "absolute w-full h-full rounded-full border-solid border-t-transparent border-l-transparent border-r-transparent",
   {
     variants: {
       color: {
@@ -29,19 +29,37 @@ const spinnerVariants = cva(
         danger: "border-b-danger",
         card: "border-b-card",
       },
+      size: {
+        sm: "border-2",
+        md: "border-2",
+        lg: "border-[2.5px]",
+      },
     },
     defaultVariants: {
       color: "primary",
+      size: "md",
     },
   },
 )
+const wrapperVariants = cva("", {
+  variants: {
+    size: {
+      sm: "w-4 h-4",
+      md: "w-6 h-6",
+      lg: "w-10 h-10",
+    },
+  },
+  defaultVariants: {
+    size: "md",
+  },
+})
 
 export type UseSpinnerProps = {
   ref?: Ref<View>
 } & ComponentPropsWithoutRef<typeof View> &
   VariantProps<typeof spinnerVariants>
 
-const useSpinner = ({ style, color, ...props }: UseSpinnerProps) => {
+const useSpinner = ({ style, color, size, ...props }: UseSpinnerProps) => {
   const { tw } = useTheme()
 
   const useAnimationStyle = (easing: EasingFunction) => {
@@ -66,28 +84,28 @@ const useSpinner = ({ style, color, ...props }: UseSpinnerProps) => {
 
   const getCircle1Props = useCallback(
     () => ({
-      style: [circleAnimationStyle, tw.style(spinnerVariants({ color }))],
+      style: [circleAnimationStyle, tw.style(spinnerVariants({ color, size }))],
     }),
-    [circleAnimationStyle, color, tw],
+    [circleAnimationStyle, color, size, tw],
   )
 
   const getCircle2Props = useCallback(
     () => ({
       style: [
         circle2AnimationStyle,
-        tw.style(spinnerVariants({ color }), "opacity-60"),
+        tw.style(spinnerVariants({ color, size }), "opacity-60"),
       ],
     }),
-    [circle2AnimationStyle, color, tw],
+    [circle2AnimationStyle, color, size, tw],
   )
 
   const getWrapperProps = useCallback<() => UseSpinnerProps>(
     () => ({
-      style: [tw.style("relative flex w-8 h-8"), style],
+      style: [tw.style(wrapperVariants({ size })), style],
       "aria-label": ariaLabel,
       ...props,
     }),
-    [ariaLabel, props, style, tw],
+    [ariaLabel, props, size, style, tw],
   )
 
   return {
