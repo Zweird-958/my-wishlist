@@ -36,6 +36,7 @@ const buttonVariants = cva(
 export type UseButtonProps = {
   ref?: Ref<View> | null
   isLoading?: boolean
+  isDisabled?: boolean
   color?: NonNullable<VariantProps<typeof buttonVariants>["color"]>
 } & ComponentPropsWithoutRef<typeof Pressable> &
   Omit<VariantProps<typeof buttonVariants>, "color">
@@ -46,6 +47,7 @@ const useButton = ({
   color = "primary",
   role,
   isLoading = false,
+  isDisabled: isDisabledProp,
   children,
   onPress,
   ...props
@@ -53,7 +55,7 @@ const useButton = ({
   const scaleDownAnimation = useSharedValue(1)
   const { tw } = useTheme()
 
-  const isDisabled = isLoading
+  const isDisabled = isDisabledProp ?? isLoading
 
   const scaleHandler = Gesture.LongPress()
     .onBegin(() => {
@@ -92,7 +94,7 @@ const useButton = ({
       style: [
         animatedStyle,
         tw.style(buttonVariants({ radius, color }), {
-          "opacity-disabled": isLoading,
+          "opacity-disabled": isDisabled,
         }),
         style,
       ],
@@ -105,6 +107,7 @@ const useButton = ({
       animatedStyle,
       color,
       handlePress,
+      isDisabled,
       isLoading,
       props,
       radius,
