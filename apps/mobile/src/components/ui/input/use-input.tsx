@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { type VariantProps, cva } from "class-variance-authority"
 import {
   type ComponentPropsWithoutRef,
@@ -46,6 +47,17 @@ const inputColors = cva("", {
   },
 })
 
+const inputVariants = cva("flex-1", {
+  variants: {
+    color: {
+      card: "text-card-foreground",
+      primary: "text-primary-foreground",
+      danger: "text-danger-foreground",
+      success: "text-success-foreground",
+    },
+  },
+})
+
 type Event<T> = NativeSyntheticEvent<T>
 
 export type UseInputProps = {
@@ -66,6 +78,7 @@ const useInput = ({
   onFocus,
   onEndEditing,
   ref,
+  style,
   ...props
 }: UseInputProps) => {
   const { tw } = useTheme()
@@ -159,6 +172,14 @@ const useInput = ({
     errorMessage,
     handleFocusPressable,
     inputRef,
+    style: tw.style(inputVariants({ color })),
+    wrapperStyle: [
+      animatedStyle,
+      tw.style(
+        "shadow-sm px-3 py-2 min-h-10 rounded-md flex-row justify-between items-center",
+      ),
+      style,
+    ],
     ...props,
   }
 }

@@ -24,7 +24,7 @@ export default {
         },
         foreground: "#000000",
         background: "#FFF",
-        card: "#d4d4d8",
+        card: { DEFAULT: "#d4d4d8", foreground: "#000000" },
       },
     },
   },

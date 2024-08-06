@@ -15,12 +15,11 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 const Input = forwardRef<TextInput, InputProps>((props, ref) => {
   const { tw } = useTheme()
   const {
-    style,
+    wrapperStyle,
     errorMessage,
     containerRef,
     errorRef,
     isPassword,
-    animatedStyle,
     handleShowPassword,
     showPassword,
     handleFocusPressable,
@@ -31,20 +30,8 @@ const Input = forwardRef<TextInput, InputProps>((props, ref) => {
   return (
     <View style={tw.style("gap-1 w-full")} ref={containerRef}>
       <AnimatedPressable onPress={handleFocusPressable}>
-        <Animated.View
-          style={[
-            animatedStyle,
-            tw.style(
-              "shadow-sm px-3 py-2 min-h-10 rounded-md flex-row justify-between items-center",
-            ),
-            style,
-          ]}
-        >
-          <TextInputAnimated
-            ref={inputRef}
-            style={tw.style("flex-1")}
-            {...otherProps}
-          />
+        <Animated.View style={wrapperStyle}>
+          <TextInputAnimated ref={inputRef} {...otherProps} />
           {isPassword && (
             <TouchableOpacity onPress={handleShowPassword}>
               {showPassword ? (

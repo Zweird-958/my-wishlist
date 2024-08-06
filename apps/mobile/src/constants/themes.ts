@@ -28,7 +28,7 @@ export const darkConfig = {
       colors: {
         foreground: "#FFF",
         background: "#000000",
-        card: "#3f3f46",
+        card: { DEFAULT: "#3f3f46", foreground: "#FFF" },
       },
     },
   },
