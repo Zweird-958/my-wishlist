@@ -20,7 +20,7 @@
     "@my-wishlist/schemas": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
-    "@prisma/client": "^5.17.0",
+    "@prisma/client": "^5.18.0",
     "clsx": "^2.1.1",
     "hono": "^4.5.4",
     "jsonwebtoken": "^9.0.2",
@@ -39,7 +39,7 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "eslint": "catalog:",
-    "prisma": "^5.17.0",
+    "prisma": "^5.18.0",
     "tailwindcss": "catalog:"
   }
 }
