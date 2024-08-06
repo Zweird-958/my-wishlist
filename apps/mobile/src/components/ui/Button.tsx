@@ -16,25 +16,28 @@ import { useTheme } from "@/components/contexts/ThemeContext"
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
-const buttonVariants = cva("flex flex-row justify-center items-center p-3", {
-  variants: {
-    radius: {
-      small: "rounded-sm",
-      medium: "rounded-md",
-      large: "rounded-lg",
-      full: "rounded-full",
+const buttonVariants = cva(
+  "flex flex-row justify-center items-center p-3 w-full",
+  {
+    variants: {
+      radius: {
+        small: "rounded-sm",
+        medium: "rounded-md",
+        large: "rounded-lg",
+        full: "rounded-full",
+      },
+      color: {
+        primary: "bg-primary",
+        success: "bg-success",
+        danger: "bg-danger",
+      },
     },
-    color: {
-      primary: "bg-primary",
-      success: "bg-success",
-      danger: "bg-danger",
+    defaultVariants: {
+      radius: "medium",
+      color: "primary",
     },
   },
-  defaultVariants: {
-    radius: "medium",
-    color: "primary",
-  },
-})
+)
 
 type ButtonProps = ComponentPropsWithoutRef<typeof Pressable> &
   VariantProps<typeof buttonVariants>
