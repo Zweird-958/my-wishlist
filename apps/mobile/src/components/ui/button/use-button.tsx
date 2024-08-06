@@ -1,5 +1,10 @@
 import { type VariantProps, cva } from "class-variance-authority"
-import { type ComponentPropsWithoutRef, type Ref, useCallback } from "react"
+import {
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+  type Ref,
+  useCallback,
+} from "react"
 import type { GestureResponderEvent, Pressable, View } from "react-native"
 import { Gesture } from "react-native-gesture-handler"
 import {
@@ -38,7 +43,9 @@ export type UseButtonProps = {
   isLoading?: boolean
   isDisabled?: boolean
   color?: NonNullable<VariantProps<typeof buttonVariants>["color"]>
-} & ComponentPropsWithoutRef<typeof Pressable> &
+  isText?: boolean
+  children?: ReactNode
+} & Omit<ComponentPropsWithoutRef<typeof Pressable>, "children"> &
   Omit<VariantProps<typeof buttonVariants>, "color">
 
 const useButton = ({
@@ -49,6 +56,7 @@ const useButton = ({
   isLoading = false,
   isDisabled: isDisabledProp,
   children,
+  isText,
   onPress,
   ...props
 }: UseButtonProps) => {
@@ -117,6 +125,16 @@ const useButton = ({
     ],
   )
 
+  const getTextProps = useCallback(() => {
+    if (!isText) {
+      return {}
+    }
+
+    return {
+      color: `${color}-foreground` as const,
+    }
+  }, [color, isText])
+
   const getSpinnerProps = useCallback(
     () => ({
       color: `${color}-foreground` as const,
@@ -127,9 +145,11 @@ const useButton = ({
   return {
     isLoading,
     children,
+    isText,
     getButtonProps,
     getGestureProps,
     getSpinnerProps,
+    getTextProps,
   }
 }
 

@@ -77,8 +77,8 @@ const SignIn = () => {
           name="password"
         />
 
-        <Button onPress={onSubmit}>
-          <Text color="foreground">Submit</Text>
+        <Button onPress={onSubmit} isText>
+          Submit
         </Button>
       </View>
 

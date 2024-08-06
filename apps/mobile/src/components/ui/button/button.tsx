@@ -7,6 +7,7 @@ import useButton, {
   type UseButtonProps,
 } from "@/components/ui/button/use-button"
 import { Spinner } from "@/components/ui/spinner"
+import { Text } from "@/components/ui/text"
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
@@ -16,9 +17,11 @@ const Button = forwardRef<View, ButtonProps>((props, ref) => {
   const {
     isLoading,
     children,
+    isText,
     getGestureProps,
     getButtonProps,
     getSpinnerProps,
+    getTextProps,
   } = useButton({
     ...props,
     ref,
@@ -29,7 +32,7 @@ const Button = forwardRef<View, ButtonProps>((props, ref) => {
       <AnimatedPressable {...getButtonProps()}>
         <>
           {isLoading && <Spinner {...getSpinnerProps()} />}
-          {children}
+          {isText ? <Text {...getTextProps()}>{children}</Text> : children}
         </>
       </AnimatedPressable>
     </GestureDetector>
