@@ -11,8 +11,8 @@ import { api } from "@my-wishlist/utils"
 
 import { useSession } from "@/components/contexts/SessionContext"
 import { useTheme } from "@/components/contexts/ThemeContext"
-import { Button } from "@/components/ui/Button"
 import { Text } from "@/components/ui/Text"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 const SignIn = () => {

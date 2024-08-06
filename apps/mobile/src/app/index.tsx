@@ -3,8 +3,8 @@ import { View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
-import { Button } from "@/components/ui/Button"
 import { Text } from "@/components/ui/Text"
+import { Button } from "@/components/ui/button"
 
 const Index = () => {
   const { tw } = useTheme()
