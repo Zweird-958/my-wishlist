@@ -4,8 +4,8 @@ import { Pressable, TextInput, TouchableOpacity, View } from "react-native"
 import Animated from "react-native-reanimated"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
-import { Text } from "@/components/ui/Text"
 import useInput, { type UseInputProps } from "@/components/ui/input/use-input"
+import { Text } from "@/components/ui/text"
 
 export type InputProps = UseInputProps
 
