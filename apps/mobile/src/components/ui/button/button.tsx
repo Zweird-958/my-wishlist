@@ -6,17 +6,32 @@ import Animated from "react-native-reanimated"
 import useButton, {
   type UseButtonProps,
 } from "@/components/ui/button/use-button"
+import { Spinner } from "@/components/ui/spinner"
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
 export type ButtonProps = UseButtonProps
 
 const Button = forwardRef<View, ButtonProps>((props, ref) => {
-  const { getGestureProps, getProps } = useButton({ ...props, ref })
+  const {
+    isLoading,
+    children,
+    getGestureProps,
+    getButtonProps,
+    getSpinnerProps,
+  } = useButton({
+    ...props,
+    ref,
+  })
 
   return (
     <GestureDetector {...getGestureProps()}>
-      <AnimatedPressable {...getProps()} />
+      <AnimatedPressable {...getButtonProps()}>
+        <>
+          {isLoading && <Spinner {...getSpinnerProps()} />}
+          {children}
+        </>
+      </AnimatedPressable>
     </GestureDetector>
   )
 })

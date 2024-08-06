@@ -1,6 +1,6 @@
 import { type VariantProps, cva } from "class-variance-authority"
 import { type ComponentPropsWithoutRef, type Ref, useCallback } from "react"
-import type { Pressable, View } from "react-native"
+import type { GestureResponderEvent, Pressable, View } from "react-native"
 import { Gesture } from "react-native-gesture-handler"
 import {
   useAnimatedStyle,
@@ -35,21 +35,32 @@ const buttonVariants = cva(
 
 export type UseButtonProps = {
   ref?: Ref<View> | null
+  isLoading?: boolean
+  color?: NonNullable<VariantProps<typeof buttonVariants>["color"]>
 } & ComponentPropsWithoutRef<typeof Pressable> &
-  VariantProps<typeof buttonVariants>
+  Omit<VariantProps<typeof buttonVariants>, "color">
 
 const useButton = ({
   style,
   radius,
-  color,
+  color = "primary",
   role,
+  isLoading = false,
+  children,
+  onPress,
   ...props
 }: UseButtonProps) => {
   const scaleDownAnimation = useSharedValue(1)
   const { tw } = useTheme()
 
+  const isDisabled = isLoading
+
   const scaleHandler = Gesture.LongPress()
     .onBegin(() => {
+      if (isDisabled) {
+        return
+      }
+
       scaleDownAnimation.value = withSpring(0.95)
     })
     .onFinalize(() => {
@@ -65,22 +76,57 @@ const useButton = ({
     [scaleHandler],
   )
 
-  const getProps = useCallback(
+  const handlePress = useCallback(
+    (event: GestureResponderEvent) => {
+      if (isDisabled) {
+        return
+      }
+
+      onPress?.(event)
+    },
+    [isDisabled, onPress],
+  )
+
+  const getButtonProps = useCallback(
     () => ({
       style: [
         animatedStyle,
-        tw.style(buttonVariants({ radius, color })),
+        tw.style(buttonVariants({ radius, color }), {
+          "opacity-disabled": isLoading,
+        }),
         style,
       ],
       role: role ?? "button",
+      disabled: isLoading,
+      onPress: handlePress,
       ...props,
     }),
-    [animatedStyle, color, props, radius, role, style, tw],
+    [
+      animatedStyle,
+      color,
+      handlePress,
+      isLoading,
+      props,
+      radius,
+      role,
+      style,
+      tw,
+    ],
+  )
+
+  const getSpinnerProps = useCallback(
+    () => ({
+      color: `${color}-foreground` as const,
+    }),
+    [color],
   )
 
   return {
-    getProps,
+    isLoading,
+    children,
+    getButtonProps,
     getGestureProps,
+    getSpinnerProps,
   }
 }
 

@@ -28,6 +28,10 @@ const spinnerVariants = cva(
         success: "border-b-success",
         danger: "border-b-danger",
         card: "border-b-card",
+        "primary-foreground": "border-b-primary-foreground",
+        "success-foreground": "border-b-success-foreground",
+        "danger-foreground": "border-b-danger-foreground",
+        "card-foreground": "border-b-card-foreground",
       },
       size: {
         sm: "border-2",

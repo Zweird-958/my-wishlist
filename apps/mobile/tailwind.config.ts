@@ -9,6 +9,9 @@ export default {
         md: "12px",
         lg: "16px",
       },
+      opacity: {
+        disabled: "0.5",
+      },
       colors: {
         primary: {
           DEFAULT: "#ff6347",
