@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import type { ReactNode } from "react"
 
+import { SessionProvider } from "@/components/contexts/SessionContext"
 import { ThemeProvider } from "@/components/contexts/ThemeContext"
 
 type Props = {
@@ -11,7 +12,9 @@ const queryClient = new QueryClient()
 
 const Providers = ({ children }: Props) => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider>{children}</ThemeProvider>
+    <ThemeProvider>
+      <SessionProvider>{children}</SessionProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 )
 

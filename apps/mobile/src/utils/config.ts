@@ -1,11 +1,15 @@
 import { z } from "zod"
 
 const schema = z.object({
-  apiUrl: z.string(),
+  store: z.object({
+    session: z.string(),
+  }),
 })
 
 const config = schema.parse({
-  apiUrl: process.env.NEXT_PUBLIC_API_URL,
+  store: {
+    session: "my-wishlist-session",
+  },
 })
 
 export default config

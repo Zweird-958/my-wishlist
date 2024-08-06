@@ -6,9 +6,9 @@ import {
 import type { AxiosError, AxiosRequestConfig } from "axios"
 
 import type { ApiError, ApiResponse, Method } from "@my-wishlist/types"
+import { api } from "@my-wishlist/utils"
 
 import { useSession } from "../components/AppContext"
-import api from "../utils/api"
 
 type CustomUseQueryOptions<
   TQueryFnData,

@@ -6,7 +6,7 @@ import config from "./config"
 
 const call =
   (method: Lowercase<Method>) =>
-  async <TData, TMeta>(
+  async <TData, TMeta = object>(
     path: string,
     data: unknown = null,
     options: AxiosRequestConfig = {},
