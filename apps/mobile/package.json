@@ -1,6 +1,6 @@
 {
   "name": "@my-wishlist/mobile",
-  "main": "expo-router/entry",
+  "main": "src/index.ts",
   "version": "0.1.0",
   "scripts": {
     "start": "expo start",
