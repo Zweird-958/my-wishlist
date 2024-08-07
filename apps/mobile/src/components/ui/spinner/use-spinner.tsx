@@ -5,7 +5,7 @@ import {
   useCallback,
   useMemo,
 } from "react"
-import type { View } from "react-native"
+import type { ActivityIndicatorProps, View } from "react-native"
 import {
   Easing,
   type EasingFunction,
@@ -49,8 +49,8 @@ const wrapperVariants = cva("", {
   variants: {
     size: {
       sm: "w-4 h-4",
-      md: "w-6 h-6",
-      lg: "w-10 h-10",
+      md: "ios:w-6 ios:h-6 android:w-8 android:h-8",
+      lg: "ios:w-10 ios:h-10 android:w-12 android:h-12",
     },
   },
   defaultVariants: {
@@ -58,12 +58,24 @@ const wrapperVariants = cva("", {
   },
 })
 
+const activitySize = {
+  sm: 16,
+  md: 32,
+  lg: 48,
+}
+
 export type UseSpinnerProps = {
   ref?: Ref<View>
-} & ComponentPropsWithoutRef<typeof View> &
-  VariantProps<typeof spinnerVariants>
+  color?: NonNullable<VariantProps<typeof spinnerVariants>["color"]>
+  size?: NonNullable<VariantProps<typeof spinnerVariants>["size"]>
+} & ComponentPropsWithoutRef<typeof View>
 
-const useSpinner = ({ style, color, size, ...props }: UseSpinnerProps) => {
+const useSpinner = ({
+  style,
+  color = "primary",
+  size = "md",
+  ...props
+}: UseSpinnerProps) => {
   const { tw } = useTheme()
 
   const useAnimationStyle = (easing: EasingFunction) => {
@@ -112,10 +124,19 @@ const useSpinner = ({ style, color, size, ...props }: UseSpinnerProps) => {
     [ariaLabel, props, size, style, tw],
   )
 
+  const getActivityIndicatorProps = useCallback<() => ActivityIndicatorProps>(
+    () => ({
+      color: tw.color(color),
+      size: activitySize[size],
+    }),
+    [color, size, tw],
+  )
+
   return {
     getWrapperProps,
     getCircle1Props,
     getCircle2Props,
+    getActivityIndicatorProps,
   }
 }
 

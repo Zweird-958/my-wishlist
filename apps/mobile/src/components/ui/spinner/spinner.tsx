@@ -1,5 +1,5 @@
 import { forwardRef } from "react"
-import { View } from "react-native"
+import { ActivityIndicator, Platform, View } from "react-native"
 import Animated from "react-native-reanimated"
 
 import useSpinner, {
@@ -9,15 +9,26 @@ import useSpinner, {
 export type SpinnerProps = UseSpinnerProps
 
 const Spinner = forwardRef<View, SpinnerProps>((props, ref) => {
-  const { getWrapperProps, getCircle1Props, getCircle2Props } = useSpinner({
+  const {
+    getWrapperProps,
+    getCircle1Props,
+    getCircle2Props,
+    getActivityIndicatorProps,
+  } = useSpinner({
     ...props,
     ref,
   })
 
   return (
     <View {...getWrapperProps()}>
-      <Animated.View {...getCircle1Props()} />
-      <Animated.View {...getCircle2Props()} />
+      {Platform.OS === "android" ? (
+        <ActivityIndicator {...getActivityIndicatorProps()} />
+      ) : (
+        <>
+          <Animated.View {...getCircle1Props()} />
+          <Animated.View {...getCircle2Props()} />
+        </>
+      )}
     </View>
   )
 })
