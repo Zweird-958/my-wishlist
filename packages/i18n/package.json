@@ -18,7 +18,7 @@
     "@my-wishlist/schemas": "workspace:*",
     "@tauri-apps/plugin-os": "^2.0.0-rc.0",
     "@tauri-apps/plugin-store": "^2.0.0-rc.0",
-    "i18next": "^23.12.7",
+    "i18next": "^23.13.0",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-icu": "^2.3.0",
     "i18next-resources-to-backend": "^1.2.1",
