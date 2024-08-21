@@ -166,8 +166,8 @@ importers:
         specifier: ~3.0.7
         version: 3.0.7(expo@51.0.29(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       expo-updates:
-        specifier: ~0.25.22
-        version: 0.25.22(expo@51.0.29(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
+        specifier: ~0.25.23
+        version: 0.25.23(expo@51.0.29(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       expo-web-browser:
         specifier: ~13.0.3
         version: 13.0.3(expo@51.0.29(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
@@ -4699,8 +4699,8 @@ packages:
     peerDependencies:
       expo: '*'
 
-  expo-updates@0.25.22:
-    resolution: {integrity: sha512-ebu+wPnISzJ/H70CFAJAybS4ZZrACxRbgr9SMqOI/h84CwXGmdxzLmgxoNhy5q/Fa1u7JBmSr6x9a7psBDT4Cw==}
+  expo-updates@0.25.23:
+    resolution: {integrity: sha512-MNEexYa2vnK3gSDCfUwKl2xz75Pm43hohscqvgs+Q/gYPLW6E8mDfElfkJGf92T5VCNJB+YbBLrgWBIex44vqg==}
     hasBin: true
     peerDependencies:
       expo: '*'
@@ -14039,7 +14039,7 @@ snapshots:
     dependencies:
       expo: 51.0.29(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))
 
-  expo-updates@0.25.22(expo@51.0.29(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))):
+  expo-updates@0.25.23(expo@51.0.29(@babel/core@7.25.2)(@babel/preset-env@7.25.3(@babel/core@7.25.2))):
     dependencies:
       '@expo/code-signing-certificates': 0.0.5
       '@expo/config': 9.0.3
