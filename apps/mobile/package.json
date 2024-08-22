@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
-    "@babel/runtime": "^7.25.0",
+    "@babel/runtime": "^7.25.4",
     "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/types": "workspace:*",
     "@tanstack/eslint-plugin-query": "^5.52.0",
