@@ -24,7 +24,7 @@
     "axios": "^1.7.4",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.29",
-    "lucide-react": "^0.429.0",
+    "lucide-react": "^0.435.0",
     "next-themes": "^0.3.0",
     "react-hook-form": "^7.52.2",
     "react-hot-toast": "^2.4.1",
