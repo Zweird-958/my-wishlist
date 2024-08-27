@@ -239,8 +239,8 @@ importers:
         specifier: ^3.637.0
         version: 3.637.0
       '@hono/node-server':
-        specifier: ^1.12.1
-        version: 1.12.1
+        specifier: ^1.12.2
+        version: 1.12.2(hono@4.5.9)
       '@hono/zod-validator':
         specifier: ^0.2.2
         version: 0.2.2(hono@4.5.9)(zod@3.23.8)
@@ -1739,9 +1739,11 @@ packages:
   '@hapi/topo@5.1.0':
     resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==}
 
-  '@hono/node-server@1.12.1':
-    resolution: {integrity: sha512-C9l+08O8xtXB7Ppmy8DjBFH1hYji7JKzsU32Yt1poIIbdPp6S7aOI8IldDHD9YFJ55lv2c21ovNrmxatlHfhAg==}
+  '@hono/node-server@1.12.2':
+    resolution: {integrity: sha512-xjzhqhSWUE/OhN0g3KCNVzNsQMlFUAL+/8GgPUr3TKcU7cvgZVBGswFofJ8WwGEHTqobzze1lDpGJl9ZNckDhA==}
     engines: {node: '>=18.14.1'}
+    peerDependencies:
+      hono: ^4
 
   '@hono/zod-validator@0.2.2':
     resolution: {integrity: sha512-dSDxaPV70Py8wuIU2QNpoVEIOSzSXZ/6/B/h4xA7eOMz7+AarKTSGV8E6QwrdcCbBLkpqfJ4Q2TmBO0eP1tCBQ==}
@@ -9611,7 +9613,9 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  '@hono/node-server@1.12.1': {}
+  '@hono/node-server@1.12.2(hono@4.5.9)':
+    dependencies:
+      hono: 4.5.9
 
   '@hono/zod-validator@0.2.2(hono@4.5.9)(zod@3.23.8)':
     dependencies:
