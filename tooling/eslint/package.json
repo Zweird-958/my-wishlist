@@ -25,7 +25,7 @@
     "typescript-eslint": "rc-v8"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.52.3",
+    "@tanstack/eslint-plugin-query": "^5.53.0",
     "@my-wishlist/typescript": "workspace:*",
     "eslint": "catalog:",
     "typescript": "catalog:"
