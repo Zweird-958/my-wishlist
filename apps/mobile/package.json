@@ -42,7 +42,7 @@
     "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/types": "workspace:*",
     "@tanstack/eslint-plugin-query": "^5.53.0",
-    "@types/node": "^22.5.2",
+    "@types/node": "^22.5.3",
     "@types/react": "~18.3.5",
     "eslint": "catalog:",
     "tailwindcss": "catalog:",
