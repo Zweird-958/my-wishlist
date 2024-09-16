@@ -3092,13 +3092,12 @@ checksum = "e1fc403891a21bcfb7c37834ba66a547a8f402146eba7265b5a6d88059c9ff2f"
 
 [[package]]
 name = "tauri"
-version = "2.0.0-rc.12"
+version = "2.0.0-rc.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "65e5d4a319f11ae72c77d0f4dbd9703ab6b401eb91d1ca88d89c33d13d4ea20c"
+checksum = "0a283cb3d25e46e2f5d99f0068928dadaca4a19558c555f91a5064e3299c691d"
 dependencies = [
  "anyhow",
  "bytes",
- "cocoa 0.26.0",
  "dirs",
  "dunce",
  "embed_plist",
@@ -3113,7 +3112,9 @@ dependencies = [
  "log",
  "mime",
  "muda",
- "objc",
+ "objc2",
+ "objc2-app-kit",
+ "objc2-foundation",
  "percent-encoding",
  "plist",
  "raw-window-handle",
@@ -3274,15 +3275,17 @@ dependencies = [
 
 [[package]]
 name = "tauri-runtime-wry"
-version = "2.0.0-rc.11"
+version = "2.0.0-rc.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "466c418aef2ddc7d31173a5b00bfae3df9b58ed66644339f3ca55008bfc54f25"
+checksum = "e17625b7cf63958d53945e199391d11c9f195fb3d1cb8aeb64dc3084d0091b92"
 dependencies = [
- "cocoa 0.26.0",
  "gtk",
  "http",
  "jni",
  "log",
+ "objc2",
+ "objc2-app-kit",
+ "objc2-foundation",
  "percent-encoding",
  "raw-window-handle",
  "softbuffer",
