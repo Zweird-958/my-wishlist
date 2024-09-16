@@ -30,7 +30,7 @@
     "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/types": "workspace:*",
     "@tauri-apps/cli": "^2.0.0-rc.15",
-    "@types/jsonwebtoken": "^9.0.6",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
