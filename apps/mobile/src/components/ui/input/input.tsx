@@ -35,9 +35,9 @@ const Input = forwardRef<TextInput, InputProps>((props, ref) => {
           {isPassword && (
             <TouchableOpacity onPress={handleShowPassword}>
               {showPassword ? (
-                <Eye color={tw.color("card")} size={22} />
+                <Eye color={tw.color("card-foreground")} size={22} />
               ) : (
-                <EyeOff color={tw.color("card")} size={22} />
+                <EyeOff color={tw.color("card-foreground")} size={22} />
               )}
             </TouchableOpacity>
           )}
