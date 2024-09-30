@@ -165,7 +165,6 @@ const useInput = ({
       inputColors({ placeholder: errorMessage ? "danger" : color }),
     ),
     secureTextEntry: isPassword && !showPassword,
-    animatedStyle: errorMessage ? animatedErrorStyle : animatedStyle,
     onBlur: handleOnEndEditing,
     handleShowPassword,
     showPassword,
@@ -174,7 +173,7 @@ const useInput = ({
     inputRef,
     style: tw.style(inputVariants({ color })),
     wrapperStyle: [
-      animatedStyle,
+      errorMessage ? animatedErrorStyle : animatedStyle,
       tw.style(
         "shadow-sm px-3 py-2 min-h-10 rounded-md flex-row justify-between items-center",
       ),
