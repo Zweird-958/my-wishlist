@@ -29,7 +29,7 @@
   "devDependencies": {
     "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/types": "workspace:*",
-    "@tauri-apps/cli": "^2.0.0-rc.16",
+    "@tauri-apps/cli": "^2.0.0-rc.17",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
