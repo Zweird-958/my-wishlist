@@ -240,10 +240,10 @@ importers:
         version: 3.654.0
       '@hono/node-server':
         specifier: ^1.13.1
-        version: 1.13.1(hono@4.6.2)
+        version: 1.13.1(hono@4.6.3)
       '@hono/zod-validator':
         specifier: ^0.2.2
-        version: 0.2.2(hono@4.6.2)(zod@3.23.8)
+        version: 0.2.2(hono@4.6.3)(zod@3.23.8)
       '@my-wishlist/db':
         specifier: workspace:*
         version: link:../../packages/db
@@ -266,8 +266,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       hono:
-        specifier: ^4.6.2
-        version: 4.6.2
+        specifier: ^4.6.3
+        version: 4.6.3
       jsonwebtoken:
         specifier: ^9.0.2
         version: 9.0.2
@@ -5051,8 +5051,8 @@ packages:
   hoist-non-react-statics@3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
 
-  hono@4.6.2:
-    resolution: {integrity: sha512-v+39817TgAhetmHUEli8O0uHDmxp2Up3DnhS4oUZXOl5IQ9np9tYtldd42e5zgdLVS0wsOoXQNZ6mx+BGmEvCA==}
+  hono@4.6.3:
+    resolution: {integrity: sha512-0LeEuBNFeSHGqZ9sNVVgZjB1V5fmhkBSB0hZrpqStSMLOWgfLy0dHOvrjbJh0H2khsjet6rbHfWTHY0kpYThKQ==}
     engines: {node: '>=16.9.0'}
 
   hosted-git-info@3.0.8:
@@ -9577,13 +9577,13 @@ snapshots:
     dependencies:
       '@hapi/hoek': 9.3.0
 
-  '@hono/node-server@1.13.1(hono@4.6.2)':
+  '@hono/node-server@1.13.1(hono@4.6.3)':
     dependencies:
-      hono: 4.6.2
+      hono: 4.6.3
 
-  '@hono/zod-validator@0.2.2(hono@4.6.2)(zod@3.23.8)':
+  '@hono/zod-validator@0.2.2(hono@4.6.3)(zod@3.23.8)':
     dependencies:
-      hono: 4.6.2
+      hono: 4.6.3
       zod: 3.23.8
 
   '@hookform/resolvers@3.9.0(react-hook-form@7.53.0(react@18.3.1))':
@@ -14379,7 +14379,7 @@ snapshots:
     dependencies:
       react-is: 16.13.1
 
-  hono@4.6.2: {}
+  hono@4.6.3: {}
 
   hosted-git-info@3.0.8:
     dependencies:
