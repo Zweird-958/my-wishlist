@@ -1,3 +1,34 @@
 {
-  "hello": "Hello"
+  "hello": "Hello",
+  "forms": {
+    "username": "Username",
+    "password": "Password",
+    "email": "Email",
+    "signIn": {
+      "title": "Sign In",
+      "description": "Welcome back! Please enter your details.",
+      "submit": "Sign In",
+      "dontHaveAccount": "Don't have an account?"
+    },
+    "signUp": {
+      "title": "Sign Up",
+      "description": "Welcome! Create your account here.",
+      "submit": "Sign Up",
+      "alreadyHaveAccount": "Already have an account?"
+    }
+  },
+  "errors": {
+    "email": {
+      "required": "Email is required",
+      "invalid": "Invalid email"
+    },
+    "password": {
+      "required": "Password is required",
+      "length": "Password must be at least 8 characters"
+    },
+    "username": {
+      "required": "Username is required",
+      "length": "Username must be at least 3 characters"
+    }
+  }
 }
