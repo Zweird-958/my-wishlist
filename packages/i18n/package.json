@@ -16,7 +16,7 @@
     "@formatjs/intl-localematcher": "^0.5.4",
     "@my-wishlist/config": "workspace:*",
     "@my-wishlist/schemas": "workspace:*",
-    "@tauri-apps/plugin-os": "^2.0.0-rc.1",
+    "@tauri-apps/plugin-os": "^2.0.0",
     "@tauri-apps/plugin-store": "^2.0.0-rc.1",
     "i18next": "^23.15.1",
     "i18next-browser-languagedetector": "^8.0.0",
