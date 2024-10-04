@@ -31,18 +31,21 @@ const inputColors = cva("", {
       primary: "primary",
       danger: "danger",
       success: "success",
+      warning: "warning",
     },
     focused: {
       card: "card/80",
       primary: "primary/80",
       danger: "danger/80",
       success: "success/80",
+      warning: "warning/80",
     },
     placeholder: {
       card: "foreground",
       primary: "primary-foreground",
       danger: "danger-foreground",
       success: "success-foreground",
+      warning: "warning-foreground",
     },
   },
 })
@@ -54,6 +57,7 @@ const inputVariants = cva("flex-1", {
       primary: "text-primary-foreground",
       danger: "text-danger-foreground",
       success: "text-success-foreground",
+      warning: "text-warning-foreground",
     },
   },
 })

@@ -11,9 +11,11 @@ const textVariants = cva("", {
       success: "text-success",
       danger: "text-danger",
       foreground: "text-foreground",
+      warning: "text-warning",
       "primary-foreground": "text-primary-foreground",
       "success-foreground": "text-success-foreground",
       "danger-foreground": "text-danger-foreground",
+      "warning-foreground": "text-warning-foreground",
     },
   },
   defaultVariants: {
