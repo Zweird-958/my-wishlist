@@ -25,6 +25,10 @@ export default {
           DEFAULT: "#FF4136",
           foreground: "#FFF",
         },
+        warning: {
+          DEFAULT: "#FFA500",
+          foreground: "#FFF",
+        },
         foreground: "#000000",
         background: "#FFF",
         card: { DEFAULT: "#d4d4d8", foreground: "#000000" },

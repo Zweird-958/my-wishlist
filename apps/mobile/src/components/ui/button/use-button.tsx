@@ -15,28 +15,32 @@ import {
 
 import { useTheme } from "@/components/contexts/ThemeContext"
 
-const buttonVariants = cva(
-  "flex flex-row justify-center items-center p-3 w-full",
-  {
-    variants: {
-      radius: {
-        small: "rounded-sm",
-        medium: "rounded-md",
-        large: "rounded-lg",
-        full: "rounded-full",
-      },
-      color: {
-        primary: "bg-primary",
-        success: "bg-success",
-        danger: "bg-danger",
-      },
+const buttonVariants = cva("flex flex-row justify-center items-center p-3", {
+  variants: {
+    radius: {
+      small: "rounded-sm",
+      medium: "rounded-md",
+      large: "rounded-lg",
+      full: "rounded-full",
     },
-    defaultVariants: {
-      radius: "medium",
-      color: "primary",
+    color: {
+      primary: "bg-primary",
+      success: "bg-success",
+      danger: "bg-danger",
+      warning: "bg-warning",
+    },
+    isFullWidth: {
+      true: "w-full",
+    },
+    isIconOnly: {
+      true: "p-2",
     },
   },
-)
+  defaultVariants: {
+    radius: "medium",
+    color: "primary",
+  },
+})
 
 export type UseButtonProps = {
   ref?: Ref<View> | null
@@ -55,6 +59,8 @@ const useButton = ({
   role,
   isLoading = false,
   isDisabled: isDisabledProp,
+  isFullWidth,
+  isIconOnly,
   children,
   isText,
   onPress,
@@ -101,7 +107,7 @@ const useButton = ({
     () => ({
       style: [
         animatedStyle,
-        tw.style(buttonVariants({ radius, color }), {
+        tw.style(buttonVariants({ radius, color, isFullWidth, isIconOnly }), {
           "opacity-disabled": isDisabled,
         }),
         style,
@@ -116,6 +122,7 @@ const useButton = ({
       color,
       handlePress,
       isDisabled,
+      isFullWidth,
       isLoading,
       props,
       radius,

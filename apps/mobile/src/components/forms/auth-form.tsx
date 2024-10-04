@@ -73,7 +73,7 @@ const AuthForm = ({ onSubmit, authType, control, isLoading }: Props) => {
           name="password"
         />
 
-        <Button onPress={onSubmit} isText isLoading={isLoading}>
+        <Button onPress={onSubmit} isText isFullWidth isLoading={isLoading}>
           {t(`forms.${authType}.submit`)}
         </Button>
       </View>
