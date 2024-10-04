@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useMutation } from "@tanstack/react-query"
+import { useRouter } from "expo-router"
 import { useForm } from "react-hook-form"
 
 import { signInSchema } from "@my-wishlist/schemas"
@@ -11,6 +12,7 @@ import AuthForm from "@/components/forms/auth-form"
 
 const SignIn = () => {
   const { signIn } = useSession()
+  const router = useRouter()
   const { control, handleSubmit } = useForm({
     defaultValues: {
       email: "",
@@ -20,7 +22,10 @@ const SignIn = () => {
   })
   const { mutate, isPending } = useMutation({
     mutationFn: (data: SignInData) => api.post<string>("/sign-in", data),
-    onSuccess: ({ result }) => signIn(result),
+    onSuccess: async ({ result }) => {
+      await signIn(result)
+      router.replace("/")
+    },
   })
   const onSubmit = handleSubmit((data) => mutate(data))
 

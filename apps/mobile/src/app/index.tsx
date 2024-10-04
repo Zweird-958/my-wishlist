@@ -1,36 +1,21 @@
-import { Link, Stack } from "expo-router"
-import { View } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
+import { FlatList, View } from "react-native"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
-import { Button } from "@/components/ui/button"
-import { Text } from "@/components/ui/text"
+import { useWishlist } from "@/components/contexts/WishlistContext"
+import WishCard from "@/components/wishlist/wish-card"
 
 const Index = () => {
   const { tw } = useTheme()
+  const { wishlist } = useWishlist()
 
   return (
-    <SafeAreaView>
-      <Stack.Screen options={{ title: "Home Page" }} />
-
-      <View style={tw.style("px-20 gap-4")}>
-        <Link style={tw.style("text-foreground")} href="/sign-in">
-          Sign In
-        </Link>
-        <Button radius="small">
-          <Text>Test</Text>
-        </Button>
-        <Button radius="medium" color="success">
-          <Text>Test</Text>
-        </Button>
-        <Button radius="large" color="danger">
-          <Text>Test</Text>
-        </Button>
-        <Button radius="full">
-          <Text>Test</Text>
-        </Button>
-      </View>
-    </SafeAreaView>
+    <FlatList
+      data={wishlist}
+      style={tw.style("px-6 pt-4")}
+      renderItem={({ item: wish }) => <WishCard key={wish.id} wish={wish} />}
+      ItemSeparatorComponent={() => <View style={tw.style("h-4")} />}
+      ListFooterComponent={() => <View style={tw.style("h-12")} />}
+    />
   )
 }
 

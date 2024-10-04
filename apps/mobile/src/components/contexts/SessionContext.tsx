@@ -1,5 +1,11 @@
 import * as SecureStore from "expo-secure-store"
-import { type ReactNode, createContext, useContext, useState } from "react"
+import {
+  type ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react"
 
 import config from "@/utils/config"
 
@@ -18,6 +24,16 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
     await SecureStore.setItemAsync(config.store.session, response)
     setSession(response)
   }
+
+  useEffect(() => {
+    void (async () => {
+      const token = await SecureStore.getItemAsync(config.store.session)
+
+      if (token) {
+        setSession(token)
+      }
+    })()
+  }, [])
 
   return (
     <SessionContext.Provider value={{ session, signIn }}>

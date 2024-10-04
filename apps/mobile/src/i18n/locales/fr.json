@@ -1,5 +1,7 @@
 {
-  "hello": "Bonjour",
+  "common": {
+    "buy": "Acheter"
+  },
   "forms": {
     "username": "Nom d'utilisateur",
     "password": "Mot de passe",
