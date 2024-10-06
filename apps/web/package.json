@@ -14,7 +14,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.665.0",
     "@hono/node-server": "^1.13.1",
-    "@hono/zod-validator": "^0.3.0",
+    "@hono/zod-validator": "^0.4.1",
     "@my-wishlist/db": "workspace:*",
     "@my-wishlist/i18n": "workspace:*",
     "@my-wishlist/schemas": "workspace:*",
