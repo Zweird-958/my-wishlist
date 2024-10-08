@@ -12,6 +12,9 @@ export default {
       opacity: {
         disabled: "0.5",
       },
+      maxWidth: {
+        "2xs": "16rem",
+      },
       colors: {
         primary: {
           DEFAULT: "#ff6347",

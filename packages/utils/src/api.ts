@@ -4,7 +4,7 @@ import type { ApiResponse, Method } from "@my-wishlist/types"
 
 import config from "./config"
 
-const call =
+export const call =
   (method: Lowercase<Method>) =>
   async <TData, TMeta = object>(
     path: string,

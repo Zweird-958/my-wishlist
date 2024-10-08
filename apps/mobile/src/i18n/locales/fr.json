@@ -17,6 +17,14 @@
       "description": "Bienvenue! Créez votre compte ici.",
       "submit": "S'inscrire",
       "alreadyHaveAccount": "Vous avez déjà un compte ?"
+    },
+    "wish": {
+      "delete": {
+        "confirmation": "Êtes-vous sûr(e) de vouloir supprimer {name} ?",
+        "success": "Souhait supprimé avec succès",
+        "submit": "Supprimer",
+        "cancel": "Annuler"
+      }
     }
   },
   "errors": {

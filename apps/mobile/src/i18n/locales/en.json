@@ -17,6 +17,14 @@
       "description": "Welcome! Create your account here.",
       "submit": "Sign Up",
       "alreadyHaveAccount": "Already have an account?"
+    },
+    "wish": {
+      "delete": {
+        "confirmation": "Are you sure to delete {name} ?",
+        "success": "Wish deleted successfully",
+        "submit": "Delete",
+        "cancel": "Cancel"
+      }
     }
   },
   "errors": {

@@ -123,6 +123,7 @@ const useButton = ({
       handlePress,
       isDisabled,
       isFullWidth,
+      isIconOnly,
       isLoading,
       props,
       radius,
