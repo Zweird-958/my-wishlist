@@ -30,5 +30,19 @@
   "shared": {
     "with": "Liste d'envies partagée avec :",
     "withYou": "Liste d'envies partagée avec vous"
+  },
+  "metadata": {
+    "base": {
+      "title": "My Wishlist",
+      "description": "Créez et partagez votre liste d'envies."
+    },
+    "signIn": {
+      "title": "My Wishlist | Se connecter",
+      "description": "Connectez-vous pour accéder à votre liste d'envies."
+    },
+    "signUp": {
+      "title": "My Wishlist | S'inscrire",
+      "description": "Inscrivez-vous pour créer votre liste d'envies."
+    }
   }
 }
