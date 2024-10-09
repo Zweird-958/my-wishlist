@@ -139,8 +139,8 @@ importers:
         specifier: ^6.1.18
         version: 6.1.18(react-native@0.75.4(@babel/core@7.25.7)(@babel/preset-env@7.25.3(@babel/core@7.25.7))(@types/react@18.3.11)(react@18.3.1)(typescript@5.3.3))(react@18.3.1)
       '@tanstack/react-query':
-        specifier: ^5.59.0
-        version: 5.59.0(react@18.3.1)
+        specifier: ^5.59.3
+        version: 5.59.3(react@18.3.1)
       axios:
         specifier: ^1.7.7
         version: 1.7.7
@@ -500,8 +500,8 @@ importers:
         specifier: ^2.4.8
         version: 2.4.8(@types/react@18.3.3)(framer-motion@11.11.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.7(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.3.3)))
       '@tanstack/react-query':
-        specifier: ^5.59.0
-        version: 5.59.0(react@18.3.1)
+        specifier: ^5.59.3
+        version: 5.59.3(react@18.3.1)
       '@types/node':
         specifier: 'catalog:'
         version: 20.14.10
@@ -3522,8 +3522,8 @@ packages:
   '@tanstack/query-core@5.59.0':
     resolution: {integrity: sha512-WGD8uIhX6/deH/tkZqPNcRyAhDUqs729bWKoByYHSogcshXfFbppOdTER5+qY7mFvu8KEFJwT0nxr8RfPTVh0Q==}
 
-  '@tanstack/react-query@5.59.0':
-    resolution: {integrity: sha512-YDXp3OORbYR+8HNQx+lf4F73NoiCmCcSvZvgxE29OifmQFk0sBlO26NWLHpcNERo92tVk3w+JQ53/vkcRUY1hA==}
+  '@tanstack/react-query@5.59.3':
+    resolution: {integrity: sha512-FbzaQ6mQGQstj0z6B91yoUPzoc3nnU2tLkYZvmFSKWN5qj9kPTPsAbGGmQXn2NDj0nWhhAl+wOWWwSvsRqSN7Q==}
     peerDependencies:
       react: ^18 || ^19
 
@@ -12848,7 +12848,7 @@ snapshots:
 
   '@tanstack/query-core@5.59.0': {}
 
-  '@tanstack/react-query@5.59.0(react@18.3.1)':
+  '@tanstack/react-query@5.59.3(react@18.3.1)':
     dependencies:
       '@tanstack/query-core': 5.59.0
       react: 18.3.1
