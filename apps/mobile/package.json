@@ -29,7 +29,7 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-native": "0.75.4",
-    "react-native-css-interop": "^0.1.9",
+    "react-native-css-interop": "^0.1.11",
     "react-native-gesture-handler": "~2.20.0",
     "react-native-reanimated": "~3.15.4",
     "react-native-safe-area-context": "4.11.0",
