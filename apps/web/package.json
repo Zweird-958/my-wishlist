@@ -22,7 +22,7 @@
     "@my-wishlist/ui": "workspace:*",
     "@prisma/client": "^5.20.0",
     "clsx": "^2.1.1",
-    "hono": "^4.6.3",
+    "hono": "^4.6.4",
     "jsonwebtoken": "^9.0.2",
     "next": "catalog:",
     "react": "catalog:",
