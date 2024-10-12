@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@formatjs/intl-localematcher": "^0.5.4",
+    "@formatjs/intl-localematcher": "^0.5.5",
     "@my-wishlist/config": "workspace:*",
     "@my-wishlist/schemas": "workspace:*",
     "@tauri-apps/plugin-os": "^2.0.0",
