@@ -24,8 +24,17 @@
         "success": "Wish deleted successfully",
         "submit": "Delete",
         "cancel": "Cancel"
+      },
+      "add": {
+        "title": "Add to wishlist",
+        "submit": "Add",
+        "success": "Wish added successfully"
       }
-    }
+    },
+    "name": { "label": "Name", "placeholder": "Enter a name" },
+    "price": { "label": "Price", "placeholder": "Enter a price" },
+    "url": { "label": "Link", "placeholder": "https://example.com" },
+    "image": "Select an image"
   },
   "errors": {
     "email": {
@@ -39,6 +48,16 @@
     "username": {
       "required": "Username is required",
       "length": "Username must be at least 3 characters"
+    },
+    "price": {
+      "minimum": "Price must be superior to 0",
+      "number": "Price must be a number"
+    },
+    "name": {
+      "required": "Name is required"
+    },
+    "url": {
+      "invalid": "Invalid URL"
     }
   }
 }

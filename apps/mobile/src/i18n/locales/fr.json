@@ -24,8 +24,17 @@
         "success": "Souhait supprimé avec succès",
         "submit": "Supprimer",
         "cancel": "Annuler"
+      },
+      "add": {
+        "title": "Ajouter à la liste d'envie",
+        "submit": "Ajouter",
+        "success": "L'article a été ajouté à votre liste d'envie"
       }
-    }
+    },
+    "name": { "label": "Nom", "placeholder": "Entrer un nom" },
+    "price": { "label": "Prix", "placeholder": "Entrer un prix" },
+    "url": { "label": "Lien", "placeholder": "https://exemple.fr" },
+    "image": "Sélectionner une image"
   },
   "errors": {
     "email": {
@@ -39,6 +48,16 @@
     "username": {
       "required": "Nom d'utilisateur est requis",
       "length": "Votre nom d'utilisateur doit contenir au moins 3 caractères"
+    },
+    "price": {
+      "minimum": "Le prix doit être supérieur à 0",
+      "number": "Le prix doit être un nombre"
+    },
+    "name": {
+      "required": "Nom est requis"
+    },
+    "url": {
+      "invalid": "URL invalide"
     }
   }
 }

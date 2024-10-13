@@ -23,15 +23,16 @@ const Input = forwardRef<TextInput, InputProps>((props, ref) => {
     handleShowPassword,
     showPassword,
     handleFocusPressable,
-    inputRef,
-    ...otherProps
+    getInputProps,
+    label,
   } = useInput({ ...props, ref })
 
   return (
     <View style={tw.style("gap-1 w-full")} ref={containerRef}>
+      {label && <Text>{label}</Text>}
       <AnimatedPressable onPress={handleFocusPressable}>
         <Animated.View style={wrapperStyle}>
-          <TextInputAnimated ref={inputRef} {...otherProps} />
+          <TextInputAnimated {...getInputProps()} />
           {isPassword && (
             <TouchableOpacity onPress={handleShowPassword}>
               {showPassword ? (

@@ -1,18 +1,20 @@
 /* eslint-disable max-lines */
-import { type VariantProps, cva } from "class-variance-authority"
+import { type VariantProps } from "class-variance-authority"
 import {
   type ComponentPropsWithoutRef,
   type Ref,
+  useCallback,
   useMemo,
   useState,
 } from "react"
-import type {
-  NativeSyntheticEvent,
-  Text as RNText,
-  TextInput,
-  TextInputEndEditingEventData,
-  TextInputFocusEventData,
-  View,
+import {
+  type NativeSyntheticEvent,
+  type Text as RNText,
+  type TextInput,
+  type TextInputEndEditingEventData,
+  type TextInputFocusEventData,
+  type TextInputProps,
+  type View,
 } from "react-native"
 import {
   interpolateColor,
@@ -22,45 +24,8 @@ import {
 } from "react-native-reanimated"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
+import { inputColors, inputVariants } from "@/components/ui/input/variants"
 import useDOMRef from "@/hooks/useDOMRef"
-
-const inputColors = cva("", {
-  variants: {
-    color: {
-      card: "card",
-      primary: "primary",
-      danger: "danger",
-      success: "success",
-      warning: "warning",
-    },
-    focused: {
-      card: "card/80",
-      primary: "primary/80",
-      danger: "danger/80",
-      success: "success/80",
-      warning: "warning/80",
-    },
-    placeholder: {
-      card: "foreground",
-      primary: "primary-foreground",
-      danger: "danger-foreground",
-      success: "success-foreground",
-      warning: "warning-foreground",
-    },
-  },
-})
-
-const inputVariants = cva("flex-1", {
-  variants: {
-    color: {
-      card: "text-card-foreground",
-      primary: "text-primary-foreground",
-      danger: "text-danger-foreground",
-      success: "text-success-foreground",
-      warning: "text-warning-foreground",
-    },
-  },
-})
 
 type Event<T> = NativeSyntheticEvent<T>
 
@@ -70,9 +35,11 @@ export type UseInputProps = {
   containerRef?: Ref<View>
   ref?: Ref<TextInput>
   isPassword?: boolean
+  label?: string
 } & ComponentPropsWithoutRef<typeof TextInput> &
   Pick<VariantProps<typeof inputColors>, "color">
 
+// eslint-disable-next-line max-lines-per-function
 const useInput = ({
   isPassword,
   textContentType,
@@ -83,6 +50,9 @@ const useInput = ({
   onEndEditing,
   ref,
   style,
+  label,
+  containerRef,
+  errorRef,
   ...props
 }: UseInputProps) => {
   const { tw } = useTheme()
@@ -96,14 +66,20 @@ const useInput = ({
   const [isFocused, setIsFocused] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
 
-  const handleOnEndEditing = (event: Event<TextInputEndEditingEventData>) => {
-    setIsFocused(false)
-    onEndEditing?.(event)
-  }
-  const handleOnFocus = (event: Event<TextInputFocusEventData>) => {
-    setIsFocused(true)
-    onFocus?.(event)
-  }
+  const handleOnEndEditing = useCallback(
+    (event: Event<TextInputEndEditingEventData>) => {
+      setIsFocused(false)
+      onEndEditing?.(event)
+    },
+    [onEndEditing],
+  )
+  const handleOnFocus = useCallback(
+    (event: Event<TextInputFocusEventData>) => {
+      setIsFocused(true)
+      onFocus?.(event)
+    },
+    [onFocus],
+  )
 
   const handleShowPassword = () => {
     setShowPassword((prev) => !prev)
@@ -159,23 +135,44 @@ const useInput = ({
 
   const handleFocusPressable = () => inputRef.current?.focus()
 
+  const getInputProps = useCallback<() => TextInputProps>(
+    () => ({
+      textContentType: correctTextContentType,
+      autoComplete: correctAutoComplete,
+      onFocus: handleOnFocus,
+      onEndEditing: handleOnEndEditing,
+      placeholderTextColor: tw.color(
+        inputColors({ placeholder: errorMessage ? "danger" : color }),
+      ),
+      secureTextEntry: isPassword && !showPassword,
+      onBlur: handleOnEndEditing,
+      showPassword,
+      ref: inputRef,
+      style: tw.style(inputVariants({ color })),
+      ...props,
+    }),
+    [
+      color,
+      correctAutoComplete,
+      correctTextContentType,
+      errorMessage,
+      handleOnEndEditing,
+      handleOnFocus,
+      inputRef,
+      isPassword,
+      props,
+      showPassword,
+      tw,
+    ],
+  )
+
   return {
-    textContentType: correctTextContentType,
-    autoComplete: correctAutoComplete,
     isPassword,
-    onFocus: handleOnFocus,
-    onEndEditing: handleOnEndEditing,
-    placeholderTextColor: tw.color(
-      inputColors({ placeholder: errorMessage ? "danger" : color }),
-    ),
-    secureTextEntry: isPassword && !showPassword,
-    onBlur: handleOnEndEditing,
     handleShowPassword,
     showPassword,
     errorMessage,
     handleFocusPressable,
-    inputRef,
-    style: tw.style(inputVariants({ color })),
+    getInputProps,
     wrapperStyle: [
       errorMessage ? animatedErrorStyle : animatedStyle,
       tw.style(
@@ -183,7 +180,9 @@ const useInput = ({
       ),
       style,
     ],
-    ...props,
+    label,
+    containerRef,
+    errorRef,
   }
 }
 

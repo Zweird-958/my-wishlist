@@ -16,6 +16,7 @@ import api from "@/utils/api"
 type Context = {
   wishlist: Wish[]
   removeWish: (id: number) => void
+  addWish: (wish: Wish) => void
   selectedWish: Wish | null
   selectWish: (wishId: Wish["id"]) => void
 }
@@ -46,6 +47,10 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     setWishlist((prev) => prev.filter((wish) => wish.id !== id))
   }, [])
 
+  const addWish = useCallback((wish: Wish) => {
+    setWishlist((prev) => [...prev, wish])
+  }, [])
+
   useEffect(() => {
     if (data) {
       setWishlist(data)
@@ -54,7 +59,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <WishlistContext.Provider
-      value={{ wishlist, removeWish, selectWish, selectedWish }}
+      value={{ wishlist, removeWish, addWish, selectWish, selectedWish }}
     >
       {children}
     </WishlistContext.Provider>

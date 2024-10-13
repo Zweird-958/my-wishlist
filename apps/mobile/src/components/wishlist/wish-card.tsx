@@ -1,4 +1,3 @@
-import { Image, ImageBackground } from "expo-image"
 import { Trash2 } from "lucide-react-native"
 import { useTranslation } from "react-i18next"
 import { Linking, View } from "react-native"
@@ -10,6 +9,7 @@ import { useWishlist } from "@/components/contexts/WishlistContext"
 import { Button } from "@/components/ui/button"
 import { Card, CardBody, CardFooter, CardHeader } from "@/components/ui/card"
 import { Text } from "@/components/ui/text"
+import WishImage from "@/components/wishlist/wish-image"
 
 type Props = {
   wish: Wish
@@ -49,18 +49,7 @@ const WishCard = ({ wish, setOpen }: Props) => {
         </Button>
       </CardHeader>
       <CardBody style={tw.style("p-0")}>
-        <ImageBackground
-          source={image}
-          style={tw.style("w-full h-full")}
-          imageStyle={tw.style("rounded-md")}
-          blurRadius={5}
-        >
-          <Image
-            source={image}
-            contentFit="contain"
-            style={tw.style("w-full h-full")}
-          />
-        </ImageBackground>
+        <WishImage image={image} />
       </CardBody>
 
       <CardFooter

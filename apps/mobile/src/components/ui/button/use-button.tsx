@@ -28,6 +28,7 @@ const buttonVariants = cva("flex flex-row justify-center items-center p-3", {
       success: "bg-success",
       danger: "bg-danger",
       warning: "bg-warning",
+      card: "bg-card",
     },
     isFullWidth: {
       true: "w-full",
