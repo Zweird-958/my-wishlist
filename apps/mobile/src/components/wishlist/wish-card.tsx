@@ -1,4 +1,5 @@
-import { Trash2 } from "lucide-react-native"
+import { useRouter } from "expo-router"
+import { SquarePen, Trash2 } from "lucide-react-native"
 import { useTranslation } from "react-i18next"
 import { Linking, View } from "react-native"
 
@@ -21,6 +22,7 @@ const WishCard = ({ wish, setOpen }: Props) => {
   const { tw } = useTheme()
   const { t } = useTranslation()
   const { selectWish } = useWishlist()
+  const router = useRouter()
 
   const handleShowModal = () => {
     setOpen(true)
@@ -41,11 +43,18 @@ const WishCard = ({ wish, setOpen }: Props) => {
     await Linking.openURL(link)
   }
 
+  const handleOnEdit = () => {
+    router.push(`/wish/${wish.id}`)
+  }
+
   return (
     <Card style={tw.style("h-[20rem]")} isFooterBlurred>
-      <CardHeader style={tw.style("absolute top-0 z-10")}>
+      <CardHeader style={tw.style("absolute top-0 z-10 justify-between")}>
         <Button isIconOnly color="danger" onPress={handleShowModal}>
           <Trash2 size={16} color={tw.color("danger-foreground")} />
+        </Button>
+        <Button isIconOnly color="warning" onPress={handleOnEdit}>
+          <SquarePen size={16} color={tw.color("warning-foreground")} />
         </Button>
       </CardHeader>
       <CardBody style={tw.style("p-0")}>

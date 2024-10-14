@@ -17,6 +17,8 @@ type Context = {
   wishlist: Wish[]
   removeWish: (id: number) => void
   addWish: (wish: Wish) => void
+  getWish: (id: number) => Wish | undefined
+  editWish: (wish: Wish) => void
   selectedWish: Wish | null
   selectWish: (wishId: Wish["id"]) => void
 }
@@ -51,6 +53,15 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     setWishlist((prev) => [...prev, wish])
   }, [])
 
+  const editWish = useCallback((wish: Wish) => {
+    setWishlist((prev) => prev.map((w) => (w.id === wish.id ? wish : w)))
+  }, [])
+
+  const getWish = useCallback(
+    (id: number) => wishlist.find((wish) => wish.id === id),
+    [wishlist],
+  )
+
   useEffect(() => {
     if (data) {
       setWishlist(data)
@@ -59,7 +70,15 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <WishlistContext.Provider
-      value={{ wishlist, removeWish, addWish, selectWish, selectedWish }}
+      value={{
+        wishlist,
+        removeWish,
+        addWish,
+        getWish,
+        editWish,
+        selectWish,
+        selectedWish,
+      }}
     >
       {children}
     </WishlistContext.Provider>
