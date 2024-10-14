@@ -30,7 +30,7 @@
     "react-hot-toast": "^2.4.1",
     "tailwindcss": "catalog:",
     "zod": "^3.23.8",
-    "zustand": "^4.5.5"
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@my-wishlist/eslint": "workspace:*",
