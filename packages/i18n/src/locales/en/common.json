@@ -30,5 +30,19 @@
   "shared": {
     "with": "Wishlist shared with :",
     "withYou": "Wishlist shared with you"
+  },
+  "metadata": {
+    "base": {
+      "title": "My Wishlist",
+      "description": "Create and share your wishlist."
+    },
+    "signIn": {
+      "title": "My Wishlist | Sign in",
+      "description": "Sign in to access your wishlist."
+    },
+    "signUp": {
+      "title": "My Wishlist | Sign up",
+      "description": "Sign up to create your wishlist."
+    }
   }
 }
