@@ -1,6 +1,9 @@
 {
   "common": {
-    "buy": "Acheter"
+    "buy": "Acheter",
+    "shared": {
+      "withYou": "Liste d'envies partagée avec vous"
+    }
   },
   "forms": {
     "username": "Nom d'utilisateur",
@@ -66,10 +69,12 @@
       "signIn": "Connexion",
       "signUp": "Inscription",
       "createWish": "Créer un souhait",
-      "editWish": "Modifier le souhait"
+      "editWish": "Modifier le souhait",
+      "sharedWishlist": "Liste d'envies partagées"
     },
     "drawer": {
-      "home": "Accueil"
+      "home": "Accueil",
+      "sharedWishlist": "Liste d'envies partagées"
     }
   }
 }

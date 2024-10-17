@@ -17,13 +17,14 @@ export const DRAWER_ITEMS: DrawerItem[] = [
     href: "/",
     name: "index",
   },
+  {
+    label: "sharedWishlist",
+    href: "/wish/shared",
+    name: "wish/shared",
+  },
 ]
 
 export const ROUTES: Route[] = [
-  {
-    label: "home",
-    name: "index",
-  },
   {
     label: "signIn",
     name: "sign-in",

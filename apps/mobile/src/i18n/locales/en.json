@@ -1,6 +1,9 @@
 {
   "common": {
-    "buy": "Buy"
+    "buy": "Buy",
+    "shared": {
+      "withYou": "Wishlist shared with you"
+    }
   },
   "forms": {
     "username": "Username",
@@ -66,10 +69,12 @@
       "signIn": "Sign in",
       "signUp": "Sign up",
       "createWish": "Create a wish",
-      "editWish": "Edit wish"
+      "editWish": "Edit wish",
+      "sharedWishlist": "Shared wishlist"
     },
     "drawer": {
-      "home": "Home"
+      "home": "Home",
+      "sharedWishlist": "Shared wishlist"
     }
   }
 }
