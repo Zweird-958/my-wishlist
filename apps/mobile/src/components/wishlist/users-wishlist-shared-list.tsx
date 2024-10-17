@@ -17,7 +17,7 @@ const UsersWishlistSharedList = () => {
       data={usersWishlistShared}
       style={tw.style("px-6 pt-4 grow")}
       renderItem={({ item: user }) => (
-        <Link href={"/wish/create"} asChild>
+        <Link href={`/wish/shared/${user.id}`} asChild>
           <TouchableOpacity style={tw.style("flex-row justify-between")}>
             <Text>{user.username}</Text>
             <ChevronRight size={24} color={tw.color("foreground")} />

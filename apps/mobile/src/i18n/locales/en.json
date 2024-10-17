@@ -70,7 +70,9 @@
       "signUp": "Sign up",
       "createWish": "Create a wish",
       "editWish": "Edit wish",
-      "sharedWishlist": "Shared wishlist"
+      "sharedWishlist": "Shared wishlist",
+      "userWishlistShared": "{username}'s wishlist",
+      "loading": "Loading..."
     },
     "drawer": {
       "home": "Home",

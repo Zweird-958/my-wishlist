@@ -12,12 +12,14 @@ import { Card, CardBody, CardFooter, CardHeader } from "@/components/ui/card"
 import { Text } from "@/components/ui/text"
 import WishImage from "@/components/wishlist/wish-image"
 
+type Editable = { isEditable: true; setOpen: (open: boolean) => void }
+type NotEditable = { isEditable?: false; setOpen?: never }
+
 type Props = {
   wish: Wish
-  setOpen: (open: boolean) => void
-}
+} & (Editable | NotEditable)
 
-const WishCard = ({ wish, setOpen }: Props) => {
+const WishCard = ({ wish, isEditable = false, setOpen }: Props) => {
   const { image, name, link, priceFormatted } = wish
   const { tw } = useTheme()
   const { t } = useTranslation()
@@ -25,7 +27,11 @@ const WishCard = ({ wish, setOpen }: Props) => {
   const router = useRouter()
 
   const handleShowModal = () => {
-    setOpen(true)
+    if (!isEditable) {
+      return
+    }
+
+    setOpen?.(true)
     selectWish(wish.id)
   }
 
@@ -49,14 +55,16 @@ const WishCard = ({ wish, setOpen }: Props) => {
 
   return (
     <Card style={tw.style("h-[20rem]")} isFooterBlurred>
-      <CardHeader style={tw.style("absolute top-0 z-10 justify-between")}>
-        <Button isIconOnly color="danger" onPress={handleShowModal}>
-          <Trash2 size={16} color={tw.color("danger-foreground")} />
-        </Button>
-        <Button isIconOnly color="warning" onPress={handleOnEdit}>
-          <SquarePen size={16} color={tw.color("warning-foreground")} />
-        </Button>
-      </CardHeader>
+      {isEditable && (
+        <CardHeader style={tw.style("absolute top-0 z-10 justify-between")}>
+          <Button isIconOnly color="danger" onPress={handleShowModal}>
+            <Trash2 size={16} color={tw.color("danger-foreground")} />
+          </Button>
+          <Button isIconOnly color="warning" onPress={handleOnEdit}>
+            <SquarePen size={16} color={tw.color("warning-foreground")} />
+          </Button>
+        </CardHeader>
+      )}
       <CardBody style={tw.style("p-0")}>
         <WishImage image={image} />
       </CardBody>

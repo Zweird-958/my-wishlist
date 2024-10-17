@@ -70,7 +70,9 @@
       "signUp": "Inscription",
       "createWish": "Créer un souhait",
       "editWish": "Modifier le souhait",
-      "sharedWishlist": "Liste d'envies partagées"
+      "sharedWishlist": "Liste d'envies partagées",
+      "userWishlistShared": "Liste d'envies de {username}",
+      "loading": "Chargement..."
     },
     "drawer": {
       "home": "Accueil",
