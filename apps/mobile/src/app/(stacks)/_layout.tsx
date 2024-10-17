@@ -20,6 +20,7 @@ const StacksLayout = () => {
       {DRAWER_ITEMS.map(({ name, label }) => (
         <Stack.Screen
           name={name}
+          key={name}
           options={{
             animation: "none",
             headerTitle: () => <HeaderTitle label={label} />,
@@ -30,6 +31,7 @@ const StacksLayout = () => {
         ({ name }) => !DRAWER_ITEMS.some((item) => item.name === name),
       ).map(({ name, label }) => (
         <Stack.Screen
+          key={name}
           name={name}
           options={{ headerTitle: () => <HeaderTitle label={label} /> }}
         />
