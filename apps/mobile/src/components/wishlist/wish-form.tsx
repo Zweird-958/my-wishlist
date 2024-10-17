@@ -36,7 +36,7 @@ type Props = {
 
 const formSchema = wishFormSchema.extend({
   currency: currencySchema.default(config.defaultCurrency),
-  price: priceSchema.transform((value) => value.toString()),
+  price: priceSchema.default(1).transform((value) => value.toString()),
 })
 
 const WishForm = ({ wish, onSubmit, isLoading }: Props) => {
