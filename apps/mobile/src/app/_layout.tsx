@@ -1,9 +1,10 @@
-import { SplashScreen, Stack, useRouter } from "expo-router"
+import { SplashScreen, useRouter } from "expo-router"
 import * as SecureStore from "expo-secure-store"
 import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 
+import Drawer from "@/components/layout/drawer"
 import Providers from "@/components/providers"
 import config from "@/utils/config"
 import getLocale from "@/utils/get-locale"
@@ -33,7 +34,7 @@ const RootLayout = () => {
   return (
     <Providers>
       <GestureHandlerRootView>
-        <Stack />
+        <Drawer />
       </GestureHandlerRootView>
     </Providers>
   )

@@ -59,5 +59,17 @@
     "url": {
       "invalid": "Invalid URL"
     }
+  },
+  "layout": {
+    "header": {
+      "home": "My Wishlist",
+      "signIn": "Sign in",
+      "signUp": "Sign up",
+      "createWish": "Create a wish",
+      "editWish": "Edit wish"
+    },
+    "drawer": {
+      "home": "Home"
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Link, Stack } from "expo-router"
+import { Link } from "expo-router"
 import type { ComponentProps } from "react"
 import type { Control } from "react-hook-form"
 import { useTranslation } from "react-i18next"
@@ -38,8 +38,6 @@ const AuthForm = ({ onSubmit, authType, control, isLoading }: Props) => {
 
   return (
     <View style={tw.style("flex-1 gap-12 p-8")}>
-      <Stack.Screen options={{ title: t(`forms.${authType}.title`) }} />
-
       <View style={tw.style("gap-3 items-center mt-20")}>
         <Text style={tw.style("text-2xl font-semibold")}>
           {t(`forms.${authType}.title`)}
