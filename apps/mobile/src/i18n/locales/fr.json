@@ -2,7 +2,10 @@
   "common": {
     "buy": "Acheter",
     "shared": {
-      "withYou": "Liste d'envies partagée avec vous"
+      "withYou": "Liste d'envies partagée avec vous",
+      "emptyWithYou": "Aucune liste d'envies partagée avec vous",
+      "with": "Liste d'envies partagée avec :",
+      "empyWith": "Vous ne partagez votre liste d'envies avec personne"
     }
   },
   "forms": {

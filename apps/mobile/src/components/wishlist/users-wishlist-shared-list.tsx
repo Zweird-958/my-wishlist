@@ -1,31 +1,19 @@
-import { Link } from "expo-router"
-import { ChevronRight } from "lucide-react-native"
-import { FlatList, View } from "react-native"
-import { TouchableOpacity } from "react-native-gesture-handler"
+import { useTranslation } from "react-i18next"
 
-import { useTheme } from "@/components/contexts/ThemeContext"
 import { useUsersWishlistShared } from "@/components/contexts/users-wishlist-shared-context"
-import CenteredSpinner from "@/components/ui/spinner/centered-spinner"
-import { Text } from "@/components/ui/text"
+import UsersSharedList from "@/components/wishlist/shared/users-shared-list"
 
 const UsersWishlistSharedList = () => {
   const { usersWishlistShared, isLoading } = useUsersWishlistShared()
-  const { tw } = useTheme()
+  const { t } = useTranslation()
 
   return (
-    <FlatList
-      data={usersWishlistShared}
-      style={tw.style("px-6 pt-4 grow")}
-      renderItem={({ item: user }) => (
-        <Link href={`/wish/shared/${user.id}`} asChild>
-          <TouchableOpacity style={tw.style("flex-row justify-between")}>
-            <Text>{user.username}</Text>
-            <ChevronRight size={24} color={tw.color("foreground")} />
-          </TouchableOpacity>
-        </Link>
-      )}
-      ListEmptyComponent={isLoading ? <CenteredSpinner /> : <Text>Empty</Text>}
-      ItemSeparatorComponent={() => <View style={tw.style("h-4")} />}
+    <UsersSharedList
+      items={usersWishlistShared}
+      isLoading={isLoading}
+      type="sharedWith"
+      title={t("common.shared.withYou")}
+      emptyText={t("common.shared.emptyWithYou")}
     />
   )
 }
