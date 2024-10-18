@@ -15,7 +15,7 @@ export const DarkTheme: Theme["colors"] = {
 export const LightTheme: Theme["colors"] = {
   primary: "#ff6347",
   background: "#FFF",
-  card: "#d4d4d8",
+  card: "#3F3F46",
   text: "#000000",
   border: "#ff6347",
   notification: "#ff6347",
@@ -28,7 +28,8 @@ export const darkConfig = {
       colors: {
         foreground: "#FFF",
         background: "#000000",
-        card: { DEFAULT: "#3f3f46", foreground: "#FFF" },
+        card: { DEFAULT: "#18181B", foreground: "#FFF" },
+        content: { DEFAULT: "#3f3f46", foreground: "#FFF" },
       },
     },
   },
