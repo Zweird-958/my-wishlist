@@ -46,6 +46,12 @@
       "information": "Are you sure to stop sharing your wishlist with {username} ?",
       "cancel": "Cancel",
       "submit": "Confirm"
+    },
+    "share": {
+      "title": "Share your wishlist",
+      "cancel": "Cancel",
+      "submit": "Share",
+      "success": "Wishlist shared successfully with {username} !"
     }
   },
   "errors": {

@@ -17,9 +17,10 @@ import api from "@/utils/api"
 type Context = {
   wishlistAccessUsers: UserShared[]
   isLoading: boolean
-  removeUser: (userId: number) => void
   selectedUser: UserShared | null
   setSelectedUser: Dispatch<SetStateAction<UserShared | null>>
+  removeUser: (userId: number) => void
+  addUser: (user: UserShared) => void
 }
 
 export const WishlistAccessUsersContext = createContext<Context>({} as Context)
@@ -58,14 +59,19 @@ export const WishlistAccessUsersProvider = ({
     [setWishlistAccessUsers],
   )
 
+  const addUser = useCallback((user: UserShared) => {
+    setWishlistAccessUsers((prev) => [...prev, user])
+  }, [])
+
   return (
     <WishlistAccessUsersContext.Provider
       value={{
         wishlistAccessUsers,
         isLoading: isPending,
-        removeUser,
         selectedUser,
         setSelectedUser,
+        removeUser,
+        addUser,
       }}
     >
       {children}
