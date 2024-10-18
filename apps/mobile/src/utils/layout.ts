@@ -26,19 +26,22 @@ export const DRAWER_ITEMS: DrawerItem[] = [
 
 export const ROUTES: Route[] = [
   {
-    label: "signIn",
-    name: "sign-in",
-  },
-  {
-    label: "signUp",
-    name: "sign-up",
-  },
-  {
     label: "editWish",
     name: "wish/[wishId]",
   },
   {
     label: "createWish",
     name: "wish/create",
+  },
+]
+
+export const ROUTES_WITHOUT_DRAWER: Route[] = [
+  {
+    label: "signIn",
+    name: "sign-in",
+  },
+  {
+    label: "signUp",
+    name: "sign-up",
   },
 ]

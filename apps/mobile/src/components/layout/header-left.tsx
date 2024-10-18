@@ -7,7 +7,9 @@ import { TouchableOpacity } from "react-native"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
 
-const HeaderLeft = ({ canGoBack }: HeaderBackButtonProps) => {
+type Props = { hideDrawer?: boolean } & HeaderBackButtonProps
+
+const HeaderLeft = ({ canGoBack, hideDrawer }: Props) => {
   const navigation = useNavigation()
 
   const openDrawer = () => {
@@ -17,14 +19,18 @@ const HeaderLeft = ({ canGoBack }: HeaderBackButtonProps) => {
   const handleBack = () => navigation.goBack()
   const { tw } = useTheme()
   const drawerIsOpen = useDrawerStatus() === "open"
-  const isMenu = canGoBack && !drawerIsOpen
+  const canBack = canGoBack && !drawerIsOpen
+
+  if (!canBack && hideDrawer) {
+    return null
+  }
 
   return (
     <TouchableOpacity
-      onPress={isMenu ? handleBack : openDrawer}
+      onPress={canBack ? handleBack : openDrawer}
       style={tw.style("px-4")}
     >
-      {isMenu ? (
+      {canBack ? (
         <ChevronLeft size={24} color={tw.color("primary")} />
       ) : (
         <Menu size={24} color={tw.color("primary")} />
