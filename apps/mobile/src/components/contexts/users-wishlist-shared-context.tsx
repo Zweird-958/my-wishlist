@@ -31,7 +31,7 @@ export const UsersWishlistSharedProvider = ({
 
   const { data, isPending } = useQuery({
     queryKey: ["usersWishlistShared"],
-    queryFn: () => api.get<UserShared[]>("/share/users"),
+    queryFn: () => api.get<UserShared[]>("/share/wish"),
     enabled: usersWishlistShared.length === 0,
     select: ({ result }) => result,
   })
