@@ -40,7 +40,13 @@
     "name": { "label": "Name", "placeholder": "Enter a name" },
     "price": { "label": "Price", "placeholder": "Enter a price" },
     "url": { "label": "Link", "placeholder": "https://example.com" },
-    "image": "Select an image"
+    "image": "Select an image",
+    "unshare": {
+      "title": "Stop sharing your wishlist",
+      "information": "Are you sure to stop sharing your wishlist with {username} ?",
+      "cancel": "Cancel",
+      "submit": "Confirm"
+    }
   },
   "errors": {
     "email": {

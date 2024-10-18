@@ -40,7 +40,13 @@
     "name": { "label": "Nom", "placeholder": "Entrer un nom" },
     "price": { "label": "Prix", "placeholder": "Entrer un prix" },
     "url": { "label": "Lien", "placeholder": "https://exemple.fr" },
-    "image": "Sélectionner une image"
+    "image": "Sélectionner une image",
+    "unshare": {
+      "title": "Arrêter de partager votre liste d'envies",
+      "information": "Êtes-vous sûr(e) de vouloir arrêter de partager votre liste d'envies avec {username} ?",
+      "cancel": "Annuler",
+      "submit": "Confirmer"
+    }
   },
   "errors": {
     "email": {

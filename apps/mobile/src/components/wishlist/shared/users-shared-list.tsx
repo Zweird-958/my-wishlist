@@ -16,6 +16,7 @@ type Props = {
   title: string
   emptyText: string
   type: "shared" | "sharedWith"
+  onItemPressed?: (user: UserShared) => void
 }
 
 const UsersSharedList = ({
@@ -24,6 +25,7 @@ const UsersSharedList = ({
   type,
   title,
   emptyText,
+  onItemPressed,
 }: Props) => {
   const { tw } = useTheme()
 
@@ -38,10 +40,18 @@ const UsersSharedList = ({
         style={tw.style("px-6 grow")}
         renderItem={({ item: user }) =>
           type === "shared" ? (
-            <UsersSharedItem user={user} icon={Trash2} />
+            <UsersSharedItem
+              user={user}
+              icon={Trash2}
+              onPress={() => onItemPressed?.(user)}
+            />
           ) : (
             <Link href={`/wish/shared/${user.id}`} asChild>
-              <UsersSharedItem user={user} icon={ChevronRight} />
+              <UsersSharedItem
+                user={user}
+                icon={ChevronRight}
+                onPress={() => onItemPressed?.(user)}
+              />
             </Link>
           )
         }
