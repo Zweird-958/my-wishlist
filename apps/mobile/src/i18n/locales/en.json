@@ -5,7 +5,7 @@
       "withYou": "Wishlist shared with you",
       "emptyWithYou": "No wishlist shared with you",
       "with": "Wishlist shared with:",
-      "empyWith": "You don't share your wishlist with anyone"
+      "emptyWith": "You don't share your wishlist with anyone"
     }
   },
   "forms": {
