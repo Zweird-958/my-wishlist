@@ -93,7 +93,8 @@
     "drawer": {
       "home": "Home",
       "sharedWishlist": "Shared wishlist",
-      "settings": "Settings"
+      "settings": "Settings",
+      "signOut": "Sign out"
     }
   },
   "settings": {

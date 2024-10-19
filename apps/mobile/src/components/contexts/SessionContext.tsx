@@ -2,6 +2,7 @@ import * as SecureStore from "expo-secure-store"
 import {
   type ReactNode,
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -12,6 +13,7 @@ import config from "@/utils/config"
 type Context = {
   session: string | null
   signIn: (response: string) => Promise<void>
+  signOut: () => Promise<void>
 }
 
 export const SessionContext = createContext<Context>({} as Context)
@@ -25,6 +27,11 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
     setSession(response)
   }
 
+  const signOut = useCallback(async () => {
+    await SecureStore.deleteItemAsync(config.store.session)
+    setSession(null)
+  }, [])
+
   useEffect(() => {
     void (async () => {
       const token = await SecureStore.getItemAsync(config.store.session)
@@ -36,7 +43,7 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
   }, [])
 
   return (
-    <SessionContext.Provider value={{ session, signIn }}>
+    <SessionContext.Provider value={{ session, signIn, signOut }}>
       {children}
     </SessionContext.Provider>
   )

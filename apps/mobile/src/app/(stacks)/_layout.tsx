@@ -43,7 +43,7 @@ const StacksLayout = () => {
         headerStyle: tw.style("bg-card"),
       }}
     >
-      {DRAWER_ITEMS.map(({ name, label }) => (
+      {DRAWER_ITEMS.filter(({ href }) => href).map(({ name, label }) => (
         <Stack.Screen
           name={name}
           key={name}

@@ -1,10 +1,14 @@
 import type { Href } from "expo-router"
 
+export type FunctionName = "signOut"
+
 type DrawerItem = {
   label: string
-  href: Href<string>
   name: string
-}
+} & (
+  | { href: Href<string>; functionName?: never }
+  | { functionName: FunctionName; href?: never }
+)
 
 type Route = {
   label: string
@@ -26,6 +30,11 @@ export const DRAWER_ITEMS: DrawerItem[] = [
     label: "settings",
     href: "/settings",
     name: "settings",
+  },
+  {
+    label: "signOut",
+    functionName: "signOut",
+    name: "sign-out",
   },
 ]
 
