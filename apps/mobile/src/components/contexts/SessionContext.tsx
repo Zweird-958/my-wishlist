@@ -22,10 +22,10 @@ export const useSession = () => useContext(SessionContext)
 export const SessionProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<Context["session"]>(null)
 
-  const signIn = async (response: string) => {
+  const signIn = useCallback(async (response: string) => {
     await SecureStore.setItemAsync(config.store.session, response)
     setSession(response)
-  }
+  }, [])
 
   const signOut = useCallback(async () => {
     await SecureStore.deleteItemAsync(config.store.session)
