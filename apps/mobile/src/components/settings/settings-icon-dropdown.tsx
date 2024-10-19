@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react-native"
+import type { ReactNode } from "react"
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 
@@ -12,11 +13,18 @@ import {
   type Item,
 } from "@/components/ui/dropdown"
 
-type Props = { items: Item[]; icon: LucideIcon } & Required<
-  Pick<DropdownProps, "onChange">
->
+type Props = { items: Item[] } & (
+  | { icon: LucideIcon; trigger?: never }
+  | { trigger: ReactNode; icon?: never }
+) &
+  Required<Pick<DropdownProps, "onChange">>
 
-const SettingsIconDropdown = ({ items, onChange, icon: Icon }: Props) => {
+const SettingsIconDropdown = ({
+  items,
+  onChange,
+  icon: Icon,
+  trigger,
+}: Props) => {
   const { tw } = useTheme()
   const { t } = useTranslation()
 
@@ -24,7 +32,11 @@ const SettingsIconDropdown = ({ items, onChange, icon: Icon }: Props) => {
     <View style={tw.style("items-end flex-1")}>
       <Dropdown onChange={onChange}>
         <DropdownTrigger isIconOnly style={tw.style("size-10")}>
-          <Icon size={20} color={tw.color("card-foreground")} />
+          {Icon ? (
+            <Icon size={20} color={tw.color("card-foreground")} />
+          ) : (
+            trigger
+          )}
         </DropdownTrigger>
 
         <DropdownContent>
@@ -33,7 +45,7 @@ const SettingsIconDropdown = ({ items, onChange, icon: Icon }: Props) => {
               key={value}
               style={tw.style("px-12")}
               value={value}
-              label={t(`settings.${label}`)}
+              label={typeof label === "string" ? t(`settings.${label}`) : label}
               closeOnPress
             />
           ))}

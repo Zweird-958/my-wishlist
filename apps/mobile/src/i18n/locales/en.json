@@ -87,7 +87,8 @@
       "editWish": "Edit wish",
       "sharedWishlist": "Shared wishlist",
       "userWishlistShared": "{username}'s wishlist",
-      "loading": "Loading..."
+      "loading": "Loading...",
+      "settings": "Settings"
     },
     "drawer": {
       "home": "Home",
@@ -96,11 +97,15 @@
     }
   },
   "settings": {
+    "appSettings": "App settings",
     "theme": {
       "system": "System",
       "dark": "Dark",
       "light": "Light",
       "title": "Theme"
+    },
+    "language": {
+      "title": "Language"
     }
   }
 }

@@ -87,7 +87,8 @@
       "editWish": "Modifier le souhait",
       "sharedWishlist": "Liste d'envies partagées",
       "userWishlistShared": "Liste d'envies de {username}",
-      "loading": "Chargement..."
+      "loading": "Chargement...",
+      "settings": "Paramètres"
     },
     "drawer": {
       "home": "Accueil",
@@ -96,11 +97,15 @@
     }
   },
   "settings": {
+    "appSettings": "Paramètres de l'application",
     "theme": {
       "system": "Système",
       "dark": "Sombre",
       "light": "Clair",
       "title": "Thème"
+    },
+    "language": {
+      "title": "Langue"
     }
   }
 }

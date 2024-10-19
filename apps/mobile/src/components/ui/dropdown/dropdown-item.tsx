@@ -43,7 +43,7 @@ const DropdownItem = forwardRef<View, DropdownItemProps>(
         onPress={handleOnPress}
         color={color}
         style={[tw.style("w-full flex-col"), style as StyleProp<ViewStyle>]}
-        isText
+        isText={typeof label === "string"}
         {...props}
       >
         {label}

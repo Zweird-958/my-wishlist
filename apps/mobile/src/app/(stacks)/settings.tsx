@@ -1,36 +1,25 @@
-import { Moon, Sun } from "lucide-react-native"
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 
-import { type Theme, useTheme } from "@/components/contexts/ThemeContext"
+import { useTheme } from "@/components/contexts/ThemeContext"
+import LanguageDropdown from "@/components/settings/language-dropdown"
 import SectionItem from "@/components/settings/section-item"
 import SectionTitle from "@/components/settings/section-title"
-import SettingsIconDropdown from "@/components/settings/settings-icon-dropdown"
-import type { Item } from "@/components/ui/dropdown"
-
-const THEME_ITEMS = [
-  { label: "theme.system", value: "system" },
-  { label: "theme.light", value: "light" },
-  { label: "theme.dark", value: "dark" },
-]
+import ThemeDropdown from "@/components/settings/theme-dropdown"
 
 const Settings = () => {
-  const { tw, resolvedTheme, changeTheme } = useTheme()
-  const handleOnChange = async ({ value }: Item) => {
-    await changeTheme(value as Theme)
-  }
+  const { tw } = useTheme()
   const { t } = useTranslation()
 
   return (
     <View style={tw.style("p-4")}>
-      <SectionTitle title="Paramètres de l'application" />
+      <SectionTitle title={t("settings.appSettings")} />
       <View style={tw.style("gap-4")}>
         <SectionItem name={t("settings.theme.title")}>
-          <SettingsIconDropdown
-            onChange={handleOnChange}
-            items={THEME_ITEMS}
-            icon={resolvedTheme === "dark" ? Moon : Sun}
-          />
+          <ThemeDropdown />
+        </SectionItem>
+        <SectionItem name={t("settings.language.title")}>
+          <LanguageDropdown />
         </SectionItem>
       </View>
     </View>

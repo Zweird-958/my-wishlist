@@ -38,7 +38,7 @@ const DropdownContext = createContext<DropdownContextType>(
 
 export type Item = {
   value: string
-  label: string
+  label: string | ReactNode
 }
 
 export type DropdownContextProps = {
