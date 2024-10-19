@@ -42,7 +42,7 @@ const DropdownItem = forwardRef<View, DropdownItemProps>(
         ref={domRef}
         onPress={handleOnPress}
         color={color}
-        style={[tw.style("w-full"), style as StyleProp<ViewStyle>]}
+        style={[tw.style("w-full flex-col"), style as StyleProp<ViewStyle>]}
         isText
         {...props}
       >

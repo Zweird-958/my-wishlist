@@ -14,7 +14,7 @@ export const DarkTheme: Theme["colors"] = {
 
 export const LightTheme: Theme["colors"] = {
   primary: "#ff6347",
-  background: "#FFF",
+  background: "#FFFFFF",
   card: "#3F3F46",
   text: "#000000",
   border: "#ff6347",

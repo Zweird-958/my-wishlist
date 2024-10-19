@@ -1,8 +1,18 @@
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import {
+  type Theme as RNTheme,
   ThemeProvider as RNThemeProvider,
-  type Theme,
 } from "@react-navigation/native"
-import { type ReactNode, createContext, useContext } from "react"
+import {
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react"
 import { useColorScheme } from "react-native"
 import { create } from "twrnc"
 
@@ -12,17 +22,26 @@ import {
   darkConfig,
   lightConfig,
 } from "@/constants/themes"
+import config from "@/utils/config"
+
+export type Theme = "dark" | "light" | "system"
+export type ResolvedTheme = Exclude<Theme, "system">
 
 type Context = {
-  theme: Theme["colors"]
+  themeColors: RNTheme["colors"]
   tw: ReturnType<typeof create>
+  theme: Theme
+  setTheme: Dispatch<SetStateAction<Theme>>
+  resolvedTheme: ResolvedTheme
+  getTheme: () => Promise<Theme>
+  changeTheme: (newTheme: Theme) => Promise<void>
 }
 
 const ThemeContext = createContext<Context>({} as Context)
 
 type Props = {
-  darkTheme?: Theme["colors"]
-  lightTheme?: Theme["colors"]
+  darkTheme?: RNTheme["colors"]
+  lightTheme?: RNTheme["colors"]
   children: ReactNode
 }
 
@@ -32,12 +51,49 @@ export const ThemeProvider = ({
   children,
 }: Props) => {
   const colorScheme = useColorScheme()
-  const theme = colorScheme === "dark" ? darkTheme : lightTheme
-  const tw = colorScheme === "dark" ? create(darkConfig) : create(lightConfig)
+
+  const [theme, setTheme] = useState<Theme>("system")
+  const resolvedTheme = useMemo<ResolvedTheme>(() => {
+    if (theme === "system") {
+      return colorScheme ?? "light"
+    }
+
+    return theme
+  }, [colorScheme, theme])
+  const tw = resolvedTheme === "dark" ? create(darkConfig) : create(lightConfig)
+  const themeColors = resolvedTheme === "dark" ? darkTheme : lightTheme
+
+  const getTheme = useCallback(async () => {
+    const savedTheme = (await AsyncStorage.getItem(
+      config.store.theme,
+    )) as Theme | null
+
+    return savedTheme ?? "system"
+  }, [])
+
+  const changeTheme = useCallback(
+    async (newTheme: Theme) => {
+      await AsyncStorage.setItem(config.store.theme, newTheme)
+      setTheme(newTheme)
+    },
+    [setTheme],
+  )
 
   return (
-    <ThemeContext.Provider value={{ theme, tw }}>
-      <RNThemeProvider value={{ dark: true, colors: { ...theme } }}>
+    <ThemeContext.Provider
+      value={{
+        themeColors,
+        tw,
+        theme,
+        setTheme,
+        resolvedTheme,
+        getTheme,
+        changeTheme,
+      }}
+    >
+      <RNThemeProvider
+        value={{ dark: resolvedTheme === "dark", colors: { ...themeColors } }}
+      >
         {children}
       </RNThemeProvider>
     </ThemeContext.Provider>

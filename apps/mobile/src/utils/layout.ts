@@ -22,6 +22,11 @@ export const DRAWER_ITEMS: DrawerItem[] = [
     href: "/wish/shared",
     name: "wish/shared",
   },
+  {
+    label: "settings",
+    href: "/settings",
+    name: "settings",
+  },
 ]
 
 export const ROUTES: Route[] = [

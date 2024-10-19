@@ -91,7 +91,16 @@
     },
     "drawer": {
       "home": "Accueil",
-      "sharedWishlist": "Liste d'envies partagées"
+      "sharedWishlist": "Liste d'envies partagées",
+      "settings": "Paramètres"
+    }
+  },
+  "settings": {
+    "theme": {
+      "system": "Système",
+      "dark": "Sombre",
+      "light": "Clair",
+      "title": "Thème"
     }
   }
 }

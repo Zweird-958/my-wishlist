@@ -19,11 +19,7 @@ const DropdownContent = forwardRef<View, DropdownContentProps>(
     const headerHeight = useHeaderHeight()
     const domRef = useDOMRef(ref)
 
-    if (!measure) {
-      return null
-    }
-
-    if (!open) {
+    if (!open || !measure) {
       return null
     }
 
@@ -35,8 +31,7 @@ const DropdownContent = forwardRef<View, DropdownContentProps>(
           scaleStyle,
           {
             top: measure.y - headerHeight + measure.height + gap,
-            left: measure.x,
-            width: measure.width,
+            minWidth: measure.width,
           },
           style,
         ]}
