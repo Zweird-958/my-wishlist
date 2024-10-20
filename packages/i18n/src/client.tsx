@@ -7,7 +7,8 @@ import resourcesToBackend from "i18next-resources-to-backend"
 import { type ReactNode, useMemo } from "react"
 import { I18nextProvider, initReactI18next } from "react-i18next"
 
-import config, { type Locale } from "./config"
+import { type Locale, config } from "@my-wishlist/config/i18n"
+
 import { getOptions } from "./settings"
 
 const runsOnServerSide = typeof window === "undefined"

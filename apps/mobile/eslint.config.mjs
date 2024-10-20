@@ -8,4 +8,9 @@ export default [
   },
   ...baseConfig,
   ...reactConfig,
+  {
+    rules: {
+      "new-cap": "off",
+    },
+  },
 ]
