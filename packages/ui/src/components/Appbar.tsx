@@ -18,6 +18,9 @@ import { useSession, useTranslation } from "../components/AppContext"
 import SelectLocale from "./SelectLocale"
 import SelectTheme from "./SelectTheme"
 
+// eslint-disable-next-line turbo/no-undeclared-env-vars, no-console
+console.log(process.env.VERCEL_ENV)
+
 const Appbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { t, locale, changeLanguage } = useTranslation()
