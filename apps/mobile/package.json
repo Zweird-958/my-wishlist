@@ -37,7 +37,7 @@
     "expo-splash-screen": "~0.27.5",
     "expo-status-bar": "~1.12.1",
     "expo-system-ui": "~3.0.7",
-    "expo-updates": "~0.25.21",
+    "expo-updates": "~0.25.27",
     "expo-web-browser": "~13.0.3",
     "i18next": "^23.11.5",
     "i18next-icu": "^2.3.0",
@@ -59,8 +59,8 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@babel/runtime": "^7.25.0",
+    "@babel/core": "^7.25.8",
+    "@babel/runtime": "^7.25.7",
     "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/types": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",

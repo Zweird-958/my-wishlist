@@ -12,34 +12,34 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.617.0",
-    "@hono/node-server": "^1.12.0",
-    "@hono/zod-validator": "^0.2.2",
+    "@aws-sdk/client-s3": "^3.675.0",
+    "@hono/node-server": "^1.13.2",
+    "@hono/zod-validator": "^0.4.1",
     "@my-wishlist/db": "workspace:*",
     "@my-wishlist/i18n": "workspace:*",
     "@my-wishlist/schemas": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
-    "@prisma/client": "^5.16.2",
+    "@prisma/client": "^5.21.1",
     "clsx": "^2.1.1",
-    "hono": "^4.5.1",
+    "hono": "^4.6.5",
     "jsonwebtoken": "^9.0.2",
     "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-hot-toast": "^2.4.1",
     "zod": "^3.23.8",
-    "zustand": "^4.5.4"
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/types": "workspace:*",
-    "@types/jsonwebtoken": "^9.0.6",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "eslint": "catalog:",
-    "prisma": "^5.16.2",
+    "prisma": "^5.21.1",
     "tailwindcss": "catalog:"
   }
 }
