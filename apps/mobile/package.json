@@ -55,7 +55,7 @@
     "react-native-screens": "3.32.0",
     "react-native-svg": "15.2.0",
     "react-native-web": "~0.19.12",
-    "tailwind-merge": "^2.4.0",
+    "tailwind-merge": "^2.5.4",
     "twrnc": "^4.5.0",
     "zod": "^3.23.8"
   },
