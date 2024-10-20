@@ -10,7 +10,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@expo/vector-icons": "^14.0.2",
+    "@expo/vector-icons": "^14.0.4",
     "@hookform/resolvers": "^3.9.0",
     "@my-wishlist/config": "workspace:*",
     "@my-wishlist/i18n": "workspace:*",
