@@ -127,7 +127,7 @@ importers:
   apps/mobile:
     dependencies:
       '@expo/vector-icons':
-        specifier: ^14.0.2
+        specifier: ^14.0.4
         version: 14.0.4
       '@hookform/resolvers':
         specifier: ^3.9.0
