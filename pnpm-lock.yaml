@@ -293,7 +293,7 @@ importers:
         specifier: ^22.0.0
         version: 22.7.7
       '@types/react':
-        specifier: ~18.3.3
+        specifier: ~18.3.11
         version: 18.3.11
       eslint:
         specifier: 'catalog:'
