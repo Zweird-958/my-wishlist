@@ -1,0 +1,112 @@
+{
+  "common": {
+    "buy": "Buy",
+    "shared": {
+      "withYou": "Wishlist shared with you",
+      "emptyWithYou": "No wishlist shared with you",
+      "with": "Wishlist shared with:",
+      "emptyWith": "You don't share your wishlist with anyone"
+    }
+  },
+  "forms": {
+    "username": "Username",
+    "password": "Password",
+    "email": "Email",
+    "signIn": {
+      "title": "Sign In",
+      "description": "Welcome back! Please enter your details.",
+      "submit": "Sign In",
+      "dontHaveAccount": "Don't have an account?"
+    },
+    "signUp": {
+      "title": "Sign Up",
+      "description": "Welcome! Create your account here.",
+      "submit": "Sign Up",
+      "alreadyHaveAccount": "Already have an account?"
+    },
+    "wish": {
+      "delete": {
+        "confirmation": "Are you sure to delete {name} ?",
+        "success": "Wish deleted successfully",
+        "submit": "Delete",
+        "cancel": "Cancel"
+      },
+      "add": {
+        "title": "Add to wishlist",
+        "submit": "Add",
+        "success": "Wish added successfully"
+      }
+    },
+    "name": { "label": "Name", "placeholder": "Enter a name" },
+    "price": { "label": "Price", "placeholder": "Enter a price" },
+    "url": { "label": "Link", "placeholder": "https://example.com" },
+    "image": "Select an image",
+    "unshare": {
+      "title": "Stop sharing your wishlist",
+      "information": "Are you sure to stop sharing your wishlist with {username} ?",
+      "cancel": "Cancel",
+      "submit": "Confirm"
+    },
+    "share": {
+      "title": "Share your wishlist",
+      "cancel": "Cancel",
+      "submit": "Share",
+      "success": "Wishlist shared successfully with {username} !"
+    }
+  },
+  "errors": {
+    "email": {
+      "required": "Email is required",
+      "invalid": "Invalid email"
+    },
+    "password": {
+      "required": "Password is required",
+      "length": "Password must be at least 8 characters"
+    },
+    "username": {
+      "required": "Username is required",
+      "length": "Username must be at least 3 characters"
+    },
+    "price": {
+      "minimum": "Price must be superior to 0",
+      "number": "Price must be a number"
+    },
+    "name": {
+      "required": "Name is required"
+    },
+    "url": {
+      "invalid": "Invalid URL"
+    }
+  },
+  "layout": {
+    "header": {
+      "home": "My Wishlist",
+      "signIn": "Sign in",
+      "signUp": "Sign up",
+      "createWish": "Create a wish",
+      "editWish": "Edit wish",
+      "sharedWishlist": "Shared wishlist",
+      "userWishlistShared": "{username}'s wishlist",
+      "loading": "Loading...",
+      "settings": "Settings"
+    },
+    "drawer": {
+      "home": "Home",
+      "sharedWishlist": "Shared wishlist",
+      "settings": "Settings",
+      "signOut": "Sign out"
+    }
+  },
+  "settings": {
+    "appSettings": "App settings",
+    "theme": {
+      "system": "System",
+      "dark": "Dark",
+      "light": "Light",
+      "title": "Theme"
+    },
+    "language": {
+      "title": "Language"
+    }
+  }
+}

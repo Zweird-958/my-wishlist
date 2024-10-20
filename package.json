@@ -2,7 +2,7 @@
   "name": "my-wishlist",
   "version": "1.0.0",
   "description": "",
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@9.12.2",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "web": "pnpm --F \"@my-wishlist/web\" dev",
@@ -28,8 +28,8 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "turbo": "^2.0.6",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "turbo": "^2.2.1",
     "typescript": "catalog:"
   },
   "keywords": []

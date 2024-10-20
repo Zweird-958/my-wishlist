@@ -16,16 +16,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@eslint/js": "^9.8.0",
-    "@next/eslint-plugin-next": "^14.2.5",
-    "eslint-plugin-react": "^7.34.3",
+    "@eslint/js": "^9.13.0",
+    "@next/eslint-plugin-next": "^14.2.15",
+    "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "beta",
-    "eslint-plugin-turbo": "^2.0.6",
-    "globals": "^15.8.0",
+    "eslint-plugin-turbo": "^2.2.1",
+    "globals": "^15.11.0",
     "typescript-eslint": "rc-v8"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.51.15",
+    "@tanstack/eslint-plugin-query": "^5.59.7",
     "@my-wishlist/typescript": "workspace:*",
     "eslint": "catalog:",
     "typescript": "catalog:"

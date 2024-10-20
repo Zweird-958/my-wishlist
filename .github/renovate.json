@@ -7,7 +7,7 @@
       "enabled": false
     }
   ],
-  "baseBranches": ["main", "/^config\\/.*/"],
+  "baseBranches": ["develop"],
   "updateInternalDeps": true,
   "rangeStrategy": "bump",
   "automerge": true

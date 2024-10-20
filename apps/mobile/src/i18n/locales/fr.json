@@ -1,0 +1,112 @@
+{
+  "common": {
+    "buy": "Acheter",
+    "shared": {
+      "withYou": "Liste d'envies partagée avec vous",
+      "emptyWithYou": "Aucune liste d'envies partagée avec vous",
+      "with": "Liste d'envies partagée avec :",
+      "emptyWith": "Vous ne partagez votre liste d'envies avec personne"
+    }
+  },
+  "forms": {
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "email": "Email",
+    "signIn": {
+      "title": "Connexion",
+      "description": "Bon retour! Veuillez entrer vos informations.",
+      "submit": "Se connecter",
+      "dontHaveAccount": "Vous n'avez pas de compte ?"
+    },
+    "signUp": {
+      "title": "Inscription",
+      "description": "Bienvenue! Créez votre compte ici.",
+      "submit": "S'inscrire",
+      "alreadyHaveAccount": "Vous avez déjà un compte ?"
+    },
+    "wish": {
+      "delete": {
+        "confirmation": "Êtes-vous sûr(e) de vouloir supprimer {name} ?",
+        "success": "Souhait supprimé avec succès",
+        "submit": "Supprimer",
+        "cancel": "Annuler"
+      },
+      "add": {
+        "title": "Ajouter à la liste d'envie",
+        "submit": "Ajouter",
+        "success": "L'article a été ajouté à votre liste d'envie"
+      }
+    },
+    "name": { "label": "Nom", "placeholder": "Entrer un nom" },
+    "price": { "label": "Prix", "placeholder": "Entrer un prix" },
+    "url": { "label": "Lien", "placeholder": "https://exemple.fr" },
+    "image": "Sélectionner une image",
+    "unshare": {
+      "title": "Arrêter de partager votre liste d'envies",
+      "information": "Êtes-vous sûr(e) de vouloir arrêter de partager votre liste d'envies avec {username} ?",
+      "cancel": "Annuler",
+      "submit": "Confirmer"
+    },
+    "share": {
+      "title": "Partager votre liste d'envies",
+      "cancel": "Annuler",
+      "submit": "Partager",
+      "success": "Liste d'envies partagée avec {username} !"
+    }
+  },
+  "errors": {
+    "email": {
+      "required": "Email est requis",
+      "invalid": "Email invalide"
+    },
+    "password": {
+      "required": "Mot de passe est requis",
+      "length": "Votre mot de passe doit contenir au moins 8 caractères"
+    },
+    "username": {
+      "required": "Nom d'utilisateur est requis",
+      "length": "Votre nom d'utilisateur doit contenir au moins 3 caractères"
+    },
+    "price": {
+      "minimum": "Le prix doit être supérieur à 0",
+      "number": "Le prix doit être un nombre"
+    },
+    "name": {
+      "required": "Nom est requis"
+    },
+    "url": {
+      "invalid": "URL invalide"
+    }
+  },
+  "layout": {
+    "header": {
+      "home": "My Wishlist",
+      "signIn": "Connexion",
+      "signUp": "Inscription",
+      "createWish": "Créer un souhait",
+      "editWish": "Modifier le souhait",
+      "sharedWishlist": "Liste d'envies partagées",
+      "userWishlistShared": "Liste d'envies de {username}",
+      "loading": "Chargement...",
+      "settings": "Paramètres"
+    },
+    "drawer": {
+      "home": "Accueil",
+      "sharedWishlist": "Liste d'envies partagées",
+      "settings": "Paramètres",
+      "signOut": "Se déconnecter"
+    }
+  },
+  "settings": {
+    "appSettings": "Paramètres de l'application",
+    "theme": {
+      "system": "Système",
+      "dark": "Sombre",
+      "light": "Clair",
+      "title": "Thème"
+    },
+    "language": {
+      "title": "Langue"
+    }
+  }
+}

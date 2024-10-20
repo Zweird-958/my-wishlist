@@ -12,6 +12,7 @@
       "dependsOn": ["^lint"],
       "env": [
         "NEXT_PUBLIC_API_URL",
+        "EXPO_PUBLIC_API_URL",
         "JWT_SECRET",
         "PASSWORD_ITERATIONS",
         "PASSWORD_SALT",

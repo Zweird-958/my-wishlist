@@ -12,7 +12,7 @@ import {
 import type { JwtPayload, RawJwt, SessionContext } from "@my-wishlist/types"
 
 import config from "@/utils/config"
-import store from "@/utils/store"
+import getStore from "@/utils/get-store"
 
 const SessionContext = createContext<SessionContext>({} as SessionContext)
 
@@ -25,6 +25,7 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
 
   const signIn = async (response: string) => {
     const jwt = response
+    const store = await getStore()
 
     await store.set(config.store.sessionKey, jwt)
     await store.save()
@@ -35,6 +36,8 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
     setSession(payload)
   }
   const signOut = async () => {
+    const store = await getStore()
+
     await store.delete(config.store.sessionKey)
     await store.save()
 
@@ -43,6 +46,7 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     void (async () => {
+      const store = await getStore()
       const jwt = await store.get<string | null>(config.store.sessionKey)
 
       if (!jwt) {

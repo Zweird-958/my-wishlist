@@ -7,9 +7,9 @@ import {
 import type { AxiosError, AxiosRequestConfig } from "axios"
 
 import type { ApiError, ApiResponse, Method } from "@my-wishlist/types"
+import { api } from "@my-wishlist/utils"
 
 import { useSession } from "../components/AppContext"
-import api from "../utils/api"
 import useHandleError, { type HandleErrorParams } from "./useHandleError"
 
 type CustomUseMutationOptions<TData, TError, TVariables, TContext> = Omit<
