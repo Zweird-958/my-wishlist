@@ -232,7 +232,7 @@ importers:
         specifier: 'catalog:'
         version: 18.3.1(react@18.3.1)
       react-hook-form:
-        specifier: ^7.52.1
+        specifier: ^7.53.1
         version: 7.53.1(react@18.3.1)
       react-i18next:
         specifier: ^14.1.2
