@@ -10,6 +10,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from "react"
@@ -33,7 +34,6 @@ type Context = {
   theme: Theme
   setTheme: Dispatch<SetStateAction<Theme>>
   resolvedTheme: ResolvedTheme
-  getTheme: () => Promise<Theme>
   changeTheme: (newTheme: Theme) => Promise<void>
 }
 
@@ -42,17 +42,19 @@ const ThemeContext = createContext<Context>({} as Context)
 type Props = {
   darkTheme?: RNTheme["colors"]
   lightTheme?: RNTheme["colors"]
+  theme: Theme
   children: ReactNode
 }
 
 export const ThemeProvider = ({
   darkTheme = DarkTheme,
   lightTheme = LightTheme,
+  theme: defaultTheme,
   children,
 }: Props) => {
+  const [theme, setTheme] = useState<Theme>(defaultTheme)
   const colorScheme = useColorScheme()
 
-  const [theme, setTheme] = useState<Theme>("system")
   const resolvedTheme = useMemo<ResolvedTheme>(() => {
     if (theme === "system") {
       return colorScheme ?? "light"
@@ -60,16 +62,9 @@ export const ThemeProvider = ({
 
     return theme
   }, [colorScheme, theme])
+
   const tw = resolvedTheme === "dark" ? create(darkConfig) : create(lightConfig)
   const themeColors = resolvedTheme === "dark" ? darkTheme : lightTheme
-
-  const getTheme = useCallback(async () => {
-    const savedTheme = (await AsyncStorage.getItem(
-      config.store.theme,
-    )) as Theme | null
-
-    return savedTheme ?? "system"
-  }, [])
 
   const changeTheme = useCallback(
     async (newTheme: Theme) => {
@@ -79,6 +74,10 @@ export const ThemeProvider = ({
     [setTheme],
   )
 
+  useEffect(() => {
+    setTheme(defaultTheme)
+  }, [defaultTheme])
+
   return (
     <ThemeContext.Provider
       value={{
@@ -87,7 +86,6 @@ export const ThemeProvider = ({
         theme,
         setTheme,
         resolvedTheme,
-        getTheme,
         changeTheme,
       }}
     >

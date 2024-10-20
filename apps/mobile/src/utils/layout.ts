@@ -38,7 +38,7 @@ export const DRAWER_ITEMS: DrawerItem[] = [
   },
 ]
 
-export const ROUTES: Route[] = [
+export const PROTECTED_ROUTES: Route[] = [
   {
     label: "editWish",
     name: "wish/[wishId]",
@@ -49,7 +49,7 @@ export const ROUTES: Route[] = [
   },
 ]
 
-export const ROUTES_WITHOUT_DRAWER: Route[] = [
+export const PUBLIC_ROUTES: Route[] = [
   {
     label: "signIn",
     name: "sign-in",
