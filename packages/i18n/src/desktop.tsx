@@ -1,5 +1,5 @@
 import { locale as osLocale } from "@tauri-apps/plugin-os"
-import { Store } from "@tauri-apps/plugin-store"
+import { createStore } from "@tauri-apps/plugin-store"
 import i18next from "i18next"
 import ICU from "i18next-icu"
 import resourcesToBackend from "i18next-resources-to-backend"
@@ -14,7 +14,7 @@ import { getOptions } from "./settings"
 import { useTranslation as useTranslationGeneric } from "./useTranslation"
 import matchLocale from "./utils/matchLocale"
 
-const store = new Store(desktopConfig.store.name)
+const getStore = async () => await createStore(desktopConfig.store.name)
 
 const runsOnServerSide = typeof window === "undefined"
 
@@ -47,18 +47,23 @@ export const I18nProvider = ({
   return <Provider i18n={i18next}>{children}</Provider>
 }
 
-export const getLocale = async () =>
-  languageSchemaFallback.parse(
+export const getLocale = async () => {
+  const store = await getStore()
+
+  return languageSchemaFallback.parse(
     (await store.get(desktopConfig.store.localeKey)) ??
       matchLocale((await osLocale()) ?? ""),
   )
+}
 
 export const useTranslation = (...ns: Namespace[]) => {
   const { i18n, ...rest } = useTranslationGeneric(...ns)
 
   const changeLanguage = useCallback(
     async (newLocale: Locale) => {
+      const store = await getStore()
       void i18n.changeLanguage(newLocale)
+
       await store.set(desktopConfig.store.localeKey, newLocale)
       await store.save()
     },
