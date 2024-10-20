@@ -20,7 +20,6 @@ const robots = (): MetadataRoute.Robots => {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://acme.com/sitemap.xml",
   }
 }
 
