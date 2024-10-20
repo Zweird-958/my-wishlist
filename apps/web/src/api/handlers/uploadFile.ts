@@ -18,7 +18,7 @@ const getImageName = (image?: string | null) => {
     return `${Date.now()}-${Math.round(Math.random() * 1e9)}`
   }
 
-  return image.split("/").slice(-1)[0]
+  return image
 }
 
 const uploadFile = factory.createHandlers(
@@ -43,7 +43,7 @@ const uploadFile = factory.createHandlers(
 
     await s3.send(command)
 
-    set("image", `${config.upload.url}/${config.upload.bucket}/${imageName}`)
+    set("image", imageName)
 
     await next()
   },
