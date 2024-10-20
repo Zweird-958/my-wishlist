@@ -6,7 +6,8 @@
   "exports": {
     ".": "./index.ts",
     "./server": "./server.ts",
-    "./desktop": "./desktop.ts"
+    "./desktop": "./desktop.ts",
+    "./config": "./config.ts"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
