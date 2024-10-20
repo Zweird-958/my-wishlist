@@ -1,5 +1,5 @@
 import { locale as osLocale } from "@tauri-apps/plugin-os"
-import { createStore } from "@tauri-apps/plugin-store"
+import { Store } from "@tauri-apps/plugin-store"
 import i18next from "i18next"
 import ICU from "i18next-icu"
 import resourcesToBackend from "i18next-resources-to-backend"
@@ -14,7 +14,7 @@ import { getOptions } from "./settings"
 import { useTranslation as useTranslationGeneric } from "./useTranslation"
 import matchLocale from "./utils/matchLocale"
 
-const getStore = async () => await createStore(desktopConfig.store.name)
+const getStore = async () => await Store.load(desktopConfig.store.name)
 
 const runsOnServerSide = typeof window === "undefined"
 
