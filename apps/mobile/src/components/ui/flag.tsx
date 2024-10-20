@@ -1,6 +1,6 @@
 import { Image } from "expo-image"
 
-import { config } from "@my-wishlist/i18n/config"
+import { config } from "@my-wishlist/config/i18n"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
 

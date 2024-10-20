@@ -1,0 +1,25 @@
+{
+  "name": "@my-wishlist/i18n-schemas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "zod": "^3.23.8",
+    "@my-wishlist/config": "workspace:*"
+  },
+  "devDependencies": {
+    "@my-wishlist/eslint": "workspace:*",
+    "@my-wishlist/typescript": "workspace:*",
+    "eslint": "catalog:",
+    "typescript": "catalog:"
+  }
+}

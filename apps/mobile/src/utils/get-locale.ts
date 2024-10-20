@@ -4,7 +4,7 @@ import { getLocales } from "expo-localization"
 import {
   languageSchema,
   languageSchemaFallback,
-} from "@my-wishlist/i18n/config"
+} from "@my-wishlist/i18n-schemas"
 
 import config from "@/utils/config"
 

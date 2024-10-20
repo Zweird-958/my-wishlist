@@ -7,8 +7,8 @@ import { type ReactNode, useCallback, useEffect, useMemo } from "react"
 import { I18nextProvider as Provider, initReactI18next } from "react-i18next"
 
 import { config as desktopConfig } from "@my-wishlist/config/desktop"
+import { type Locale, type Namespace, config } from "@my-wishlist/config/i18n"
 
-import config, { type Locale, type Namespace } from "./config"
 import { languageSchemaFallback } from "./schemas"
 import { getOptions } from "./settings"
 import { useTranslation as useTranslationGeneric } from "./useTranslation"

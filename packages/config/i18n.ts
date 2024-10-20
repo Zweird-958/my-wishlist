@@ -14,7 +14,7 @@ const schema = z.object({
 export type Namespace = z.infer<typeof schema>["defaultNamespace"]
 export type Locale = z.infer<typeof schema>["defaultLanguage"]
 
-const config = schema.parse({
+export const config = schema.parse({
   cookieLanguageKey: "my-wishlist-language",
   defaultNamespace: "common",
   defaultLanguage: "en",
@@ -29,5 +29,3 @@ const config = schema.parse({
     fr: "Français",
   },
 })
-
-export default config

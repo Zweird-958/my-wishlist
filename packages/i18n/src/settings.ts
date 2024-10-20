@@ -1,4 +1,4 @@
-import config from "./config"
+import { config } from "@my-wishlist/config/i18n"
 
 export const getOptions = (ns = config.defaultNamespace) => ({
   supportedLngs: config.languages,

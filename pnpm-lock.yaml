@@ -138,6 +138,9 @@ importers:
       '@my-wishlist/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
+      '@my-wishlist/i18n-schemas':
+        specifier: workspace:*
+        version: link:../../packages/i18n-schemas
       '@my-wishlist/schemas':
         specifier: workspace:*
         version: link:../../packages/schemas
@@ -451,6 +454,9 @@ importers:
       '@my-wishlist/config':
         specifier: workspace:*
         version: link:../config
+      '@my-wishlist/i18n-schemas':
+        specifier: workspace:*
+        version: link:../i18n-schemas
       '@my-wishlist/schemas':
         specifier: workspace:*
         version: link:../schemas
@@ -489,7 +495,7 @@ importers:
         version: 18.3.1(react@18.3.1)
       react-i18next:
         specifier: ^15.0.3
-        version: 15.0.3(i18next@23.16.1)(react@18.3.1)
+        version: 15.0.3(i18next@23.16.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -503,6 +509,28 @@ importers:
       '@types/negotiator':
         specifier: ^0.6.3
         version: 0.6.3
+      eslint:
+        specifier: 'catalog:'
+        version: 9.13.0(jiti@1.21.6)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.3.3
+
+  packages/i18n-schemas:
+    dependencies:
+      '@my-wishlist/config':
+        specifier: workspace:*
+        version: link:../config
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
+    devDependencies:
+      '@my-wishlist/eslint':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@my-wishlist/typescript':
+        specifier: workspace:*
+        version: link:../../tooling/typescript
       eslint:
         specifier: 'catalog:'
         version: 9.13.0(jiti@1.21.6)
@@ -1695,7 +1723,7 @@ packages:
 
   '@expo/bunyan@4.0.1':
     resolution: {integrity: sha512-+Lla7nYSiHZirgK+U/uYzsLv/X+HaJienbD5AKX1UQZHYfWaP+9uuQluRB4GrEVWF0GZ7vEVp/jzaOT9k/SQlg==}
-    engines: {node: '>=0.10.0'}
+    engines: {'0': node >=0.10.0}
 
   '@expo/cli@0.18.30':
     resolution: {integrity: sha512-V90TUJh9Ly8stYo8nwqIqNWCsYjE28GlVFWEhAFCUOp99foiQr8HSTpiiX5GIrprcPoWmlGoY+J5fQA29R4lFg==}
@@ -16114,12 +16142,14 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       react-native: 0.74.3(@babel/core@7.25.8)(@babel/preset-env@7.25.8(@babel/core@7.25.8))(@types/react@18.3.11)(react@18.3.1)
 
-  react-i18next@15.0.3(i18next@23.16.1)(react@18.3.1):
+  react-i18next@15.0.3(i18next@23.16.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/runtime': 7.25.7
       html-parse-stringify: 3.0.1
       i18next: 23.16.1
       react: 18.3.1
+    optionalDependencies:
+      react-dom: 18.3.1(react@18.3.1)
 
   react-is@16.13.1: {}
 
