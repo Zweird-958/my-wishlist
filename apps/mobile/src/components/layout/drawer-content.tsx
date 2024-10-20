@@ -39,15 +39,31 @@ const DrawerContent = ({ navigation }: DrawerContentComponentProps) => {
     navigation.closeDrawer()
   }
 
+  const handlePress = async ({
+    href,
+    functionName,
+  }: {
+    href?: Href<string>
+    functionName?: FunctionName
+  }) => {
+    if (href) {
+      handleHrefOnPress(href)
+
+      return
+    }
+
+    if (functionName) {
+      await handleFunctionOnPress(functionName)
+    }
+  }
+
   return (
     <DrawerContentScrollView style={tw.style("bg-card")}>
       {DRAWER_ITEMS.map(({ label, href, name, functionName }) => (
         <DrawerItem
           key={name}
           label={t(`layout.drawer.${label}`)}
-          onPress={() =>
-            href ? handleHrefOnPress(href) : handleFunctionOnPress(functionName)
-          }
+          onPress={() => handlePress({ href, functionName })}
           labelStyle={tw.style("text-card-foreground", {
             "text-primary": pathname === href,
           })}
