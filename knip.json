@@ -1,0 +1,14 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignore": ["apps/mobile/**/*", "packages/db/prisma/seed.ts"],
+  "ignoreDependencies": ["autoprefixer", "postcss"],
+  "workspaces": {
+    "packages/db": {
+      "ignoreDependencies": ["@prisma/client", "@faker-js/faker", "ts-node"]
+    }
+  },
+  "rules": {
+    "duplicates": "warn",
+    "binaries": "warn"
+  }
+}
