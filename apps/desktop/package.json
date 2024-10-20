@@ -15,16 +15,15 @@
   "dependencies": {
     "@my-wishlist/config": "workspace:*",
     "@my-wishlist/i18n": "workspace:*",
-    "@my-wishlist/ui": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",
+    "@my-wishlist/ui": "workspace:*",
     "@tauri-apps/plugin-store": "^2.1.0",
     "jsonwebtoken": "^9.0.2",
     "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-hot-toast": "^2.4.1",
-    "zod": "^3.23.8",
-    "zustand": "^5.0.0"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@my-wishlist/eslint": "workspace:*",
