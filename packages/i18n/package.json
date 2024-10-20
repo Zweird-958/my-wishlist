@@ -2,8 +2,12 @@
   "name": "@my-wishlist/i18n",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
   "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./server": "./server.ts",
+    "./desktop": "./desktop.ts"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint",
@@ -15,7 +19,6 @@
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.5",
     "@my-wishlist/config": "workspace:*",
-    "@my-wishlist/schemas": "workspace:*",
     "@my-wishlist/i18n-schemas": "workspace:*",
     "@tauri-apps/plugin-os": "^2.0.0",
     "@tauri-apps/plugin-store": "^2.1.0",
@@ -24,8 +27,7 @@
     "i18next-icu": "^2.3.0",
     "i18next-resources-to-backend": "^1.2.1",
     "negotiator": "^1.0.0",
-    "react-i18next": "^15.0.3",
-    "zod": "^3.23.8"
+    "react-i18next": "^15.0.3"
   },
   "devDependencies": {
     "@my-wishlist/eslint": "workspace:*",
