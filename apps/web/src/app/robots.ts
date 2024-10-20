@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next"
 
 export default function robots(): MetadataRoute.Robots {
-  const isProduction = process.env.NODE_ENV === "production"
+  const isProduction =
+    (process.env.NEXT_PUBLIC_APP_ENV ?? process.env.NODE_ENV) === "production"
 
   if (!isProduction) {
     return {

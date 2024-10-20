@@ -18,9 +18,6 @@ import { useSession, useTranslation } from "../components/AppContext"
 import SelectLocale from "./SelectLocale"
 import SelectTheme from "./SelectTheme"
 
-// eslint-disable-next-line no-console
-console.log(process.env.NODE_ENV)
-
 const Appbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { t, locale, changeLanguage } = useTranslation()
