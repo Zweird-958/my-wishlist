@@ -42,7 +42,7 @@
     "expo-web-browser": "~13.0.3",
     "i18next": "^23.11.5",
     "i18next-icu": "^2.3.0",
-    "lucide-react-native": "^0.424.0",
+    "lucide-react-native": "^0.453.0",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-hook-form": "^7.52.1",
