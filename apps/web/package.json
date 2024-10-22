@@ -20,7 +20,7 @@
     "@my-wishlist/typescript": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
     "@prisma/client": "^5.21.1",
-    "hono": "^4.6.5",
+    "hono": "^4.6.6",
     "jsonwebtoken": "^9.0.2",
     "next": "catalog:",
     "react": "catalog:",
