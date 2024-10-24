@@ -2,12 +2,10 @@
 
 import { useState } from "react"
 
-import { useTranslation } from "../components/AppContext"
 import useMutation from "./useMutation"
 
 const useUploadImage = () => {
   const [image, setImage] = useState<File | null>(null)
-  const { t } = useTranslation("forms")
 
   const { mutate: addImageMutate, isPending: imageIsLoading } = useMutation<
     string,
