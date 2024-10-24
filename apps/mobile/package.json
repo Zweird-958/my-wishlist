@@ -48,7 +48,7 @@
     "react-dom": "catalog:",
     "react-hook-form": "^7.52.1",
     "react-i18next": "^14.1.2",
-    "react-native": "0.74.3",
+    "react-native": "0.76.0",
     "react-native-css-interop": "^0.1.20",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-reanimated": "~3.10.1",
