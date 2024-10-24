@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import { useLocalSearchParams, useRouter } from "expo-router"
 
-import type { Wish } from "@my-wishlist/types"
+import type { AddWishSchema, Wish } from "@my-wishlist/types"
 
 import { useWishlist } from "@/components/contexts/WishlistContext"
 import WishForm from "@/components/wishlist/wish-form"
@@ -16,7 +16,8 @@ const EditWishPage = () => {
 
   const { mutate, isPending } = useMutation({
     mutationKey: ["editWish", wishId],
-    mutationFn: (data: FormData) => api.patch<Wish>(`/wish/${wishId}`, data),
+    mutationFn: (data: AddWishSchema) =>
+      api.patch<Wish>(`/wish/${wishId}`, data),
     onSuccess: ({ result }) => {
       editWish(result)
       router.back()

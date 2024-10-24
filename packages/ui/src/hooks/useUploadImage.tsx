@@ -1,35 +1,23 @@
 "use client"
 
-import { Button } from "@nextui-org/react"
-import { type ChangeEventHandler, useState } from "react"
+import { useState } from "react"
 
 import { useTranslation } from "../components/AppContext"
+import useMutation from "./useMutation"
 
 const useUploadImage = () => {
   const [image, setImage] = useState<File | null>(null)
   const { t } = useTranslation("forms")
 
-  const handleFileUpload: ChangeEventHandler<HTMLInputElement> = (event) => {
-    const { files } = event.target
-    setImage(files?.item(0) ?? null)
-  }
+  const { mutate: addImageMutate, isPending: imageIsLoading } = useMutation<
+    string,
+    FormData
+  >({
+    method: "post",
+    path: "/image",
+  })
 
-  const SelectImage = () => (
-    <Button as={"div"} color="primary" className="w-full">
-      <label htmlFor="image" className="truncate">
-        {image ? image.name : t("image")}
-      </label>
-      <input
-        id="image"
-        hidden
-        onChange={handleFileUpload}
-        type="file"
-        accept="image/png, image/jpeg, image/jpg"
-      />
-    </Button>
-  )
-
-  return { image, SelectImage }
+  return { image, setImage, addImageMutate, imageIsLoading }
 }
 
 export default useUploadImage

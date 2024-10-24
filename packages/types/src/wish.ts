@@ -1,6 +1,10 @@
 import type { z } from "zod"
 
-import type { currencySchema } from "@my-wishlist/schemas"
+import type {
+  addWishSchema,
+  currencySchema,
+  imageMobileSchema,
+} from "@my-wishlist/schemas"
 
 export type Wish = {
   id: number
@@ -17,3 +21,7 @@ export type Wish = {
 }
 
 export type Currency = z.infer<typeof currencySchema>
+
+export type AddWishSchema = z.infer<typeof addWishSchema>
+
+export type UploadMobileImage = z.infer<typeof imageMobileSchema>

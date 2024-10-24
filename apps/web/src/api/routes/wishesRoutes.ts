@@ -4,7 +4,6 @@ import { Hono } from "hono"
 import { addWishSchema, editWishSchema } from "@my-wishlist/schemas"
 
 import fetchWish from "@/api/handlers/fetchWish"
-import uploadFile from "@/api/handlers/uploadFile"
 import auth from "@/api/middlewares/auth"
 import deleteFile from "@/api/utils/deleteFile"
 import formatWish from "@/api/utils/formatWish"
@@ -52,20 +51,19 @@ app.get("/:wishId", auth, ...fetchWish, ({ var: { send, wish, lang } }) =>
 app.post(
   "/",
   auth,
-  ...uploadFile,
-  zValidator("form", addWishSchema),
-  async ({ req, var: { user, db, send, image, lang } }) => {
-    const { name, price, url, currency, isPrivate } = req.valid("form")
+  zValidator("json", addWishSchema),
+  async ({ req, var: { user, db, send, lang } }) => {
+    const { name, price, url, currency, isPrivate, image } = req.valid("json")
 
     const wish = await db.wish.create({
       data: {
         name,
-        image,
         price: Number(price),
         link: url,
         currency,
         userId: user.id,
         isPrivate,
+        image,
       },
     })
 
@@ -77,11 +75,10 @@ app.patch(
   "/:wishId",
   auth,
   ...fetchWish,
-  ...uploadFile,
-  zValidator("form", editWishSchema),
-  async ({ req, var: { wish, db, send, image, lang } }) => {
-    const { name, price, url, currency, isPrivate, purchased } =
-      req.valid("form")
+  zValidator("json", editWishSchema),
+  async ({ req, var: { wish, db, send, lang } }) => {
+    const { name, price, url, currency, isPrivate, purchased, image } =
+      req.valid("json")
 
     const updatedWish = await db.wish.update({
       where: {
@@ -89,12 +86,12 @@ app.patch(
       },
       data: {
         name: name ?? wish.name,
-        image: image || wish.image,
         price: price ?? wish.price,
         link: url,
         currency: currency ?? wish.currency,
         isPrivate: typeof isPrivate === "boolean" ? isPrivate : wish.isPrivate,
         purchased: typeof purchased === "boolean" ? purchased : wish.purchased,
+        image: image ?? wish.image,
       },
     })
 

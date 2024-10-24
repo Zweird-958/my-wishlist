@@ -1,5 +1,10 @@
+import { useMutation } from "@tanstack/react-query"
 import * as ImagePicker from "expo-image-picker"
 import { useCallback, useState } from "react"
+
+import type { UploadMobileImage } from "@my-wishlist/types"
+
+import api from "@/utils/api"
 
 const useImage = () => {
   const [image, setImage] = useState<ImagePicker.ImagePickerAsset | null>(null)
@@ -16,7 +21,13 @@ const useImage = () => {
     }
   }, [])
 
-  return { image, pickImage }
+  const { mutate: uploadImage, isPending } = useMutation({
+    mutationKey: ["addWish"],
+    mutationFn: (data: { image: UploadMobileImage }) =>
+      api.post<string>("/image", data),
+  })
+
+  return { image, pickImage, uploadImage, isLoading: isPending }
 }
 
 export default useImage
