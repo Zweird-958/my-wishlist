@@ -10,5 +10,5 @@
   "baseBranches": ["develop"],
   "updateInternalDeps": true,
   "rangeStrategy": "bump",
-  "automerge": true
+  "automerge": false
 }
