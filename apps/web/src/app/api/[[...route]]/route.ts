@@ -9,6 +9,7 @@ import { type Locale, languageSchemaFallback } from "@my-wishlist/i18n"
 
 import { ERROR_RESPONSES } from "@/api/constants"
 import currencyApp from "@/api/routes/currencyRoutes"
+import imageApp from "@/api/routes/images-routes"
 import shareApp from "@/api/routes/sharesRoutes"
 import signApp from "@/api/routes/signRoutes"
 import wishApp from "@/api/routes/wishesRoutes"
@@ -66,6 +67,7 @@ app.route("/wish", wishApp)
 app.route("", signApp)
 app.route("/share", shareApp)
 app.route("/currency", currencyApp)
+app.route("/image", imageApp)
 
 app.onError((error, { var: { fail } }) => {
   // eslint-disable-next-line no-console

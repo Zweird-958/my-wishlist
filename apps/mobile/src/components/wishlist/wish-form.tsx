@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
+import * as FileSystem from "expo-file-system"
 import { useMemo } from "react"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
@@ -11,7 +12,7 @@ import {
   priceSchema,
   wishFormSchema,
 } from "@my-wishlist/schemas"
-import type { Currency, Wish } from "@my-wishlist/types"
+import type { AddWishSchema, Currency, Wish } from "@my-wishlist/types"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
 import { useCurrencies } from "@/components/contexts/currencies-context"
@@ -30,7 +31,7 @@ import useImage from "@/hooks/use-image"
 
 type Props = {
   wish?: Wish
-  onSubmit: (data: FormData) => void
+  onSubmit: (data: AddWishSchema) => void
   isLoading: boolean
 }
 
@@ -39,11 +40,17 @@ const formSchema = wishFormSchema.extend({
   price: priceSchema.default(1).transform((value) => value.toString()),
 })
 
+// eslint-disable-next-line max-lines-per-function
 const WishForm = ({ wish, onSubmit, isLoading }: Props) => {
   const { tw } = useTheme()
   const { t } = useTranslation()
   const { currencies } = useCurrencies()
-  const { pickImage, image: imageSelected } = useImage()
+  const {
+    pickImage,
+    image: imageSelected,
+    uploadImage,
+    isLoading: imageIsLoading,
+  } = useImage()
   const image = useMemo(() => {
     if (imageSelected) {
       return imageSelected
@@ -68,16 +75,29 @@ const WishForm = ({ wish, onSubmit, isLoading }: Props) => {
   }
 
   const handleOnSubmit = handleSubmit(
-    ({ name, currency, price, url, purchased, isPrivate }) => {
-      const formData = new FormData()
-      formData.append("name", name)
-      formData.append("currency", currency)
-      formData.append("price", price)
-      formData.append("url", url)
-      formData.append("purchased", purchased.toString())
-      formData.append("isPrivate", isPrivate.toString())
+    async ({ price: priceString, ...values }) => {
+      const price = parseFloat(priceString)
 
-      onSubmit(formData)
+      if (imageSelected) {
+        const data = {
+          uri: await FileSystem.readAsStringAsync(imageSelected.uri, {
+            encoding: "base64",
+          }),
+          type: "image/jpg",
+        }
+
+        uploadImage(
+          { image: data },
+          {
+            onSuccess: ({ result }) =>
+              onSubmit({ ...values, price, image: result }),
+          },
+        )
+
+        return
+      }
+
+      onSubmit({ ...values, price })
     },
   )
 
@@ -129,7 +149,11 @@ const WishForm = ({ wish, onSubmit, isLoading }: Props) => {
           <WishImage image={image.uri} />
         </View>
       )}
-      <Button onPress={handleOnSubmit} isLoading={isLoading} isText>
+      <Button
+        onPress={handleOnSubmit}
+        isLoading={isLoading || imageIsLoading}
+        isText
+      >
         {t("forms.wish.add.submit")}
       </Button>
     </SafeAreaView>

@@ -4,10 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import {
   Button,
   type ButtonProps,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalHeader,
   type ModalProps,
   type Selection,
 } from "@nextui-org/react"
@@ -20,7 +16,7 @@ import {
   currencySchema,
   wishFormSchema,
 } from "@my-wishlist/schemas"
-import type { Currency, Wish } from "@my-wishlist/types"
+import type { AddWishSchema, Currency, Wish } from "@my-wishlist/types"
 
 import useCurrencies from "../../hooks/useCurrencies"
 import useQuery from "../../hooks/useQuery"
@@ -30,18 +26,14 @@ import CurrencyDropdown from "../CurrencyDropdown"
 import Field from "../Field"
 import SwitchField from "../SwitchField"
 import WishSelectedImage from "./WishSelectedImage"
+import WishImageInput from "./wish-image-input"
 
-type FormProps = {
+type Props = {
   wish?: Wish
   submitText: string
-  onSubmit: (data: FormData) => void
+  onSubmit: (data: AddWishSchema) => void
 } & Pick<ButtonProps, "isLoading"> &
   Pick<ModalProps, "onClose">
-
-type WishFormProps = {
-  title: string
-} & Pick<ModalProps, "isOpen" | "onOpenChange"> &
-  FormProps
 
 type WishBooleanInput = "purchased" | "isPrivate"
 
@@ -49,11 +41,16 @@ const formSchema = wishFormSchema.extend({
   currency: currencySchema.default(config.defaultCurrency),
 })
 
-const Form = (props: FormProps) => {
+const WishForm = ({
+  onSubmit,
+  wish,
+  isLoading,
+  submitText,
+  onClose,
+}: Props) => {
   const { currencies, setCurrencies } = useCurrencies()
-  const { onSubmit, wish, isLoading, submitText, onClose } = props
+  const { addImageMutate, image, setImage, imageIsLoading } = useUploadImage()
   const { t } = useTranslation("forms")
-  const { SelectImage, image } = useUploadImage()
   const { control, handleSubmit, setValue, watch } = useForm({
     defaultValues: formSchema.parse({ ...wish }),
     resolver: zodResolver(addWishSchema),
@@ -79,23 +76,20 @@ const Form = (props: FormProps) => {
     setValue("currency", currency)
   }
 
-  const handleOnSubmit = handleSubmit(
-    ({ name, currency, price, url, purchased, isPrivate }) => {
+  const handleOnSubmit = handleSubmit((values) => {
+    if (image) {
       const formData = new FormData()
-      formData.append("name", name)
-      formData.append("currency", currency)
-      formData.append("price", price.toString())
-      formData.append("url", url)
-      formData.append("purchased", purchased.toString())
-      formData.append("isPrivate", isPrivate.toString())
+      formData.append("image", image)
 
-      if (image) {
-        formData.append("image", image)
-      }
+      addImageMutate(formData, {
+        onSuccess: ({ result }) => onSubmit({ ...values, image: result }),
+      })
 
-      onSubmit(formData)
-    },
-  )
+      return
+    }
+
+    onSubmit(values)
+  })
   const handleSwitch = (field: WishBooleanInput) => (isSelected: boolean) => {
     setValue(field, isSelected)
   }
@@ -113,7 +107,7 @@ const Form = (props: FormProps) => {
         currency={watch("currency")}
         currencies={currencies}
       />
-      <SelectImage />
+      <WishImageInput image={image} setImage={setImage} />
       <WishSelectedImage wish={wish} image={image} />
       {wish && (
         <>
@@ -133,35 +127,15 @@ const Form = (props: FormProps) => {
         <Button type="button" color="danger" onPress={onClose}>
           {t("wish.cancel")}
         </Button>
-        <Button type="submit" color="primary" isLoading={isLoading}>
+        <Button
+          type="submit"
+          color="primary"
+          isLoading={imageIsLoading || isLoading}
+        >
           {submitText}
         </Button>
       </div>
     </form>
-  )
-}
-
-const WishForm = (props: WishFormProps) => {
-  const { isOpen, onOpenChange, title, ...formProps } = props
-
-  return (
-    <Modal
-      isOpen={isOpen}
-      onOpenChange={onOpenChange}
-      placement="center"
-      className="h-fit w-full max-w-lg"
-    >
-      <ModalContent>
-        {(onClose) => (
-          <>
-            <ModalHeader>{title}</ModalHeader>
-            <ModalBody>
-              <Form {...formProps} onClose={onClose} />
-            </ModalBody>
-          </>
-        )}
-      </ModalContent>
-    </Modal>
   )
 }
 

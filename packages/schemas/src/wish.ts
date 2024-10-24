@@ -15,6 +15,11 @@ export const priceSchema = z.coerce
 export const currencySchema = z.enum(["DOLLAR", "EURO", "POUND"])
 export const isPrivateSchema = stringBooleanSchema
 export const purchasedSchema = stringBooleanSchema
+export const imageUrlSchema = z.string()
+export const imageMobileSchema = z.object({
+  uri: imageUrlSchema,
+  type: z.string(),
+})
 
 export const addWishSchema = z.object({
   name: nameSchema,
@@ -27,6 +32,11 @@ export const addWishSchema = z.object({
   purchased: purchasedSchema
     .or(z.literal("").transform(() => false))
     .default(false),
+  image: imageUrlSchema.optional(),
+})
+
+export const getWishSchema = z.object({
+  wishId: z.coerce.number(),
 })
 
 export const editWishSchema = z.object({
@@ -36,6 +46,7 @@ export const editWishSchema = z.object({
   currency: currencySchema.optional(),
   isPrivate: isPrivateSchema.or(z.literal("")).optional(),
   purchased: purchasedSchema.or(z.literal("")).optional(),
+  image: imageUrlSchema.optional(),
 })
 
 export const wishFormSchema = z.object({
