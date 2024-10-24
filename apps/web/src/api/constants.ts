@@ -10,4 +10,5 @@ export const ERROR_RESPONSES = {
   addHimSelf: { message: "You can't add yourself.", code: 400 },
   userNotFound: { message: "User not found.", code: 404 },
   alreadyShared: { message: "Already shared.", code: 400 },
+  imageRequired: { message: "Image is required.", code: 400 },
 } satisfies Record<string, { message: string; code: StatusCode }>
