@@ -16,6 +16,6 @@ jobs:
         uses: ./.github/setup
 
       - name: Apply all pending migrations to the database
-        run: pnpx prisma migrate deploy
+        run: pnpm db:migrate
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
