@@ -23,7 +23,7 @@ type Context = {
   addUser: (user: UserShared) => void
 }
 
-export const WishlistAccessUsersContext = createContext<Context>({} as Context)
+const WishlistAccessUsersContext = createContext<Context>({} as Context)
 export const useWishlistAccessUsers = () =>
   useContext(WishlistAccessUsersContext)
 

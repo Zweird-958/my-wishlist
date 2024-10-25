@@ -12,4 +12,3 @@ void i18n.use(initReactI18next).use(ICU).init({
   compatibilityJSON: "v3",
   resources,
 })
-export default i18n

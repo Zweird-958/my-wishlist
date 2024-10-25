@@ -16,7 +16,7 @@ type Context = {
   signOut: () => Promise<void>
 }
 
-export const SessionContext = createContext<Context>({} as Context)
+const SessionContext = createContext<Context>({} as Context)
 export const useSession = () => useContext(SessionContext)
 
 export const SessionProvider = ({ children }: { children: ReactNode }) => {
