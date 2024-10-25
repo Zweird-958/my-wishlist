@@ -17,8 +17,8 @@
   "buy": "Acheter",
   "filters": {
     "all": "Tous",
-    "purchased": "Achetés",
-    "notPurchased": "Non achetés"
+    "private": "Privés",
+    "notPrivate": "Non privés"
   },
   "sorts": {
     "date": "Date",

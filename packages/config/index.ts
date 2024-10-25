@@ -4,7 +4,7 @@ import { currencySchema } from "@my-wishlist/schemas"
 
 const schema = z.object({
   defaultCurrency: currencySchema,
-  defaultFilter: z.enum(["all", "purchased", "notPurchased"]),
+  defaultFilter: z.enum(["all", "private", "notPrivate"]),
   defaultSort: z.enum(["date", "priceAsc", "priceDesc"]),
 })
 
@@ -13,7 +13,7 @@ export type Sort = z.infer<typeof schema>["defaultSort"]
 
 const config = schema.parse({
   defaultCurrency: "DOLLAR",
-  defaultFilter: "notPurchased",
+  defaultFilter: "all",
   defaultSort: "date",
 })
 
