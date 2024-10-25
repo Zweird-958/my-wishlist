@@ -35,7 +35,7 @@ type Props = {
 } & Pick<ButtonProps, "isLoading"> &
   Pick<ModalProps, "onClose">
 
-type WishBooleanInput = "purchased" | "isPrivate"
+type WishBooleanInput = "isPrivate"
 
 const formSchema = wishFormSchema.extend({
   currency: currencySchema.default(config.defaultCurrency),
@@ -110,18 +110,11 @@ const WishForm = ({
       <WishImageInput image={image} setImage={setImage} />
       <WishSelectedImage wish={wish} image={image} />
       {wish && (
-        <>
-          <SwitchField
-            label={t("purchased")}
-            onValueChange={handleSwitch("purchased")}
-            isSelected={watch("purchased")}
-          />
-          <SwitchField
-            label={t("private")}
-            onValueChange={handleSwitch("isPrivate")}
-            isSelected={watch("isPrivate")}
-          />
-        </>
+        <SwitchField
+          label={t("private")}
+          onValueChange={handleSwitch("isPrivate")}
+          isSelected={watch("isPrivate")}
+        />
       )}
       <div className="flex w-full justify-between">
         <Button type="button" color="danger" onPress={onClose}>

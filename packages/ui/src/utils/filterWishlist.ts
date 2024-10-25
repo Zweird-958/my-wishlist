@@ -8,12 +8,12 @@ const filterWishlist = (
 ) =>
   wishlist
     .filter((wish) => {
-      if (selectedFilter === "purchased") {
-        return wish.purchased
+      if (selectedFilter === "private") {
+        return wish.isPrivate
       }
 
-      if (selectedFilter === "notPurchased") {
-        return !wish.purchased
+      if (selectedFilter === "notPrivate") {
+        return !wish.isPrivate
       }
 
       return true
