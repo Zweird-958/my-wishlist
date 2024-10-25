@@ -4,7 +4,6 @@ import { Stack, useLocalSearchParams } from "expo-router"
 import type { Wish } from "@my-wishlist/types"
 
 import HeaderTitle from "@/components/layout/header-title"
-import CenteredSpinner from "@/components/ui/spinner/centered-spinner"
 import WishList from "@/components/wishlist/wish-list"
 import api from "@/utils/api"
 
@@ -29,11 +28,8 @@ const WishlistShared = () => {
           ),
         }}
       />
-      {isPending ? (
-        <CenteredSpinner />
-      ) : (
-        <WishList wishlist={data?.result ?? []} />
-      )}
+
+      <WishList wishlist={data?.result ?? []} isLoading={isPending} />
     </>
   )
 }
