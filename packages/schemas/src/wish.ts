@@ -23,7 +23,7 @@ export const imageMobileSchema = z.object({
 
 export const addWishSchema = z.object({
   name: nameSchema,
-  url: urlSchema,
+  link: urlSchema,
   price: priceSchema,
   currency: currencySchema,
   isPrivate: isPrivateSchema
@@ -41,7 +41,7 @@ export const getWishSchema = z.object({
 
 export const editWishSchema = z.object({
   name: nameSchema.optional(),
-  url: urlSchema.optional(),
+  link: urlSchema.optional(),
   price: priceSchema.optional(),
   currency: currencySchema.optional(),
   isPrivate: isPrivateSchema.or(z.literal("")).optional(),
@@ -52,7 +52,7 @@ export const editWishSchema = z.object({
 export const wishFormSchema = z.object({
   name: z.string().default(""),
   price: z.number().default(0),
-  url: z.string().default(""),
+  link: z.string().default(""),
   purchased: z.boolean().default(false),
   isPrivate: z.boolean().default(false),
 })

@@ -121,7 +121,7 @@ const WishForm = ({ wish, onSubmit, isLoading }: Props) => {
       />
       <FormField
         control={control}
-        name="url"
+        name="link"
         keyboardType="url"
         autoCapitalize="none"
         autoCorrect={false}

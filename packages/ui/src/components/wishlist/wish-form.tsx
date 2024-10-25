@@ -101,7 +101,7 @@ const WishForm = ({
     >
       <Field control={control} name="name" label={t("name")} />
       <Field control={control} name="price" type="number" label={t("price")} />
-      <Field control={control} name="url" type="url" label={t("url")} />
+      <Field control={control} name="link" type="url" label={t("url")} />
       <CurrencyDropdown
         onSelectionChange={handleChangeCurrency}
         currency={watch("currency")}
