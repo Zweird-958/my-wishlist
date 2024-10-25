@@ -53,13 +53,13 @@ app.post(
   auth,
   zValidator("json", addWishSchema),
   async ({ req, var: { user, db, send, lang } }) => {
-    const { name, price, url, currency, isPrivate, image } = req.valid("json")
+    const { name, price, link, currency, isPrivate, image } = req.valid("json")
 
     const wish = await db.wish.create({
       data: {
         name,
         price: Number(price),
-        link: url,
+        link,
         currency,
         userId: user.id,
         isPrivate,
@@ -77,8 +77,7 @@ app.patch(
   ...fetchWish,
   zValidator("json", editWishSchema),
   async ({ req, var: { wish, db, send, lang } }) => {
-    const { name, price, url, currency, isPrivate, purchased, image } =
-      req.valid("json")
+    const { name, price, link, currency, isPrivate, image } = req.valid("json")
 
     const updatedWish = await db.wish.update({
       where: {
@@ -87,10 +86,9 @@ app.patch(
       data: {
         name: name ?? wish.name,
         price: price ?? wish.price,
-        link: url,
+        link,
         currency: currency ?? wish.currency,
         isPrivate: typeof isPrivate === "boolean" ? isPrivate : wish.isPrivate,
-        purchased: typeof purchased === "boolean" ? purchased : wish.purchased,
         image: image ?? wish.image,
       },
     })

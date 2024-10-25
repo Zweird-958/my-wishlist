@@ -14,7 +14,6 @@ export type Wish = {
   price: number
   currency: Currency
   userId: number
-  purchased: boolean
   createdAt: Date
   isPrivate: boolean
   priceFormatted: string

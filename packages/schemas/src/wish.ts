@@ -14,7 +14,6 @@ export const priceSchema = z.coerce
   .min(0.01, { message: "minimum" })
 export const currencySchema = z.enum(["DOLLAR", "EURO", "POUND"])
 export const isPrivateSchema = stringBooleanSchema
-export const purchasedSchema = stringBooleanSchema
 export const imageUrlSchema = z.string()
 export const imageMobileSchema = z.object({
   uri: imageUrlSchema,
@@ -23,13 +22,10 @@ export const imageMobileSchema = z.object({
 
 export const addWishSchema = z.object({
   name: nameSchema,
-  url: urlSchema,
+  link: urlSchema,
   price: priceSchema,
   currency: currencySchema,
   isPrivate: isPrivateSchema
-    .or(z.literal("").transform(() => false))
-    .default(false),
-  purchased: purchasedSchema
     .or(z.literal("").transform(() => false))
     .default(false),
   image: imageUrlSchema.optional(),
@@ -41,18 +37,16 @@ export const getWishSchema = z.object({
 
 export const editWishSchema = z.object({
   name: nameSchema.optional(),
-  url: urlSchema.optional(),
+  link: urlSchema.optional(),
   price: priceSchema.optional(),
   currency: currencySchema.optional(),
   isPrivate: isPrivateSchema.or(z.literal("")).optional(),
-  purchased: purchasedSchema.or(z.literal("")).optional(),
   image: imageUrlSchema.optional(),
 })
 
 export const wishFormSchema = z.object({
   name: z.string().default(""),
   price: z.number().default(0),
-  url: z.string().default(""),
-  purchased: z.boolean().default(false),
+  link: z.string().default(""),
   isPrivate: z.boolean().default(false),
 })

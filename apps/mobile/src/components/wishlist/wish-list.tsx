@@ -4,15 +4,20 @@ import { FlatList, View } from "react-native"
 import type { Wish } from "@my-wishlist/types"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
+import CenteredSpinner from "@/components/ui/spinner/centered-spinner"
 import WishCard from "@/components/wishlist/wish-card"
 
-type Props = { wishlist: Wish[] } & Omit<
+type Props = { wishlist: Wish[]; isLoading: boolean } & Omit<
   ComponentProps<typeof WishCard>,
   "wish"
 >
 
-const WishList = ({ wishlist, isEditable, setOpen }: Props) => {
+const WishList = ({ wishlist, isEditable, isLoading, setOpen }: Props) => {
   const { tw } = useTheme()
+
+  if (isLoading) {
+    return <CenteredSpinner size="lg" />
+  }
 
   return (
     <FlatList

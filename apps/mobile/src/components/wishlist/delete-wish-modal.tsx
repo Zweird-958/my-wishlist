@@ -16,12 +16,9 @@ import {
 import { Text } from "@/components/ui/text"
 import api from "@/utils/api"
 
-export type DeleteWishModalProps = Pick<
-  Required<ModalProps>,
-  "open" | "setOpen"
->
+type Props = Pick<Required<ModalProps>, "open" | "setOpen">
 
-const DeleteWishModal = ({ open, setOpen }: DeleteWishModalProps) => {
+const DeleteWishModal = ({ open, setOpen }: Props) => {
   const { t } = useTranslation()
   const { tw } = useTheme()
   const { selectedWish, removeWish } = useWishlist()

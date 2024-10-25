@@ -4,7 +4,7 @@ import type { Filter, Sort } from "@my-wishlist/config"
 
 import WishListDropdown from "./WishListDropdown"
 
-const FILTERS: Filter[] = ["all", "purchased", "notPurchased"]
+const FILTERS: Filter[] = ["all", "private", "notPrivate"]
 const SORTS: Sort[] = ["date", "priceAsc", "priceDesc"]
 
 type Props = {

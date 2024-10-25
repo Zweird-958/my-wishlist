@@ -15,6 +15,7 @@ const StacksLayout = () => {
         headerShown: true,
         headerLeft: (props) => <HeaderLeft {...props} />,
         headerStyle: tw.style("bg-card"),
+        headerBackVisible: false,
       }}
     >
       {PUBLIC_ROUTES.map(({ name, label }) => (

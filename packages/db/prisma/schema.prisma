@@ -29,7 +29,6 @@ model Wish {
   currency  Currency @default(value: DOLLAR)
   User      User?    @relation(fields: [userId], references: [id])
   userId    Int
-  purchased Boolean  @default(value: false)
   createdAt DateTime @default(now())
   isPrivate Boolean  @default(value: false)
 }

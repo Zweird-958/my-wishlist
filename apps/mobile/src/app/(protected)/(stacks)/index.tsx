@@ -7,7 +7,7 @@ import DeleteWishModal from "@/components/wishlist/delete-wish-modal"
 import WishList from "@/components/wishlist/wish-list"
 
 const Index = () => {
-  const { wishlist } = useWishlist()
+  const { wishlist, isLoading } = useWishlist()
   const router = useRouter()
 
   const handleAddWish = () => {
@@ -18,7 +18,12 @@ const Index = () => {
 
   return (
     <>
-      <WishList wishlist={wishlist} setOpen={setOpen} isEditable />
+      <WishList
+        wishlist={wishlist}
+        setOpen={setOpen}
+        isEditable
+        isLoading={isLoading}
+      />
       <DeleteWishModal open={open} setOpen={setOpen} />
       <AddFloatingButton onPress={handleAddWish} />
     </>

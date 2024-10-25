@@ -1,0 +1,21 @@
+name: Migrate
+on:
+  push:
+    paths:
+      - packages/db/prisma/migrations/**
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/setup
+
+      - name: Apply all pending migrations to the database
+        run: pnpx prisma migrate deploy
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}

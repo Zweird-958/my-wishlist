@@ -15,6 +15,7 @@ const StacksLayout = () => {
         headerShown: true,
         headerLeft: (props) => <HeaderDrawerLeft {...props} />,
         headerStyle: tw.style("bg-card"),
+        headerBackVisible: false,
       }}
     >
       {DRAWER_ITEMS.filter(({ href }) => href).map(({ name, label }) => (
