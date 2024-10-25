@@ -81,9 +81,11 @@ const WishCard = ({ wish, isEditable = false, setOpen }: Props) => {
           </Text>
           <Text>{priceFormatted}</Text>
         </View>
-        <Button color="primary" isText onPress={handleBuy}>
-          {t("common.buy")}
-        </Button>
+        {link && (
+          <Button color="primary" isText onPress={handleBuy}>
+            {t("common.buy")}
+          </Button>
+        )}
       </CardFooter>
     </Card>
   )
