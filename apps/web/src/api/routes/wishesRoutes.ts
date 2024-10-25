@@ -77,8 +77,7 @@ app.patch(
   ...fetchWish,
   zValidator("json", editWishSchema),
   async ({ req, var: { wish, db, send, lang } }) => {
-    const { name, price, link, currency, isPrivate, purchased, image } =
-      req.valid("json")
+    const { name, price, link, currency, isPrivate, image } = req.valid("json")
 
     const updatedWish = await db.wish.update({
       where: {
@@ -90,7 +89,6 @@ app.patch(
         link,
         currency: currency ?? wish.currency,
         isPrivate: typeof isPrivate === "boolean" ? isPrivate : wish.isPrivate,
-        purchased: typeof purchased === "boolean" ? purchased : wish.purchased,
         image: image ?? wish.image,
       },
     })
