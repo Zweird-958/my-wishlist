@@ -1,14 +1,16 @@
 import { View } from "react-native"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
-import { Spinner } from "@/components/ui/spinner"
+import { Spinner, type SpinnerProps } from "@/components/ui/spinner"
 
-const CenteredSpinner = () => {
+type Props = SpinnerProps
+
+const CenteredSpinner = (props: Props) => {
   const { tw } = useTheme()
 
   return (
     <View style={tw.style("h-full w-full items-center justify-center")}>
-      <Spinner />
+      <Spinner {...props} />
     </View>
   )
 }

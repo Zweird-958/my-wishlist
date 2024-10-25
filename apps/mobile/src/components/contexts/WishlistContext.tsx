@@ -21,6 +21,7 @@ type Context = {
   editWish: (wish: Wish) => void
   selectedWish: Wish | null
   selectWish: (wishId: Wish["id"]) => void
+  isLoading: boolean
 }
 
 const WishlistContext = createContext<Context>({} as Context)
@@ -38,7 +39,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     [wishlist],
   )
 
-  const { data } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: [session, "wishlist"],
     queryFn: () => api.get<Wish[]>("/wish"),
     enabled: Boolean(session) && wishlist.length === 0,
@@ -78,6 +79,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         editWish,
         selectWish,
         selectedWish,
+        isLoading: isPending,
       }}
     >
       {children}
