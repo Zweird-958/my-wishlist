@@ -65,16 +65,18 @@ const WishCard = ({ wish, canEdit, onEditButton }: Props) => {
           <p className="line-clamp-1">{name}</p>
           <p className="line-clamp-1">{priceFormatted}</p>
         </div>
-        <Button
-          as={Link}
-          href={link}
-          isExternal
-          className="text-tiny"
-          color="primary"
-          size="sm"
-        >
-          {t("buy")}
-        </Button>
+        {link && (
+          <Button
+            as={Link}
+            href={link}
+            isExternal
+            className="text-tiny"
+            color="primary"
+            size="sm"
+          >
+            {t("buy")}
+          </Button>
+        )}
       </CardFooter>
     </Card>
   )
