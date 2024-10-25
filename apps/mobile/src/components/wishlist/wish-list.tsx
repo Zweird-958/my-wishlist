@@ -15,7 +15,7 @@ type Props = { wishlist: Wish[]; isLoading: boolean } & Omit<
 const WishList = ({ wishlist, isEditable, isLoading, setOpen }: Props) => {
   const { tw } = useTheme()
 
-  if (!isLoading) {
+  if (isLoading) {
     return <CenteredSpinner size="lg" />
   }
 
