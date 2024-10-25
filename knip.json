@@ -4,7 +4,8 @@
   "ignoreDependencies": ["autoprefixer", "postcss"],
   "workspaces": {
     "packages/db": {
-      "ignoreDependencies": ["@prisma/client", "@faker-js/faker", "ts-node"]
+      "entry": ["prisma/seed.ts"],
+      "ignoreDependencies": ["ts-node"]
     },
     "apps/mobile": {
       "entry": [
