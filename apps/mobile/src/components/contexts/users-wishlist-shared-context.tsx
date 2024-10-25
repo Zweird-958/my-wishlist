@@ -16,7 +16,7 @@ type Context = {
   isLoading: boolean
 }
 
-export const UsersWishlistSharedContext = createContext<Context>({} as Context)
+const UsersWishlistSharedContext = createContext<Context>({} as Context)
 export const useUsersWishlistShared = () =>
   useContext(UsersWishlistSharedContext)
 

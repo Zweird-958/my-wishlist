@@ -23,7 +23,7 @@ type Context = {
   selectWish: (wishId: Wish["id"]) => void
 }
 
-export const WishlistContext = createContext<Context>({} as Context)
+const WishlistContext = createContext<Context>({} as Context)
 export const useWishlist = () => useContext(WishlistContext)
 
 export const WishlistProvider = ({ children }: { children: ReactNode }) => {

@@ -15,7 +15,7 @@ type Context = {
   currencies: Currency[]
 }
 
-export const CurrenciesContext = createContext<Context>({} as Context)
+const CurrenciesContext = createContext<Context>({} as Context)
 export const useCurrencies = () => useContext(CurrenciesContext)
 
 export const CurrenciesProvider = ({ children }: { children: ReactNode }) => {

@@ -1,10 +1,20 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-  "ignore": ["apps/mobile/**/*", "packages/db/prisma/seed.ts"],
+  "ignore": ["packages/db/prisma/seed.ts"],
   "ignoreDependencies": ["autoprefixer", "postcss"],
   "workspaces": {
     "packages/db": {
       "ignoreDependencies": ["@prisma/client", "@faker-js/faker", "ts-node"]
+    },
+    "apps/mobile": {
+      "entry": [
+        "src/app/**/*.ts",
+        "src/app/**/*.tsx",
+        "src/index.ts",
+        "metro.config.js"
+      ],
+      "ignore": ["babel.config.js", "src/components/ui/**/*.{ts,tsx}"],
+      "ignoreDependencies": ["@babel/runtime"]
     }
   },
   "rules": {
