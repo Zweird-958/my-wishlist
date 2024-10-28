@@ -5,7 +5,7 @@ import type { StatusCode } from "hono/utils/http-status"
 import { handle } from "hono/vercel"
 import { JsonWebTokenError } from "jsonwebtoken"
 
-import { type Locale, languageSchemaFallback } from "@my-wishlist/i18n"
+import { type Locale, config, languageSchemaFallback } from "@my-wishlist/i18n"
 
 import { ERROR_RESPONSES } from "@/api/constants"
 import currencyApp from "@/api/routes/currencyRoutes"
@@ -57,7 +57,7 @@ app.use((ctx, next) => {
   )
   ctx.set(
     "lang",
-    languageSchemaFallback.parse(getCookie(ctx, "my-wishlist-language")),
+    languageSchemaFallback.parse(getCookie(ctx, config.cookieLanguageKey)),
   )
 
   return next()
