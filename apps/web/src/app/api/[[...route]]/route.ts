@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import { Hono, type TypedResponse } from "hono"
 import { getCookie } from "hono/cookie"
+import { cors } from "hono/cors"
 import type { StatusCode } from "hono/utils/http-status"
 import { handle } from "hono/vercel"
 import { JsonWebTokenError } from "jsonwebtoken"
@@ -44,7 +45,7 @@ declare module "hono" {
 
 const app = new Hono().basePath("/api")
 
-app.use((ctx, next) => {
+app.use(cors(), (ctx, next) => {
   Object.entries(contextVariables).forEach(([name, value]) => {
     ctx.set(name as never, value as never)
   })
@@ -84,3 +85,4 @@ export const GET = handle(app)
 export const POST = handle(app)
 export const DELETE = handle(app)
 export const PATCH = handle(app)
+export const OPTIONS = handle(app)
