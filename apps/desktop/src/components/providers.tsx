@@ -4,6 +4,7 @@ import type { ReactNode } from "react"
 import { useTranslation } from "@my-wishlist/i18n/desktop"
 import {
   AppProvider,
+  CurrenciesProvider,
   NextUIProvider,
   QueryClient,
   QueryClientProvider,
@@ -18,19 +19,21 @@ import {
 const queryClient = new QueryClient()
 
 const Providers = ({ children }: { children: ReactNode }) => (
-  <SessionProvider>
-    <AppProvider
-      useTranslation={useTranslation}
-      useSession={useSession}
-      useRouter={useRouter}
-    >
-      <QueryClientProvider client={queryClient}>
-        <NextUIProvider>
-          <ThemeProvider>{children}</ThemeProvider>
-        </NextUIProvider>
-      </QueryClientProvider>
-    </AppProvider>
-  </SessionProvider>
+  <QueryClientProvider client={queryClient}>
+    <SessionProvider>
+      <AppProvider
+        useTranslation={useTranslation}
+        useSession={useSession}
+        useRouter={useRouter}
+      >
+        <CurrenciesProvider>
+          <NextUIProvider>
+            <ThemeProvider>{children}</ThemeProvider>
+          </NextUIProvider>
+        </CurrenciesProvider>
+      </AppProvider>
+    </SessionProvider>
+  </QueryClientProvider>
 )
 
 export default Providers

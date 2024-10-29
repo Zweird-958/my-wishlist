@@ -6,6 +6,7 @@ import type { ReactNode } from "react"
 import { useTranslation } from "@my-wishlist/i18n"
 import {
   AppProvider,
+  CurrenciesProvider,
   NextUIProvider,
   QueryClient,
   QueryClientProvider,
@@ -28,19 +29,21 @@ const Providers = (props: Props) => {
   const router = useRouter()
 
   return (
-    <SessionProvider>
-      <AppProvider
-        useTranslation={useTranslation}
-        useSession={useSession}
-        useRouter={useRouter}
-      >
-        <QueryClientProvider client={queryClient}>
-          <NextUIProvider navigate={(path) => router.push(path)}>
-            <ThemeProvider>{children}</ThemeProvider>
-          </NextUIProvider>
-        </QueryClientProvider>
-      </AppProvider>
-    </SessionProvider>
+    <QueryClientProvider client={queryClient}>
+      <SessionProvider>
+        <AppProvider
+          useTranslation={useTranslation}
+          useSession={useSession}
+          useRouter={useRouter}
+        >
+          <CurrenciesProvider>
+            <NextUIProvider navigate={(path) => router.push(path)}>
+              <ThemeProvider>{children}</ThemeProvider>
+            </NextUIProvider>
+          </CurrenciesProvider>
+        </AppProvider>
+      </SessionProvider>
+    </QueryClientProvider>
   )
 }
 
