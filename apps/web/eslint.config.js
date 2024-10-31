@@ -10,13 +10,4 @@ export default [
   ...baseConfig,
   ...reactConfig,
   ...nextConfig,
-  {
-    files: ["src/api/routes/**/*.ts"],
-    rules: {
-      "max-lines": [
-        "error",
-        { max: 300, skipBlankLines: true, skipComments: true },
-      ],
-    },
-  },
 ]

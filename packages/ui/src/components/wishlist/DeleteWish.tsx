@@ -10,13 +10,10 @@ import { Trash2Icon } from "lucide-react"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
-import {
-  type DeleteWishInput,
-  type DeleteWishResponse,
-  type Wish,
-} from "@my-wishlist/types"
+import { type Wish } from "@my-wishlist/types"
 
-import useMutation from "../../hooks/useMutation"
+import useClient from "../../hooks/use-client"
+import useMutation from "../../hooks/use-mutation"
 import useWishlist from "../../hooks/useWishlist"
 import { useTranslation } from "../AppContext"
 
@@ -32,21 +29,17 @@ const DeleteWish = ({ wish }: Props) => {
   const handleOpen = (open: boolean) => setIsOpen(open)
   const close = () => handleOpen(false)
 
-  const { mutate, isPending } = useMutation<
-    DeleteWishResponse,
-    DeleteWishInput
-  >({
-    method: "delete",
-    path: ({ wishId }) => `/wish/${wishId}`,
-    errorsMap: { 404: t("errors:wishNotFound") },
+  const client = useClient()
+  const { mutate, isPending } = useMutation(client.wish[":wishId"].$delete, {
     onSuccess: () => {
       close()
       toast.success(t("forms:wish.delete.success"))
       removeWish(wish)
     },
+    errorsMap: { 404: t("errors:wishNotFound") },
   })
   const onSubmit = () => {
-    mutate({ wishId: wish.id })
+    mutate({ param: { wishId: wish.id.toString() } })
   }
 
   return (

@@ -1,6 +1,6 @@
 import { S3Client } from "@aws-sdk/client-s3"
 
-import config from "@/api/utils/config"
+import config from "./config"
 
 const s3 = new S3Client({
   region: "auto",

@@ -1,0 +1,37 @@
+{
+  "name": "@my-wishlist/api",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./server": "./server.ts"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@my-wishlist/eslint": "workspace:*",
+    "@my-wishlist/typescript": "workspace:*",
+    "@my-wishlist/types": "workspace:*",
+    "@types/jsonwebtoken": "^9.0.7",
+    "eslint": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.678.0",
+    "@hono/zod-validator": "^0.4.1",
+    "@my-wishlist/schemas": "workspace:*",
+    "@my-wishlist/db": "workspace:*",
+    "@my-wishlist/i18n": "workspace:*",
+    "@prisma/client": "^5.21.1",
+    "hono": "^4.6.6",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.23.8"
+  }
+}

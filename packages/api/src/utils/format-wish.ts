@@ -2,8 +2,8 @@ import type { Wish } from "@prisma/client"
 
 import type { Locale } from "@my-wishlist/i18n"
 
-import config from "@/api/utils/config"
-import formatCurrency from "@/api/utils/formatCurrency"
+import config from "./config"
+import formatCurrency from "./format-currency"
 
 const formatWish = (wish: Wish, lang: Locale) => ({
   ...wish,

@@ -4,7 +4,7 @@ import jsonwebtoken from "jsonwebtoken"
 
 import type { RawJwt } from "@my-wishlist/types"
 
-import config from "@/api/utils/config"
+import config from "../utils/config"
 
 type Env = {
   Variables: {

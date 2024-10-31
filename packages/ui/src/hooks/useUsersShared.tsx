@@ -2,20 +2,21 @@
 
 import { useEffect } from "react"
 
-import type { UserShared } from "@my-wishlist/types"
-
 import useUsersSharedStore from "../stores/usersShared"
-import useQuery from "./useQuery"
+import useClient from "./use-client"
+import { useProtectedQuery } from "./use-query"
 
 const useUsersShared = () => {
   const { usersShared, setUsersShared, ...usersSharedStore } =
     useUsersSharedStore()
-  const { data, isLoading, error } = useQuery<UserShared[]>({
-    method: "get",
-    path: "/share/users",
-    enabled: usersShared.length === 0,
-    queryKey: ["usersShared"],
-  })
+  const client = useClient()
+  const { data, isLoading, error } = useProtectedQuery(
+    () => client.share.users.$get(),
+    {
+      queryKey: ["usersShared"],
+      enabled: usersShared.length === 0,
+    },
+  )
 
   useEffect(() => {
     if (data?.result && usersShared.length === 0) {

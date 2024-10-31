@@ -12,7 +12,8 @@ import {
 
 import type { UserShared } from "@my-wishlist/types"
 
-import useMutation from "../../hooks/useMutation"
+import useClient from "../../hooks/use-client"
+import useMutation from "../../hooks/use-mutation"
 import useUsersShared from "../../hooks/useUsersShared"
 import { useTranslation } from "../AppContext"
 
@@ -23,29 +24,31 @@ type Props = {
 const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
   const { t } = useTranslation("forms", "errors")
   const { removeUser } = useUsersShared()
-  const { mutate, isPending } = useMutation({
-    method: "delete",
-    path: `/share/wish/${user?.id}`,
-    onSuccess: () => {
-      onOpenChange(false)
+  const client = useClient()
+  const { mutate, isPending } = useMutation(
+    client.share.wish[":userId"].$delete,
+    {
+      onSuccess: () => {
+        onOpenChange(false)
 
-      if (!user) {
-        return
-      }
+        if (!user) {
+          return
+        }
 
-      removeUser(user.id)
+        removeUser(user.id)
+      },
+      errorsMap: {
+        404: t("errors:userNotFound"),
+      },
     },
-    errorsMap: {
-      404: t("errors:userNotFound"),
-    },
-  })
+  )
 
   const handleSubmit = () => {
     if (!user) {
       return
     }
 
-    mutate()
+    mutate({ param: { userId: user.id.toString() } })
   }
 
   return (

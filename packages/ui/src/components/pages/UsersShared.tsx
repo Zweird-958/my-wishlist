@@ -6,7 +6,8 @@ import { type Key, useState } from "react"
 
 import type { UserShared } from "@my-wishlist/types"
 
-import useQuery from "../../hooks/useQuery"
+import useClient from "../../hooks/use-client"
+import { useProtectedQuery } from "../../hooks/use-query"
 import useUsersShared from "../../hooks/useUsersShared"
 import AddButton from "../AddButton"
 import { useTranslation } from "../AppContext"
@@ -27,13 +28,12 @@ const ShareSection = () => {
 
 const UsersShared = () => {
   const { t } = useTranslation()
+  const client = useClient()
   const {
     data: wishlistShared,
     isLoading: sharedLoading,
     error: sharedError,
-  } = useQuery<UserShared[]>({
-    method: "get",
-    path: "/share/wish",
+  } = useProtectedQuery(() => client.share.wish.$get(), {
     queryKey: ["shared"],
   })
   const { usersShared, isLoading: usersLoading } = useUsersShared()
