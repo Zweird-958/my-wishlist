@@ -1,5 +1,5 @@
-import { ClientRequestOptions } from "hono"
-import { ClientResponse, InferResponseType } from "hono/client"
+import type { ClientRequestOptions } from "hono"
+import type { ClientResponse, InferResponseType } from "hono/client"
 
 export type HonoClientFunction =
   | ((

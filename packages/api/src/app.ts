@@ -26,7 +26,7 @@ type ContextVariables = typeof contextVariables
 declare module "hono" {
   // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface ContextVariableMap extends ContextVariables {
-    send: <TData, TMeta extends {} | Record<string, unknown>>(
+    send: <TData, TMeta extends Record<string, unknown>>(
       data: TData,
       meta?: TMeta,
     ) => Response &
@@ -66,6 +66,7 @@ app.use(cors(), (ctx, next) => {
 
 app.route("/image", image)
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const routes = app
   .route("/wish", wish)
   .route("/", sign)
