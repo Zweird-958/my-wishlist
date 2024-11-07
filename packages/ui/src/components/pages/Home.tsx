@@ -53,9 +53,8 @@ const Home = () => {
         selectedSort={selectedSort}
         setSelectedSort={setSelectedSort}
         canEdit
-      >
-        <AddWishForm isOpen={isOpen} onOpenChange={onOpenChange} />
-      </WishlistDisplay>
+      />
+      <AddWishForm isOpen={isOpen} onOpenChange={onOpenChange} />
       <AddButton onPress={onOpen} color="primary" />
     </>
   )
