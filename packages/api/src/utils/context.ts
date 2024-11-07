@@ -12,10 +12,12 @@ export const contextVariables = {
 }
 
 type ContextVariables = typeof contextVariables
+type Meta = Record<string, unknown>
 
 export const send =
   (ctx: Context) =>
-  <TData, TMeta extends object>(data: TData, meta: TMeta = {} as TMeta) =>
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  <TData, TMeta extends Meta = {}>(data: TData, meta: TMeta = {} as TMeta) =>
     ctx.json({
       result: data,
       meta,
