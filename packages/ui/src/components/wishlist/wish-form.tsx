@@ -94,13 +94,11 @@ const WishForm = ({
       />
       <WishImageInput image={image} setImage={setImage} />
       <WishSelectedImage wish={wish} image={image} />
-      {wish && (
-        <SwitchField
-          label={t("private")}
-          onValueChange={handleSwitch("isPrivate")}
-          isSelected={watch("isPrivate")}
-        />
-      )}
+      <SwitchField
+        label={t("private")}
+        onValueChange={handleSwitch("isPrivate")}
+        isSelected={watch("isPrivate")}
+      />
       <div className="flex w-full justify-between">
         <Button type="button" color="danger" onPress={onClose}>
           {t("wish.cancel")}
