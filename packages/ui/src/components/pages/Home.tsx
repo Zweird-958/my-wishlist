@@ -44,18 +44,20 @@ const Home = () => {
   }
 
   return (
-    <WishlistDisplay
-      isLoading={sessionIsLoading || wishlistIsLoading}
-      wishlist={wishlist}
-      selectedFilter={selectedFilter}
-      setSelectedFilter={setSelectedFilter}
-      selectedSort={selectedSort}
-      setSelectedSort={setSelectedSort}
-      canEdit
-    >
+    <>
+      <WishlistDisplay
+        isLoading={sessionIsLoading || wishlistIsLoading}
+        wishlist={wishlist}
+        selectedFilter={selectedFilter}
+        setSelectedFilter={setSelectedFilter}
+        selectedSort={selectedSort}
+        setSelectedSort={setSelectedSort}
+        canEdit
+      >
+        <AddWishForm isOpen={isOpen} onOpenChange={onOpenChange} />
+      </WishlistDisplay>
       <AddButton onPress={onOpen} color="primary" />
-      <AddWishForm isOpen={isOpen} onOpenChange={onOpenChange} />
-    </WishlistDisplay>
+    </>
   )
 }
 
