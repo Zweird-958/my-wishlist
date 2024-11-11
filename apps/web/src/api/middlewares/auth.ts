@@ -1,9 +1,10 @@
-import type { User } from "@prisma/client"
 import { createMiddleware } from "hono/factory"
 import jsonwebtoken from "jsonwebtoken"
 
+import { eq, users } from "@my-wishlist/db"
 import type { RawJwt } from "@my-wishlist/types"
 
+import type { User } from "@/api/types"
 import config from "@/api/utils/config"
 
 type Env = {
@@ -25,10 +26,8 @@ const auth = createMiddleware<Env>(
       config.security.jwt.secret,
     ) as RawJwt
 
-    const user = await db.user.findUnique({
-      where: {
-        id: payload.userId,
-      },
+    const user = await db.query.users.findFirst({
+      where: eq(users.id, payload.userId),
     })
 
     if (!user) {

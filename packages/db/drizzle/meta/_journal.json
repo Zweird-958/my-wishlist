@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1731057418046,
+      "tag": "0000_brief_cerebro",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1731057744899,
+      "tag": "0001_military_shotgun",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1731271366887,
+      "tag": "0002_jittery_squadron_supreme",
+      "breakpoints": true
+    }
+  ]
+}

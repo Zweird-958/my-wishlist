@@ -1,8 +1,9 @@
-import { Currency } from "@prisma/client"
 import { Hono } from "hono"
+
+import { currencies } from "@my-wishlist/db"
 
 const app = new Hono()
 
-app.get("/", ({ var: { send } }) => send(Object.keys(Currency)))
+app.get("/", ({ var: { send } }) => send(currencies))
 
 export default app

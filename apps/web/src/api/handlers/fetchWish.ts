@@ -1,11 +1,15 @@
 import { zValidator } from "@hono/zod-validator"
-import type { User, Wish } from "@prisma/client"
 import { createFactory } from "hono/factory"
 import { z } from "zod"
 
+import { and, eq, wishes } from "@my-wishlist/db"
+import type { WishTable } from "@my-wishlist/types"
+
+import type { User } from "@/api/types"
+
 type Env = {
   Variables: {
-    wish: Wish
+    wish: WishTable
     user?: User
   }
 }
@@ -25,13 +29,14 @@ const fetchWish = factory.createHandlers(
 
     const { wishId } = req.valid("param")
 
-    const wish = await db.wish.findUnique({
-      where: {
-        id: parseInt(wishId, 10),
-      },
+    const wish = await db.query.wishes.findFirst({
+      where: and(
+        eq(wishes.id, parseInt(wishId, 10)),
+        eq(wishes.userId, user.id),
+      ),
     })
 
-    if (!wish || wish.userId !== user.id) {
+    if (!wish) {
       return fail("wishNotFound")
     }
 

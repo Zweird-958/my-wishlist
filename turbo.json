@@ -23,7 +23,8 @@
         "S3_URL",
         "S3_PUBLIC_URL",
         "NODE_ENV",
-        "NEXT_PUBLIC_APP_ENV"
+        "NEXT_PUBLIC_APP_ENV",
+        "DATABASE_URL"
       ]
     },
     "dev": {

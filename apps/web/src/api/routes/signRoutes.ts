@@ -2,7 +2,7 @@ import { zValidator } from "@hono/zod-validator"
 import { Hono } from "hono"
 import jsonwebtoken from "jsonwebtoken"
 
-import { hashPassword } from "@my-wishlist/db"
+import { eq, hashPassword, lower, users } from "@my-wishlist/db"
 import { signInSchema, signUpSchema } from "@my-wishlist/schemas"
 
 import config from "@/api/utils/config"
@@ -16,10 +16,8 @@ app.post(
     const { email, password } = req.valid("json")
     const passwordHash = hashPassword(password)
 
-    const user = await db.user.findUnique({
-      where: {
-        email,
-      },
+    const user = await db.query.users.findFirst({
+      where: eq(users.email, email),
     })
 
     if (!user || user.passwordHash !== passwordHash) {
@@ -48,33 +46,22 @@ app.post(
   async ({ req, var: { send, fail, db } }) => {
     const { email, username, password } = req.valid("json")
 
-    const existingUsername = await db.user.findFirst({
-      where: {
-        OR: [
-          {
-            username: {
-              equals: username,
-              mode: "insensitive",
-            },
-          },
-        ],
-      },
+    const existingUsername = await db.query.users.findFirst({
+      where: eq(lower(users.username), username.toLowerCase()),
     })
 
     if (existingUsername) {
       return fail("usernameExists")
     }
 
-    if (await db.user.findFirst({ where: { email } })) {
+    if (await db.query.users.findFirst({ where: eq(users.email, email) })) {
       return send(true)
     }
 
-    await db.user.create({
-      data: {
-        email,
-        passwordHash: hashPassword(password),
-        username,
-      },
+    await db.insert(users).values({
+      email,
+      passwordHash: hashPassword(password),
+      username,
     })
 
     return send(true)

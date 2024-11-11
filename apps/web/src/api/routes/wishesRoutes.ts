@@ -1,6 +1,7 @@
 import { zValidator } from "@hono/zod-validator"
 import { Hono } from "hono"
 
+import { eq, wishes as wishesTable } from "@my-wishlist/db"
 import { addWishSchema, editWishSchema } from "@my-wishlist/schemas"
 
 import fetchWish from "@/api/handlers/fetchWish"
@@ -11,13 +12,8 @@ import formatWish from "@/api/utils/formatWish"
 const app = new Hono()
 
 app.get("/", auth, async ({ var: { db, user, send, lang } }) => {
-  const wishes = await db.wish.findMany({
-    where: {
-      userId: user.id,
-    },
-    orderBy: {
-      createdAt: "asc",
-    },
+  const wishes = await db.query.wishes.findMany({
+    where: eq(wishesTable.userId, user.id),
   })
 
   const wishesFormatted = wishes.map((wish) => formatWish(wish, lang))
@@ -30,11 +26,7 @@ app.delete(
   auth,
   ...fetchWish,
   async ({ var: { send, wish, db, lang } }) => {
-    await db.wish.delete({
-      where: {
-        id: wish.id,
-      },
-    })
+    await db.delete(wishesTable).where(eq(wishesTable.id, wish.id))
 
     if (wish.image) {
       await deleteFile(wish.image)
@@ -55,8 +47,9 @@ app.post(
   async ({ req, var: { user, db, send, lang } }) => {
     const { name, price, link, currency, isPrivate, image } = req.valid("json")
 
-    const wish = await db.wish.create({
-      data: {
+    const [wish] = await db
+      .insert(wishesTable)
+      .values({
         name,
         price: Number(price),
         link,
@@ -64,10 +57,10 @@ app.post(
         userId: user.id,
         isPrivate,
         image,
-      },
-    })
+      })
+      .returning()
 
-    return send(formatWish(wish, lang))
+    return send(formatWish(wish!, lang))
   },
 )
 
@@ -78,22 +71,20 @@ app.patch(
   zValidator("json", editWishSchema),
   async ({ req, var: { wish, db, send, lang } }) => {
     const { name, price, link, currency, isPrivate, image } = req.valid("json")
-
-    const updatedWish = await db.wish.update({
-      where: {
-        id: wish.id,
-      },
-      data: {
+    const [updatedWish] = await db
+      .update(wishesTable)
+      .set({
         name: name ?? wish.name,
         price: price ?? wish.price,
         link,
         currency: currency ?? wish.currency,
         isPrivate: typeof isPrivate === "boolean" ? isPrivate : wish.isPrivate,
         image: image ?? wish.image,
-      },
-    })
+      })
+      .where(eq(wishesTable.id, wish.id))
+      .returning()
 
-    return send(formatWish(updatedWish, lang))
+    return send(formatWish(updatedWish!, lang))
   },
 )
 
