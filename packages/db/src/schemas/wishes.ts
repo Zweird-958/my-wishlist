@@ -11,9 +11,10 @@ import {
   timestamp,
 } from "drizzle-orm/pg-core"
 
+import { currencies } from "@my-wishlist/config"
+
 import { users } from "./users"
 
-export const currencies = ["DOLLAR", "EURO", "POUND"] as const
 export const currencyEnum = pgEnum("Currency", currencies)
 
 export const wishes = pgTable("Wish", {

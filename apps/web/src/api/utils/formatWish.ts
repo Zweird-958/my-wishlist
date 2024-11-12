@@ -1,6 +1,6 @@
 import type { Locale } from "@my-wishlist/i18n"
-import type { WishTable } from "@my-wishlist/types"
 
+import type { WishTable } from "@/api/types"
 import config from "@/api/utils/config"
 import formatCurrency from "@/api/utils/formatCurrency"
 

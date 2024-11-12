@@ -18,6 +18,7 @@
     "@my-wishlist/schemas": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
+    "@my-wishlist/config": "workspace:*",
     "hono": "^4.6.6",
     "jsonwebtoken": "^9.0.2",
     "next": "catalog:",

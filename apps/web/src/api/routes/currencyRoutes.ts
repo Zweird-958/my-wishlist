@@ -1,6 +1,6 @@
 import { Hono } from "hono"
 
-import { currencies } from "@my-wishlist/db"
+import { currencies } from "@my-wishlist/config"
 
 const app = new Hono()
 

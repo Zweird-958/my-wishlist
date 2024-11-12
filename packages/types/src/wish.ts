@@ -1,13 +1,10 @@
 import type { z } from "zod"
 
-import { type wishes } from "@my-wishlist/db"
 import type {
   addWishSchema,
   currencySchema,
   imageMobileSchema,
 } from "@my-wishlist/schemas"
-
-export type WishTable = typeof wishes.$inferSelect
 
 export type Wish = {
   id: number

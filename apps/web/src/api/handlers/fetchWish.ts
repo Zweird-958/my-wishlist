@@ -3,9 +3,8 @@ import { createFactory } from "hono/factory"
 import { z } from "zod"
 
 import { and, eq, wishes } from "@my-wishlist/db"
-import type { WishTable } from "@my-wishlist/types"
 
-import type { User } from "@/api/types"
+import type { User, WishTable } from "@/api/types"
 
 type Env = {
   Variables: {

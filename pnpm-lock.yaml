@@ -271,6 +271,9 @@ importers:
       '@hono/zod-validator':
         specifier: ^0.4.1
         version: 0.4.1(hono@4.6.9)(zod@3.23.8)
+      '@my-wishlist/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@my-wishlist/db':
         specifier: workspace:*
         version: link:../../packages/db
@@ -335,9 +338,6 @@ importers:
 
   packages/config:
     dependencies:
-      '@my-wishlist/schemas':
-        specifier: workspace:*
-        version: link:../schemas
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -357,6 +357,9 @@ importers:
 
   packages/db:
     dependencies:
+      '@my-wishlist/config':
+        specifier: workspace:*
+        version: link:../config
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -486,13 +489,13 @@ importers:
 
   packages/schemas:
     dependencies:
-      '@my-wishlist/db':
-        specifier: workspace:*
-        version: link:../db
       zod:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      '@my-wishlist/config':
+        specifier: workspace:*
+        version: link:../config
       '@my-wishlist/eslint':
         specifier: workspace:*
         version: link:../../tooling/eslint
@@ -508,9 +511,6 @@ importers:
 
   packages/types:
     dependencies:
-      '@my-wishlist/db':
-        specifier: workspace:*
-        version: link:../db
       '@my-wishlist/schemas':
         specifier: workspace:*
         version: link:../schemas
@@ -2099,7 +2099,7 @@ packages:
 
   '@expo/bunyan@4.0.1':
     resolution: {integrity: sha512-+Lla7nYSiHZirgK+U/uYzsLv/X+HaJienbD5AKX1UQZHYfWaP+9uuQluRB4GrEVWF0GZ7vEVp/jzaOT9k/SQlg==}
-    engines: {node: '>=0.10.0'}
+    engines: {'0': node >=0.10.0}
 
   '@expo/cli@0.18.30':
     resolution: {integrity: sha512-V90TUJh9Ly8stYo8nwqIqNWCsYjE28GlVFWEhAFCUOp99foiQr8HSTpiiX5GIrprcPoWmlGoY+J5fQA29R4lFg==}

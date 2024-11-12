@@ -13,12 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "zod": "^3.23.8",
-    "@my-wishlist/db": "workspace:*"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",
+    "@my-wishlist/config": "workspace:*",
     "eslint": "catalog:",
     "typescript": "catalog:"
   }

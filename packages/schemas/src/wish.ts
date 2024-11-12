@@ -1,6 +1,8 @@
 import { z } from "zod"
 
-import { currencies } from "@my-wishlist/db"
+import { currencySchema } from "@my-wishlist/config"
+
+export { currencySchema }
 
 export const stringBooleanSchema = z
   .boolean()
@@ -14,7 +16,6 @@ export const urlSchema = z
 export const priceSchema = z.coerce
   .number({ message: "number" })
   .min(0.01, { message: "minimum" })
-export const currencySchema = z.enum(currencies)
 export const isPrivateSchema = stringBooleanSchema
 export const imageUrlSchema = z.string()
 export const imageMobileSchema = z.object({
