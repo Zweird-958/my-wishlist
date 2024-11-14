@@ -24,8 +24,8 @@ export const wishes = pgTable("Wish", {
   link: text(),
   price: doublePrecision().notNull(),
   currency: currencyEnum().notNull().default("DOLLAR"),
-  createdAt: timestamp({ precision: 3 }).defaultNow(),
-  isPrivate: boolean().default(false),
+  createdAt: timestamp({ precision: 3 }).notNull().defaultNow(),
+  isPrivate: boolean().notNull().default(false),
   userId: integer()
     .notNull()
     .references(() => users.id),
