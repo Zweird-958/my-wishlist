@@ -1,6 +1,7 @@
 import { z } from "zod"
 
-import { currencySchema } from "@my-wishlist/schemas"
+export const currencies = ["DOLLAR", "EURO", "POUND"] as const
+export const currencySchema = z.enum(currencies)
 
 const schema = z.object({
   defaultCurrency: currencySchema,

@@ -1,4 +1,3 @@
-import { PrismaClient } from "@prisma/client"
 import { Hono, type TypedResponse } from "hono"
 import { getCookie } from "hono/cookie"
 import { cors } from "hono/cors"
@@ -6,6 +5,7 @@ import type { StatusCode } from "hono/utils/http-status"
 import { handle } from "hono/vercel"
 import { JsonWebTokenError } from "jsonwebtoken"
 
+import { db } from "@my-wishlist/db"
 import { type Locale, config, languageSchemaFallback } from "@my-wishlist/i18n"
 
 import { ERROR_RESPONSES } from "@/api/constants"
@@ -15,10 +15,8 @@ import shareApp from "@/api/routes/sharesRoutes"
 import signApp from "@/api/routes/signRoutes"
 import wishApp from "@/api/routes/wishesRoutes"
 
-const prisma = new PrismaClient()
-
 const contextVariables = {
-  db: prisma,
+  db,
 }
 
 type ContextVariables = typeof contextVariables
