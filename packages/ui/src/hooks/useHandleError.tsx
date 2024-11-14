@@ -6,8 +6,8 @@ import type { ApiClientError } from "@my-wishlist/api"
 
 import { useTranslation } from "../components/AppContext"
 
-export type ErrorsMap = Record<number, string>
-export type ErrorsCallback = Record<number, () => void>
+type ErrorsMap = Record<number, string>
+type ErrorsCallback = Record<number, () => void>
 
 export type HandleErrorParams = {
   errorsMap?: ErrorsMap

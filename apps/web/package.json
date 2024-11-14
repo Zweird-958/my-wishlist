@@ -8,7 +8,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate": "prisma generate --schema=../../packages/db/prisma/schema.prisma",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -31,7 +30,6 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "eslint": "catalog:",
-    "prisma": "^5.21.1",
     "tailwindcss": "catalog:"
   }
 }

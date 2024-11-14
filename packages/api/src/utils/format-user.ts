@@ -1,6 +1,6 @@
-import type { User } from "@prisma/client"
+import type { User } from "../types"
 
-const formatUser = ({ id, username }: User) => ({
+const formatUser = ({ id, username }: Pick<User, "id" | "username">) => ({
   id,
   username,
 })

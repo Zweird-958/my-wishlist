@@ -1,14 +1,12 @@
-import { PrismaClient } from "@prisma/client"
 import type { Context } from "hono"
 
 import type { Locale } from "@my-wishlist/config/i18n"
+import { db } from "@my-wishlist/db"
 
 import { ERROR_RESPONSES } from "../constants"
 
-const prisma = new PrismaClient()
-
 export const contextVariables = {
-  db: prisma,
+  db,
 }
 
 type ContextVariables = typeof contextVariables

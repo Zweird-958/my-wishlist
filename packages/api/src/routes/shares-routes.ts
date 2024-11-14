@@ -2,6 +2,14 @@ import { zValidator } from "@hono/zod-validator"
 import { Hono } from "hono"
 import { z } from "zod"
 
+import {
+  and,
+  eq,
+  lower,
+  users,
+  wishes,
+  wishlistShared as wishlistSharedTable,
+} from "@my-wishlist/db"
 import { shareSchema } from "@my-wishlist/schemas"
 
 import auth from "../middlewares/auth"
@@ -24,53 +32,28 @@ const app = new Hono()
         return fail("addHimSelf")
       }
 
-      const userWithAccess = await db.user.findFirst({
-        where: {
-          OR: [
-            {
-              username: {
-                equals: username,
-                mode: "insensitive",
-              },
-            },
-          ],
-        },
-        include: { wishlistShared: true },
+      const userWithAccess = await db.query.users.findFirst({
+        where: eq(lower(users.username), username),
       })
 
       if (!userWithAccess) {
         return fail("userNotFound")
       }
 
-      const { email, wishlistShared } = userWithAccess
+      const wishlistShared = await db.query.wishlistShared.findFirst({
+        where: and(
+          eq(wishlistSharedTable.ownerId, user.id),
+          eq(wishlistSharedTable.viewerId, userWithAccess.id),
+        ),
+      })
 
-      if (wishlistShared.some(({ id }) => id === user.id)) {
+      if (wishlistShared) {
         return fail("alreadyShared")
       }
 
-      await db.user.update({
-        where: {
-          email,
-        },
-        data: {
-          wishlistShared: {
-            connect: user,
-          },
-        },
-      })
-
-      await db.user.update({
-        where: {
-          id: user.id,
-        },
-        data: {
-          sharedWith: {
-            connect: {
-              email,
-            },
-          },
-        },
-      })
+      await db
+        .insert(wishlistSharedTable)
+        .values([{ ownerId: user.id, viewerId: userWithAccess.id }])
 
       return send(formatUser(userWithAccess))
     },
@@ -79,52 +62,56 @@ const app = new Hono()
     "/wish/:userId",
     auth,
     zValidator("param", userParamsSchema),
-    async ({ req, var: { user: authedUser, send, fail, db, lang } }) => {
+    async ({ req, var: { user: authUser, send, fail, db, lang } }) => {
       const { userId } = req.valid("param")
 
-      const user = await db.user.findUnique({
-        where: {
-          id: userId,
-          sharedWith: {
-            some: {
-              id: authedUser.id,
-            },
-          },
-        },
-        include: {
-          wishlist: {
-            where: {
-              isPrivate: false,
+      const shared = await db.query.wishlistShared.findFirst({
+        where: and(
+          eq(wishlistSharedTable.viewerId, authUser.id),
+          eq(wishlistSharedTable.ownerId, userId),
+        ),
+        with: {
+          owner: {
+            columns: { username: true },
+            with: {
+              wishlist: {
+                where: eq(wishes.isPrivate, false),
+              },
             },
           },
         },
       })
 
-      if (!user) {
+      if (!shared) {
         return fail("userNotFound")
       }
 
       return send(
-        user.wishlist.map((wish) => formatWish(wish, lang)),
-        { username: user.username },
+        shared.owner.wishlist.map((wish) => formatWish(wish, lang)),
+        { username: shared.owner.username },
       )
     },
   )
-  .get("/wish", auth, async ({ var: { user, send, db } }) => {
-    const userWithShared = await db.user.findFirst({
-      where: {
-        id: user.id,
+  .get("/wish", auth, async ({ var: { user: authUser, send, db } }) => {
+    const user = await db.query.users.findFirst({
+      where: eq(users.id, authUser.id),
+      columns: {
+        id: true,
       },
-      include: {
-        wishlistShared: true,
+      with: {
+        viewers: {
+          with: {
+            viewer: { columns: { id: true, username: true } },
+          },
+        },
       },
     })
 
-    if (!userWithShared) {
+    if (!user) {
       return send([])
     }
 
-    return send(userWithShared.wishlistShared.map(formatUser))
+    return send(user.viewers.map(({ viewer }) => formatUser(viewer)))
   })
   .delete(
     "/wish/:userId",
@@ -133,63 +120,44 @@ const app = new Hono()
     async ({ req, var: { user, send, fail, db } }) => {
       const { userId } = req.valid("param")
 
-      const userWithAccess = await db.user.findFirst({
-        where: {
-          id: userId,
-          wishlistShared: {
-            some: {
-              id: user.id,
-            },
-          },
-        },
+      const filter = and(
+        eq(wishlistSharedTable.ownerId, user.id),
+        eq(wishlistSharedTable.viewerId, userId),
+      )
+
+      const userWithAccess = await db.query.wishlistShared.findFirst({
+        where: filter,
       })
 
       if (!userWithAccess) {
         return fail("userNotFound")
       }
 
-      await db.user.update({
-        where: {
-          id: userId,
-        },
-        data: {
-          wishlistShared: {
-            disconnect: {
-              id: user.id,
-            },
-          },
-        },
-      })
-
-      await db.user.update({
-        where: {
-          id: user.id,
-        },
-        data: {
-          sharedWith: {
-            disconnect: {
-              id: userId,
-            },
-          },
-        },
-      })
+      await db.delete(wishlistSharedTable).where(filter)
 
       return send(true)
     },
   )
   .get("/users", auth, async ({ var: { user, send, db } }) => {
-    const userWithShared = await db.user.findFirst({
-      where: {
-        id: user.id,
+    const userWithShared = await db.query.users.findFirst({
+      where: eq(users.id, user.id),
+      columns: { id: true },
+      with: {
+        accessibleWishlists: {
+          with: {
+            owner: { columns: { id: true, username: true } },
+          },
+        },
       },
-      include: { sharedWith: true },
     })
 
     if (!userWithShared) {
       return send([])
     }
 
-    return send(userWithShared.sharedWith.map(formatUser))
+    return send(
+      userWithShared.accessibleWishlists.map(({ owner }) => formatUser(owner)),
+    )
   })
 
 export default app

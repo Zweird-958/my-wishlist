@@ -1,6 +1,7 @@
 import { zValidator } from "@hono/zod-validator"
 import { Hono } from "hono"
 
+import { asc, eq, wishes as wishesTable } from "@my-wishlist/db"
 import { addWishSchema, editWishSchema } from "@my-wishlist/schemas"
 
 import fetchWish from "../handlers/fetch-wish"
@@ -10,13 +11,9 @@ import formatWish from "../utils/format-wish"
 
 const app = new Hono()
   .get("/", auth, async ({ var: { db, user, send, lang } }) => {
-    const wishes = await db.wish.findMany({
-      where: {
-        userId: user.id,
-      },
-      orderBy: {
-        createdAt: "asc",
-      },
+    const wishes = await db.query.wishes.findMany({
+      where: eq(wishesTable.userId, user.id),
+      orderBy: [asc(wishesTable.createdAt)],
     })
 
     const wishesFormatted = wishes.map((wish) => formatWish(wish, lang))
@@ -28,11 +25,7 @@ const app = new Hono()
     auth,
     ...fetchWish,
     async ({ var: { send, wish, db, lang } }) => {
-      await db.wish.delete({
-        where: {
-          id: wish.id,
-        },
-      })
+      await db.delete(wishesTable).where(eq(wishesTable.id, wish.id))
 
       if (wish.image) {
         await deleteFile(wish.image)
@@ -52,8 +45,9 @@ const app = new Hono()
       const { name, price, link, currency, isPrivate, image } =
         req.valid("json")
 
-      const wish = await db.wish.create({
-        data: {
+      const [wish] = await db
+        .insert(wishesTable)
+        .values({
           name,
           price: Number(price),
           link,
@@ -61,10 +55,10 @@ const app = new Hono()
           userId: user.id,
           isPrivate,
           image,
-        },
-      })
+        })
+        .returning()
 
-      return send(formatWish(wish, lang))
+      return send(formatWish(wish!, lang))
     },
   )
   .patch(
@@ -76,11 +70,9 @@ const app = new Hono()
       const { name, price, link, currency, isPrivate, image } =
         req.valid("json")
 
-      const updatedWish = await db.wish.update({
-        where: {
-          id: wish.id,
-        },
-        data: {
+      const [updatedWish] = await db
+        .update(wishesTable)
+        .set({
           name: name ?? wish.name,
           price: price ?? wish.price,
           link,
@@ -88,10 +80,11 @@ const app = new Hono()
           isPrivate:
             typeof isPrivate === "boolean" ? isPrivate : wish.isPrivate,
           image: image ?? wish.image,
-        },
-      })
+        })
+        .where(eq(wishesTable.id, wish.id))
+        .returning()
 
-      return send(formatWish(updatedWish, lang))
+      return send(formatWish(updatedWish!, lang))
     },
   )
 

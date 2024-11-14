@@ -2,10 +2,6 @@
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "ignoreDependencies": ["autoprefixer", "postcss"],
   "workspaces": {
-    "packages/db": {
-      "entry": ["prisma/seed.ts"],
-      "ignoreDependencies": ["ts-node"]
-    },
     "apps/mobile": {
       "entry": [
         "src/app/**/*.ts",

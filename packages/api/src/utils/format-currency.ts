@@ -1,7 +1,7 @@
 import type { Locale } from "@my-wishlist/config/i18n"
 import type { Currency } from "@my-wishlist/types"
 
-const currencySymbols = {
+const currencySymbols: Record<Currency, string> = {
   DOLLAR: "USD",
   EURO: "EUR",
   POUND: "GBP",

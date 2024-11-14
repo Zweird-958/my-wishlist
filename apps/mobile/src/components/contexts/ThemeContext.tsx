@@ -26,7 +26,7 @@ import {
 import config from "@/utils/config"
 
 export type Theme = "dark" | "light" | "system"
-export type ResolvedTheme = Exclude<Theme, "system">
+type ResolvedTheme = Exclude<Theme, "system">
 
 type Context = {
   themeColors: RNTheme["colors"]

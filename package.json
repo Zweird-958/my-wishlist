@@ -12,7 +12,6 @@
     "mobile:android": "pnpm --F \"@my-wishlist/mobile\" android",
     "db:migrate": "pnpm --F \"@my-wishlist/db\" migrate",
     "db:migrate:create": "pnpm --F \"@my-wishlist/db\" migrate:create",
-    "db:generate": "pnpm --F \"@my-wishlist/db\" generate",
     "db:seed": "pnpm --F \"@my-wishlist/db\" seed",
     "lint": "turbo lint",
     "lint:fix": "turbo lint -- --fix",

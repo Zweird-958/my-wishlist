@@ -2,7 +2,7 @@ name: Migrate
 on:
   push:
     paths:
-      - packages/db/prisma/migrations/**
+      - packages/db/drizzle/**
     branches:
       - main
 
