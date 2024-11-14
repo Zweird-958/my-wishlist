@@ -9,9 +9,9 @@ import {
   type HonoClientFunction,
   type ResponseFiltered,
 } from "@my-wishlist/api"
-import { type ApiError } from "@my-wishlist/types"
+import type { ApiError } from "@my-wishlist/types"
 
-type Options<T extends HonoClientFunction> = Omit<
+export type MutationOptions<T extends HonoClientFunction> = Omit<
   UseMutationOptions<
     Exclude<InferResponseType<T>, { error: unknown }>,
     ApiClientError,
@@ -20,9 +20,9 @@ type Options<T extends HonoClientFunction> = Omit<
   "mutationFn"
 >
 
-const useMutation = <T extends HonoClientFunction>(
+export const useMutation = <T extends HonoClientFunction>(
   request: T,
-  options: Options<T> = {},
+  options: MutationOptions<T> = {},
 ) =>
   useGenericMutation({
     mutationFn: async (variables) => {
@@ -38,4 +38,5 @@ const useMutation = <T extends HonoClientFunction>(
     },
     ...options,
   })
-export default useMutation
+
+export { useGenericMutation }

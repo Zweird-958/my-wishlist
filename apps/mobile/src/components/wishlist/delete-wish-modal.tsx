@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 
+import { useMutation } from "@my-wishlist/react"
+
 import { useTheme } from "@/components/contexts/ThemeContext"
 import { useWishlist } from "@/components/contexts/WishlistContext"
 import { Button } from "@/components/ui/button"
@@ -12,7 +14,6 @@ import {
 } from "@/components/ui/modal"
 import { Text } from "@/components/ui/text"
 import useClient from "@/hooks/use-client"
-import useMutation from "@/hooks/use-mutation"
 
 type Props = Pick<Required<ModalProps>, "open" | "setOpen">
 

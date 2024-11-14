@@ -1,5 +1,6 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import type { ComponentProps, ReactNode } from "react"
+
+import { QueryClient, QueryClientProvider } from "@my-wishlist/react"
 
 import { SessionProvider } from "@/components/contexts/SessionContext"
 import { ThemeProvider } from "@/components/contexts/ThemeContext"

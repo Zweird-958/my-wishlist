@@ -6,10 +6,10 @@ import {
   useState,
 } from "react"
 
+import { useQuery } from "@my-wishlist/react"
 import type { Currency } from "@my-wishlist/types"
 
 import useClient from "@/hooks/use-client"
-import { useQuery } from "@/hooks/use-query"
 
 type Context = {
   currencies: Currency[]

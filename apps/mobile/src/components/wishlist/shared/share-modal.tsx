@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 
+import { useMutation } from "@my-wishlist/react"
 import { shareSchema } from "@my-wishlist/schemas"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
@@ -18,7 +19,6 @@ import {
 } from "@/components/ui/modal"
 import { Text } from "@/components/ui/text"
 import useClient from "@/hooks/use-client"
-import useMutation from "@/hooks/use-mutation"
 
 type Props = Required<Pick<ModalProps, "open" | "setOpen">>
 

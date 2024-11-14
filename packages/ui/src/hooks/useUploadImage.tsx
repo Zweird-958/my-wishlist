@@ -1,10 +1,10 @@
 "use client"
 
-import { useMutation } from "@tanstack/react-query"
 import type { AxiosError } from "axios"
 import { useState } from "react"
 
 import { ApiClientError } from "@my-wishlist/api"
+import { useGenericMutation as useMutation } from "@my-wishlist/react"
 import type { ApiError, ApiResponse } from "@my-wishlist/types"
 import { api } from "@my-wishlist/utils"
 

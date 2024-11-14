@@ -1,27 +1,13 @@
+import { type HonoClientFunction } from "@my-wishlist/api"
 import {
-  type UseMutationOptions,
+  type MutationOptions,
   useMutation as useGenericMutation,
-} from "@tanstack/react-query"
-import { type InferRequestType, type InferResponseType } from "hono/client"
-
-import {
-  ApiClientError,
-  type HonoClientFunction,
-  type ResponseFiltered,
-} from "@my-wishlist/api"
-import { type ApiError } from "@my-wishlist/types"
+} from "@my-wishlist/react"
 
 import useHandleError, { type HandleErrorParams } from "./useHandleError"
 
 type Options<T extends HonoClientFunction> = HandleErrorParams &
-  Omit<
-    UseMutationOptions<
-      Exclude<InferResponseType<T>, { error: unknown }>,
-      ApiClientError,
-      InferRequestType<T>
-    >,
-    "mutationFn" | "onError"
-  >
+  Omit<MutationOptions<T>, "onError">
 
 const useMutation = <T extends HonoClientFunction>(
   request: T,
@@ -29,20 +15,10 @@ const useMutation = <T extends HonoClientFunction>(
 ) => {
   const { handleError } = useHandleError(errorsMap, errorsCallback)
 
-  return useGenericMutation({
-    mutationFn: async (variables) => {
-      const response = await request(variables)
-
-      if (response.ok) {
-        return response.json() as ResponseFiltered<T>
-      }
-
-      const error = (await response.json()) as ApiError
-
-      throw new ApiClientError(error.error, response.status)
-    },
+  return useGenericMutation(request, {
     ...options,
     onError: handleError,
   })
 }
+
 export default useMutation

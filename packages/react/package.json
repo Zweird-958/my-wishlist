@@ -1,0 +1,34 @@
+{
+  "name": "@my-wishlist/react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@my-wishlist/eslint": "workspace:*",
+    "@my-wishlist/typescript": "workspace:*",
+    "@my-wishlist/types": "workspace:*",
+    "eslint": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@my-wishlist/api": "workspace:*",
+    "@tanstack/react-query": "^5.59.16",
+    "hono": "^4.6.6"
+  },
+  "peerDependencies": {
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  }
+}
