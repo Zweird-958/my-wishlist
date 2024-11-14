@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query"
 import {
   type Dispatch,
   type ReactNode,
@@ -12,7 +11,8 @@ import {
 
 import type { UserShared } from "@my-wishlist/types"
 
-import api from "@/utils/api"
+import useClient from "@/hooks/use-client"
+import { useProtectedQuery } from "@/hooks/use-query"
 
 type Context = {
   wishlistAccessUsers: UserShared[]
@@ -37,16 +37,18 @@ export const WishlistAccessUsersProvider = ({
   )
   const [selectedUser, setSelectedUser] = useState<UserShared | null>(null)
 
-  const { data, isPending } = useQuery({
-    queryFn: () => api.get<UserShared[]>("/share/users"),
-    queryKey: ["shared"],
-    enabled: wishlistAccessUsers.length === 0,
-    select: ({ result }) => result,
-  })
+  const client = useClient()
+  const { data, isPending } = useProtectedQuery(
+    () => client.share.users.$get(),
+    {
+      queryKey: ["shared"],
+      enabled: wishlistAccessUsers.length === 0,
+    },
+  )
 
   useEffect(() => {
     if (data) {
-      setWishlistAccessUsers(data)
+      setWishlistAccessUsers(data.result)
     }
   }, [data])
 

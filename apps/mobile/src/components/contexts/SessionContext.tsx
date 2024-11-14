@@ -14,6 +14,7 @@ type Context = {
   session: string | null
   signIn: (response: string) => Promise<void>
   signOut: () => Promise<void>
+  isLoading: boolean
 }
 
 const SessionContext = createContext<Context>({} as Context)
@@ -21,6 +22,7 @@ export const useSession = () => useContext(SessionContext)
 
 export const SessionProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<Context["session"]>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   const signIn = useCallback(async (response: string) => {
     await SecureStore.setItemAsync(config.store.session, response)
@@ -39,11 +41,13 @@ export const SessionProvider = ({ children }: { children: ReactNode }) => {
       if (token) {
         setSession(token)
       }
+
+      setIsLoading(false)
     })()
   }, [])
 
   return (
-    <SessionContext.Provider value={{ session, signIn, signOut }}>
+    <SessionContext.Provider value={{ session, signIn, signOut, isLoading }}>
       {children}
     </SessionContext.Provider>
   )

@@ -1,4 +1,3 @@
-import { useMutation } from "@tanstack/react-query"
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 
@@ -12,7 +11,8 @@ import {
   type ModalProps,
 } from "@/components/ui/modal"
 import { Text } from "@/components/ui/text"
-import api from "@/utils/api"
+import useClient from "@/hooks/use-client"
+import useMutation from "@/hooks/use-mutation"
 
 type Props = Required<Pick<ModalProps, "open" | "setOpen">>
 
@@ -20,26 +20,29 @@ const UnshareModal = ({ open, setOpen }: Props) => {
   const { tw } = useTheme()
   const { removeUser, selectedUser: user } = useWishlistAccessUsers()
   const { t } = useTranslation()
-  const { mutate, isPending } = useMutation({
-    mutationKey: ["delete-user"],
-    mutationFn: (userId: number) => api.delete(`/share/wish/${userId}`),
-    onSuccess: () => {
-      setOpen(false)
+  const client = useClient()
+  const { mutate, isPending } = useMutation(
+    client.share.wish[":userId"].$delete,
+    {
+      mutationKey: ["delete-user"],
+      onSuccess: () => {
+        setOpen(false)
 
-      if (!user) {
-        return
-      }
+        if (!user) {
+          return
+        }
 
-      removeUser(user.id)
+        removeUser(user.id)
+      },
     },
-  })
+  )
 
   const onSubmit = () => {
     if (!user) {
       return
     }
 
-    mutate(user.id)
+    mutate({ param: { userId: user.id.toString() } })
   }
 
   return (

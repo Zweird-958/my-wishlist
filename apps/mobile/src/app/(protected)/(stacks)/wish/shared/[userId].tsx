@@ -1,20 +1,25 @@
-import { useQuery } from "@tanstack/react-query"
 import { Stack, useLocalSearchParams } from "expo-router"
-
-import type { Wish } from "@my-wishlist/types"
 
 import HeaderTitle from "@/components/layout/header-title"
 import WishList from "@/components/wishlist/wish-list"
-import api from "@/utils/api"
+import useClient from "@/hooks/use-client"
+import { useProtectedQuery } from "@/hooks/use-query"
 
 const WishlistShared = () => {
   const { userId } = useLocalSearchParams<{ userId: string }>()
 
-  const { data, isPending } = useQuery({
-    queryKey: ["wishlistShared", userId],
-    queryFn: () =>
-      api.get<Wish[], { username: string }>(`/share/wish/${userId}`),
-  })
+  const client = useClient()
+  const { data, isPending } = useProtectedQuery(
+    () =>
+      client.share.wish[":userId"].$get({
+        param: {
+          userId,
+        },
+      }),
+    {
+      queryKey: ["wishlistShared", userId],
+    },
+  )
 
   return (
     <>

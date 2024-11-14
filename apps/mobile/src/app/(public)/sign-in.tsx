@@ -1,14 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useMutation } from "@tanstack/react-query"
 import { useRouter } from "expo-router"
 import { useForm } from "react-hook-form"
 
 import { signInSchema } from "@my-wishlist/schemas"
-import type { SignInData } from "@my-wishlist/types"
-import { api } from "@my-wishlist/utils"
 
 import { useSession } from "@/components/contexts/SessionContext"
 import AuthForm from "@/components/forms/auth-form"
+import useClient from "@/hooks/use-client"
+import useMutation from "@/hooks/use-mutation"
 
 const SignIn = () => {
   const { signIn } = useSession()
@@ -20,14 +19,14 @@ const SignIn = () => {
     },
     resolver: zodResolver(signInSchema),
   })
-  const { mutate, isPending } = useMutation({
-    mutationFn: (data: SignInData) => api.post<string>("/sign-in", data),
+  const client = useClient()
+  const { mutate, isPending } = useMutation(client["sign-in"].$post, {
     onSuccess: async ({ result }) => {
       await signIn(result)
       router.replace("/")
     },
   })
-  const onSubmit = handleSubmit((data) => mutate(data))
+  const onSubmit = handleSubmit((data) => mutate({ json: data }))
 
   return (
     <AuthForm
