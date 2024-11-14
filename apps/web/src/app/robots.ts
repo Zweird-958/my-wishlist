@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 
 const robots = (): MetadataRoute.Robots => {
   const isProduction =
-    (process.env.NEXT_PUBLIC_APP_ENV ?? process.env.NODE_ENV) === "production"
+    (process.env.NEXT_PUBLIC_APP_ENV ?? process.env.VERCEL_ENV) === "production"
 
   if (!isProduction) {
     return {
