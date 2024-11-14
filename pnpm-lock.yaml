@@ -233,10 +233,10 @@ importers:
         version: 3.23.8
     devDependencies:
       '@babel/core':
-        specifier: ^7.25.9
+        specifier: ^7.26.0
         version: 7.26.0
       '@babel/runtime':
-        specifier: ^7.25.9
+        specifier: ^7.26.0
         version: 7.26.0
       '@my-wishlist/eslint':
         specifier: workspace:*
@@ -8830,7 +8830,7 @@ snapshots:
 
   '@babel/generator@7.17.7':
     dependencies:
-      '@babel/types': 7.17.0
+      '@babel/types': 7.26.0
       jsesc: 2.5.2
       source-map: 0.5.7
 
