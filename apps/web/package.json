@@ -15,6 +15,7 @@
     "@my-wishlist/i18n": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
+    "@my-wishlist/react": "workspace:*",
     "jsonwebtoken": "^9.0.2",
     "next": "catalog:",
     "react": "catalog:",

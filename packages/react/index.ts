@@ -1,3 +1,5 @@
+export * from "./src/contexts/client-context"
+
 export * from "@tanstack/react-query"
 
 export { useMutation, useGenericMutation } from "./src/hooks/use-mutation"

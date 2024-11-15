@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 
-import { useMutation } from "@my-wishlist/react"
+import { useClient, useMutation } from "@my-wishlist/react"
 import { shareSchema } from "@my-wishlist/schemas"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
@@ -18,7 +18,6 @@ import {
   type ModalProps,
 } from "@/components/ui/modal"
 import { Text } from "@/components/ui/text"
-import useClient from "@/hooks/use-client"
 
 type Props = Required<Pick<ModalProps, "open" | "setOpen">>
 
@@ -34,7 +33,7 @@ const ShareModal = ({ open, setOpen }: Props) => {
   })
   const { addUser } = useWishlistAccessUsers()
 
-  const client = useClient()
+  const { client } = useClient()
   const { mutate, isPending } = useMutation(client.share.wish.$post, {
     mutationKey: ["share-wish"],
     onSuccess: ({ result: user }) => {

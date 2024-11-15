@@ -1,9 +1,9 @@
 "use client"
 
+import { useClient } from "@my-wishlist/react"
 import { signInSchema } from "@my-wishlist/schemas"
 import type { SignInData } from "@my-wishlist/types"
 
-import useClient from "../../hooks/use-client"
 import useMutation from "../../hooks/use-mutation"
 import { useRouter, useSession, useTranslation } from "../AppContext"
 import Center from "../Center"
@@ -16,7 +16,7 @@ const defaultValues = {
 const SignIn = () => {
   const router = useRouter()
   const { t } = useTranslation("errors", "forms")
-  const client = useClient()
+  const { client } = useClient()
   const { mutate, isPending } = useMutation(client["sign-in"].$post, {
     onSuccess: ({ result }) => {
       void signIn(result)

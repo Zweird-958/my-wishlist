@@ -10,9 +10,9 @@ import { Trash2Icon } from "lucide-react"
 import { useState } from "react"
 import toast from "react-hot-toast"
 
+import { useClient } from "@my-wishlist/react"
 import { type Wish } from "@my-wishlist/types"
 
-import useClient from "../../hooks/use-client"
 import useMutation from "../../hooks/use-mutation"
 import useWishlist from "../../hooks/useWishlist"
 import { useTranslation } from "../AppContext"
@@ -29,7 +29,7 @@ const DeleteWish = ({ wish }: Props) => {
   const handleOpen = (open: boolean) => setIsOpen(open)
   const close = () => handleOpen(false)
 
-  const client = useClient()
+  const { client } = useClient()
   const { mutate, isPending } = useMutation(client.wish[":wishId"].$delete, {
     onSuccess: () => {
       close()

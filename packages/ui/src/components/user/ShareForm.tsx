@@ -13,9 +13,9 @@ import {
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
+import { useClient } from "@my-wishlist/react"
 import { shareSchema } from "@my-wishlist/schemas"
 
-import useClient from "../../hooks/use-client"
 import useMutation from "../../hooks/use-mutation"
 import useUsersShared from "../../hooks/useUsersShared"
 import { useTranslation } from "../AppContext"
@@ -33,7 +33,7 @@ const Form = ({ onOpenChange, onClose }: FormProps) => {
     },
     resolver: zodResolver(shareSchema),
   })
-  const client = useClient()
+  const { client } = useClient()
   const { mutate, isPending } = useMutation(client.share.wish.$post, {
     onSuccess: ({ result: user }) => {
       addUser(user)

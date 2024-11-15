@@ -3,7 +3,8 @@
 import { useDisclosure } from "@nextui-org/react"
 import { useEffect } from "react"
 
-import useClient from "../../hooks/use-client"
+import { useClient } from "@my-wishlist/react"
+
 import { useProtectedQuery } from "../../hooks/use-query"
 import useWishlist from "../../hooks/useWishlist"
 import AddButton from "../AddButton"
@@ -23,7 +24,7 @@ const Home = () => {
     setWishlist,
   } = useWishlist()
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
-  const client = useClient()
+  const { client } = useClient()
   const { data, isPending: wishlistIsLoading } = useProtectedQuery(
     () => client.wish.$get(),
     {

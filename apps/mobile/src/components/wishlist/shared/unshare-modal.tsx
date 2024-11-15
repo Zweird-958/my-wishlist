@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 
-import { useMutation } from "@my-wishlist/react"
+import { useClient, useMutation } from "@my-wishlist/react"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
 import { useWishlistAccessUsers } from "@/components/contexts/wishlist-access-users-context"
@@ -13,7 +13,6 @@ import {
   type ModalProps,
 } from "@/components/ui/modal"
 import { Text } from "@/components/ui/text"
-import useClient from "@/hooks/use-client"
 
 type Props = Required<Pick<ModalProps, "open" | "setOpen">>
 
@@ -21,7 +20,7 @@ const UnshareModal = ({ open, setOpen }: Props) => {
   const { tw } = useTheme()
   const { removeUser, selectedUser: user } = useWishlistAccessUsers()
   const { t } = useTranslation()
-  const client = useClient()
+  const { client } = useClient()
   const { mutate, isPending } = useMutation(
     client.share.wish[":userId"].$delete,
     {

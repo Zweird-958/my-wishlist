@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 
-import { useMutation } from "@my-wishlist/react"
+import { useClient, useMutation } from "@my-wishlist/react"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
 import { useWishlist } from "@/components/contexts/WishlistContext"
@@ -13,7 +13,6 @@ import {
   type ModalProps,
 } from "@/components/ui/modal"
 import { Text } from "@/components/ui/text"
-import useClient from "@/hooks/use-client"
 
 type Props = Pick<Required<ModalProps>, "open" | "setOpen">
 
@@ -22,7 +21,7 @@ const DeleteWishModal = ({ open, setOpen }: Props) => {
   const { tw } = useTheme()
   const { selectedWish, removeWish } = useWishlist()
 
-  const client = useClient()
+  const { client } = useClient()
   const { mutate: deleteWish, isPending } = useMutation(
     client.wish[":wishId"].$delete,
     {

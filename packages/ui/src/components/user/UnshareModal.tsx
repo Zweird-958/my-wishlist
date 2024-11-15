@@ -10,9 +10,9 @@ import {
   type ModalProps,
 } from "@nextui-org/react"
 
+import { useClient } from "@my-wishlist/react"
 import type { UserShared } from "@my-wishlist/types"
 
-import useClient from "../../hooks/use-client"
 import useMutation from "../../hooks/use-mutation"
 import useUsersShared from "../../hooks/useUsersShared"
 import { useTranslation } from "../AppContext"
@@ -24,7 +24,7 @@ type Props = {
 const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
   const { t } = useTranslation("forms", "errors")
   const { removeUser } = useUsersShared()
-  const client = useClient()
+  const { client } = useClient()
   const { mutate, isPending } = useMutation(
     client.share.wish[":userId"].$delete,
     {

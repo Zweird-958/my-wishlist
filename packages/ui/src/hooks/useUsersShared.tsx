@@ -2,14 +2,15 @@
 
 import { useEffect } from "react"
 
+import { useClient } from "@my-wishlist/react"
+
 import useUsersSharedStore from "../stores/usersShared"
-import useClient from "./use-client"
 import { useProtectedQuery } from "./use-query"
 
 const useUsersShared = () => {
   const { usersShared, setUsersShared, ...usersSharedStore } =
     useUsersSharedStore()
-  const client = useClient()
+  const { client } = useClient()
   const { data, isLoading, error } = useProtectedQuery(
     () => client.share.users.$get(),
     {

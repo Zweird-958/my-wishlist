@@ -2,11 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "expo-router"
 import { useForm } from "react-hook-form"
 
-import { useMutation } from "@my-wishlist/react"
+import { useClient, useMutation } from "@my-wishlist/react"
 import { signUpSchema } from "@my-wishlist/schemas"
 
 import AuthForm from "@/components/forms/auth-form"
-import useClient from "@/hooks/use-client"
 
 const SignIn = () => {
   const { control, handleSubmit } = useForm({
@@ -19,7 +18,7 @@ const SignIn = () => {
   })
 
   const router = useRouter()
-  const client = useClient()
+  const { client } = useClient()
   const { mutate, isPending } = useMutation(client["sign-up"].$post, {
     onSuccess: () => router.push("/sign-in"),
   })

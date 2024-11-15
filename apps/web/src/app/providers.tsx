@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation"
 import type { ReactNode } from "react"
 
 import { useTranslation } from "@my-wishlist/i18n"
+import { ClientProvider } from "@my-wishlist/react"
 import {
   AppProvider,
   CurrenciesProvider,
@@ -17,6 +18,7 @@ import {
   SessionProvider,
   useSession,
 } from "@/components/contexts/SessionContext"
+import config from "@/utils/config"
 
 type Props = {
   children: ReactNode
@@ -30,19 +32,23 @@ const Providers = (props: Props) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SessionProvider>
-        <AppProvider
-          useTranslation={useTranslation}
-          useSession={useSession}
-          useRouter={useRouter}
-        >
-          <CurrenciesProvider>
-            <NextUIProvider navigate={(path) => router.push(path)}>
-              <ThemeProvider>{children}</ThemeProvider>
-            </NextUIProvider>
-          </CurrenciesProvider>
-        </AppProvider>
-      </SessionProvider>
+      <ClientProvider
+        token={localStorage.getItem(config.localStorageSessionKey)}
+      >
+        <SessionProvider>
+          <AppProvider
+            useTranslation={useTranslation}
+            useSession={useSession}
+            useRouter={useRouter}
+          >
+            <CurrenciesProvider>
+              <NextUIProvider navigate={(path) => router.push(path)}>
+                <ThemeProvider>{children}</ThemeProvider>
+              </NextUIProvider>
+            </CurrenciesProvider>
+          </AppProvider>
+        </SessionProvider>
+      </ClientProvider>
     </QueryClientProvider>
   )
 }

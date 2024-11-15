@@ -9,9 +9,9 @@ import {
   useState,
 } from "react"
 
+import { useClient } from "@my-wishlist/react"
 import type { UserShared } from "@my-wishlist/types"
 
-import useClient from "@/hooks/use-client"
 import { useProtectedQuery } from "@/hooks/use-query"
 
 type Context = {
@@ -37,7 +37,7 @@ export const WishlistAccessUsersProvider = ({
   )
   const [selectedUser, setSelectedUser] = useState<UserShared | null>(null)
 
-  const client = useClient()
+  const { client } = useClient()
   const { data, isPending } = useProtectedQuery(
     () => client.share.users.$get(),
     {

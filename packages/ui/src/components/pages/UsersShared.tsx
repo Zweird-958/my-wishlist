@@ -4,9 +4,9 @@ import { useDisclosure } from "@nextui-org/react"
 import { ChevronRight, Trash2 } from "lucide-react"
 import { type Key, useState } from "react"
 
+import { useClient } from "@my-wishlist/react"
 import type { UserShared } from "@my-wishlist/types"
 
-import useClient from "../../hooks/use-client"
 import { useProtectedQuery } from "../../hooks/use-query"
 import useUsersShared from "../../hooks/useUsersShared"
 import AddButton from "../AddButton"
@@ -28,7 +28,7 @@ const ShareSection = () => {
 
 const UsersShared = () => {
   const { t } = useTranslation()
-  const client = useClient()
+  const { client } = useClient()
   const {
     data: wishlistShared,
     isLoading: sharedLoading,

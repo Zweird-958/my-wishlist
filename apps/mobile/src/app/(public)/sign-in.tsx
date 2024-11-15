@@ -2,12 +2,11 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "expo-router"
 import { useForm } from "react-hook-form"
 
-import { useMutation } from "@my-wishlist/react"
+import { useClient, useMutation } from "@my-wishlist/react"
 import { signInSchema } from "@my-wishlist/schemas"
 
 import { useSession } from "@/components/contexts/SessionContext"
 import AuthForm from "@/components/forms/auth-form"
-import useClient from "@/hooks/use-client"
 
 const SignIn = () => {
   const { signIn } = useSession()
@@ -19,7 +18,7 @@ const SignIn = () => {
     },
     resolver: zodResolver(signInSchema),
   })
-  const client = useClient()
+  const { client } = useClient()
   const { mutate, isPending } = useMutation(client["sign-in"].$post, {
     onSuccess: async ({ result }) => {
       await signIn(result)

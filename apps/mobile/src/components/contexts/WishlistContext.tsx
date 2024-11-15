@@ -7,10 +7,10 @@ import {
   useState,
 } from "react"
 
+import { useClient } from "@my-wishlist/react"
 import type { Wish } from "@my-wishlist/types"
 
 import { useSession } from "@/components/contexts/SessionContext"
-import useClient from "@/hooks/use-client"
 import { useProtectedQuery } from "@/hooks/use-query"
 
 type Context = {
@@ -39,7 +39,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     [wishlist],
   )
 
-  const client = useClient()
+  const { client } = useClient()
   const { data, isPending } = useProtectedQuery(() => client.wish.$get(), {
     queryKey: ["wishlist"],
     enabled: Boolean(session) && wishlist.length === 0,
