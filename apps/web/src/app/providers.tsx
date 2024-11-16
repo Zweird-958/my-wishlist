@@ -18,7 +18,6 @@ import {
   SessionProvider,
   useSession,
 } from "@/components/contexts/SessionContext"
-import config from "@/utils/config"
 
 type Props = {
   children: ReactNode
@@ -26,29 +25,33 @@ type Props = {
 
 const queryClient = new QueryClient()
 
+const DependentProviders = ({ children }: { children: ReactNode }) => {
+  const { token } = useSession()
+
+  return <ClientProvider token={token}>{children}</ClientProvider>
+}
+
 const Providers = (props: Props) => {
   const { children } = props
   const router = useRouter()
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ClientProvider
-        token={localStorage.getItem(config.localStorageSessionKey)}
-      >
-        <SessionProvider>
+      <SessionProvider>
+        <DependentProviders>
           <AppProvider
             useTranslation={useTranslation}
             useSession={useSession}
             useRouter={useRouter}
           >
-            <CurrenciesProvider>
-              <NextUIProvider navigate={(path) => router.push(path)}>
-                <ThemeProvider>{children}</ThemeProvider>
-              </NextUIProvider>
-            </CurrenciesProvider>
+            <NextUIProvider navigate={(path) => router.push(path)}>
+              <ThemeProvider>
+                <CurrenciesProvider>{children}</CurrenciesProvider>
+              </ThemeProvider>
+            </NextUIProvider>
           </AppProvider>
-        </SessionProvider>
-      </ClientProvider>
+        </DependentProviders>
+      </SessionProvider>
     </QueryClientProvider>
   )
 }

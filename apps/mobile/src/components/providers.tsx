@@ -30,11 +30,11 @@ const Providers = ({ children, theme }: Props) => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider theme={theme}>
       <SessionProvider>
-        <WishlistProvider>
-          <CurrenciesProvider>
-            <DependentProviders>{children}</DependentProviders>
-          </CurrenciesProvider>
-        </WishlistProvider>
+        <DependentProviders>
+          <WishlistProvider>
+            <CurrenciesProvider>{children}</CurrenciesProvider>
+          </WishlistProvider>
+        </DependentProviders>
       </SessionProvider>
     </ThemeProvider>
   </QueryClientProvider>

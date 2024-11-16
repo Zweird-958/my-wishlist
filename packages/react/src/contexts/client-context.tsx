@@ -1,11 +1,5 @@
 import { hc } from "hono/client"
-import {
-  type ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react"
+import { type ReactNode, createContext, useContext, useMemo } from "react"
 
 import type { AppType } from "@my-wishlist/api"
 import { config } from "@my-wishlist/utils"
@@ -30,11 +24,7 @@ const getClient = (token: string | null) =>
   }).api
 
 export const ClientProvider = ({ children, token }: Props) => {
-  const [client, setClient] = useState<Client>(getClient(token))
-
-  useEffect(() => {
-    setClient(getClient(token))
-  }, [token, setClient])
+  const client = useMemo(() => getClient(token), [token])
 
   return (
     <ClientContext.Provider value={{ client }}>

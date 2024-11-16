@@ -33,13 +33,13 @@ const Providers = ({ children }: { children: ReactNode }) => (
         useSession={useSession}
         useRouter={useRouter}
       >
-        <CurrenciesProvider>
-          <NextUIProvider>
-            <ThemeProvider>
-              <DependentProviders>{children}</DependentProviders>
-            </ThemeProvider>
-          </NextUIProvider>
-        </CurrenciesProvider>
+        <DependentProviders>
+          <CurrenciesProvider>
+            <NextUIProvider>
+              <ThemeProvider>{children}</ThemeProvider>
+            </NextUIProvider>
+          </CurrenciesProvider>
+        </DependentProviders>
       </AppProvider>
     </SessionProvider>
   </QueryClientProvider>
