@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
+  "imports": {
+    "@/*": "./src/**/*.ts"
+  },
   "exports": {
     "./*": "./src/components/*.tsx",
-    "./tailwind": "./tailwind.config.ts"
+    "./tailwind": "./tailwind.config.ts",
+    "./globals.css": "./src/globals.css"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
@@ -20,17 +24,22 @@
     "@my-wishlist/config": "workspace:*",
     "@my-wishlist/i18n": "workspace:*",
     "@my-wishlist/react": "workspace:*",
+    "@nextui-org/react": "^2.4.8",
     "@my-wishlist/schemas": "workspace:*",
     "@my-wishlist/utils": "workspace:*",
-    "@nextui-org/react": "^2.4.8",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@tanstack/react-query": "^5.59.16",
     "axios": "^1.7.7",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.10",
     "lucide-react": "^0.453.0",
     "next-themes": "^0.3.0",
     "react-hook-form": "^7.53.1",
     "react-hot-toast": "^2.4.1",
+    "tailwind-merge": "^2.5.4",
     "tailwindcss": "catalog:",
+    "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8",
     "zustand": "^5.0.0"
   },

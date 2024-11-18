@@ -4,7 +4,10 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "preserve",
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": ".",
+    "paths": {
+      "@ui/*": ["./src/*"]
+    },
     "incremental": true,
     "plugins": [
       {

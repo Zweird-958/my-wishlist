@@ -5,8 +5,8 @@ import { Toaster } from "react-hot-toast"
 import { I18nProvider } from "@my-wishlist/i18n"
 import { getLocale, getTranslation } from "@my-wishlist/i18n/server"
 import Appbar from "@my-wishlist/ui/Appbar"
+import "@my-wishlist/ui/globals.css"
 
-import "./globals.css"
 import Providers from "./providers"
 
 type Props = {
