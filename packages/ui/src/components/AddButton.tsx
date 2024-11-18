@@ -1,16 +1,16 @@
 "use client"
 
-import { Button, type ButtonProps } from "@nextui-org/react"
+import { Button, type ButtonProps } from "@ui/components/ui/button"
 import { Plus } from "lucide-react"
 
-type Props = Pick<Required<ButtonProps>, "onPress"> & Pick<ButtonProps, "color">
+type Props = Pick<Required<ButtonProps>, "onClick"> & Pick<ButtonProps, "color">
 
-const AddButton = ({ onPress, color }: Props) => (
+const AddButton = ({ onClick, color }: Props) => (
   <Button
     className="fixed bottom-6 right-6 z-20"
     color={color}
-    isIconOnly
-    onPress={onPress}
+    onClick={onClick}
+    size="icon"
   >
     <Plus />
   </Button>

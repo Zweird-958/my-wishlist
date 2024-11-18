@@ -1,7 +1,6 @@
 "use client"
 
 import {
-  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -9,6 +8,7 @@ import {
   NavbarItem,
   type Selection,
 } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
 import { MoonIcon, SunIcon } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
@@ -32,7 +32,7 @@ const SelectTheme = () => {
     <Dropdown>
       <NavbarItem>
         <DropdownTrigger>
-          <Button isIconOnly variant="bordered" isLoading={isLoading}>
+          <Button size="icon" variant="outline" isLoading={isLoading}>
             {resolvedTheme === "light" ? <SunIcon /> : <MoonIcon />}
           </Button>
         </DropdownTrigger>

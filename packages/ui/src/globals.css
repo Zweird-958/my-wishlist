@@ -6,6 +6,10 @@ body {
   @apply flex min-h-dvh flex-col;
 }
 
+[data-overlay-container="true"] {
+  @apply flex min-h-dvh flex-col;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -35,8 +39,11 @@ body {
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
+    --danger: 0 100% 50%;
+    --danger-foreground: 210 40% 98%;
+
+    --warning: 0 100% 50%;
+    --warning-foreground: 210 40% 98%;
 
     --ring: 215 20.2% 65.1%;
     --radius: 0.75rem;
@@ -70,8 +77,11 @@ body {
     --secondary: 222.2 47.4% 11.2%;
     --secondary-foreground: 210 40% 98%;
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --danger: 0 63% 31%;
+    --danger-foreground: 210 40% 98%;
+
+    --warning: 0 100% 50%;
+    --warning-foreground: 210 40% 98%;
 
     --ring: 216 34% 17%;
   }

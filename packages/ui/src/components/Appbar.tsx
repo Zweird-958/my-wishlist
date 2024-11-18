@@ -1,7 +1,6 @@
 "use client"
 
 import {
-  Button,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -10,6 +9,7 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
 import { Share2 } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
@@ -57,32 +57,23 @@ const Appbar = () => {
               </Button>
             </NavbarItem>
             <NavbarItem className="hidden sm:flex">
-              <Button
-                as={Link}
-                href="/share"
-                className="p-2"
-                variant="bordered"
-                isIconOnly
-              >
-                <Share2 />
+              <Button asChild className="p-2" variant="outline" size="icon">
+                <Link href="/share">
+                  <Share2 />
+                </Link>
               </Button>
             </NavbarItem>
           </>
         ) : (
           <>
             <NavbarItem className="hidden sm:flex">
-              <Button as={Link} href="/sign-in" color="success">
-                {t("signIn")}
+              <Button color="success">
+                <Link href="/sign-in">{t("signIn")}</Link>
               </Button>
             </NavbarItem>
             <NavbarItem className="hidden sm:flex">
-              <Button
-                as={Link}
-                href="/sign-up"
-                variant="bordered"
-                color="primary"
-              >
-                {t("signUp")}
+              <Button asChild variant="outline" color="primary">
+                <Link href="/sign-up">{t("signUp")}</Link>
               </Button>
             </NavbarItem>
           </>

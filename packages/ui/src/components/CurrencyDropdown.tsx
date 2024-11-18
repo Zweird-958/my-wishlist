@@ -1,13 +1,13 @@
 "use client"
 
 import {
-  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   type DropdownMenuProps,
   DropdownTrigger,
 } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
 
 import type { Currency } from "@my-wishlist/types"
 
@@ -23,7 +23,7 @@ const CurrencyDropdown = ({
 }: Props) => (
   <Dropdown>
     <DropdownTrigger>
-      <Button variant="bordered" size="lg" className="w-full capitalize">
+      <Button variant="outline" size="lg" className="w-full capitalize">
         {currency}
       </Button>
     </DropdownTrigger>

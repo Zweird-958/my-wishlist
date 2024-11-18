@@ -1,13 +1,13 @@
 "use client"
 
 import {
-  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
   type Selection,
 } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
 
 import { useTranslation } from "../AppContext"
 
@@ -36,7 +36,7 @@ const WishListDropdown = <T extends string>({
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Button variant="bordered">
+        <Button variant="outline">
           {t(`${translationKey}.${selectedItem}`)}
         </Button>
       </DropdownTrigger>

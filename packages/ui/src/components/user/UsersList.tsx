@@ -5,8 +5,8 @@ import {
   ListboxItem,
   type ListboxProps,
   ListboxSection,
-  Spinner,
 } from "@nextui-org/react"
+import { Spinner } from "@ui/components/ui/spinner"
 import Link from "next/link"
 import type { ReactNode } from "react"
 

@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Button, Card, CardBody, CardHeader } from "@nextui-org/react"
+import { Card, CardBody, CardHeader } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
 import type { InputHTMLAttributes } from "react"
 import {
   type DefaultValues,

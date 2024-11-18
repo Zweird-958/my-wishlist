@@ -1,14 +1,9 @@
 "use client"
 
-import {
-  Button,
-  Card,
-  CardFooter,
-  CardHeader,
-  Image,
-  Link,
-} from "@nextui-org/react"
+import { Card, CardFooter, CardHeader, Image } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
 import { SquarePenIcon } from "lucide-react"
+import Link from "next/link"
 
 import type { Wish } from "@my-wishlist/types"
 
@@ -33,11 +28,10 @@ const WishCard = ({ wish, canEdit, onEditButton }: Props) => {
           <>
             <DeleteWish wish={wish} />
             <Button
-              isIconOnly
-              size="sm"
+              size="icon"
               className="px-2"
               color="warning"
-              onPress={handleEdit}
+              onClick={handleEdit}
             >
               <SquarePenIcon />
             </Button>
@@ -66,15 +60,10 @@ const WishCard = ({ wish, canEdit, onEditButton }: Props) => {
           <p className="line-clamp-1">{priceFormatted}</p>
         </div>
         {link && (
-          <Button
-            as={Link}
-            href={link}
-            isExternal
-            className="text-tiny"
-            color="primary"
-            size="sm"
-          >
-            {t("buy")}
+          <Button className="text-xs" color="primary" size="sm" asChild>
+            <Link href={link} target="_blank">
+              {t("buy")}
+            </Link>
           </Button>
         )}
       </CardFooter>

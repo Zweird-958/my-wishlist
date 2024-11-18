@@ -1,7 +1,6 @@
 "use client"
 
 import {
-  Button,
   Modal,
   ModalBody,
   ModalContent,
@@ -9,6 +8,7 @@ import {
   ModalHeader,
   type ModalProps,
 } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
 
 import { useClient } from "@my-wishlist/react"
 import type { UserShared } from "@my-wishlist/types"
@@ -66,12 +66,12 @@ const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
               {t("unshare.information", { username: user?.username })}
             </ModalBody>
             <ModalFooter className="justify-between">
-              <Button onPress={onClose} color="danger">
+              <Button onClick={onClose} color="danger">
                 {t("unshare.cancel")}
               </Button>
               <Button
                 color="primary"
-                onPress={handleSubmit}
+                onClick={handleSubmit}
                 isLoading={isPending}
               >
                 {t("unshare.submit")}

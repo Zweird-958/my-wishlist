@@ -1,11 +1,7 @@
 "use client"
 
-import {
-  Button,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@nextui-org/react"
+import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
 import { Trash2Icon } from "lucide-react"
 import { useState } from "react"
 import toast from "react-hot-toast"
@@ -52,7 +48,7 @@ const DeleteWish = ({ wish }: Props) => {
       size="lg"
     >
       <PopoverTrigger>
-        <Button isIconOnly size="sm" className="px-2" color="danger">
+        <Button size="icon" className="px-2" color="danger">
           <Trash2Icon />
         </Button>
       </PopoverTrigger>
@@ -60,13 +56,13 @@ const DeleteWish = ({ wish }: Props) => {
         <p className="text-left">{t("forms:wish.delete.confirmation")}</p>
         <p>{t("forms:wish.delete.information")}</p>
         <div className="flex w-full min-w-52 justify-between">
-          <Button size="sm" onPress={close}>
+          <Button size="sm" onClick={close}>
             {t("forms:wish.cancel")}
           </Button>
           <Button
             size="sm"
-            variant="bordered"
-            onPress={onSubmit}
+            variant="outline"
+            onClick={onSubmit}
             isLoading={isPending}
           >
             {t("forms:wish.delete.submit")}

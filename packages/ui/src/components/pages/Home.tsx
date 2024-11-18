@@ -56,7 +56,7 @@ const Home = () => {
         canEdit
       />
       <AddWishForm isOpen={isOpen} onOpenChange={onOpenChange} />
-      <AddButton onPress={onOpen} color="primary" />
+      <AddButton onClick={onOpen} color="primary" />
     </>
   )
 }

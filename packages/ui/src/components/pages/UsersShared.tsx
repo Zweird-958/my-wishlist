@@ -20,7 +20,7 @@ const ShareSection = () => {
 
   return (
     <>
-      <AddButton onPress={onOpen} color="primary" />
+      <AddButton onClick={onOpen} color="primary" />
       <ShareForm isOpen={isOpen} onOpenChange={onOpenChange} />
     </>
   )

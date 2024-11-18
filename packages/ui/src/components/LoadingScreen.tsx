@@ -1,4 +1,4 @@
-import { Spinner } from "@nextui-org/react"
+import { Spinner } from "@ui/components/ui/spinner"
 
 import Center from "./Center"
 

@@ -1,7 +1,6 @@
 "use client"
 
 import {
-  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -9,6 +8,7 @@ import {
   NavbarItem,
   type Selection,
 } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
 import { useState } from "react"
 
 import { type Locale, config } from "@my-wishlist/i18n/config"
@@ -38,9 +38,9 @@ const SelectLocale = ({ changeLocale, locale }: SelectLocaleProps) => {
       <NavbarItem>
         <DropdownTrigger>
           <Button
-            isIconOnly
             className="p-0"
-            variant="bordered"
+            variant="outline"
+            size="icon"
             isLoading={isLoading}
           >
             <Flag language={config.flags[locale] ?? ""} />

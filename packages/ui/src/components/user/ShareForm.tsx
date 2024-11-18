@@ -2,7 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import {
-  Button,
   Modal,
   ModalBody,
   ModalContent,
@@ -10,6 +9,7 @@ import {
   ModalHeader,
   type ModalProps,
 } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
@@ -51,7 +51,7 @@ const Form = ({ onOpenChange, onClose }: FormProps) => {
         <Field control={control} name="username" label={t("username")} />
       </ModalBody>
       <ModalFooter className="justify-between">
-        <Button onPress={onClose} color="danger">
+        <Button onClick={onClose} color="danger">
           {t("share.cancel")}
         </Button>
         <Button type="submit" isLoading={isPending} color="primary">

@@ -2,11 +2,11 @@
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import {
-  Button,
   type ButtonProps,
   type ModalProps,
   type Selection,
 } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
 import { useForm } from "react-hook-form"
 
 import config from "@my-wishlist/config"
@@ -100,7 +100,7 @@ const WishForm = ({
         isSelected={watch("isPrivate")}
       />
       <div className="flex w-full justify-between">
-        <Button type="button" color="danger" onPress={onClose}>
+        <Button type="button" color="danger" onClick={onClose}>
           {t("wish.cancel")}
         </Button>
         <Button
