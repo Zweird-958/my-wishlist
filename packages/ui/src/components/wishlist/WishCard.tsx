@@ -1,7 +1,9 @@
 "use client"
 
-import { Card, CardFooter, CardHeader, Image } from "@nextui-org/react"
+import { Card, CardFooter, CardHeader } from "@nextui-org/react"
 import { Button } from "@ui/components/ui/button"
+import { Skeleton } from "@ui/components/ui/skeleton"
+import WishImage from "@ui/components/wishlist/wish-image"
 import { SquarePenIcon } from "lucide-react"
 import Link from "next/link"
 
@@ -39,20 +41,11 @@ const WishCard = ({ wish, canEdit, onEditButton }: Props) => {
         )}
       </CardHeader>
       <div className="flex h-full w-full items-center justify-center">
-        <Image
-          isBlurred
-          alt="Card background"
-          className="z-10 h-96 w-full object-cover"
-          radius="none"
-          src={image}
-        />
-        <Image
-          removeWrapper
-          alt="Card background"
-          className="absolute z-0 h-96 w-full blur-lg"
-          radius="none"
-          src={image}
-        />
+        {image ? (
+          <WishImage src={image} alt={name} />
+        ) : (
+          <Skeleton className="h-full w-full" />
+        )}
       </div>
       <CardFooter className="border-t-1 absolute bottom-0 z-20 justify-between border-zinc-100/50 bg-white/30">
         <div className="text-tiny basis-5/6 text-black">

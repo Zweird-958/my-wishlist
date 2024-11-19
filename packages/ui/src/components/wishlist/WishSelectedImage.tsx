@@ -1,6 +1,6 @@
 "use client"
 
-import { Image, type ImageProps } from "@nextui-org/react"
+import WishImage from "@ui/components/wishlist/wish-image"
 
 import type { Wish } from "@my-wishlist/types"
 
@@ -9,17 +9,21 @@ type Props = {
   image: File | null
 }
 
-const WishImage = ({ alt, ...props }: ImageProps) => (
-  <Image className="h-72 w-72 object-cover" {...props} alt={alt} />
-)
-
 const WishSelectedImage = ({ wish, image }: Props) => {
   if (image) {
-    return <WishImage src={URL.createObjectURL(image)} alt={image.name} />
+    return (
+      <div className="relative h-72 w-72">
+        <WishImage src={URL.createObjectURL(image)} alt={image.name} />
+      </div>
+    )
   }
 
   if (wish?.image) {
-    return <WishImage src={wish.image} alt={wish.name} />
+    return (
+      <div className="relative h-72 w-72">
+        <WishImage src={wish.image} alt={wish.name} />
+      </div>
+    )
   }
 
   return null

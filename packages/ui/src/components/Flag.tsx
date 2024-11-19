@@ -1,4 +1,4 @@
-import { Image } from "@nextui-org/react"
+import { Image } from "@ui/components/ui/image"
 
 import { config } from "@my-wishlist/i18n/config"
 
@@ -10,13 +10,7 @@ const Flag = (props: Props) => {
   const { language } = props
 
   return (
-    <Image
-      src={config.flagUrl(language)}
-      alt={language}
-      width={18}
-      height={18}
-      radius="sm"
-    />
+    <Image src={config.flagUrl(language)} alt={language} className="size-5" />
   )
 }
 
