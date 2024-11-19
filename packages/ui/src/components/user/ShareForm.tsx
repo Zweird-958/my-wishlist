@@ -10,6 +10,7 @@ import {
   DialogHeader,
   type DialogProps,
 } from "@ui/components/ui/dialog"
+import { Form as FormController, FormInput } from "@ui/components/ui/form"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
@@ -19,7 +20,6 @@ import { shareSchema } from "@my-wishlist/schemas"
 import useMutation from "../../hooks/use-mutation"
 import useUsersShared from "../../hooks/useUsersShared"
 import { useTranslation } from "../AppContext"
-import Field from "../Field"
 
 type FormProps = Pick<Required<DialogProps>, "onOpenChange">
 type ShareFormProps = Pick<Required<DialogProps>, "open"> & FormProps
@@ -27,7 +27,7 @@ type ShareFormProps = Pick<Required<DialogProps>, "open"> & FormProps
 const Form = ({ onOpenChange }: FormProps) => {
   const { t } = useTranslation("forms")
   const { addUser } = useUsersShared()
-  const { control, handleSubmit } = useForm({
+  const form = useForm({
     defaultValues: {
       username: "",
     },
@@ -42,22 +42,24 @@ const Form = ({ onOpenChange }: FormProps) => {
     },
   })
 
-  const handleOnSubmit = handleSubmit((data) => {
+  const handleOnSubmit = form.handleSubmit((data) => {
     mutate({ json: data })
   })
 
   return (
-    <form onSubmit={handleOnSubmit}>
-      <Field control={control} name="username" label={t("username")} />
-      <DialogFooter className="justify-between">
-        <DialogClose asChild>
-          <Button color="danger">{t("share.cancel")}</Button>
-        </DialogClose>
-        <Button type="submit" isLoading={isPending} color="primary">
-          {t("share.submit")}
-        </Button>
-      </DialogFooter>
-    </form>
+    <FormController {...form}>
+      <form onSubmit={handleOnSubmit}>
+        <FormInput name="username" label={t("username")} />
+        <DialogFooter className="justify-between">
+          <DialogClose asChild>
+            <Button color="danger">{t("share.cancel")}</Button>
+          </DialogClose>
+          <Button type="submit" isLoading={isPending} color="primary">
+            {t("share.submit")}
+          </Button>
+        </DialogFooter>
+      </form>
+    </FormController>
   )
 }
 

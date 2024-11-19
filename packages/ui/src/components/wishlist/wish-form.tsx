@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { type ButtonProps, type Selection } from "@nextui-org/react"
 import { Button } from "@ui/components/ui/button"
+import { Form, FormInput } from "@ui/components/ui/form"
 import { useForm } from "react-hook-form"
 
 import config from "@my-wishlist/config"
@@ -17,7 +18,6 @@ import { useCurrencies } from "../../contexts/currencies-context"
 import useUploadImage from "../../hooks/useUploadImage"
 import { useTranslation } from "../AppContext"
 import CurrencyDropdown from "../CurrencyDropdown"
-import Field from "../Field"
 import SwitchField from "../SwitchField"
 import WishSelectedImage from "./WishSelectedImage"
 import WishImageInput from "./wish-image-input"
@@ -45,7 +45,7 @@ const WishForm = ({
   const { currencies } = useCurrencies()
   const { addImageMutate, image, setImage, imageIsLoading } = useUploadImage()
   const { t } = useTranslation("forms")
-  const { control, handleSubmit, setValue, watch } = useForm({
+  const form = useForm({
     defaultValues: formSchema.parse({ ...wish }),
     resolver: zodResolver(addWishSchema),
   })
@@ -54,10 +54,10 @@ const WishForm = ({
     const currency = Array.from(keys)
       .join(", ")
       .replaceAll("_", " ") as Currency
-    setValue("currency", currency)
+    form.setValue("currency", currency)
   }
 
-  const handleOnSubmit = handleSubmit((values) => {
+  const handleOnSubmit = form.handleSubmit((values) => {
     if (image) {
       const formData = new FormData()
       formData.append("image", image)
@@ -72,42 +72,45 @@ const WishForm = ({
     onSubmit(values)
   })
   const handleSwitch = (field: WishBooleanInput) => (isSelected: boolean) => {
-    setValue(field, isSelected)
+    form.setValue(field, isSelected)
   }
 
   return (
-    <form
-      onSubmit={handleOnSubmit}
-      className="flex flex-col items-center gap-3"
-    >
-      <Field control={control} name="name" label={t("name")} />
-      <Field control={control} name="price" type="number" label={t("price")} />
-      <Field control={control} name="link" type="url" label={t("url")} />
-      <CurrencyDropdown
-        onSelectionChange={handleChangeCurrency}
-        currency={watch("currency")}
-        currencies={currencies}
-      />
-      <WishImageInput image={image} setImage={setImage} />
-      <WishSelectedImage wish={wish} image={image} />
-      <SwitchField
-        label={t("private")}
-        onValueChange={handleSwitch("isPrivate")}
-        isSelected={watch("isPrivate")}
-      />
-      <div className="flex w-full justify-between">
-        <Button type="button" color="danger" onClick={onClose}>
-          {t("wish.cancel")}
-        </Button>
-        <Button
-          type="submit"
-          color="primary"
-          isLoading={imageIsLoading || isLoading}
-        >
-          {submitText}
-        </Button>
-      </div>
-    </form>
+    <Form {...form}>
+      <form
+        noValidate
+        onSubmit={handleOnSubmit}
+        className="flex flex-col items-center gap-3"
+      >
+        <FormInput name="name" label={t("name")} />
+        <FormInput name="price" type="number" label={t("price")} />
+        <FormInput name="link" type="url" label={t("url")} />
+        <CurrencyDropdown
+          onSelectionChange={handleChangeCurrency}
+          currency={form.watch("currency")}
+          currencies={currencies}
+        />
+        <WishImageInput image={image} setImage={setImage} />
+        <WishSelectedImage wish={wish} image={image} />
+        <SwitchField
+          label={t("private")}
+          onValueChange={handleSwitch("isPrivate")}
+          isSelected={form.watch("isPrivate")}
+        />
+        <div className="flex w-full justify-between">
+          <Button type="button" color="danger" onClick={onClose}>
+            {t("wish.cancel")}
+          </Button>
+          <Button
+            type="submit"
+            color="primary"
+            isLoading={imageIsLoading || isLoading}
+          >
+            {submitText}
+          </Button>
+        </div>
+      </form>
+    </Form>
   )
 }
 
