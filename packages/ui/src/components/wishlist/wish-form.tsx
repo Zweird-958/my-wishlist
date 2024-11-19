@@ -1,9 +1,9 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { type ButtonProps, type Selection } from "@nextui-org/react"
+import { type ButtonProps } from "@nextui-org/react"
 import { Button } from "@ui/components/ui/button"
-import { Form, FormInput } from "@ui/components/ui/form"
+import { Form, FormInput, FormSelect } from "@ui/components/ui/form"
 import { useForm } from "react-hook-form"
 
 import config from "@my-wishlist/config"
@@ -12,12 +12,11 @@ import {
   currencySchema,
   wishFormSchema,
 } from "@my-wishlist/schemas"
-import type { AddWishSchema, Currency, Wish } from "@my-wishlist/types"
+import type { AddWishSchema, Wish } from "@my-wishlist/types"
 
 import { useCurrencies } from "../../contexts/currencies-context"
 import useUploadImage from "../../hooks/useUploadImage"
 import { useTranslation } from "../AppContext"
-import CurrencyDropdown from "../CurrencyDropdown"
 import SwitchField from "../SwitchField"
 import WishSelectedImage from "./WishSelectedImage"
 import WishImageInput from "./wish-image-input"
@@ -50,13 +49,6 @@ const WishForm = ({
     resolver: zodResolver(addWishSchema),
   })
 
-  const handleChangeCurrency = (keys: Selection) => {
-    const currency = Array.from(keys)
-      .join(", ")
-      .replaceAll("_", " ") as Currency
-    form.setValue("currency", currency)
-  }
-
   const handleOnSubmit = form.handleSubmit((values) => {
     if (image) {
       const formData = new FormData()
@@ -85,10 +77,13 @@ const WishForm = ({
         <FormInput name="name" label={t("name")} />
         <FormInput name="price" type="number" label={t("price")} />
         <FormInput name="link" type="url" label={t("url")} />
-        <CurrencyDropdown
-          onSelectionChange={handleChangeCurrency}
-          currency={form.watch("currency")}
-          currencies={currencies}
+        <FormSelect
+          name="currency"
+          options={currencies}
+          triggerProps={{
+            classNames: { icon: "absolute right-2", trigger: "justify-center" },
+          }}
+          itemProps={{ className: "justify-center px-2" }}
         />
         <WishImageInput image={image} setImage={setImage} />
         <WishSelectedImage wish={wish} image={image} />

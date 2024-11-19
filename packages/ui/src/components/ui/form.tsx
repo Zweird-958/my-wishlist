@@ -4,6 +4,13 @@ import { Slot } from "@radix-ui/react-slot"
 import { useTranslation } from "@ui/components/AppContext"
 import { Input, type InputProps } from "@ui/components/ui/input"
 import { Label } from "@ui/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@ui/components/ui/select"
 import { cn } from "@ui/utils/ui"
 import * as React from "react"
 import {
@@ -169,9 +176,9 @@ const FormMessage = React.forwardRef<
 FormMessage.displayName = "FormMessage"
 
 export type FormInputProps = {
-  label: string
+  label?: string
   description?: string
-  name: string
+  name: FormFieldProps["name"]
   formProps?: Omit<FormFieldProps, "render" | "name">
 } & InputProps
 
@@ -187,7 +194,7 @@ const FormInput = ({
     {...formProps}
     render={({ field }) => (
       <FormItem>
-        <FormLabel>{label}</FormLabel>
+        {label && <FormLabel>{label}</FormLabel>}
         <FormControl>
           <Input {...inputProps} {...field} />
         </FormControl>
@@ -199,6 +206,63 @@ const FormInput = ({
 )
 FormInput.displayName = "FormInput"
 
+export type FormSelectProps = {
+  label?: string
+  description?: string
+  name: FormFieldProps["name"]
+  formProps?: Omit<FormFieldProps, "render" | "name">
+  options: string[]
+  triggerProps?: React.ComponentProps<typeof SelectTrigger>
+  valueProps?: React.ComponentProps<typeof SelectValue>
+  contentProps?: React.ComponentProps<typeof SelectContent>
+  itemProps?: Omit<React.ComponentProps<typeof SelectItem>, "value">
+}
+
+const FormSelect = ({
+  name,
+  label,
+  description,
+  options,
+  formProps,
+  contentProps,
+  itemProps,
+  triggerProps,
+  valueProps,
+}: FormSelectProps) => (
+  <FormField
+    name={name}
+    {...formProps}
+    render={({ field }) => (
+      <FormItem>
+        {label && <FormLabel>{label}</FormLabel>}
+        <Select
+          onValueChange={field.onChange}
+          defaultValue={
+            typeof field.value !== "string"
+              ? (field.value as number).toString()
+              : field.value
+          }
+        >
+          <FormControl>
+            <SelectTrigger {...triggerProps}>
+              <SelectValue {...valueProps} />
+            </SelectTrigger>
+          </FormControl>
+          <SelectContent {...contentProps}>
+            {options.map((option) => (
+              <SelectItem value={option} key={option} {...itemProps}>
+                {option}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        {description && <FormDescription>{description}</FormDescription>}
+        <FormMessage />
+      </FormItem>
+    )}
+  />
+)
+
 export {
   Form,
   FormControl,
@@ -209,4 +273,5 @@ export {
   FormLabel,
   FormMessage,
   useFormField,
+  FormSelect,
 }

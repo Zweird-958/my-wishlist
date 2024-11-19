@@ -1,14 +1,13 @@
 "use client"
 
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-  NavbarItem,
-  type Selection,
-} from "@nextui-org/react"
 import { Button } from "@ui/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "@ui/components/ui/dropdown-menu"
 import { MoonIcon, SunIcon } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
@@ -19,37 +18,32 @@ const SelectTheme = () => {
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(true)
   const { theme, setTheme, resolvedTheme } = useTheme()
-  const handleChangeTheme = (keys: Selection) => {
-    const key = Array.from(keys).join(", ").replaceAll("_", " ")
-    setTheme(key)
-  }
 
   useEffect(() => {
     setIsLoading(!resolvedTheme)
   }, [resolvedTheme])
 
   return (
-    <Dropdown>
-      <NavbarItem>
-        <DropdownTrigger>
-          <Button size="icon" variant="outline" isLoading={isLoading}>
-            {resolvedTheme === "light" ? <SunIcon /> : <MoonIcon />}
-          </Button>
-        </DropdownTrigger>
-      </NavbarItem>
-      <DropdownMenu
-        variant="faded"
-        selectionMode="single"
-        disallowEmptySelection
-        selectedKeys={new Set([theme ?? "system"])}
-        aria-label="Select theme"
-        onSelectionChange={handleChangeTheme}
-      >
-        <DropdownItem key="system">{t("theme.system")}</DropdownItem>
-        <DropdownItem key="dark">{t("theme.dark")}</DropdownItem>
-        <DropdownItem key="light">{t("theme.light")}</DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button size="icon" variant="outline" isLoading={isLoading}>
+          {resolvedTheme === "light" ? <SunIcon /> : <MoonIcon />}
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent aria-label="Select theme">
+        <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
+          <DropdownMenuRadioItem value="system">
+            {t("theme.system")}
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="dark">
+            {t("theme.dark")}
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="light">
+            {t("theme.light")}
+          </DropdownMenuRadioItem>
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 
