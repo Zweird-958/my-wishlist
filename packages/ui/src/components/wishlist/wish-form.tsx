@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { type ButtonProps } from "@nextui-org/react"
 import { Button } from "@ui/components/ui/button"
-import { Form, FormInput, FormSelect } from "@ui/components/ui/form"
+import { Form, FormInput, FormSelect, FormSwitch } from "@ui/components/ui/form"
 import { useForm } from "react-hook-form"
 
 import config from "@my-wishlist/config"
@@ -17,7 +17,6 @@ import type { AddWishSchema, Wish } from "@my-wishlist/types"
 import { useCurrencies } from "../../contexts/currencies-context"
 import useUploadImage from "../../hooks/useUploadImage"
 import { useTranslation } from "../AppContext"
-import SwitchField from "../SwitchField"
 import WishSelectedImage from "./WishSelectedImage"
 import WishImageInput from "./wish-image-input"
 
@@ -27,8 +26,6 @@ type Props = {
   onSubmit: (data: AddWishSchema) => void
   onClose: () => void
 } & Pick<ButtonProps, "isLoading">
-
-type WishBooleanInput = "isPrivate"
 
 const formSchema = wishFormSchema.extend({
   currency: currencySchema.default(config.defaultCurrency),
@@ -63,9 +60,6 @@ const WishForm = ({
 
     onSubmit(values)
   })
-  const handleSwitch = (field: WishBooleanInput) => (isSelected: boolean) => {
-    form.setValue(field, isSelected)
-  }
 
   return (
     <Form {...form}>
@@ -87,11 +81,7 @@ const WishForm = ({
         />
         <WishImageInput image={image} setImage={setImage} />
         <WishSelectedImage wish={wish} image={image} />
-        <SwitchField
-          label={t("private")}
-          onValueChange={handleSwitch("isPrivate")}
-          isSelected={form.watch("isPrivate")}
-        />
+        <FormSwitch label={t("private")} name="isPrivate" />
         <div className="flex w-full justify-between">
           <Button type="button" color="danger" onClick={onClose}>
             {t("wish.cancel")}

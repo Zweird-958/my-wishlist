@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@ui/components/ui/select"
+import { Switch } from "@ui/components/ui/switch"
 import { cn } from "@ui/utils/ui"
 import * as React from "react"
 import {
@@ -262,6 +263,32 @@ const FormSelect = ({
     )}
   />
 )
+FormSelect.DisplayName = "FormSelect"
+
+export type FormSwitchProps = {
+  label: string
+  name: FormFieldProps["name"]
+  formProps?: Omit<FormFieldProps, "render" | "name">
+}
+
+const FormSwitch = ({ label, name, formProps }: FormSwitchProps) => (
+  <FormField
+    name={name}
+    {...formProps}
+    render={({ field }) => (
+      <FormItem className="flex flex-row items-center justify-between">
+        <FormLabel className="text-base">{label}</FormLabel>
+        <FormControl>
+          <Switch
+            checked={Boolean(field.value)}
+            onCheckedChange={field.onChange}
+          />
+        </FormControl>
+      </FormItem>
+    )}
+  />
+)
+FormSelect.DisplayName = "FormSwitch"
 
 export {
   Form,
@@ -274,4 +301,5 @@ export {
   FormMessage,
   useFormField,
   FormSelect,
+  FormSwitch,
 }
