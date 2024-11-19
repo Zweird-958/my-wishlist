@@ -1,11 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import {
-  type ButtonProps,
-  type ModalProps,
-  type Selection,
-} from "@nextui-org/react"
+import { type ButtonProps, type Selection } from "@nextui-org/react"
 import { Button } from "@ui/components/ui/button"
 import { useForm } from "react-hook-form"
 
@@ -30,8 +26,8 @@ type Props = {
   wish?: Wish
   submitText: string
   onSubmit: (data: AddWishSchema) => void
-} & Pick<ButtonProps, "isLoading"> &
-  Pick<ModalProps, "onClose">
+  onClose: () => void
+} & Pick<ButtonProps, "isLoading">
 
 type WishBooleanInput = "isPrivate"
 

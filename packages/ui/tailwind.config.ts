@@ -87,6 +87,7 @@ const config = {
         },
       },
     }),
+    tailwindAnimate,
   ],
   darkMode: "class",
 } satisfies Config

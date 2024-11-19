@@ -1,15 +1,15 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import {
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  type ModalProps,
-} from "@nextui-org/react"
 import { Button } from "@ui/components/ui/button"
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  type DialogProps,
+} from "@ui/components/ui/dialog"
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
@@ -21,10 +21,10 @@ import useUsersShared from "../../hooks/useUsersShared"
 import { useTranslation } from "../AppContext"
 import Field from "../Field"
 
-type FormProps = Pick<Required<ModalProps>, "onOpenChange" | "onClose">
-type ShareFormProps = Pick<Required<ModalProps>, "isOpen" | "onOpenChange">
+type FormProps = Pick<Required<DialogProps>, "onOpenChange">
+type ShareFormProps = Pick<Required<DialogProps>, "open"> & FormProps
 
-const Form = ({ onOpenChange, onClose }: FormProps) => {
+const Form = ({ onOpenChange }: FormProps) => {
   const { t } = useTranslation("forms")
   const { addUser } = useUsersShared()
   const { control, handleSubmit } = useForm({
@@ -41,46 +41,36 @@ const Form = ({ onOpenChange, onClose }: FormProps) => {
       onOpenChange(false)
     },
   })
+
   const handleOnSubmit = handleSubmit((data) => {
     mutate({ json: data })
   })
 
   return (
     <form onSubmit={handleOnSubmit}>
-      <ModalBody>
-        <Field control={control} name="username" label={t("username")} />
-      </ModalBody>
-      <ModalFooter className="justify-between">
-        <Button onClick={onClose} color="danger">
-          {t("share.cancel")}
-        </Button>
+      <Field control={control} name="username" label={t("username")} />
+      <DialogFooter className="justify-between">
+        <DialogClose asChild>
+          <Button color="danger">{t("share.cancel")}</Button>
+        </DialogClose>
         <Button type="submit" isLoading={isPending} color="primary">
           {t("share.submit")}
         </Button>
-      </ModalFooter>
+      </DialogFooter>
     </form>
   )
 }
 
-const ShareForm = ({ isOpen, onOpenChange }: ShareFormProps) => {
+const ShareForm = ({ open, onOpenChange }: ShareFormProps) => {
   const { t } = useTranslation("forms")
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onOpenChange={onOpenChange}
-      placement="center"
-      className="h-fit w-full max-w-lg"
-    >
-      <ModalContent>
-        {(onClose) => (
-          <>
-            <ModalHeader>{t("share.title")}</ModalHeader>
-            <Form onClose={onClose} onOpenChange={onOpenChange} />
-          </>
-        )}
-      </ModalContent>
-    </Modal>
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent>
+        <DialogHeader>{t("share.title")}</DialogHeader>
+        <Form onOpenChange={onOpenChange} />
+      </DialogContent>
+    </Dialog>
   )
 }
 

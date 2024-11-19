@@ -1,4 +1,4 @@
-import { useDisclosure } from "@nextui-org/react"
+import { useDialog } from "@ui/components/ui/dialog"
 import { useState } from "react"
 
 import type { Wish } from "@my-wishlist/types"
@@ -12,10 +12,10 @@ type Props = {
 }
 
 const WishList = ({ wishes, canEdit }: Props) => {
-  const { isOpen, onOpenChange } = useDisclosure()
+  const { open, onOpenChange, onOpen } = useDialog()
   const [selectedWish, setSelectedWish] = useState<Wish | null>(null)
   const handleEdit = (wish: Wish) => {
-    onOpenChange()
+    onOpen()
     setSelectedWish(wish)
   }
 
@@ -25,7 +25,7 @@ const WishList = ({ wishes, canEdit }: Props) => {
         {selectedWish && (
           <EditWishForm
             wish={selectedWish}
-            isOpen={isOpen}
+            open={open}
             onOpenChange={onOpenChange}
           />
         )}

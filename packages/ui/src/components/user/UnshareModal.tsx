@@ -1,14 +1,14 @@
 "use client"
 
-import {
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  type ModalProps,
-} from "@nextui-org/react"
 import { Button } from "@ui/components/ui/button"
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  type DialogProps,
+} from "@ui/components/ui/dialog"
 
 import { useClient } from "@my-wishlist/react"
 import type { UserShared } from "@my-wishlist/types"
@@ -19,9 +19,9 @@ import { useTranslation } from "../AppContext"
 
 type Props = {
   user: UserShared | null
-} & Pick<Required<ModalProps>, "isOpen" | "onOpenChange">
+} & Pick<Required<DialogProps>, "open" | "onOpenChange">
 
-const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
+const UnshareModal = ({ user, open, onOpenChange }: Props) => {
   const { t } = useTranslation("forms", "errors")
   const { removeUser } = useUsersShared()
   const { client } = useClient()
@@ -52,35 +52,20 @@ const UnshareModal = ({ user, isOpen, onOpenChange }: Props) => {
   }
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onOpenChange={onOpenChange}
-      placement="center"
-      className="h-fit w-full max-w-lg"
-    >
-      <ModalContent>
-        {(onClose) => (
-          <>
-            <ModalHeader>{t("unshare.title")}</ModalHeader>
-            <ModalBody>
-              {t("unshare.information", { username: user?.username })}
-            </ModalBody>
-            <ModalFooter className="justify-between">
-              <Button onClick={onClose} color="danger">
-                {t("unshare.cancel")}
-              </Button>
-              <Button
-                color="primary"
-                onClick={handleSubmit}
-                isLoading={isPending}
-              >
-                {t("unshare.submit")}
-              </Button>
-            </ModalFooter>
-          </>
-        )}
-      </ModalContent>
-    </Modal>
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent>
+        <DialogHeader>{t("unshare.title")}</DialogHeader>
+        <p>{t("unshare.information", { username: user?.username })}</p>
+        <DialogFooter className="justify-between">
+          <DialogClose asChild>
+            <Button color="danger">{t("unshare.cancel")}</Button>
+          </DialogClose>
+          <Button color="primary" onClick={handleSubmit} isLoading={isPending}>
+            {t("unshare.submit")}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }
 

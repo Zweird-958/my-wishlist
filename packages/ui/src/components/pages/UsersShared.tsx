@@ -1,6 +1,6 @@
 "use client"
 
-import { useDisclosure } from "@nextui-org/react"
+import { useDialog } from "@ui/components/ui/dialog"
 import { ChevronRight, Trash2 } from "lucide-react"
 import { type Key, useState } from "react"
 
@@ -16,12 +16,12 @@ import UnshareModal from "../user/UnshareModal"
 import UsersList from "../user/UsersList"
 
 const ShareSection = () => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure()
+  const { open, onOpen, onOpenChange } = useDialog()
 
   return (
     <>
       <AddButton onClick={onOpen} color="primary" />
-      <ShareForm isOpen={isOpen} onOpenChange={onOpenChange} />
+      <ShareForm open={open} onOpenChange={onOpenChange} />
     </>
   )
 }
@@ -38,7 +38,7 @@ const UsersShared = () => {
   })
   const { usersShared, isLoading: usersLoading } = useUsersShared()
   const [userSelected, setUserSelected] = useState<UserShared | null>(null)
-  const { isOpen, onOpen, onOpenChange } = useDisclosure()
+  const { open, onOpen, onOpenChange } = useDialog()
 
   const handleOnAction = (userId: Key) => {
     setUserSelected(
@@ -66,7 +66,7 @@ const UsersShared = () => {
         onAction={handleOnAction}
       />
       <UnshareModal
-        isOpen={isOpen}
+        open={open}
         onOpenChange={onOpenChange}
         user={userSelected}
       />
