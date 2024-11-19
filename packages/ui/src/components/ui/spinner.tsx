@@ -1,5 +1,4 @@
-import { forwardRef } from "@nextui-org/system-rsc"
-import { useMemo } from "react"
+import { type ComponentPropsWithoutRef, forwardRef, useMemo } from "react"
 import { type VariantProps, tv } from "tailwind-variants"
 
 const spinnerVariants = tv({
@@ -86,9 +85,10 @@ const spinnerVariants = tv({
   },
 })
 
-export type SpinnerProps = VariantProps<typeof spinnerVariants>
+export type SpinnerProps = ComponentPropsWithoutRef<"div"> &
+  VariantProps<typeof spinnerVariants>
 
-const Spinner = forwardRef<"div", SpinnerProps>(
+const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
   ({ size, color, className, ...props }, ref) => {
     const slots = useMemo(() => spinnerVariants({ size, color }), [size, color])
 
