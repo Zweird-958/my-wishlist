@@ -6,9 +6,27 @@ settings:
 
 catalogs:
   default:
+    '@types/node':
+      specifier: 20.14.10
+      version: 20.14.10
+    '@types/react':
+      specifier: ^18.3.3
+      version: 18.3.12
+    '@types/react-dom':
+      specifier: ^18.3.0
+      version: 18.3.1
     eslint:
       specifier: ^9.7.0
       version: 9.14.0
+    next:
+      specifier: 14.2.5
+      version: 14.2.5
+    react:
+      specifier: 18.3.1
+      version: 18.3.1
+    react-dom:
+      specifier: 18.3.1
+      version: 18.3.1
     tailwindcss:
       specifier: ^3.4.4
       version: 3.4.14
@@ -112,7 +130,7 @@ importers:
   apps/mobile:
     dependencies:
       '@hookform/resolvers':
-        specifier: ^3.9.0
+        specifier: ^3.9.1
         version: 3.9.1(react-hook-form@7.53.2(react@18.3.1))
       '@my-wishlist/api':
         specifier: workspace:*
@@ -605,7 +623,7 @@ importers:
   packages/ui:
     dependencies:
       '@hookform/resolvers':
-        specifier: ^3.9.0
+        specifier: ^3.9.1
         version: 3.9.1(react-hook-form@7.53.2(react@18.3.1))
       '@my-wishlist/api':
         specifier: workspace:*
@@ -2173,7 +2191,7 @@ packages:
 
   '@expo/bunyan@4.0.1':
     resolution: {integrity: sha512-+Lla7nYSiHZirgK+U/uYzsLv/X+HaJienbD5AKX1UQZHYfWaP+9uuQluRB4GrEVWF0GZ7vEVp/jzaOT9k/SQlg==}
-    engines: {'0': node >=0.10.0}
+    engines: {node: '>=0.10.0'}
 
   '@expo/cli@0.18.31':
     resolution: {integrity: sha512-v9llw9fT3Uv+TCM6Xllo54t672CuYtinEQZ2LPJ2EJsCwuTc4Cd2gXQaouuIVD21VoeGQnr5JtJuWbF97sBKzQ==}
