@@ -99,9 +99,9 @@ const app = new Hono()
         id: true,
       },
       with: {
-        viewers: {
+        accessibleWishlists: {
           with: {
-            viewer: { columns: { id: true, username: true } },
+            owner: { columns: { id: true, username: true } },
           },
         },
       },
@@ -111,7 +111,7 @@ const app = new Hono()
       return send([])
     }
 
-    return send(user.viewers.map(({ viewer }) => formatUser(viewer)))
+    return send(user.accessibleWishlists.map(({ owner }) => formatUser(owner)))
   })
   .delete(
     "/wish/:userId",
@@ -138,26 +138,24 @@ const app = new Hono()
       return send(true)
     },
   )
-  .get("/users", auth, async ({ var: { user, send, db } }) => {
-    const userWithShared = await db.query.users.findFirst({
-      where: eq(users.id, user.id),
+  .get("/users", auth, async ({ var: { user: authUser, send, db } }) => {
+    const user = await db.query.users.findFirst({
+      where: eq(users.id, authUser.id),
       columns: { id: true },
       with: {
-        accessibleWishlists: {
+        viewers: {
           with: {
-            owner: { columns: { id: true, username: true } },
+            viewer: { columns: { id: true, username: true } },
           },
         },
       },
     })
 
-    if (!userWithShared) {
+    if (!user) {
       return send([])
     }
 
-    return send(
-      userWithShared.accessibleWishlists.map(({ owner }) => formatUser(owner)),
-    )
+    return send(user.viewers.map(({ viewer }) => formatUser(viewer)))
   })
 
 export default app
