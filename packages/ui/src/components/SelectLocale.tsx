@@ -43,7 +43,7 @@ const SelectLocale = ({ changeLocale, locale }: SelectLocaleProps) => {
           onValueChange={handleChangeLocale}
         >
           {config.languages.map((item) => (
-            <DropdownMenuRadioItem value={item}>
+            <DropdownMenuRadioItem key={item} value={item}>
               <div className="flex items-center gap-2">
                 <Flag language={config.flags[item] ?? ""} />
                 <span>{config.languagesLabel[item]}</span>
