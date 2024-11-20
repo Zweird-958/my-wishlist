@@ -1,4 +1,4 @@
-import type { User } from "@/api/types"
+import type { User } from "../types"
 
 const formatUser = ({ id, username }: Pick<User, "id" | "username">) => ({
   id,

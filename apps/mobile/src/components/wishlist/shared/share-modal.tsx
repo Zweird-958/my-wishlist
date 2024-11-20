@@ -1,15 +1,11 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useMutation } from "@tanstack/react-query"
 import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 
+import { useClient, useMutation } from "@my-wishlist/react"
 import { shareSchema } from "@my-wishlist/schemas"
-import type {
-  ShareWishlistInput,
-  ShareWishlistResponse,
-} from "@my-wishlist/types"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
 import { useWishlistAccessUsers } from "@/components/contexts/wishlist-access-users-context"
@@ -22,7 +18,6 @@ import {
   type ModalProps,
 } from "@/components/ui/modal"
 import { Text } from "@/components/ui/text"
-import api from "@/utils/api"
 
 type Props = Required<Pick<ModalProps, "open" | "setOpen">>
 
@@ -38,17 +33,16 @@ const ShareModal = ({ open, setOpen }: Props) => {
   })
   const { addUser } = useWishlistAccessUsers()
 
-  const { mutate, isPending } = useMutation({
+  const { client } = useClient()
+  const { mutate, isPending } = useMutation(client.share.wish.$post, {
     mutationKey: ["share-wish"],
-    mutationFn: (data: ShareWishlistInput) =>
-      api.post<ShareWishlistResponse>("/share/wish", data),
     onSuccess: ({ result: user }) => {
       addUser(user)
       setOpen(false)
     },
   })
 
-  const onSubmit = handleSubmit((data) => mutate(data))
+  const onSubmit = handleSubmit((data) => mutate({ json: data }))
 
   useEffect(() => {
     if (!open) {

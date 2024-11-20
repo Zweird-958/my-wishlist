@@ -4,8 +4,8 @@ import jsonwebtoken from "jsonwebtoken"
 import { eq, users } from "@my-wishlist/db"
 import type { RawJwt } from "@my-wishlist/types"
 
-import type { User } from "@/api/types"
-import config from "@/api/utils/config"
+import type { User } from "../types"
+import config from "../utils/config"
 
 type Env = {
   Variables: {

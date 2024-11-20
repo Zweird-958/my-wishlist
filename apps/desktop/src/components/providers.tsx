@@ -2,6 +2,7 @@ import { useRouter } from "next/router"
 import type { ReactNode } from "react"
 
 import { useTranslation } from "@my-wishlist/i18n/desktop"
+import { ClientProvider } from "@my-wishlist/react"
 import {
   AppProvider,
   CurrenciesProvider,
@@ -18,6 +19,12 @@ import {
 
 const queryClient = new QueryClient()
 
+const DependentProviders = ({ children }: { children: ReactNode }) => {
+  const { token } = useSession()
+
+  return <ClientProvider token={token}>{children}</ClientProvider>
+}
+
 const Providers = ({ children }: { children: ReactNode }) => (
   <QueryClientProvider client={queryClient}>
     <SessionProvider>
@@ -26,11 +33,13 @@ const Providers = ({ children }: { children: ReactNode }) => (
         useSession={useSession}
         useRouter={useRouter}
       >
-        <CurrenciesProvider>
-          <NextUIProvider>
-            <ThemeProvider>{children}</ThemeProvider>
-          </NextUIProvider>
-        </CurrenciesProvider>
+        <DependentProviders>
+          <CurrenciesProvider>
+            <NextUIProvider>
+              <ThemeProvider>{children}</ThemeProvider>
+            </NextUIProvider>
+          </CurrenciesProvider>
+        </DependentProviders>
       </AppProvider>
     </SessionProvider>
   </QueryClientProvider>

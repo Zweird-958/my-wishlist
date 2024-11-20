@@ -12,3 +12,12 @@ export const ERROR_RESPONSES = {
   alreadyShared: { message: "Already shared.", code: 400 },
   imageRequired: { message: "Image is required.", code: 400 },
 } satisfies Record<string, { message: string; code: StatusCode }>
+
+export const BASES_PATHS = {
+  api: "/api",
+  wish: "/wish",
+  share: "/share",
+  currency: "/currency",
+  image: "/image",
+  sign: "",
+}

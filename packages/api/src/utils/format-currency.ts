@@ -1,4 +1,4 @@
-import type { Locale } from "@my-wishlist/i18n"
+import type { Locale } from "@my-wishlist/config/i18n"
 import type { Currency } from "@my-wishlist/types"
 
 const currencySymbols: Record<Currency, string> = {

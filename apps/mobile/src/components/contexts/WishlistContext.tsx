@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query"
 import {
   type ReactNode,
   createContext,
@@ -8,10 +7,11 @@ import {
   useState,
 } from "react"
 
+import { useClient } from "@my-wishlist/react"
 import type { Wish } from "@my-wishlist/types"
 
 import { useSession } from "@/components/contexts/SessionContext"
-import api from "@/utils/api"
+import { useProtectedQuery } from "@/hooks/use-query"
 
 type Context = {
   wishlist: Wish[]
@@ -39,11 +39,10 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     [wishlist],
   )
 
-  const { data, isPending } = useQuery({
-    queryKey: [session, "wishlist"],
-    queryFn: () => api.get<Wish[]>("/wish"),
+  const { client } = useClient()
+  const { data, isPending } = useProtectedQuery(() => client.wish.$get(), {
+    queryKey: ["wishlist"],
     enabled: Boolean(session) && wishlist.length === 0,
-    select: ({ result }) => result,
   })
 
   const removeWish = useCallback((id: number) => {
@@ -65,7 +64,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (data) {
-      setWishlist(data)
+      setWishlist(data.result)
     }
   }, [data])
 

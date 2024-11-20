@@ -1,9 +1,10 @@
 "use client"
 
+import { useClient } from "@my-wishlist/react"
 import { signInSchema } from "@my-wishlist/schemas"
 import type { SignInData } from "@my-wishlist/types"
 
-import useMutation from "../../hooks/useMutation"
+import useMutation from "../../hooks/use-mutation"
 import { useRouter, useSession, useTranslation } from "../AppContext"
 import Center from "../Center"
 import AuthForm from "../forms/AuthForm"
@@ -15,20 +16,19 @@ const defaultValues = {
 const SignIn = () => {
   const router = useRouter()
   const { t } = useTranslation("errors", "forms")
-  const { mutate, isPending } = useMutation<string, SignInData>({
-    method: "post",
-    path: "/sign-in",
-    errorsMap: {
-      401: t("errors:invalidCredentials"),
-    },
+  const { client } = useClient()
+  const { mutate, isPending } = useMutation(client["sign-in"].$post, {
     onSuccess: ({ result }) => {
       void signIn(result)
       void router.push("/")
     },
+    errorsMap: {
+      401: t("errors:invalidCredentials"),
+    },
   })
   const { signIn } = useSession()
   const onSubmit = (data: SignInData) => {
-    mutate(data)
+    mutate({ json: data })
   }
 
   return (

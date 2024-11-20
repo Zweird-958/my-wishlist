@@ -4,7 +4,7 @@ import { z } from "zod"
 
 import { and, eq, wishes } from "@my-wishlist/db"
 
-import type { User, WishTable } from "@/api/types"
+import type { User, WishTable } from "../types"
 
 type Env = {
   Variables: {

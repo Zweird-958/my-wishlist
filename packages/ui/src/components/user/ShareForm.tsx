@@ -13,13 +13,10 @@ import {
 import { useForm } from "react-hook-form"
 import toast from "react-hot-toast"
 
+import { useClient } from "@my-wishlist/react"
 import { shareSchema } from "@my-wishlist/schemas"
-import type {
-  ShareWishlistInput,
-  ShareWishlistResponse,
-} from "@my-wishlist/types"
 
-import useMutation from "../../hooks/useMutation"
+import useMutation from "../../hooks/use-mutation"
 import useUsersShared from "../../hooks/useUsersShared"
 import { useTranslation } from "../AppContext"
 import Field from "../Field"
@@ -36,12 +33,8 @@ const Form = ({ onOpenChange, onClose }: FormProps) => {
     },
     resolver: zodResolver(shareSchema),
   })
-  const { mutate, isPending } = useMutation<
-    ShareWishlistResponse,
-    ShareWishlistInput
-  >({
-    method: "post",
-    path: "/share/wish",
+  const { client } = useClient()
+  const { mutate, isPending } = useMutation(client.share.wish.$post, {
     onSuccess: ({ result: user }) => {
       addUser(user)
       toast.success(t("share.success", { username: user.username }))
@@ -49,7 +42,7 @@ const Form = ({ onOpenChange, onClose }: FormProps) => {
     },
   })
   const handleOnSubmit = handleSubmit((data) => {
-    mutate(data)
+    mutate({ json: data })
   })
 
   return (

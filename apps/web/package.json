@@ -11,15 +11,11 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.678.0",
-    "@hono/zod-validator": "^0.4.1",
-    "@my-wishlist/db": "workspace:*",
+    "@my-wishlist/api": "workspace:*",
     "@my-wishlist/i18n": "workspace:*",
-    "@my-wishlist/schemas": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",
     "@my-wishlist/ui": "workspace:*",
-    "@my-wishlist/config": "workspace:*",
-    "hono": "^4.6.6",
+    "@my-wishlist/react": "workspace:*",
     "jsonwebtoken": "^9.0.2",
     "next": "catalog:",
     "react": "catalog:",

@@ -1,8 +1,7 @@
-import { useMutation } from "@tanstack/react-query"
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 
-import type { Wish } from "@my-wishlist/types"
+import { useClient, useMutation } from "@my-wishlist/react"
 
 import { useTheme } from "@/components/contexts/ThemeContext"
 import { useWishlist } from "@/components/contexts/WishlistContext"
@@ -14,7 +13,6 @@ import {
   type ModalProps,
 } from "@/components/ui/modal"
 import { Text } from "@/components/ui/text"
-import api from "@/utils/api"
 
 type Props = Pick<Required<ModalProps>, "open" | "setOpen">
 
@@ -23,21 +21,24 @@ const DeleteWishModal = ({ open, setOpen }: Props) => {
   const { tw } = useTheme()
   const { selectedWish, removeWish } = useWishlist()
 
-  const { mutate: deleteWish, isPending } = useMutation({
-    mutationKey: ["delete-wish"],
-    mutationFn: (id: number) => api.delete<Wish>(`/wish/${id}`),
-    onSuccess: ({ result: { id } }) => {
-      removeWish(id)
-      setOpen(false)
+  const { client } = useClient()
+  const { mutate: deleteWish, isPending } = useMutation(
+    client.wish[":wishId"].$delete,
+    {
+      mutationKey: ["delete-wish"],
+      onSuccess: ({ result: { id } }) => {
+        removeWish(id)
+        setOpen(false)
+      },
     },
-  })
+  )
 
   const handleDelete = () => {
     if (!selectedWish) {
       return
     }
 
-    deleteWish(selectedWish.id)
+    deleteWish({ param: { wishId: selectedWish.id.toString() } })
   }
 
   return (

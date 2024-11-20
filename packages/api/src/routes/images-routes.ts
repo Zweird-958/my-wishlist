@@ -5,11 +5,9 @@ import { z } from "zod"
 
 import { imageMobileSchema } from "@my-wishlist/schemas"
 
-import auth from "@/api/middlewares/auth"
-import config from "@/api/utils/config"
-import s3 from "@/api/utils/s3"
-
-const app = new Hono()
+import auth from "../middlewares/auth"
+import config from "../utils/config"
+import s3 from "../utils/s3"
 
 const formDataSchema = z.object({
   image: z.instanceof(File).optional(),
@@ -19,7 +17,7 @@ const jsonSchema = z.object({
   image: imageMobileSchema.optional(),
 })
 
-app.post(
+const app = new Hono().post(
   "/",
   auth,
   zValidator("form", formDataSchema),

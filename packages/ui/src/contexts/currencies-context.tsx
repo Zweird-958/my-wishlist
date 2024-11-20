@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query"
 import {
   type ReactNode,
   createContext,
@@ -7,8 +6,8 @@ import {
   useState,
 } from "react"
 
+import { useClient, useQuery } from "@my-wishlist/react"
 import type { Currency } from "@my-wishlist/types"
-import { api } from "@my-wishlist/utils"
 
 type Context = {
   currencies: Currency[]
@@ -19,17 +18,16 @@ export const useCurrencies = () => useContext(CurrenciesContext)
 
 export const CurrenciesProvider = ({ children }: { children: ReactNode }) => {
   const [currencies, setCurrencies] = useState<Currency[]>([])
+  const { client } = useClient()
 
-  const { data } = useQuery({
+  const { data } = useQuery(() => client.currency.$get(), {
     queryKey: ["currency"],
-    queryFn: () => api.get<Currency[]>("/currency"),
     enabled: currencies.length === 0,
-    select: ({ result }) => result,
   })
 
   useEffect(() => {
     if (data) {
-      setCurrencies(data)
+      setCurrencies(data.result)
     }
   }, [data])
 
