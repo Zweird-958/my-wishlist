@@ -1,7 +1,11 @@
 "use client"
 
-import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react"
 import { Button } from "@ui/components/ui/button"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@ui/components/ui/popover"
 import { Trash2Icon } from "lucide-react"
 import { useState } from "react"
 import toast from "react-hot-toast"
@@ -21,8 +25,8 @@ const DeleteWish = ({ wish }: Props) => {
   const { removeWish } = useWishlist()
   const { t } = useTranslation("forms")
 
-  const [isOpen, setIsOpen] = useState(false)
-  const handleOpen = (open: boolean) => setIsOpen(open)
+  const [open, setOpen] = useState(false)
+  const handleOpen = (isOpen: boolean) => setOpen(isOpen)
   const close = () => handleOpen(false)
 
   const { client } = useClient()
@@ -39,20 +43,13 @@ const DeleteWish = ({ wish }: Props) => {
   }
 
   return (
-    <Popover
-      placement="bottom"
-      color="danger"
-      showArrow={true}
-      isOpen={isOpen}
-      onOpenChange={handleOpen}
-      size="lg"
-    >
+    <Popover open={open} onOpenChange={handleOpen}>
       <PopoverTrigger>
         <Button size="icon" className="px-2" color="danger">
           <Trash2Icon />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="text-tiny items-start gap-2 py-2">
+      <PopoverContent className="text-tiny flex flex-col items-start gap-2 py-2">
         <p className="text-left">{t("forms:wish.delete.confirmation")}</p>
         <p>{t("forms:wish.delete.information")}</p>
         <div className="flex w-full min-w-52 justify-between">
