@@ -1,7 +1,7 @@
 "use client"
 
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/react"
 import { Button } from "@ui/components/ui/button"
+import { Card, CardBody, CardFooter, CardHeader } from "@ui/components/ui/card"
 import Link from "next/link"
 
 import { useTranslation } from "../AppContext"

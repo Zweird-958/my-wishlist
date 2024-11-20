@@ -1,7 +1,7 @@
 "use client"
 
-import { Card, CardFooter, CardHeader } from "@nextui-org/react"
 import { Button } from "@ui/components/ui/button"
+import { Card, CardFooter, CardHeader } from "@ui/components/ui/card"
 import { Skeleton } from "@ui/components/ui/skeleton"
 import WishImage from "@ui/components/wishlist/wish-image"
 import { SquarePenIcon } from "lucide-react"
@@ -24,8 +24,8 @@ const WishCard = ({ wish, canEdit, onEditButton }: Props) => {
   const handleEdit = () => onEditButton(wish)
 
   return (
-    <Card isFooterBlurred className="w-wish h-wish">
-      <CardHeader className="absolute top-0 z-20 justify-between">
+    <Card className="w-wish h-wish relative">
+      <CardHeader className="absolute top-0 z-20 w-full justify-between">
         {canEdit && (
           <>
             <DeleteWish wish={wish} />

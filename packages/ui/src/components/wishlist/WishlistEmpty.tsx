@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardBody, CardHeader } from "@nextui-org/react"
+import { Card, CardBody, CardHeader } from "@ui/components/ui/card"
 import clsx from "clsx"
 
 import { useTranslation } from "../AppContext"
