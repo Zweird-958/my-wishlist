@@ -1,8 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { type ButtonProps } from "@nextui-org/react"
-import { Button } from "@ui/components/ui/button"
+import { Button, ButtonProps } from "@ui/components/ui/button"
 import { Form, FormInput, FormSelect, FormSwitch } from "@ui/components/ui/form"
 import { useForm } from "react-hook-form"
 
