@@ -1,3 +1,7 @@
+import {
+  type ImageVariantsProps,
+  imageVariants,
+} from "@ui/components/ui/image/theme"
 import { cn } from "@ui/utils/ui"
 import NextImage from "next/image"
 import {
@@ -7,29 +11,6 @@ import {
   useMemo,
   useState,
 } from "react"
-import { type VariantProps, tv } from "tailwind-variants"
-
-const imageVariants = tv({
-  slots: {
-    wrapper: "relative h-full w-full",
-    img: "h-full w-full rounded-md object-cover",
-  },
-  variants: {
-    isBlurred: {
-      true: {
-        img: "backdrop-blur-md",
-      },
-    },
-    isLoading: {
-      true: {
-        img: "bg-muted animate-pulse",
-      },
-    },
-  },
-  defaultVariants: {
-    isBlurred: false,
-  },
-})
 
 export type ImageProps = {
   classNames?: {
@@ -37,7 +18,7 @@ export type ImageProps = {
     img?: string
   }
 } & ComponentPropsWithoutRef<typeof NextImage> &
-  Omit<VariantProps<typeof imageVariants>, "isLoading">
+  Omit<ImageVariantsProps, "isLoading">
 
 export const Image = forwardRef<HTMLImageElement, ImageProps>(
   ({ className, onLoad, classNames, isBlurred, ...props }, ref) => {

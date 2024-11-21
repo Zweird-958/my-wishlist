@@ -6,27 +6,9 @@ settings:
 
 catalogs:
   default:
-    '@types/node':
-      specifier: 20.14.10
-      version: 20.14.10
-    '@types/react':
-      specifier: ^18.3.3
-      version: 18.3.12
-    '@types/react-dom':
-      specifier: ^18.3.0
-      version: 18.3.1
     eslint:
       specifier: ^9.7.0
       version: 9.14.0
-    next:
-      specifier: 14.2.5
-      version: 14.2.5
-    react:
-      specifier: 18.3.1
-      version: 18.3.1
-    react-dom:
-      specifier: 18.3.1
-      version: 18.3.1
     tailwindcss:
       specifier: ^3.4.4
       version: 3.4.14
@@ -623,7 +605,7 @@ importers:
   packages/ui:
     dependencies:
       '@hookform/resolvers':
-        specifier: ^3.9.1
+        specifier: ^3.9.0
         version: 3.9.1(react-hook-form@7.53.2(react@18.3.1))
       '@my-wishlist/api':
         specifier: workspace:*
@@ -685,9 +667,6 @@ importers:
       axios:
         specifier: ^1.7.7
         version: 1.7.7
-      class-variance-authority:
-        specifier: ^0.7.0
-        version: 0.7.0
       clsx:
         specifier: ^2.1.1
         version: 2.1.1

@@ -47,7 +47,10 @@ const WishCard = ({ wish, canEdit, onEditButton }: Props) => {
           <Skeleton className="h-full w-full" />
         )}
       </div>
-      <CardFooter className="border-t-1 absolute bottom-0 z-20 justify-between border-zinc-100/50 bg-white/30">
+      <CardFooter
+        className="border-t-1 absolute bottom-0 z-20 justify-between bg-white/20"
+        isBlurred
+      >
         <div className="text-tiny basis-5/6 text-black">
           <p className="line-clamp-1">{name}</p>
           <p className="line-clamp-1">{priceFormatted}</p>

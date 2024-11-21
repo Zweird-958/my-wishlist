@@ -2,6 +2,7 @@
 import type * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
 import { useTranslation } from "@ui/components/AppContext"
+import { formVariants } from "@ui/components/ui/form/theme"
 import { Input, type InputProps } from "@ui/components/ui/input"
 import { Label } from "@ui/components/ui/label"
 import {
@@ -12,7 +13,6 @@ import {
   SelectValue,
 } from "@ui/components/ui/select"
 import { Switch } from "@ui/components/ui/switch"
-import { cn } from "@ui/utils/ui"
 import * as React from "react"
 import {
   Controller,
@@ -89,7 +89,11 @@ const FormItem = React.forwardRef<
 
   return (
     <FormItemContext.Provider value={{ id }}>
-      <div ref={ref} className={cn("w-full space-y-2", className)} {...props} />
+      <div
+        ref={ref}
+        className={formVariants().item({ className })}
+        {...props}
+      />
     </FormItemContext.Provider>
   )
 })
@@ -104,7 +108,7 @@ const FormLabel = React.forwardRef<
   return (
     <Label
       ref={ref}
-      className={cn(error && "text-danger", className)}
+      className={formVariants().label({ className, error: Boolean(error) })}
       htmlFor={formItemId}
       {...props}
     />
@@ -144,7 +148,7 @@ const FormDescription = React.forwardRef<
     <p
       ref={ref}
       id={formDescriptionId}
-      className={cn("text-muted-foreground text-[0.8rem]", className)}
+      className={formVariants().description({ className })}
       {...props}
     />
   )
@@ -167,7 +171,7 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className={cn("text-danger text-sm font-medium", className)}
+      className={formVariants().message({ className })}
       {...props}
     >
       {body}
@@ -276,7 +280,7 @@ const FormSwitch = ({ label, name, formProps }: FormSwitchProps) => (
     name={name}
     {...formProps}
     render={({ field }) => (
-      <FormItem className="flex flex-row items-center justify-between">
+      <FormItem className={formVariants().switch()}>
         <FormLabel className="text-base">{label}</FormLabel>
         <FormControl>
           <Switch
@@ -299,7 +303,7 @@ export {
   FormItem,
   FormLabel,
   FormMessage,
-  useFormField,
   FormSelect,
   FormSwitch,
+  useFormField,
 }

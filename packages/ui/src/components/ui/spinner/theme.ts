@@ -1,7 +1,6 @@
-import { type ComponentPropsWithoutRef, forwardRef, useMemo } from "react"
 import { type VariantProps, tv } from "tailwind-variants"
 
-const spinnerVariants = tv({
+export const spinnerVariants = tv({
   slots: {
     base: "relative inline-flex flex-col items-center justify-center gap-2",
     wrapper: "relative flex",
@@ -85,24 +84,4 @@ const spinnerVariants = tv({
   },
 })
 
-export type SpinnerProps = ComponentPropsWithoutRef<"div"> &
-  VariantProps<typeof spinnerVariants>
-
-const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
-  ({ size, color, className, ...props }, ref) => {
-    const slots = useMemo(() => spinnerVariants({ size, color }), [size, color])
-
-    return (
-      <div ref={ref} className={slots.base({ className })} {...props}>
-        <div className={slots.wrapper()}>
-          <i className={slots.circle1()} />
-          <i className={slots.circle2()} />
-        </div>
-      </div>
-    )
-  },
-)
-
-Spinner.displayName = "Spinner"
-
-export { Spinner, spinnerVariants }
+export type SpinnerVariantsProps = VariantProps<typeof spinnerVariants>
