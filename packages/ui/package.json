@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "imports": {
-    "@/*": "./src/**/*.ts"
-  },
   "exports": {
-    "./*": "./src/components/*.tsx",
+    ".": "./src/index.ts",
+    "./appbar": "./src/components/Appbar.tsx",
     "./tailwind": "./tailwind.config.ts",
-    "./globals.css": "./src/globals.css"
+    "./globals.css": "./src/globals.css",
+    "./providers": "./src/components/providers.tsx"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

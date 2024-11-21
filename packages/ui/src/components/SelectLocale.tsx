@@ -13,12 +13,12 @@ import { useState } from "react"
 
 import { type Locale, config } from "@my-wishlist/i18n/config"
 
-export type SelectLocaleProps = {
+type Props = {
   changeLocale: (locale: Locale) => void
   locale: Locale
 }
 
-const SelectLocale = ({ changeLocale, locale }: SelectLocaleProps) => {
+const SelectLocale = ({ changeLocale, locale }: Props) => {
   const [isLoading, setIsLoading] = useState(false)
   const handleChangeLocale = (newLocale: string) => {
     if (isLoading) {

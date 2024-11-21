@@ -1,0 +1,5 @@
+export { default as Home } from "@ui/components/pages/Home"
+export { default as SignIn } from "@ui/components/pages/SignIn"
+export { default as SignUp } from "@ui/components/pages/SignUp"
+export { default as UsersShared } from "@ui/components/pages/UsersShared"
+export { default as WishlistShared } from "@ui/components/pages/WishlistShared"
