@@ -20,7 +20,7 @@ import { useTheme } from "@/components/contexts/ThemeContext"
 const DURATION = 1000
 
 const spinnerVariants = cva(
-  "absolute w-full h-full rounded-full border-solid border-t-transparent border-l-transparent border-r-transparent",
+  "absolute h-full w-full rounded-full border-solid border-l-transparent border-r-transparent border-t-transparent",
   {
     variants: {
       color: {
@@ -50,7 +50,7 @@ const spinnerVariants = cva(
 const wrapperVariants = cva("", {
   variants: {
     size: {
-      sm: "w-4 h-4",
+      sm: "h-4 w-4",
       md: "ios:w-6 ios:h-6 android:w-8 android:h-8",
       lg: "ios:w-10 ios:h-10 android:w-12 android:h-12",
     },

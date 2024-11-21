@@ -3,7 +3,7 @@ import { type VariantProps, tv } from "tailwind-variants"
 
 const spinnerVariants = tv({
   slots: {
-    base: "relative inline-flex flex-col gap-2 items-center justify-center",
+    base: "relative inline-flex flex-col items-center justify-center gap-2",
     wrapper: "relative flex",
     circle1: [
       "absolute",
@@ -34,19 +34,19 @@ const spinnerVariants = tv({
   variants: {
     size: {
       sm: {
-        wrapper: "w-5 h-5",
+        wrapper: "h-5 w-5",
         circle1: "border-2",
         circle2: "border-2",
         label: "text-sm",
       },
       md: {
-        wrapper: "w-8 h-8",
+        wrapper: "h-8 w-8",
         circle1: "border-3",
         circle2: "border-3",
         label: "text-md",
       },
       lg: {
-        wrapper: "w-10 h-10",
+        wrapper: "h-10 w-10",
         circle1: "border-3",
         circle2: "border-3",
         label: "text-lg",

@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority"
 
-export const cardVariants = cva("flex flex-col h-auto bg-card", {
+export const cardVariants = cva("bg-card flex h-auto flex-col", {
   variants: {
     radius: {
       none: "rounded-none",
@@ -40,7 +40,7 @@ export const footerVariants = cva("w-full", {
 })
 
 export const headerVariants = cva(
-  "flex flex-row p-3 w-full items-center justify-start",
+  "flex w-full flex-row items-center justify-start p-3",
   {
     variants: {
       radius: {

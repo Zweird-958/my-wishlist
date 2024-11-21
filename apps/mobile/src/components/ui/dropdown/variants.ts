@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority"
 
-export const dropdownContentVariants = cva("items-center absolute z-10", {
+export const dropdownContentVariants = cva("absolute z-10 items-center", {
   variants: {
     radius: {
       small: "rounded-sm",

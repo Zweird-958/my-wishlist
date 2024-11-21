@@ -11,8 +11,8 @@ import { type VariantProps, tv } from "tailwind-variants"
 
 const imageVariants = tv({
   slots: {
-    wrapper: "relative w-full h-full",
-    img: "rounded-md h-full w-full object-cover",
+    wrapper: "relative h-full w-full",
+    img: "h-full w-full rounded-md object-cover",
   },
   variants: {
     isBlurred: {
