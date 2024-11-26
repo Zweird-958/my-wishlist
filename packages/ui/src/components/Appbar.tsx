@@ -1,15 +1,15 @@
 "use client"
 
+import { Button } from "@ui/components/ui/button"
 import {
   Navbar,
-  NavbarBrand,
   NavbarContent,
   NavbarItem,
   NavbarMenu,
+  NavbarMenuContent,
   NavbarMenuItem,
-  NavbarMenuToggle,
-} from "@nextui-org/react"
-import { Button } from "@ui/components/ui/button"
+  NavbarMenuTrigger,
+} from "@ui/components/ui/navbar"
 import { Share2 } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
@@ -31,24 +31,35 @@ const Appbar = () => {
   ]
 
   return (
-    <Navbar
-      maxWidth="2xl"
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
-    >
+    <Navbar>
       <NavbarContent>
-        <NavbarMenuToggle
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
-        />
-        <NavbarBrand>
-          <Link href="/" className="text-foreground">
+        <NavbarMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+          <NavbarMenuTrigger />
+          <NavbarMenuContent>
+            {menuItems.map(
+              ({ label, href, onClick, hidden }) =>
+                !hidden && (
+                  <NavbarMenuItem key={href ?? label}>
+                    {!href ? (
+                      <button onClick={onClick}>{label}</button>
+                    ) : (
+                      <Link href={href} onClick={() => setIsMenuOpen(false)}>
+                        {label}
+                      </Link>
+                    )}
+                  </NavbarMenuItem>
+                ),
+            )}
+          </NavbarMenuContent>
+        </NavbarMenu>
+        <NavbarItem>
+          <Link href="/" className="text-foreground text-lg">
             My Wishlist
           </Link>
-        </NavbarBrand>
+        </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent justify="end">
+      <NavbarContent>
         {session ? (
           <>
             <NavbarItem className="hidden sm:flex">
@@ -78,29 +89,13 @@ const Appbar = () => {
             </NavbarItem>
           </>
         )}
-        <SelectTheme />
-        <SelectLocale locale={locale} changeLocale={changeLanguage} />
+        <NavbarItem>
+          <SelectTheme />
+        </NavbarItem>
+        <NavbarItem>
+          <SelectLocale locale={locale} changeLocale={changeLanguage} />
+        </NavbarItem>
       </NavbarContent>
-      <NavbarMenu>
-        {menuItems.map(
-          ({ label, href, onClick, hidden }) =>
-            !hidden && (
-              <NavbarMenuItem key={href ?? label}>
-                {!href ? (
-                  <button onClick={onClick}>{label}</button>
-                ) : (
-                  <Link
-                    className="text-foreground"
-                    href={href}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {label}
-                  </Link>
-                )}
-              </NavbarMenuItem>
-            ),
-        )}
-      </NavbarMenu>
     </Navbar>
   )
 }
