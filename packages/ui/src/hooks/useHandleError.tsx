@@ -1,14 +1,13 @@
 "use client"
 
-import type { AxiosError } from "axios"
 import toast from "react-hot-toast"
 
-import type { ApiError } from "@my-wishlist/types"
+import type { ApiClientError } from "@my-wishlist/api"
 
 import { useTranslation } from "../components/AppContext"
 
-export type ErrorsMap = Record<number, string>
-export type ErrorsCallback = Record<number, () => void>
+type ErrorsMap = Record<number, string>
+type ErrorsCallback = Record<number, () => void>
 
 export type HandleErrorParams = {
   errorsMap?: ErrorsMap
@@ -21,14 +20,8 @@ const useHandleError = (
   errorsCallback?: ErrorsCallback,
 ) => {
   const { t } = useTranslation("errors", "zodErrors")
-  const handleError = ({ response }: AxiosError<ApiError>) => {
-    if (!response) {
-      return
-    }
-
-    const { status } = response
-
-    if (status === SUCCESS_STATUS || !status) {
+  const handleError = ({ status }: ApiClientError) => {
+    if (status === SUCCESS_STATUS) {
       return
     }
 

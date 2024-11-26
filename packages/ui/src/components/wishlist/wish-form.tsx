@@ -7,7 +7,6 @@ import {
   type ModalProps,
   type Selection,
 } from "@nextui-org/react"
-import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 
 import config from "@my-wishlist/config"
@@ -18,8 +17,7 @@ import {
 } from "@my-wishlist/schemas"
 import type { AddWishSchema, Currency, Wish } from "@my-wishlist/types"
 
-import useCurrencies from "../../hooks/useCurrencies"
-import useQuery from "../../hooks/useQuery"
+import { useCurrencies } from "../../contexts/currencies-context"
 import useUploadImage from "../../hooks/useUploadImage"
 import { useTranslation } from "../AppContext"
 import CurrencyDropdown from "../CurrencyDropdown"
@@ -48,26 +46,13 @@ const WishForm = ({
   submitText,
   onClose,
 }: Props) => {
-  const { currencies, setCurrencies } = useCurrencies()
+  const { currencies } = useCurrencies()
   const { addImageMutate, image, setImage, imageIsLoading } = useUploadImage()
   const { t } = useTranslation("forms")
   const { control, handleSubmit, setValue, watch } = useForm({
     defaultValues: formSchema.parse({ ...wish }),
     resolver: zodResolver(addWishSchema),
   })
-
-  const { data } = useQuery<Currency[]>({
-    method: "get",
-    path: "/currency",
-    enabled: currencies.length === 0,
-    queryKey: ["currencies"],
-  })
-
-  useEffect(() => {
-    if (data) {
-      setCurrencies(data.result)
-    }
-  }, [data, setCurrencies])
 
   const handleChangeCurrency = (keys: Selection) => {
     const currency = Array.from(keys)
@@ -109,13 +94,11 @@ const WishForm = ({
       />
       <WishImageInput image={image} setImage={setImage} />
       <WishSelectedImage wish={wish} image={image} />
-      {wish && (
-        <SwitchField
-          label={t("private")}
-          onValueChange={handleSwitch("isPrivate")}
-          isSelected={watch("isPrivate")}
-        />
-      )}
+      <SwitchField
+        label={t("private")}
+        onValueChange={handleSwitch("isPrivate")}
+        isSelected={watch("isPrivate")}
+      />
       <div className="flex w-full justify-between">
         <Button type="button" color="danger" onPress={onClose}>
           {t("wish.cancel")}

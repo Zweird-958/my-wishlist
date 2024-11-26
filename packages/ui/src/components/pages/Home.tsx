@@ -3,9 +3,9 @@
 import { useDisclosure } from "@nextui-org/react"
 import { useEffect } from "react"
 
-import type { Wish } from "@my-wishlist/types"
+import { useClient } from "@my-wishlist/react"
 
-import useQuery from "../../hooks/useQuery"
+import { useProtectedQuery } from "../../hooks/use-query"
 import useWishlist from "../../hooks/useWishlist"
 import AddButton from "../AddButton"
 import { useSession } from "../AppContext"
@@ -24,12 +24,13 @@ const Home = () => {
     setWishlist,
   } = useWishlist()
   const { isOpen, onOpen, onOpenChange } = useDisclosure()
-  const { data, isLoading: wishlistIsLoading } = useQuery<Wish[]>({
-    method: "get",
-    path: "/wish",
-    queryKey: [session],
-    enabled: wishlist.length === 0 && Boolean(session),
-  })
+  const { client } = useClient()
+  const { data, isPending: wishlistIsLoading } = useProtectedQuery(
+    () => client.wish.$get(),
+    {
+      queryKey: [session, "wish"],
+    },
+  )
 
   useEffect(() => {
     if (!data?.result || !session || wishlist.length > 0) {
@@ -44,18 +45,19 @@ const Home = () => {
   }
 
   return (
-    <WishlistDisplay
-      isLoading={sessionIsLoading || wishlistIsLoading}
-      wishlist={wishlist}
-      selectedFilter={selectedFilter}
-      setSelectedFilter={setSelectedFilter}
-      selectedSort={selectedSort}
-      setSelectedSort={setSelectedSort}
-      canEdit
-    >
-      <AddButton onPress={onOpen} color="primary" />
+    <>
+      <WishlistDisplay
+        isLoading={sessionIsLoading || wishlistIsLoading}
+        wishlist={wishlist}
+        selectedFilter={selectedFilter}
+        setSelectedFilter={setSelectedFilter}
+        selectedSort={selectedSort}
+        setSelectedSort={setSelectedSort}
+        canEdit
+      />
       <AddWishForm isOpen={isOpen} onOpenChange={onOpenChange} />
-    </WishlistDisplay>
+      <AddButton onPress={onOpen} color="primary" />
+    </>
   )
 }
 

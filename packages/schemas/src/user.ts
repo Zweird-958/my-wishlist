@@ -4,6 +4,7 @@ export const emailSchema = z
   .string()
   .min(1, { message: "required" })
   .email({ message: "invalid" })
+  .toLowerCase()
 export const passwordSchema = z
   .string()
   .min(1, { message: "required" })

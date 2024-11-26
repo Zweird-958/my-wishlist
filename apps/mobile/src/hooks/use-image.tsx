@@ -1,7 +1,7 @@
-import { useMutation } from "@tanstack/react-query"
 import * as ImagePicker from "expo-image-picker"
 import { useCallback, useState } from "react"
 
+import { useGenericMutation as useMutation } from "@my-wishlist/react"
 import type { UploadMobileImage } from "@my-wishlist/types"
 
 import api from "@/utils/api"

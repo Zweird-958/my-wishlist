@@ -3,10 +3,10 @@
 import { useEffect, useMemo, useState } from "react"
 
 import config, { type Filter, type Sort } from "@my-wishlist/config"
-import type { Wish } from "@my-wishlist/types"
+import { useClient } from "@my-wishlist/react"
 
+import { useProtectedQuery } from "../../hooks/use-query"
 import useHandleError from "../../hooks/useHandleError"
-import useQuery from "../../hooks/useQuery"
 import { useRouter, useTranslation } from "../AppContext"
 import WishlistDisplay from "../wishlist/WishlistDisplay"
 
@@ -21,11 +21,14 @@ const WishlistShared = ({ userId }: Props) => {
     { 401: t("notAuthorized") },
     { 401: () => void router.push("/share") },
   )
-  const { data, error, isLoading } = useQuery<Wish[], { username: string }>({
-    method: "get",
-    path: `/share/wish/${userId}`,
-    queryKey: ["shared", userId],
-  })
+  const { client } = useClient()
+  const { data, error, isLoading } = useProtectedQuery(
+    () => client.share.wish[":userId"].$get({ param: { userId } }),
+    {
+      queryKey: ["shared", userId],
+    },
+  )
+
   const [selectedFilter, setSelectedFilter] = useState<Filter>(
     config.defaultFilter,
   )

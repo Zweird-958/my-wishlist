@@ -1,7 +1,15 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import type { ComponentProps, ReactNode } from "react"
 
-import { SessionProvider } from "@/components/contexts/SessionContext"
+import {
+  ClientProvider,
+  QueryClient,
+  QueryClientProvider,
+} from "@my-wishlist/react"
+
+import {
+  SessionProvider,
+  useSession,
+} from "@/components/contexts/SessionContext"
 import { ThemeProvider } from "@/components/contexts/ThemeContext"
 import { WishlistProvider } from "@/components/contexts/WishlistContext"
 import { CurrenciesProvider } from "@/components/contexts/currencies-context"
@@ -12,13 +20,21 @@ type Props = {
 
 const queryClient = new QueryClient()
 
+const DependentProviders = ({ children }: { children: ReactNode }) => {
+  const { session } = useSession()
+
+  return <ClientProvider token={session}>{children}</ClientProvider>
+}
+
 const Providers = ({ children, theme }: Props) => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider theme={theme}>
       <SessionProvider>
-        <WishlistProvider>
-          <CurrenciesProvider>{children}</CurrenciesProvider>
-        </WishlistProvider>
+        <DependentProviders>
+          <WishlistProvider>
+            <CurrenciesProvider>{children}</CurrenciesProvider>
+          </WishlistProvider>
+        </DependentProviders>
       </SessionProvider>
     </ThemeProvider>
   </QueryClientProvider>

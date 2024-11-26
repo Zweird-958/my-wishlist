@@ -4,8 +4,10 @@ import { useRouter } from "next/navigation"
 import type { ReactNode } from "react"
 
 import { useTranslation } from "@my-wishlist/i18n"
+import { ClientProvider } from "@my-wishlist/react"
 import {
   AppProvider,
+  CurrenciesProvider,
   NextUIProvider,
   QueryClient,
   QueryClientProvider,
@@ -23,24 +25,34 @@ type Props = {
 
 const queryClient = new QueryClient()
 
+const DependentProviders = ({ children }: { children: ReactNode }) => {
+  const { token } = useSession()
+
+  return <ClientProvider token={token}>{children}</ClientProvider>
+}
+
 const Providers = (props: Props) => {
   const { children } = props
   const router = useRouter()
 
   return (
-    <SessionProvider>
-      <AppProvider
-        useTranslation={useTranslation}
-        useSession={useSession}
-        useRouter={useRouter}
-      >
-        <QueryClientProvider client={queryClient}>
-          <NextUIProvider navigate={(path) => router.push(path)}>
-            <ThemeProvider>{children}</ThemeProvider>
-          </NextUIProvider>
-        </QueryClientProvider>
-      </AppProvider>
-    </SessionProvider>
+    <QueryClientProvider client={queryClient}>
+      <SessionProvider>
+        <DependentProviders>
+          <AppProvider
+            useTranslation={useTranslation}
+            useSession={useSession}
+            useRouter={useRouter}
+          >
+            <NextUIProvider navigate={(path) => router.push(path)}>
+              <ThemeProvider>
+                <CurrenciesProvider>{children}</CurrenciesProvider>
+              </ThemeProvider>
+            </NextUIProvider>
+          </AppProvider>
+        </DependentProviders>
+      </SessionProvider>
+    </QueryClientProvider>
   )
 }
 

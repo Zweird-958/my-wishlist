@@ -2,7 +2,7 @@
   "name": "my-wishlist",
   "version": "1.0.0",
   "description": "",
-  "packageManager": "pnpm@9.12.2",
+  "packageManager": "pnpm@9.12.3",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "web": "pnpm --F \"@my-wishlist/web\" dev",
@@ -12,7 +12,6 @@
     "mobile:android": "pnpm --F \"@my-wishlist/mobile\" android",
     "db:migrate": "pnpm --F \"@my-wishlist/db\" migrate",
     "db:migrate:create": "pnpm --F \"@my-wishlist/db\" migrate:create",
-    "db:generate": "pnpm --F \"@my-wishlist/db\" generate",
     "db:seed": "pnpm --F \"@my-wishlist/db\" seed",
     "lint": "turbo lint",
     "lint:fix": "turbo lint -- --fix",
@@ -28,7 +27,7 @@
   "license": "ISC",
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
-    "knip": "^5.34.0",
+    "knip": "^5.36.2",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "turbo": "^2.2.3",
