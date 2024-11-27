@@ -6,7 +6,6 @@ import { ClientProvider } from "@my-wishlist/react"
 import {
   AppProvider,
   CurrenciesProvider,
-  NextUIProvider,
   QueryClient,
   QueryClientProvider,
   ThemeProvider,
@@ -35,9 +34,7 @@ const Providers = ({ children }: { children: ReactNode }) => (
       >
         <DependentProviders>
           <CurrenciesProvider>
-            <NextUIProvider>
-              <ThemeProvider>{children}</ThemeProvider>
-            </NextUIProvider>
+            <ThemeProvider>{children}</ThemeProvider>
           </CurrenciesProvider>
         </DependentProviders>
       </AppProvider>

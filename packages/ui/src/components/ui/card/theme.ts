@@ -31,13 +31,13 @@ export const cardVariants = tv({
         base: "shadow-none",
       },
       sm: {
-        base: "shadow-small",
+        base: "shadow-sm",
       },
       md: {
-        base: "shadow-medium",
+        base: "shadow-md",
       },
       lg: {
-        base: "shadow-large",
+        base: "shadow-lg",
       },
     },
     radius: {
@@ -47,19 +47,19 @@ export const cardVariants = tv({
         footer: "rounded-none",
       },
       sm: {
-        base: "rounded-small",
-        header: "rounded-t-small",
-        footer: "rounded-b-small",
+        base: "rounded-sm",
+        header: "rounded-t-sm",
+        footer: "rounded-b-sm",
       },
       md: {
-        base: "rounded-medium",
-        header: "rounded-t-medium",
-        footer: "rounded-b-medium",
+        base: "rounded-md",
+        header: "rounded-t-md",
+        footer: "rounded-b-md",
       },
       lg: {
-        base: "rounded-large",
-        header: "rounded-t-large",
-        footer: "rounded-b-large",
+        base: "rounded-lg",
+        header: "rounded-t-lg",
+        footer: "rounded-b-lg",
       },
     },
     fullWidth: {

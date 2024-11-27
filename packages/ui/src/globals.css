@@ -2,56 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply flex min-h-dvh flex-col;
-}
-
-[data-overlay-container="true"] {
-  @apply flex min-h-dvh flex-col;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
+    --foreground: 0 0% 0%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 0 0% 0%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
 
-    --card: 0 0% 100%;
+    --card: 240 5% 96%;
     --card-foreground: 222.2 47.4% 11.2%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 343 100% 65%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: 0 0% 100%;
 
     --success: 145 63% 42%;
-    --success-foreground: 222.2 47.4% 11.2%;
+    --success-foreground: 0 0% 100%;
 
     --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent-foreground: 0 0% 0%;
 
     --danger: 0 100% 50%;
-    --danger-foreground: 210 40% 98%;
+    --danger-foreground: 0 0% 100%;
 
-    --warning: 0 100% 50%;
-    --warning-foreground: 210 40% 98%;
+    --warning: 24 100% 50%;
+    --warning-foreground: 0 0% 100%;
 
     --ring: 215 20.2% 65.1%;
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
     --muted: 223 47% 11%;
     --muted-foreground: 215.4 16.3% 56.9%;
@@ -60,7 +52,7 @@ body {
     --accent-foreground: 210 40% 98%;
 
     --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
+    --popover-foreground: 213 31% 91%;
 
     --border: 216 34% 17%;
     --input: 216 34% 17%;
@@ -69,29 +61,12 @@ body {
     --card-foreground: 213 31% 91%;
 
     --success: 145 63% 42%;
-    --success-foreground: 222.2 47.4% 11.2%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
-
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
-
-    --danger: 0 63% 31%;
-    --danger-foreground: 210 40% 98%;
-
-    --warning: 0 100% 50%;
-    --warning-foreground: 210 40% 98%;
+    --success-foreground: 0 0% 100%;
 
     --ring: 216 34% 17%;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-  }
+body {
+  @apply text-foreground bg-background flex min-h-dvh flex-col;
 }
