@@ -13,7 +13,7 @@ export const selectVariants = tv({
     ],
     viewport: "p-1",
     label: "px-2 py-1.5 text-sm font-semibold",
-    item: "focus:bg-accent focus:text-accent-foreground relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+    item: "focus:bg-content focus:text-content-foreground relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
     separator: "bg-muted -mx-1 my-1 h-px",
   },
   variants: {

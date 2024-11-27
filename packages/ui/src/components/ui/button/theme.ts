@@ -13,9 +13,10 @@ export const buttonVariants = tv({
       secondary: "",
       danger: "",
       success: "",
-      accent: "",
+      content: "",
       muted: "",
       warning: "",
+      card: "",
     },
     size: {
       default: "h-9 px-4 py-2",
@@ -51,9 +52,9 @@ export const buttonVariants = tv({
       className: "border-success text-success",
     },
     {
-      color: "accent",
+      color: "content",
       variant: "outline",
-      className: "border-accent text-accent",
+      className: "border-content text-content",
     },
     {
       color: "muted",
@@ -64,6 +65,11 @@ export const buttonVariants = tv({
       color: "warning",
       variant: "outline",
       className: "border-warning text-warning",
+    },
+    {
+      color: "card",
+      variant: "outline",
+      className: "border-card text-card",
     },
     {
       color: "primary",
@@ -86,9 +92,9 @@ export const buttonVariants = tv({
       className: "bg-success text-success-foreground hover:bg-success/90",
     },
     {
-      color: "accent",
+      color: "content",
       variant: "default",
-      className: "bg-accent text-accent-foreground hover:bg-accent/90",
+      className: "bg-content text-content-foreground hover:bg-content/90",
     },
     {
       color: "muted",
@@ -99,6 +105,11 @@ export const buttonVariants = tv({
       color: "warning",
       variant: "default",
       className: "bg-warning text-warning-foreground hover:bg-warning/90",
+    },
+    {
+      color: "card",
+      variant: "default",
+      className: "bg-card text-card-foreground hover:bg-card/90",
     },
   ],
 })
