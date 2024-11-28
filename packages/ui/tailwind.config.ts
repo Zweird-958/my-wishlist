@@ -37,9 +37,9 @@ const config = {
           DEFAULT: "hsl(var(--content))",
           foreground: "hsl(var(--content-foreground))",
         },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+        default: {
+          DEFAULT: "hsl(var(--default))",
+          foreground: "hsl(var(--default-foreground))",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",

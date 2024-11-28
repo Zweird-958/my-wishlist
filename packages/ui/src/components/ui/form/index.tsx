@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@ui/components/ui/select"
-import { Switch } from "@ui/components/ui/switch"
+import { Switch, SwitchProps } from "@ui/components/ui/switch"
 import * as React from "react"
 import {
   Controller,
@@ -273,9 +273,9 @@ export type FormSwitchProps = {
   label: string
   name: FormFieldProps["name"]
   formProps?: Omit<FormFieldProps, "render" | "name">
-}
+} & Omit<SwitchProps, "checked" | "onCheckedChange">
 
-const FormSwitch = ({ label, name, formProps }: FormSwitchProps) => (
+const FormSwitch = ({ label, name, formProps, ...props }: FormSwitchProps) => (
   <FormField
     name={name}
     {...formProps}
@@ -286,6 +286,7 @@ const FormSwitch = ({ label, name, formProps }: FormSwitchProps) => (
           <Switch
             checked={Boolean(field.value)}
             onCheckedChange={field.onChange}
+            {...props}
           />
         </FormControl>
       </FormItem>

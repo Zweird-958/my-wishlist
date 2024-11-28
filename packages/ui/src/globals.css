@@ -22,6 +22,9 @@
     --success: 145 63% 42%;
     --success-foreground: 0 0% 100%;
 
+    --default: 240 5% 84%;
+    --default-foreground: 0 0% 100%;
+
     --content: 210 40% 96.1%;
     --content-foreground: 0 0% 0%;
 
@@ -44,6 +47,9 @@
 
     --muted: 223 47% 11%;
     --muted-foreground: 215.4 16.3% 56.9%;
+
+    --default: 240 5% 26%;
+    --default-foreground: 0 0% 100%;
 
     --content: 240 6% 10%;
     --content-foreground: 0 0% 100%;
