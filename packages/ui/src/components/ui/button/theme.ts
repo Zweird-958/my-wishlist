@@ -13,10 +13,9 @@ export const buttonVariants = tv({
       secondary: "",
       danger: "",
       success: "",
-      content: "",
+      default: "",
       muted: "",
       warning: "",
-      card: "",
     },
     size: {
       default: "h-9 px-4 py-2",
@@ -27,7 +26,7 @@ export const buttonVariants = tv({
   },
   defaultVariants: {
     variant: "default",
-    color: "primary",
+    color: "default",
     size: "default",
   },
   compoundVariants: [
@@ -52,9 +51,9 @@ export const buttonVariants = tv({
       className: "border-success text-success",
     },
     {
-      color: "content",
+      color: "default",
       variant: "outline",
-      className: "border-content text-content",
+      className: "border-content text-foreground",
     },
     {
       color: "muted",
@@ -65,11 +64,6 @@ export const buttonVariants = tv({
       color: "warning",
       variant: "outline",
       className: "border-warning text-warning",
-    },
-    {
-      color: "card",
-      variant: "outline",
-      className: "border-card text-card",
     },
     {
       color: "primary",
@@ -92,11 +86,6 @@ export const buttonVariants = tv({
       className: "bg-success text-success-foreground hover:bg-success/90",
     },
     {
-      color: "content",
-      variant: "default",
-      className: "bg-content text-content-foreground hover:bg-content/90",
-    },
-    {
       color: "muted",
       variant: "default",
       className: "bg-muted text-muted-foreground hover:bg-muted/90",
@@ -105,11 +94,6 @@ export const buttonVariants = tv({
       color: "warning",
       variant: "default",
       className: "bg-warning text-warning-foreground hover:bg-warning/90",
-    },
-    {
-      color: "card",
-      variant: "default",
-      className: "bg-card text-card-foreground hover:bg-card/90",
     },
   ],
 })
