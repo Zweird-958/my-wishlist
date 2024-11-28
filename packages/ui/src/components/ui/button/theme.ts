@@ -53,7 +53,7 @@ export const buttonVariants = tv({
     {
       color: "default",
       variant: "outline",
-      className: "border-content text-foreground",
+      className: "border-default text-foreground",
     },
     {
       color: "muted",
