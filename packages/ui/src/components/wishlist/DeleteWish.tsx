@@ -44,7 +44,7 @@ const DeleteWish = ({ wish }: Props) => {
 
   return (
     <Popover open={open} onOpenChange={handleOpen}>
-      <PopoverTrigger>
+      <PopoverTrigger asChild>
         <Button size="icon" className="px-2" color="danger">
           <Trash2Icon />
         </Button>
