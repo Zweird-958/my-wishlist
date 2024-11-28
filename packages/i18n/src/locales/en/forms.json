@@ -15,12 +15,14 @@
     "add": {
       "title": "Add to wishlist",
       "submit": "Create",
-      "success": "Wish added successfully"
+      "success": "Wish added successfully",
+      "description": "Add a new wish to your wishlist"
     },
     "update": {
       "title": "Update wish",
       "submit": "Update",
-      "success": "Wish updated successfully"
+      "success": "Wish updated successfully",
+      "description": "Update your wish"
     },
     "delete": {
       "confirmation": "Are you sure ?",
@@ -39,12 +41,14 @@
     "title": "Stop sharing your wishlist",
     "information": "Are you sure to stop sharing your wishlist with {username} ?",
     "cancel": "Cancel",
-    "submit": "Confirm"
+    "submit": "Confirm",
+    "description": "Stop sharing your wishlist with another user"
   },
   "share": {
     "title": "Share your wishlist",
     "cancel": "Cancel",
     "submit": "Share",
-    "success": "Wishlist shared successfully with {username} !"
+    "success": "Wishlist shared successfully with {username} !",
+    "description": "Share your wishlist with another user"
   }
 }

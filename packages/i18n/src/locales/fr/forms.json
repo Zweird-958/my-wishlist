@@ -14,12 +14,14 @@
     "add": {
       "title": "Ajouter à la liste d'envie",
       "submit": "Créer",
-      "success": "L'article a été ajouté à votre liste d'envie"
+      "success": "L'article a été ajouté à votre liste d'envie",
+      "description": "Ajouter un nouvel article à votre liste d'envie"
     },
     "update": {
       "title": "Modifier l'article",
       "submit": "Modifier",
-      "success": "L'article a été modifié"
+      "success": "L'article a été modifié",
+      "description": "Modifier l'article"
     },
     "delete": {
       "confirmation": "Êtes-vous sûr ?",
@@ -38,12 +40,14 @@
     "title": "Arrêter de partager votre liste d'envies",
     "information": "Êtes-vous sûr(e) de vouloir arrêter de partager votre liste d'envies avec {username} ?",
     "cancel": "Annuler",
-    "submit": "Confirmer"
+    "submit": "Confirmer",
+    "description": "Arrêter de partager votre liste d'envies avec un autre utilisateur"
   },
   "share": {
     "title": "Partager votre liste d'envies",
     "cancel": "Annuler",
     "submit": "Partager",
-    "success": "Liste d'envies partagée avec {username} !"
+    "success": "Liste d'envies partagée avec {username} !",
+    "description": "Partager votre liste d'envies avec un autre utilisateur"
   }
 }

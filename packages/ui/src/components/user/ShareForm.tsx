@@ -6,9 +6,11 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   type DialogProps,
+  DialogTitle,
 } from "@ui/components/ui/dialog"
 import { Form as FormController, FormInput } from "@ui/components/ui/form"
 import { useForm } from "react-hook-form"
@@ -69,7 +71,10 @@ const ShareForm = ({ open, onOpenChange }: ShareFormProps) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <DialogHeader>{t("share.title")}</DialogHeader>
+        <DialogHeader>
+          <DialogTitle>{t("share.title")}</DialogTitle>
+          <DialogDescription>{t("share.description")}</DialogDescription>
+        </DialogHeader>
         <Form onOpenChange={onOpenChange} />
       </DialogContent>
     </Dialog>

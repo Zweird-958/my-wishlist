@@ -1,5 +1,6 @@
 /* eslint-disable max-lines */
 import * as Dialog from "@radix-ui/react-dialog"
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 import {
   NavbarMenuProvider,
   NavbarProvider,
@@ -194,6 +195,10 @@ export const NavbarMenuContent = forwardRef<
                 })}
                 ref={ref}
               >
+                <VisuallyHidden>
+                  <Dialog.Title>Navbar</Dialog.Title>
+                  <Dialog.Description>Navbar menu opened</Dialog.Description>
+                </VisuallyHidden>
                 {children}
               </motion.ul>
             </Dialog.Content>

@@ -5,9 +5,11 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   type DialogProps,
+  DialogTitle,
 } from "@ui/components/ui/dialog"
 
 import { useClient } from "@my-wishlist/react"
@@ -54,7 +56,10 @@ const UnshareModal = ({ user, open, onOpenChange }: Props) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <DialogHeader>{t("unshare.title")}</DialogHeader>
+        <DialogHeader>
+          <DialogTitle>{t("unshare.title")}</DialogTitle>
+          <DialogDescription>{t("unshare.description")}</DialogDescription>
+        </DialogHeader>
         <p>{t("unshare.information", { username: user?.username })}</p>
         <DialogFooter className="justify-between">
           <DialogClose asChild>

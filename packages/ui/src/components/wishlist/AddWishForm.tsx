@@ -33,6 +33,7 @@ const AddWishForm = ({ open, onOpenChange }: Props) => {
     <WishForm
       title={t("wish.add.title")}
       submitText={t("wish.add.submit")}
+      description={t("wish.add.description")}
       onSubmit={onSubmit}
       open={open}
       onOpenChange={onOpenChange}
