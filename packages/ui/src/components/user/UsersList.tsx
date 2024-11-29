@@ -1,14 +1,8 @@
 "use client"
 
-import {
-  Listbox,
-  ListboxItem,
-  type ListboxProps,
-  ListboxSection,
-  Spinner,
-} from "@nextui-org/react"
+import { Spinner } from "@ui/components/ui/spinner"
 import Link from "next/link"
-import type { ReactNode } from "react"
+import type { MouseEventHandler, ReactNode } from "react"
 
 import type { UserShared } from "@my-wishlist/types"
 
@@ -20,14 +14,16 @@ type Props = {
   isLoading?: boolean
   icon: ReactNode
   title: string
-} & Pick<ListboxProps, "color" | "onAction">
+} & (
+  | { isLink: true; onAction?: never }
+  | { isLink?: false; onAction: MouseEventHandler<HTMLDivElement> }
+)
 
 const UsersList = ({
   items,
   isLink,
   isLoading,
   icon,
-  color = "primary",
   title,
   onAction,
 }: Props) => {
@@ -35,44 +31,46 @@ const UsersList = ({
   const getListboxItem = () => {
     if (isLoading) {
       return (
-        <ListboxItem key="loader" className="text-center">
+        <div className="text-center">
           <Spinner size="lg" />
-        </ListboxItem>
+        </div>
       )
     }
 
     if (items.length === 0) {
-      return <ListboxItem key="empty">{t("emptyWishlistShared")}</ListboxItem>
+      return (
+        <div className="text-foreground py-4">{t("emptyWishlistShared")}</div>
+      )
     }
 
     return items.map((item) =>
       isLink ? (
-        <ListboxItem
-          endContent={icon}
-          key={item.id}
-          as={Link}
+        <Link
           href={`/share/${item.id}`}
+          className="hover:bg-primary hover:text-primary-foreground flex items-center justify-between rounded-md p-2 transition-colors"
         >
-          {item.username}
-        </ListboxItem>
+          <p>{item.username}</p>
+          {icon}
+        </Link>
       ) : (
-        <ListboxItem endContent={icon} key={item.id}>
-          {item.username}
-        </ListboxItem>
+        <div
+          key={item.id}
+          className="hover:bg-danger hover:text-danger-foreground flex items-center justify-between rounded-md p-2 transition-colors"
+          data-id={item.id}
+          onClick={onAction}
+        >
+          <p>{item.username}</p>
+          {icon}
+        </div>
       ),
     )
   }
 
   return (
-    <Listbox
-      aria-label="wishlist shared"
-      color={color}
-      variant="flat"
-      disabledKeys={["loader", "empty"]}
-      onAction={onAction}
-    >
-      <ListboxSection title={title}>{getListboxItem()}</ListboxSection>
-    </Listbox>
+    <div className="flex flex-col gap-3">
+      <span className="text-muted-foreground text-xs">{title}</span>
+      <div className="flex flex-col gap-1">{getListboxItem()}</div>
+    </div>
   )
 }
 

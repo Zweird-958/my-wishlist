@@ -1,15 +1,15 @@
 "use client"
 
+import { Button } from "@ui/components/ui/button"
 import {
-  Button,
   Navbar,
-  NavbarBrand,
   NavbarContent,
   NavbarItem,
   NavbarMenu,
+  NavbarMenuContent,
   NavbarMenuItem,
-  NavbarMenuToggle,
-} from "@nextui-org/react"
+  NavbarMenuTrigger,
+} from "@ui/components/ui/navbar"
 import { Share2 } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
@@ -31,24 +31,35 @@ const Appbar = () => {
   ]
 
   return (
-    <Navbar
-      maxWidth="2xl"
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
-    >
+    <Navbar>
       <NavbarContent>
-        <NavbarMenuToggle
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
-        />
-        <NavbarBrand>
-          <Link href="/" className="text-foreground">
+        <NavbarMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+          <NavbarMenuTrigger />
+          <NavbarMenuContent>
+            {menuItems.map(
+              ({ label, href, onClick, hidden }) =>
+                !hidden && (
+                  <NavbarMenuItem key={href ?? label}>
+                    {!href ? (
+                      <button onClick={onClick}>{label}</button>
+                    ) : (
+                      <Link href={href} onClick={() => setIsMenuOpen(false)}>
+                        {label}
+                      </Link>
+                    )}
+                  </NavbarMenuItem>
+                ),
+            )}
+          </NavbarMenuContent>
+        </NavbarMenu>
+        <NavbarItem>
+          <Link href="/" className="text-foreground text-lg">
             My Wishlist
           </Link>
-        </NavbarBrand>
+        </NavbarItem>
       </NavbarContent>
 
-      <NavbarContent justify="end">
+      <NavbarContent>
         {session ? (
           <>
             <NavbarItem className="hidden sm:flex">
@@ -57,59 +68,34 @@ const Appbar = () => {
               </Button>
             </NavbarItem>
             <NavbarItem className="hidden sm:flex">
-              <Button
-                as={Link}
-                href="/share"
-                className="p-2"
-                variant="bordered"
-                isIconOnly
-              >
-                <Share2 />
+              <Button asChild className="p-2" variant="outline" size="icon">
+                <Link href="/share">
+                  <Share2 />
+                </Link>
               </Button>
             </NavbarItem>
           </>
         ) : (
           <>
             <NavbarItem className="hidden sm:flex">
-              <Button as={Link} href="/sign-in" color="success">
-                {t("signIn")}
+              <Button color="success">
+                <Link href="/sign-in">{t("signIn")}</Link>
               </Button>
             </NavbarItem>
             <NavbarItem className="hidden sm:flex">
-              <Button
-                as={Link}
-                href="/sign-up"
-                variant="bordered"
-                color="primary"
-              >
-                {t("signUp")}
+              <Button asChild variant="outline" color="primary">
+                <Link href="/sign-up">{t("signUp")}</Link>
               </Button>
             </NavbarItem>
           </>
         )}
-        <SelectTheme />
-        <SelectLocale locale={locale} changeLocale={changeLanguage} />
+        <NavbarItem>
+          <SelectTheme />
+        </NavbarItem>
+        <NavbarItem>
+          <SelectLocale locale={locale} changeLocale={changeLanguage} />
+        </NavbarItem>
       </NavbarContent>
-      <NavbarMenu>
-        {menuItems.map(
-          ({ label, href, onClick, hidden }) =>
-            !hidden && (
-              <NavbarMenuItem key={href ?? label}>
-                {!href ? (
-                  <button onClick={onClick}>{label}</button>
-                ) : (
-                  <Link
-                    className="text-foreground"
-                    href={href}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {label}
-                  </Link>
-                )}
-              </NavbarMenuItem>
-            ),
-        )}
-      </NavbarMenu>
     </Navbar>
   )
 }

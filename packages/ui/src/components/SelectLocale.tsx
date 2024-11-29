@@ -1,75 +1,58 @@
 "use client"
 
+import Flag from "@ui/components/Flag"
+import { Button } from "@ui/components/ui/button"
 import {
-  Button,
-  Dropdown,
-  DropdownItem,
   DropdownMenu,
-  DropdownTrigger,
-  NavbarItem,
-  type Selection,
-} from "@nextui-org/react"
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "@ui/components/ui/dropdown-menu"
 import { useState } from "react"
 
 import { type Locale, config } from "@my-wishlist/i18n/config"
 
-import Flag from "./Flag"
-
-export type SelectLocaleProps = {
+type Props = {
   changeLocale: (locale: Locale) => void
   locale: Locale
 }
 
-const SelectLocale = ({ changeLocale, locale }: SelectLocaleProps) => {
+const SelectLocale = ({ changeLocale, locale }: Props) => {
   const [isLoading, setIsLoading] = useState(false)
-  const handleChangeLocale = (keys: Selection) => {
+  const handleChangeLocale = (newLocale: string) => {
     if (isLoading) {
       return
     }
 
     setIsLoading(true)
-    const key = Array.from(keys).join(", ").replaceAll("_", " ") as Locale
-    changeLocale(key)
+    changeLocale(newLocale as Locale)
     setIsLoading(false)
   }
 
   return (
-    <Dropdown>
-      <NavbarItem>
-        <DropdownTrigger>
-          <Button
-            isIconOnly
-            className="p-0"
-            variant="bordered"
-            isLoading={isLoading}
-          >
-            <Flag language={config.flags[locale] ?? ""} />
-          </Button>
-        </DropdownTrigger>
-      </NavbarItem>
-      <DropdownMenu
-        variant="faded"
-        selectionMode="single"
-        disallowEmptySelection
-        selectedKeys={new Set([locale])}
-        aria-label="Select locale"
-        items={config.languages.map((lang) => ({
-          key: lang,
-          label: config.languagesLabel[lang],
-        }))}
-        onSelectionChange={handleChangeLocale}
-      >
-        {(item) => (
-          <DropdownItem
-            href=""
-            key={item.key}
-            startContent={<Flag language={config.flags[item.key] ?? ""} />}
-          >
-            {item.label}
-          </DropdownItem>
-        )}
-      </DropdownMenu>
-    </Dropdown>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon" isLoading={isLoading}>
+          <Flag language={config.flags[locale] ?? ""} />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuRadioGroup
+          value={locale}
+          onValueChange={handleChangeLocale}
+        >
+          {config.languages.map((item) => (
+            <DropdownMenuRadioItem key={item} value={item}>
+              <div className="flex items-center gap-2">
+                <Flag language={config.flags[item] ?? ""} />
+                <span>{config.languagesLabel[item]}</span>
+              </div>
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 

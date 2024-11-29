@@ -1,12 +1,7 @@
 "use client"
 
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-} from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
+import { Card, CardBody, CardFooter, CardHeader } from "@ui/components/ui/card"
 import Link from "next/link"
 
 import { useTranslation } from "../AppContext"
@@ -23,8 +18,8 @@ const AuthWishlist = () => {
           <p>{t("mustLoggedIn")}</p>
         </CardBody>
         <CardFooter className="justify-end">
-          <Button as={Link} href="/sign-in" color="success">
-            {t("signIn")}
+          <Button color="success" asChild>
+            <Link href="/sign-in">{t("signIn")}</Link>
           </Button>
         </CardFooter>
       </Card>

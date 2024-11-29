@@ -1,37 +1,45 @@
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 import {
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalHeader,
-  type ModalProps,
-} from "@nextui-org/react"
-import type { ComponentProps } from "react"
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@ui/components/ui/dialog"
+import type { ComponentProps, ComponentPropsWithoutRef } from "react"
 
 import WishForm from "./wish-form"
 
 type Props = {
   title: string
-} & Pick<ModalProps, "isOpen" | "onOpenChange"> &
-  ComponentProps<typeof WishForm>
+  description: string
+} & Required<
+  Pick<ComponentPropsWithoutRef<typeof Dialog>, "open" | "onOpenChange">
+> &
+  Omit<ComponentProps<typeof WishForm>, "onClose">
 
-const WishModalForm = ({ isOpen, onOpenChange, title, ...props }: Props) => (
-  <Modal
-    isOpen={isOpen}
-    onOpenChange={onOpenChange}
-    placement="center"
-    className="h-fit w-full max-w-lg"
-  >
-    <ModalContent>
-      {(onClose) => (
-        <>
-          <ModalHeader>{title}</ModalHeader>
-          <ModalBody>
-            <WishForm {...props} onClose={onClose} />
-          </ModalBody>
-        </>
-      )}
-    </ModalContent>
-  </Modal>
-)
+const WishModalForm = ({
+  open,
+  onOpenChange,
+  title,
+  description,
+  ...props
+}: Props) => {
+  const onClose = () => onOpenChange(false)
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>{title}</DialogTitle>
+          <VisuallyHidden>
+            <DialogDescription>{description}</DialogDescription>
+          </VisuallyHidden>
+        </DialogHeader>
+        <WishForm {...props} onClose={onClose} />
+      </DialogContent>
+    </Dialog>
+  )
+}
 
 export default WishModalForm

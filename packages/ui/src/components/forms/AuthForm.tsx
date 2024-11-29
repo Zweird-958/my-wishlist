@@ -1,5 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Button, Card, CardBody, CardHeader } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
+import { Card, CardBody, CardHeader } from "@ui/components/ui/card"
+import { Form, FormInput } from "@ui/components/ui/form"
 import type { InputHTMLAttributes } from "react"
 import {
   type DefaultValues,
@@ -9,8 +11,6 @@ import {
   useForm,
 } from "react-hook-form"
 import type { ZodSchema } from "zod"
-
-import Field from "../Field"
 
 type Field<T extends FieldValues> = {
   name: Path<T>
@@ -40,7 +40,7 @@ const AuthForm = <T extends FieldValues>({
   isLoading,
   buttonText,
 }: Props<T>) => {
-  const { control, handleSubmit } = useForm<T>({
+  const form = useForm<T>({
     defaultValues,
     resolver: zodResolver(schema),
   })
@@ -51,15 +51,20 @@ const AuthForm = <T extends FieldValues>({
         <h1 className="w-full text-center text-lg">{title}</h1>
       </CardHeader>
       <CardBody>
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
-          {fields.map(({ name, ...fieldProps }) => (
-            <Field key={name} name={name} control={control} {...fieldProps} />
-          ))}
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-3"
+          >
+            {fields.map(({ name, ...fieldProps }) => (
+              <FormInput key={name} name={name} {...fieldProps} />
+            ))}
 
-          <Button type="submit" color="primary" isLoading={isLoading}>
-            {buttonText}
-          </Button>
-        </form>
+            <Button type="submit" color="primary" isLoading={isLoading}>
+              {buttonText}
+            </Button>
+          </form>
+        </Form>
       </CardBody>
     </Card>
   )

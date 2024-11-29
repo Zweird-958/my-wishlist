@@ -1,6 +1,6 @@
 "use client"
 
-import { useDisclosure } from "@nextui-org/react"
+import { useDialog } from "@ui/components/ui/dialog"
 import { useEffect } from "react"
 
 import { useClient } from "@my-wishlist/react"
@@ -23,7 +23,7 @@ const Home = () => {
     setSelectedSort,
     setWishlist,
   } = useWishlist()
-  const { isOpen, onOpen, onOpenChange } = useDisclosure()
+  const { open, onOpen, onOpenChange } = useDialog()
   const { client } = useClient()
   const { data, isPending: wishlistIsLoading } = useProtectedQuery(
     () => client.wish.$get(),
@@ -55,8 +55,8 @@ const Home = () => {
         setSelectedSort={setSelectedSort}
         canEdit
       />
-      <AddWishForm isOpen={isOpen} onOpenChange={onOpenChange} />
-      <AddButton onPress={onOpen} color="primary" />
+      <AddWishForm open={open} onOpenChange={onOpenChange} />
+      <AddButton onClick={onOpen} color="primary" />
     </>
   )
 }

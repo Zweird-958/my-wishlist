@@ -1,4 +1,4 @@
-import UsersShared from "@my-wishlist/ui/pages/UsersShared"
+import { UsersShared } from "@my-wishlist/ui"
 
 const SharedPage = () => <UsersShared />
 

@@ -31,12 +31,18 @@ CREATE TABLE IF NOT EXISTS "Wish" (
 	"isPrivate" boolean DEFAULT false,
 	"userId" integer NOT NULL
 );
+
+ALTER TABLE IF EXISTS "_WishlistShared" RENAME COLUMN "A" TO "userId";--> statement-breakpoint
+ALTER TABLE IF EXISTS "_WishlistShared" RENAME COLUMN "B" TO "sharedWithId";--> statement-breakpoint
+ALTER TABLE IF EXISTS "_WishlistShared" ADD CONSTRAINT "_WishlistShared_userId_sharedWithId_pk" PRIMARY KEY("userId","sharedWithId");
+
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "_WishlistShared" (
 	"userId" integer NOT NULL,
 	"sharedWithId" integer NOT NULL,
 	CONSTRAINT "_WishlistShared_userId_sharedWithId_pk" PRIMARY KEY("userId","sharedWithId")
 );
+
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "Wish" ADD CONSTRAINT "Wish_userId_User_id_fk" FOREIGN KEY ("userId") REFERENCES "public"."User"("id") ON DELETE no action ON UPDATE no action;

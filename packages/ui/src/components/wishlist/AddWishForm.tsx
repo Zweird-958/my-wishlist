@@ -1,6 +1,6 @@
 "use client"
 
-import type { ModalProps } from "@nextui-org/react"
+import type { DialogProps } from "@ui/components/ui/dialog"
 import toast from "react-hot-toast"
 
 import { useClient } from "@my-wishlist/react"
@@ -11,9 +11,9 @@ import useWishlist from "../../hooks/useWishlist"
 import { useTranslation } from "../AppContext"
 import WishForm from "./wish-modal-form"
 
-type Props = Required<Pick<ModalProps, "isOpen" | "onOpenChange">>
+type Props = Required<Pick<DialogProps, "open" | "onOpenChange">>
 
-const AddWishForm = ({ isOpen, onOpenChange }: Props) => {
+const AddWishForm = ({ open, onOpenChange }: Props) => {
   const { t } = useTranslation("forms")
   const { addWish } = useWishlist()
   const { client } = useClient()
@@ -33,8 +33,9 @@ const AddWishForm = ({ isOpen, onOpenChange }: Props) => {
     <WishForm
       title={t("wish.add.title")}
       submitText={t("wish.add.submit")}
+      description={t("wish.add.description")}
       onSubmit={onSubmit}
-      isOpen={isOpen}
+      open={open}
       onOpenChange={onOpenChange}
       isLoading={isPending}
     />

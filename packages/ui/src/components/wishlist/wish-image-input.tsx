@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@nextui-org/react"
+import { Button } from "@ui/components/ui/button"
 import type { ChangeEventHandler, Dispatch, SetStateAction } from "react"
 
 import { useTranslation } from "../AppContext"
@@ -18,17 +18,22 @@ const WishImageInput = ({ image, setImage }: Props) => {
   }
 
   return (
-    <Button as={"div"} color="primary" className="w-full">
-      <label htmlFor="image" className="truncate">
-        {image ? image.name : t("image")}
-      </label>
-      <input
-        id="image"
-        hidden
-        onChange={handleFileUpload}
-        type="file"
-        accept="image/png, image/jpeg, image/jpg"
-      />
+    <Button color="primary" className="w-full p-0" asChild>
+      <div>
+        <label
+          htmlFor="image"
+          className="flex size-full items-center justify-center truncate"
+        >
+          {image ? image.name : t("image")}
+        </label>
+        <input
+          id="image"
+          hidden
+          onChange={handleFileUpload}
+          type="file"
+          accept="image/png, image/jpeg, image/jpg"
+        />
+      </div>
     </Button>
   )
 }

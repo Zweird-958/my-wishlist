@@ -6,7 +6,7 @@ import formatCurrency from "./format-currency"
 
 const formatWish = (wish: WishTable, lang: Locale) => ({
   ...wish,
-  image: wish.image === null ? "" : `${config.upload.publicUrl}${wish.image}`,
+  image: wish.image && `${config.upload.publicUrl}${wish.image}`,
   priceFormatted: formatCurrency(wish.price, wish.currency, lang),
 })
 

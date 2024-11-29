@@ -8,7 +8,6 @@ import { ClientProvider } from "@my-wishlist/react"
 import {
   AppProvider,
   CurrenciesProvider,
-  NextUIProvider,
   QueryClient,
   QueryClientProvider,
   ThemeProvider,
@@ -33,7 +32,6 @@ const DependentProviders = ({ children }: { children: ReactNode }) => {
 
 const Providers = (props: Props) => {
   const { children } = props
-  const router = useRouter()
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -44,11 +42,9 @@ const Providers = (props: Props) => {
             useSession={useSession}
             useRouter={useRouter}
           >
-            <NextUIProvider navigate={(path) => router.push(path)}>
-              <ThemeProvider>
-                <CurrenciesProvider>{children}</CurrenciesProvider>
-              </ThemeProvider>
-            </NextUIProvider>
+            <ThemeProvider>
+              <CurrenciesProvider>{children}</CurrenciesProvider>
+            </ThemeProvider>
           </AppProvider>
         </DependentProviders>
       </SessionProvider>

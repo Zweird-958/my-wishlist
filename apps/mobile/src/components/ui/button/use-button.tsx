@@ -15,7 +15,7 @@ import {
 
 import { useTheme } from "@/components/contexts/ThemeContext"
 
-const buttonVariants = cva("flex flex-row justify-center items-center p-3", {
+const buttonVariants = cva("flex flex-row items-center justify-center p-3", {
   variants: {
     radius: {
       small: "rounded-sm",

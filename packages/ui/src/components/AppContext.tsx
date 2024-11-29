@@ -23,7 +23,7 @@ type Props = {
 
 const AppContext = createContext<Context>({} as Context)
 
-export const useAppContext = () => useContext(AppContext)
+const useAppContext = () => useContext(AppContext)
 export const useSession = () => useAppContext().useSession()
 export const useTranslation: (
   ...ns: Namespace[]

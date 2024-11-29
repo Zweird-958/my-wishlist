@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation"
 
-import WishlistSharedGeneric from "@my-wishlist/ui/pages/WishlistShared"
+import { WishlistShared as WishlistSharedGeneric } from "@my-wishlist/ui"
 
 const WishlistShared = () => {
   const { userId } = useParams<{ userId: string }>()

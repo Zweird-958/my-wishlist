@@ -1,13 +1,13 @@
 "use client"
 
+import { Button } from "@ui/components/ui/button"
 import {
-  Button,
-  Dropdown,
-  DropdownItem,
   DropdownMenu,
-  DropdownTrigger,
-  type Selection,
-} from "@nextui-org/react"
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "@ui/components/ui/dropdown-menu"
 
 import { useTranslation } from "../AppContext"
 
@@ -28,31 +28,30 @@ const WishListDropdown = <T extends string>({
   translationKey,
 }: Props<T>) => {
   const { t } = useTranslation()
-  const handleSelectionChange = (keys: Selection) => {
-    const key = Array.from(keys).join(", ").replaceAll("_", " ")
+  const handleSelectionChange = (key: string) => {
     onSelectionChange(key as T)
   }
 
   return (
-    <Dropdown>
-      <DropdownTrigger>
-        <Button variant="bordered">
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">
           {t(`${translationKey}.${selectedItem}`)}
         </Button>
-      </DropdownTrigger>
-      <DropdownMenu
-        items={items}
-        selectedKeys={new Set([selectedItem])}
-        onSelectionChange={handleSelectionChange}
-        selectionMode="single"
-      >
-        {(item) => (
-          <DropdownItem key={item.key}>
-            {t(`${translationKey}.${item.label}`)}
-          </DropdownItem>
-        )}
-      </DropdownMenu>
-    </Dropdown>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuRadioGroup
+          value={selectedItem}
+          onValueChange={handleSelectionChange}
+        >
+          {items.map((item) => (
+            <DropdownMenuRadioItem key={item.key} value={item.key}>
+              {t(`${translationKey}.${item.label}`)}
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 
