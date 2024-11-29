@@ -13,7 +13,7 @@ export const cardVariants = tv({
       "z-10 w-full p-3",
     ],
     body: [
-      "relative flex flex-1 flex-auto flex-col",
+      "relative flex flex-1 flex-col",
       "h-auto w-full p-3",
       "place-content-inherit align-items-inherit overflow-y-auto break-words text-left subpixel-antialiased",
     ],
