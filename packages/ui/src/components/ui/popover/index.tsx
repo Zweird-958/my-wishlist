@@ -21,7 +21,15 @@ const PopoverContent = React.forwardRef<
   PopoverContentProps
 >(
   (
-    { className, align = "center", sideOffset = 4, color, variant, ...props },
+    {
+      className,
+      align = "center",
+      sideOffset = 4,
+      color,
+      variant,
+      shadow,
+      ...props
+    },
     ref,
   ) => (
     <PopoverPrimitive.Portal>
@@ -29,7 +37,12 @@ const PopoverContent = React.forwardRef<
         ref={ref}
         align={align}
         sideOffset={sideOffset}
-        className={popoverVariants().content({ className, color, variant })}
+        className={popoverVariants().content({
+          className,
+          color,
+          variant,
+          shadow,
+        })}
         {...props}
       />
     </PopoverPrimitive.Portal>

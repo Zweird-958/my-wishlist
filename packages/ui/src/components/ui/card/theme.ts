@@ -31,13 +31,13 @@ export const cardVariants = tv({
         base: "shadow-none",
       },
       sm: {
-        base: "shadow-sm",
+        base: "shadow-small",
       },
       md: {
-        base: "shadow-md",
+        base: "shadow-medium",
       },
       lg: {
-        base: "shadow-lg",
+        base: "shadow-large",
       },
     },
     radius: {

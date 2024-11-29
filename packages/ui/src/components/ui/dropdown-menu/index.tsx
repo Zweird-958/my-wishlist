@@ -18,10 +18,16 @@ const DropdownMenu = ({
   color,
   inset,
   variant,
+  shadow,
   ...props
 }: DropdownMenuProps) => (
   <DropdownMenuPrimitive.Root {...props}>
-    <DropdownMenuProvider color={color} inset={inset} variant={variant}>
+    <DropdownMenuProvider
+      color={color}
+      inset={inset}
+      variant={variant}
+      shadow={shadow}
+    >
       {children}
     </DropdownMenuProvider>
   </DropdownMenuPrimitive.Root>

@@ -23,10 +23,11 @@ export const DropdownMenuProvider = ({
   color = "default",
   inset,
   variant,
+  shadow,
 }: DropdownMenuProps) => {
   const slots = useMemo(
-    () => dropdownMenuVariants({ color, inset, variant }),
-    [color, inset, variant],
+    () => dropdownMenuVariants({ color, inset, variant, shadow }),
+    [color, inset, shadow, variant],
   )
 
   return (

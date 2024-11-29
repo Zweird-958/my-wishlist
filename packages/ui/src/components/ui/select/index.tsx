@@ -1,6 +1,9 @@
 import * as SelectPrimitive from "@radix-ui/react-select"
 import { Slottable } from "@radix-ui/react-slot"
-import { selectVariants } from "@ui/components/ui/select/theme"
+import {
+  type SelectVariantsProps,
+  selectVariants,
+} from "@ui/components/ui/select/theme"
 import { cn } from "@ui/utils/ui"
 import { Check, ChevronDown, ChevronUp } from "lucide-react"
 import * as React from "react"
@@ -69,14 +72,19 @@ const SelectScrollDownButton = React.forwardRef<
 SelectScrollDownButton.displayName =
   SelectPrimitive.ScrollDownButton.displayName
 
+export type SelectContentProps = React.ComponentPropsWithoutRef<
+  typeof SelectPrimitive.Content
+> &
+  SelectVariantsProps
+
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
->(({ className, children, position = "popper", ...props }, ref) => (
+  SelectContentProps
+>(({ className, children, position = "popper", shadow, ...props }, ref) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
       ref={ref}
-      className={selectVariants().content({ className, position })}
+      className={selectVariants().content({ className, position, shadow })}
       position={position}
       {...props}
     >

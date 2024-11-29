@@ -1,14 +1,14 @@
-import { tv } from "tailwind-variants"
+import { type VariantProps, tv } from "tailwind-variants"
 
 export const selectVariants = tv({
   slots: {
     trigger:
-      "border-default text-foreground placeholder:text-muted-foreground relative flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border-2 bg-transparent px-3 py-2 text-sm shadow-lg focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+      "border-default text-foreground placeholder:text-muted-foreground relative flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border-2 bg-transparent px-3 py-2 text-sm focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
     scrollUp: "flex cursor-default items-center justify-center py-1",
     scrollDown: "flex cursor-default items-center justify-center py-1",
     content: [
       "bg-content text-content-foreground data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2",
-      "shadow-large relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md",
+      "relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md",
       "data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95",
     ],
     viewport: "p-1",
@@ -26,5 +26,29 @@ export const selectVariants = tv({
       },
       "item-aligned": "",
     },
+    shadow: {
+      none: {
+        trigger: "shadow-none",
+        content: "shadow-none",
+      },
+      sm: {
+        trigger: "shadow-small",
+        content: "shadow-small",
+      },
+      md: {
+        trigger: "shadow-medium",
+        content: "shadow-medium",
+      },
+      lg: {
+        trigger: "shadow-large",
+        content: "shadow-large",
+      },
+    },
+  },
+  defaultVariants: {
+    position: "popper",
+    shadow: "md",
   },
 })
+
+export type SelectVariantsProps = VariantProps<typeof selectVariants>

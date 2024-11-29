@@ -1,7 +1,7 @@
 import { type VariantProps, tv } from "tailwind-variants"
 
 export const buttonVariants = tv({
-  base: "focus-visible:ring-ring inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shadow-sm transition-transform duration-100 ease-in-out focus-visible:outline-none focus-visible:ring-1 active:scale-95 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  base: "focus-visible:ring-ring inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-transform duration-100 ease-in-out focus-visible:outline-none focus-visible:ring-1 active:scale-95 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   variants: {
     variant: {
       default: "",
@@ -23,11 +23,18 @@ export const buttonVariants = tv({
       lg: "h-10 rounded-md px-8",
       icon: "h-9 w-9",
     },
+    shadow: {
+      none: "shadow-none",
+      sm: "shadow-small",
+      md: "shadow-medium",
+      lg: "shadow-large",
+    },
   },
   defaultVariants: {
     variant: "default",
     color: "default",
     size: "default",
+    shadow: "md",
   },
   compoundVariants: [
     {

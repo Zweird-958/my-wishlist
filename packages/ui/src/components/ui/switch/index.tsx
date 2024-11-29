@@ -11,8 +11,11 @@ export type SwitchProps = React.ComponentProps<typeof SwitchPrimitives.Root> &
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
   SwitchProps
->(({ className, color, ...props }, ref) => {
-  const slots = React.useMemo(() => switchVariants({ color }), [])
+>(({ className, color, shadow, ...props }, ref) => {
+  const slots = React.useMemo(
+    () => switchVariants({ color, shadow }),
+    [color, shadow],
+  )
 
   return (
     <SwitchPrimitives.Root
