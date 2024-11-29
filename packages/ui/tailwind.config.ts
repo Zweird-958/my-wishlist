@@ -58,6 +58,11 @@ const config = {
       borderWidth: {
         "1.5": "1.5px",
       },
+      boxShadow: {
+        small: "var(--shadow-small)",
+        medium: "var(--shadow-medium)",
+        large: "var(--shadow-large)",
+      },
     },
   },
   presets: [baseConfig],
