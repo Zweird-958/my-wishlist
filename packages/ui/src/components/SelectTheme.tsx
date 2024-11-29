@@ -24,7 +24,7 @@ const SelectTheme = () => {
   }, [resolvedTheme])
 
   return (
-    <DropdownMenu variant="solid">
+    <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button size="icon" variant="outline" isLoading={isLoading}>
           {resolvedTheme === "light" ? <SunIcon /> : <MoonIcon />}

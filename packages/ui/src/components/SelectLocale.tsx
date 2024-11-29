@@ -31,7 +31,7 @@ const SelectLocale = ({ changeLocale, locale }: Props) => {
   }
 
   return (
-    <DropdownMenu variant="solid">
+    <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon" isLoading={isLoading}>
           <Flag language={config.flags[locale] ?? ""} />
