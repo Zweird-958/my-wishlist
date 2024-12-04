@@ -23,7 +23,7 @@
     "@my-wishlist/schemas": "workspace:*",
     "@my-wishlist/utils": "workspace:*",
     "@nextui-org/react": "^2.4.8",
-    "axios": "^1.7.7",
+    "axios": "^1.7.9",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.10",
     "lucide-react": "^0.453.0",
