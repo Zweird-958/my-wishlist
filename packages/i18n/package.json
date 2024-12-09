@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@formatjs/intl-localematcher": "^0.5.5",
+    "@formatjs/intl-localematcher": "^0.5.9",
     "@my-wishlist/config": "workspace:*",
     "@my-wishlist/i18n-schemas": "workspace:*",
     "@tauri-apps/plugin-os": "^2.0.0",
