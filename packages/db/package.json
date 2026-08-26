@@ -28,7 +28,7 @@
   "dependencies": {
     "@my-wishlist/config": "workspace:*",
     "dotenv": "^16.4.5",
-    "drizzle-orm": "^0.36.1",
+    "drizzle-orm": "^0.45.0",
     "pg": "^8.13.1",
     "zod": "^3.23.8"
   }
