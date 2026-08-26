@@ -33,7 +33,7 @@
   "devDependencies": {
     "@my-wishlist/eslint": "workspace:*",
     "@my-wishlist/typescript": "workspace:*",
-    "@types/negotiator": "^0.6.3",
+    "@types/negotiator": "^0.6.5",
     "eslint": "catalog:",
     "typescript": "catalog:"
   },
